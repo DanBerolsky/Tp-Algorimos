@@ -42,7 +42,9 @@ def quien_invoca_a_quien():
 def armar_tabla():
     x = quien_invoca_a_quien()
     for i in x.items():
-        print(i)
+        funcion = i[0]
+        x = len(i[1])
+        print(i[1][0:],x)
     
  
 armar_tabla()
