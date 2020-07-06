@@ -36,16 +36,11 @@ def quien_invoca_a_quien():
                     resultado[clave].append(lista_de_invocacion)
                 else:    
                     resultado[clave] = [lista_de_invocacion]
-    return resultado,nombre_funcion
+    return resultado
  
  
 def armar_tabla():
-    x = quien_invoca_a_quien()[0]
-    y = quien_invoca_a_quien()[1]
-    
-    print(x)
-    for elemento in enumerate(y,1): 
-        print (elemento)
+    x = quien_invoca_a_quien()
     for i in x.items():
         print(i)
     
