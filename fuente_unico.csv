@@ -1,106 +1,22 @@
-Nombre de la funcion 		 Parametros formales 		 Nombre del modulo
-		main,						,				m_generar_archivos_csv.py,
-
-Cuerpo de la funcion:
-
-
-    leer_py(txt)
-    
-
-    return None
-
-Nombre de la funcion 		 Parametros formales 		 Nombre del modulo
-		leer_py,						archivo,				m_generar_archivos_csv.py,
-
-Cuerpo de la funcion:
-
-    import modulo_csv
-    datos = {}
-    modulos = abro_ar(archivo)
-    for modulo in modulos:
-        lineas = abro_ar(modulo)
-        for linea in lineas:
-                  
-            if linea.startswith('def '):
-                funcion = linea
-                index_inicial = lineas.index(funcion) +1
-                nombre_funcion = funcion.split('def ')[1].lstrip().split('(')[0]
-                parametros = funcion.split('(')[1].lstrip().split(')')[0]
-
-            elif linea.strip().startswith('return'):
-                linea_return = linea
-                index_final = lineas.index(linea_return) + 1
-                cuerpo = lineas[index_inicial:index_final]
-                
-                datos[nombre_funcion] = [parametros,modulo,cuerpo]
-           
-    funciones_alfabeto = sorted(datos.items(),key = lambda clave: clave[0], reverse = True)
-
-    return modulo_csv.armo_csv(funciones_alfabeto)
-
-Nombre de la funcion 		 Parametros formales 		 Nombre del modulo
-		leer_1,						codigo,				programa_principal.py,
-
-Cuerpo de la funcion:
-
-
-    linea = codigo.readline()
-
-    if linea:
-        salida = linea.rstrip("\n")
-
-    else:
-        salida = ""
-
-    return salida
-
-Nombre de la funcion 		 Parametros formales 		 Nombre del modulo
-		leer,						archivo,				m_generar_archivos_csv.py,
-
-Cuerpo de la funcion:
-
-    
-    """ El comenterario tiene que ser excluido """
-    
-    # El comenterario tiene que ser excluido
-
-    lineas = [linea.rstrip('\n') for linea in archivo]
-    
-    return lineas
-
-Nombre de la funcion 		 Parametros formales 		 Nombre del modulo
-		armo_csv,						dic_ordenado,				modulo_csv.py,
-
-Cuerpo de la funcion:
-
-    
-    with open ("fuente_unico.csv","a") as codigo:
-        
-        for clave in dic_ordenado:
-            
-            nombre_funcion = clave[0]
-            parametros = clave[1][0]
-            modulo = clave[1][1]
-            cuerpo = clave[1][2]
-
-            codigo.write("Nombre de la funcion \t\t Parametros formales \t\t Nombre del modulo")
-            codigo.write("\n\t\t"+nombre_funcion)
-            codigo.write(",\t\t\t\t\t\t"+parametros)
-            codigo.write(",\t\t\t\t"+modulo+",\n\n")
-            codigo.write("Cuerpo de la funcion:\n\n")
-            funcion = "\n".join(cuerpo)
-            codigo.write(funcion+"\n\n")
-            """codigo.write(nombre_funcion+","+parametros+","+modulo+","+"\n\n"+funcion+"\n\n") ESTE LO CARGA MAS LIMPIO"""
-    
-    return None
-
-Nombre de la funcion 		 Parametros formales 		 Nombre del modulo
-		abro_ar,						archivo,				m_generar_archivos_csv.py,
-
-Cuerpo de la funcion:
-
-    
-    with open(archivo) as archivo_completo:
-        
-        return leer(archivo_completo)
-
+<<<<<<< HEAD
+main,,m_generar_archivos_csv.py,,     leer_py(txt),     , ,     return None
+leer_py,archivo,m_generar_archivos_csv.py,    import modulo_csv,     datos = {},     modulos = abro_ar(archivo),     for modulo in modulos:,         lineas = abro_ar(modulo),         for linea in lineas:,                   ,             if linea.startswith('def '):,                 funcion = linea,                 index_inicial = lineas.index(funcion) +1,                 nombre_funcion = funcion.split('def ')[1].lstrip().split('(')[0],                 parametros = funcion.split('(')[1].lstrip().split(')')[0], ,             elif linea.strip().startswith('return'):,                 linea_return = linea,                 index_final = lineas.index(linea_return) + 1,                 cuerpo = lineas[index_inicial:index_final],                 ,                 datos[nombre_funcion] = [parametros,modulo,cuerpo],            ,     funciones_alfabeto = sorted(datos.items(),key = lambda clave: clave[0], reverse = True), ,     return modulo_csv.armo_csv(funciones_alfabeto)
+leer_1,codigo,programa_principal.py,,     linea = codigo.readline(), ,     if linea:,         salida = linea.rstrip("\n"), ,     else:,         salida = "", ,     return salida
+leer,archivo,m_generar_archivos_csv.py,    ,     """ El comenterario tiene que ser excluido """,     ,     # El comenterario tiene que ser excluido, ,     lineas = [linea.rstrip('\n') for linea in archivo],     ,     return lineas
+armo_csv,dic_ordenado,modulo_csv.py,    ,     with open ("fuente_unico.csv","a") as codigo:,         ,         # codigo.write("Nombre de la funcion Parametros formales Nombre del modulo"),        ,         for clave in dic_ordenado:,             ,             nombre_funcion = clave[0],             parametros = clave[1][0],             modulo = clave[1][1],             cuerpo = clave[1][2], ,             funcion = ", ".join(cuerpo), ,             # codigo.write(nombre_funcion+",\t\t\t\t\t\t"+parametros+",\t\t\t\t"+modulo+",\n\n"+"Cuerpo de la funcion:\n\n"+funcion+"\n\n"),             ,             codigo.write(nombre_funcion+","+parametros+","+modulo+","+funcion+"\n"),            ,             """codigo.write(nombre_funcion+","+parametros+","+modulo+","+"\n\n"+funcion+"\n\n") ESTE LO CARGA MAS LIMPIO""",     ,     return None
+abro_ar,archivo,m_generar_archivos_csv.py,    ,     with open(archivo) as archivo_completo:,         ,         return leer(archivo_completo)
+abro_ar,archivo,m_generar_archivos_csv.py,    with open(archivo) as archivo_completo:,         return leer(archivo_completo)
+leer,archivo,m_generar_archivos_csv.py,,     # El comenterario tiene que ser excluido, ,     lineas = [linea.rstrip('\n') for linea in archivo], ,     return lineas
+leer_1,codigo,programa_principal.py,,     linea = codigo.readline(), ,     if linea:,         salida = linea.rstrip("\n"), ,     else:,         salida = "", ,     return salida
+leer_py,archivo,m_generar_archivos_csv.py,    import modulo_csv,     datos = {},     nombre_archivo = "fuente_unico.csv",     modulos = abro_ar(archivo),     for modulo in modulos:,         lineas = abro_ar(modulo),         for linea in lineas:, ,             if linea.startswith('def '):,                 funcion = linea,                 index_inicial = lineas.index(funcion) + 1,                 nombre_funcion = funcion.split('def ')[1].lstrip().split('(')[0],                 parametros = funcion.split('(')[1].lstrip().split(')')[0], ,             elif linea.strip().startswith('return'):,                 linea_return = linea,                 index_final = lineas.index(linea_return) + 1,                 cuerpo = lineas[index_inicial:index_final],                 remover_comentarios(cuerpo,nombre_funcion),                 datos[nombre_funcion] = [parametros,modulo,cuerpo], ,     funciones_alfabeto = sorted(datos.items(),key = lambda clave: clave[0], reverse = False), ,     return modulo_csv.armo_csv(funciones_alfabeto,nombre_archivo)
+main,,m_generar_archivos_csv.py,    leer_py(txt), ,     return None
+remover_comentarios,lista_cuerpo,nombre_funcion,m_generar_archivos_csv.py,    import modulo_csv,     comentario_triple = "\"\"\"",     nombre_archivo = "comentarios.csv",     datos_comentarios = {},     for i in lista_cuerpo:,         if i.strip().startswith("#") or i.strip().startswith(comentario_triple):,             j = lista_cuerpo.index(i),             cuerpo = lista_cuerpo.pop(j),             autor = cuerpo #TODO Falta,             ayuda = cuerpo #TODO FALTA ,             datos_comentarios[nombre_funcion] = [autor,ayuda,cuerpo],             alfabeticamente = sorted(datos_comentarios.items(),key = lambda clave: clave[0], reverse = False),             return modulo_csv.armo_csv(alfabeticamente,nombre_archivo)
+=======
+ordenar_alfabeticamente,diccionario,m_generar_archivos_csv.py,    ,     return sorted(diccionario.items(),key = lambda clave: clave[0], reverse = True)
+main,,programa_principal.py,    m_generar_archivos_csv.armar_csv_funciones(txt),     return None
+leer,archivo,m_generar_archivos_csv.py,    ,     lineas = [linea.rstrip('\n') for linea in archivo],     return lineas
+contar_funciones,linea,contar_funciones.py,    cantidad_funciones = {"if": 0, "while": 0, "for": 0, "returns": 0, "break": 0, "exit": 0, "ayuda": 0},     if linea.strip().startswith("if"):,         cantidad_funciones["if"] += 1,     elif linea.strip().startswith("while"):,         cantidad_funciones["while"] += 1,     elif linea.strip().startswith("for"):,         cantidad_funciones["for"] += 1,     elif linea.strip().startswith("return"):,         cantidad_funciones["returns"] += 1,     elif linea.strip().startswith("break"):,         cantidad_funciones["break"] += 1,     elif linea.strip().startswith("exit"):,         cantidad_funciones["exit"] += 1,     elif linea.strip().startswith("[Ayuda: ]"):,         cantidad_funciones["ayuda"] += 1,     return cantidad_funciones
+armar_csv_funciones,archivo,m_generar_archivos_csv.py,    nombre_archivo = "fuente_unico.csv",     datos = {},     modulos = abro_ar(archivo),     ,     for modulo in modulos:,         lineas = abro_ar(modulo), ,         for linea in lineas:,                   ,             if linea.startswith('def '):,                 funcion = linea,                 index_inicial = lineas.index(funcion) +1,                 nombre_funcion = funcion.split('def ')[1].lstrip().split('(')[0],                 parametros = funcion.split('(')[1].lstrip().split(')')[0], ,             elif linea.strip().startswith('return'):,                 linea_return = linea,                 index_final = lineas.index(linea_return) + 1,                 cuerpo = lineas[index_inicial:index_final],                 cuerpo_sin_comment = armar_csv_comentarios(cuerpo,nombre_funcion),                 datos[nombre_funcion] = [parametros,modulo,cuerpo_sin_comment], ,     funciones_alfabeto = ordenar_alfabeticamente(datos),   ,     return modulo_csv.armo_csv(funciones_alfabeto,nombre_archivo)
+armar_csv_comentarios,lista_cuerpo,nombre_funcion,m_generar_archivos_csv.py,    ,     comentario_triple = '\"\"\"',     nombre_archivo = 'comentarios.csv',     autor = "[Autor:",     ayuda = "[Ayuda:",     nombre_autor = "",     nombre_ayuda = "",     resto = []   ,     datos_comentarios = {}, ,     lista = lista_cuerpo    ,     resto = [j for j in lineas_comentadas if autor not in j and ayuda not in j],     cuerpo_sin_comentarios = [x for x in lista if x not in lineas_comentadas],     ,     for comentarios in lineas_comentadas:,         if autor in comentarios:,             nombre_autor = comentarios.split(comentario_triple)[1].lstrip().split(comentario_triple)[0],         elif ayuda in comentarios:,             nombre_ayuda = comentarios.split(comentario_triple)[1].lstrip().split(comentario_triple)[0],             ,             datos_comentarios[nombre_funcion] = [nombre_autor,nombre_ayuda,resto],             ,     comentarios_alfabeto = ordenar_alfabeticamente(datos_comentarios),     ,     modulo_csv.armo_csv(comentarios_alfabeto,nombre_archivo),     ,     return cuerpo_sin_comentarios
+abro_ar,archivo,m_generar_archivos_csv.py,    ,     with open(archivo) as archivo_completo:,         return leer(archivo_completo)
+>>>>>>> feature/arregloschicos
