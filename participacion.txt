@@ -1,0 +1,27 @@
+
+	Informe de Desarrollo Por Autor
+
+Autor: Luis
+
+	Funcion			Lineas
+	---------------------------------
+	leer                    55
+	imprimir                10
+	2 Funciones - Lineas	65  36%
+
+Autor: Dan
+
+	Funcion			Lineas
+	---------------------------------
+	participacion_info      55
+	1 Funciones - Lineas	55  30%
+
+Autor: alfonso
+
+	Funcion			Lineas
+	---------------------------------
+	leer_py                 60
+	1 Funciones - Lineas	60  33%
+
+
+Total: 4 Funciones - lineas	180

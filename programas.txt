@@ -2,3 +2,5 @@ programa_principal.py
 m_generar_archivos_csv.py
 modulo_csv.py
 contar_funciones.py
+Informacion_por_desarrollado.py
+muestro_salida.py
