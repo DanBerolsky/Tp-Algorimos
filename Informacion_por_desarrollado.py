@@ -9,7 +9,7 @@ def participacion_info (informacion):
 
     autor_anterior = None
     total_funciones = 0
-    muestro_salida.impresiones("\tInforme de Desarrollo Por Autor")
+    muestro_salida.impresiones("\n\tInforme de Desarrollo Por Autor\n")
 
     for indice in range(len(informacion)):     
         
@@ -21,7 +21,10 @@ def participacion_info (informacion):
 
             muestro_salida.impresiones("Autor: " + autor +"\n\n\tFuncion\t\t\tLineas\n\t---------------------------------\n")
             
-            muestro_salida.impresiones("\t" + nombre_funcion + "\t\t\t" + str(lineas_funcion) )
+            espacios = 8 + len(nombre_funcion) - 32
+            espacios1 = " "*(-1*espacios)
+            muestro_salida.impresiones("\t" + nombre_funcion + espacios1 + str(lineas_funcion))
+            
 
             contador_lineas_totales = 0
             
@@ -72,7 +75,7 @@ def participacion_info (informacion):
         if indice == len(informacion)-1 :
             
             muestro_salida.impresiones("\t"+str(contador_funciones) + " Funciones - Lineas\t" + str(contador_lineas) + "  " + str(porcentaje)+"%\n\n")
-            muestro_salida.impresiones("Total: "+ str(contador_funciones_totales) + " Funciones - lineas\t" + str(contador_lineas_totales))
+            muestro_salida.impresiones("Total: "+ str(contador_funciones_totales) + " Funciones - lineas\t" + str(contador_lineas_totales)+"\n")
             
 
 
