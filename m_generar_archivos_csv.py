@@ -1,17 +1,3 @@
-<<<<<<< HEAD
-import contar_funciones
-
-txt = 'programas.txt'
-
-
-def leer(archivo):
-    """ El comenterario tiene que ser excluido """
-
-    # El comenterario tiene que ser excluido
-
-    lineas = [linea.rstrip('\n') for linea in archivo]
-
-=======
 import modulo_csv
 
 def leer(archivo):
@@ -22,16 +8,12 @@ def leer(archivo):
     """[Ayuda: Lee el archivo linea por linea]"""
     
     lineas = [linea.rstrip('\n') for linea in archivo]
->>>>>>> feature/arregloschicos
     return lineas
 
 def abro_ar(archivo):
-<<<<<<< HEAD
-=======
     """[Autor: b]"""
     """[Ayuda: abre un archivo]"""
     
->>>>>>> feature/arregloschicos
     with open(archivo) as archivo_completo:
         return leer(archivo_completo)
 
@@ -55,12 +37,8 @@ def armar_csv_funciones(archivo):
         lineas = abro_ar(modulo)
 
         for linea in lineas:
-<<<<<<< HEAD
-
-=======
                   
             #Busco la linea que comienze por def para encontrar el nombre de la funcion, sus parametros y cuerpo
->>>>>>> feature/arregloschicos
             if linea.startswith('def '):
                 funcion = linea
                 index_inicial = lineas.index(funcion) + 1
@@ -79,16 +57,6 @@ def armar_csv_funciones(archivo):
   
     return modulo_csv.armo_csv(funciones_alfabeto,nombre_archivo)
 
-<<<<<<< HEAD
-
-def main():
-    leer_py(txt)
-
-    return None
-
-
-main()
-=======
 def armar_csv_comentarios(lista_cuerpo,nombre_funcion):
     """[Autor: D]"""
     """[Ayuda: Remueve los comentarios de la funcion y crea el archivo comentarios.csv]""" 
@@ -128,4 +96,3 @@ def armar_csv_comentarios(lista_cuerpo,nombre_funcion):
     modulo_csv.armo_csv(comentarios_alfabeto,nombre_archivo)
     
     return cuerpo_sin_comentarios
->>>>>>> feature/arregloschicos
