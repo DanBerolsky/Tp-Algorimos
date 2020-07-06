@@ -20,7 +20,6 @@ def abro_ar(archivo):
 def ordenar_alfabeticamente(diccionario):
     """[Autor: b]"""
     """[Ayuda: abre un archivo]"""
-    
     return sorted(diccionario.items(),key = lambda clave: clave[0], reverse = True)
 
 def armar_csv_funciones(archivo):
@@ -41,7 +40,7 @@ def armar_csv_funciones(archivo):
             #Busco la linea que comienze por def para encontrar el nombre de la funcion, sus parametros y cuerpo
             if linea.startswith('def '):
                 funcion = linea
-                index_inicial = lineas.index(funcion) +1
+                index_inicial = lineas.index(funcion) + 1
                 nombre_funcion = funcion.split('def ')[1].lstrip().split('(')[0]
                 parametros = funcion.split('(')[1].lstrip().split(')')[0]
 
