@@ -1,5 +1,7 @@
 import muestro_salida
 
+datos_prueba = [("Luis","leer",10,26),("Luis","imprimir",10,26),("Dan","participacion_info",55,73)]
+
 def participacion_info (informacion):
     
     """[Autor: c]"""
@@ -9,7 +11,7 @@ def participacion_info (informacion):
     total_funciones = 0
     muestro_salida.impresiones("\tInforme de Desarrollo Por Autor")
 
-    for indice in range(len(informacion)-1):     
+    for indice in range(len(informacion)):     
         
         autor, nombre_funcion, lineas_funcion, porcentaje = informacion[indice]
 
@@ -17,39 +19,64 @@ def participacion_info (informacion):
 
         if autor_anterior == None:
 
-            muestro_salida.impresiones("Autor: " + autor +"\n\tFuncion\tLineas\n\t---------------------------------\n")
+            muestro_salida.impresiones("Autor: " + autor +"\n\n\tFuncion\t\t\tLineas\n\t---------------------------------\n")
+            
+            muestro_salida.impresiones("\t" + nombre_funcion + "\t\t\t" + str(lineas_funcion) )
+
+            contador_lineas_totales = 0
+            
+            contador_funciones_totales = 0
             
             contador_funciones = 0
 
             contador_lineas = 0
+
+            porcentaje_anterior = porcentaje
+
+            autor_anterior = autor
 
         elif autor_anterior!=autor:
             
-            muestro_salida.impresiones(contador_funciones," Funciones - Lineas\t", contador_lineas,"  ",porcentaje)
+            muestro_salida.impresiones("\t"+str(contador_funciones) + " Funciones - Lineas\t" + str(contador_lineas) + "  " + str(porcentaje_anterior)+"%\n")
             
-            muestro_salida.impresiones("Autor: " + autor +"\n\tFuncion\tLineas\n\t---------------------------------\n")
+            muestro_salida.impresiones("Autor: " + autor + "\n")
+            
+            espacios = 8 + len(nombre_funcion) - 32
+            espacios1 = " "*(-1*espacios)
+            muestro_salida.impresiones("\t" + nombre_funcion + espacios1 + str(lineas_funcion))
             
             contador_funciones = 0
 
             contador_lineas = 0
 
-        elif indice == len(informacion)-1 :
-            
-            muestro_salida.impresiones("\n\nTotal: ",contador_funciones,"Funciones - lineas\t",contador_lineas)
+            porcentaje_anterior = porcentaje
 
         else:
-           
-            muestro_salida.impresiones("\t" + nombre_funcion + "\t", lineas_funcion, "\n")
+        
+            espacios = 8 + len(nombre_funcion) - 32
+            espacios1 = " "*(-1*espacios)
+            muestro_salida.impresiones("\t" + nombre_funcion + espacios1 + str(lineas_funcion))
 
         
-        contador_lineas += int(lineas_funcion)
+
+        contador_lineas_totales += int(lineas_funcion)
+
+        contador_funciones_totales += 1
 
         contador_funciones += 1
 
-        autor_anterior = autor    
+        contador_lineas += int(lineas_funcion)
+
+        autor_anterior = autor
+
+        if indice == len(informacion)-1 :
+            
+            muestro_salida.impresiones("\t"+str(contador_funciones) + " Funciones - Lineas\t" + str(contador_lineas) + "  " + str(porcentaje)+"%\n\n")
+            muestro_salida.impresiones("Total: "+ str(contador_funciones_totales) + " Funciones - lineas\t" + str(contador_lineas_totales))
+            
 
 
 
 
 
-participacion_info()
+participacion_info(datos_prueba)
