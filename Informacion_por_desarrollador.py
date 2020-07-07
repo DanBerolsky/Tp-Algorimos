@@ -1,7 +1,10 @@
-def participacion_info (informacion):
+def participacion_info (informacion,informacion2):
     
-    """[Autor: c]"""
-    """[Ayuda: abre un archivo]"""
+    """[Autor: Dan]"""
+    """[Ayuda: brindar datos sobre la participación de cada uno de los 
+    integrantes en el desarrollo de la aplicación.
+    Ademas de mostrar la informacion por pantalla,
+    genera la misma salida al archivo “participacion.txt” ]"""
 
     autor_anterior = None
     total_funciones = 0
@@ -13,7 +16,11 @@ def participacion_info (informacion):
     
     for indice in range(len(informacion)):     
         
-        autor, nombre_funcion, lineas_funcion, porcentaje = informacion[indice]
+        nombre_funcion = informacion[indice][0]
+        
+        autor, lineas_funcion = informacion[indice][1]
+
+        porcentaje = informacion2[autor]
 
         total_funciones += 1
 
@@ -92,11 +99,10 @@ def participacion_info (informacion):
             archivo_participacion_txt("\nTotal: "+ str(contador_funciones_totales) + " Funciones - lineas\t" + str(contador_lineas_totales)+"\n")            
 
 
-
 def archivo_participacion_txt (agrego):
     
-    """[Autor: c]"""
-    """[Ayuda: abre un archivo]"""
+    """[Autor: Dan]"""
+    """[Ayuda: Agrega los datos generados por la funcion participacion_info]"""
 
     with open ("participacion.txt","a") as archivo_generado:
         
@@ -105,7 +111,3 @@ def archivo_participacion_txt (agrego):
 # =============================================================================
 
 import muestro_salida
-
-datos_prueba = [("Luis","leer",55,36),("Luis","imprimir",10,30),("Dan","participacion_info",55,30),("alfonso","leer_py",60,33)]
-
-participacion_info(datos_prueba)
