@@ -1,7 +1,6 @@
 
 import muestro_salida
 
-
 def capturo_datos():
     
     """[Autor: Dan] """
