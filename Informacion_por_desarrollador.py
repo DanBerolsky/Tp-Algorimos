@@ -1,3 +1,6 @@
+
+import muestro_salida
+
 def participacion_info (informacion,informacion2):
     
     """[Autor: Dan]"""
@@ -10,9 +13,9 @@ def participacion_info (informacion,informacion2):
     total_funciones = 0
     muestro_salida.impresiones("\n\tInforme de Desarrollo Por Autor\n")
     
-    #
+    
     archivo_participacion_txt("\n\tInforme de Desarrollo Por Autor\n")
-    #
+    
     
     for indice in range(len(informacion)):     
         
@@ -32,10 +35,10 @@ def participacion_info (informacion,informacion2):
             espacios1 = " "*(-1*espacios)
             muestro_salida.impresiones("\t" + nombre_funcion + espacios1 + str(lineas_funcion))
             
-            #
+            
             archivo_participacion_txt("\nAutor: " + autor +"\n\n\tFuncion\t\t\tLineas\n\t---------------------------------")
             archivo_participacion_txt("\n\t" + nombre_funcion + espacios1 + str(lineas_funcion))
-            #
+            
 
             contador_lineas_totales = 0
             
@@ -59,11 +62,11 @@ def participacion_info (informacion,informacion2):
             espacios1 = " "*(-1*espacios)
             muestro_salida.impresiones("\t" + nombre_funcion + espacios1 + str(lineas_funcion))
             
-            #
+            
             archivo_participacion_txt("\n\t"+str(contador_funciones) + " Funciones - Lineas\t" + str(contador_lineas) + "  " + str(porcentaje_anterior)+"%\n")
             archivo_participacion_txt("\nAutor: " + autor +"\n\n\tFuncion\t\t\tLineas\n\t---------------------------------")
             archivo_participacion_txt("\n\t" + nombre_funcion + espacios1 + str(lineas_funcion))
-            #
+            
 
             contador_funciones = 0
 
@@ -76,9 +79,9 @@ def participacion_info (informacion,informacion2):
             espacios = 8 + len(nombre_funcion) - 32
             espacios1 = " "*(-1*espacios)
             muestro_salida.impresiones("\t" + nombre_funcion + espacios1 + str(lineas_funcion))
-            #
+            
             archivo_participacion_txt("\n\t" + nombre_funcion + espacios1 + str(lineas_funcion))
-            #
+            
 
         contador_lineas_totales += int(lineas_funcion)
 
@@ -97,6 +100,8 @@ def participacion_info (informacion,informacion2):
 
             archivo_participacion_txt("\n\t"+str(contador_funciones) + " Funciones - Lineas\t" + str(contador_lineas) + "  " + str(porcentaje)+"%\n\n")
             archivo_participacion_txt("\nTotal: "+ str(contador_funciones_totales) + " Funciones - lineas\t" + str(contador_lineas_totales)+"\n")            
+    
+    return None
 
 
 def archivo_participacion_txt (agrego):
@@ -108,6 +113,4 @@ def archivo_participacion_txt (agrego):
         
         archivo_generado.write(agrego)
 
-# =============================================================================
-
-import muestro_salida
+    return None

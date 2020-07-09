@@ -1,5 +1,4 @@
 import m_generar_archivos_csv
-txt = 'programas.txt'
 #Programa principal
 
 
@@ -66,7 +65,6 @@ def capturo_datos():
             linea = ar_fuente.readline()
 
     #datos porcentajes
-    
     porcentajes ={}
 
     for clave in lineas_totales_por_autor.keys():
@@ -77,10 +75,6 @@ def capturo_datos():
     
     datos_finales = sorted(info.items(), key = lambda autor: autor[1][0])
     
-
-    print(datos_finales)
-    print(porcentajes)
-
     return datos_finales,porcentajes
 
 
@@ -90,7 +84,8 @@ def main():
     """[Ayuda: Es la funcion principal]"""
     
     #Primer punto
-    m_generar_archivos_csv.armar_csv_funciones(txt)
+    # txt = 'programas.txt'
+    # m_generar_archivos_csv.armar_csv_funciones(txt)
     
     #Quinto punto
     import Informacion_por_desarrollador

@@ -1,34 +1,43 @@
 import modulo_csv
 
 def leer(archivo):
+    
     """[Autor: A]"""
-    """El comenterario tiene que ser excluido """
-    #OtroComment 
-    #AAA
     """[Ayuda: Lee el archivo linea por linea]"""
     
     lineas = [linea.rstrip('\n') for linea in archivo]
+    
     return lineas
 
 def abro_ar(archivo):
+    
     """[Autor: b]"""
     """[Ayuda: abre un archivo]"""
-    
-    with open(archivo) as archivo_completo:
+
+   # encoding="utf8" use eso para solucionar el error.
+   #El archivo informacion_por_desarollador era el que generaba ese problema,
+   #aprantemente era por que tenia otro codificacion "utf8"
+
+    with open(archivo, encoding="utf8") as archivo_completo: 
+       
         return leer(archivo_completo)
 
 def ordenar_alfabeticamente(diccionario):
+    
+    """[Autor: b]"""
+    """[Ayuda: Ordena diccionario de mayor a menor, respecto las claves del mismo. Devuelvo lista de tuplas]"""
+    
+    return sorted(diccionario.items(), key = lambda clave: clave[0], reverse = True)
+
+def armar_csv_funciones(archivo):
+    
     """[Autor: b]"""
     """[Ayuda: abre un archivo]"""
     
-    return sorted(diccionario.items(),key = lambda clave: clave[0], reverse = True)
-
-def armar_csv_funciones(archivo):
-    """[Autor: b]"""
-    """[Ayuda: abre un archivo]"""
     #Declaro variables
     nombre_archivo = "fuente_unico.csv"
     datos = {}
+    
     #Abro los modulos
     modulos = abro_ar(archivo)
     
@@ -58,6 +67,7 @@ def armar_csv_funciones(archivo):
     return modulo_csv.armo_csv(funciones_alfabeto,nombre_archivo)
 
 def armar_csv_comentarios(lista_cuerpo,nombre_funcion):
+    
     """[Autor: D]"""
     """[Ayuda: Remueve los comentarios de la funcion y crea el archivo comentarios.csv]""" 
     
@@ -89,7 +99,7 @@ def armar_csv_comentarios(lista_cuerpo,nombre_funcion):
             #me creo el diccionario con los campos que necesito
             datos_comentarios[nombre_funcion] = [nombre_autor,nombre_ayuda,resto]
             
-    #ordeno el diccionario
+    #Ordeno el diccionario, respecto sus claves
     comentarios_alfabeto = ordenar_alfabeticamente(datos_comentarios)
     
     #Genero el csv.

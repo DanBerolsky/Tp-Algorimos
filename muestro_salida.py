@@ -4,3 +4,5 @@ def impresiones (contenido_a_mostrar):
     """[Ayuda: Muestra por pantalla el parametro recibido]"""
 
     print(contenido_a_mostrar)
+
+    return None

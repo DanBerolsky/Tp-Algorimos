@@ -1,39 +1,63 @@
-def armo_csv(dic_ordenado,nombre_archivo):
+def armo_csv(Estructura_de_datos,nombre_archivo):
     
     """[Autor: Dan] """
-    """[Ayuda: Hace cosas] """
+    """[Ayuda: Crea y agrega informacion dentro del csv] """
     
-    with open (nombre_archivo,"a") as codigo:
-        for clave in dic_ordenado:
-            #Modelo de parametros
-            nombre_funcion = clave[0]
-            parametros = clave[1][0]
-            modulo = clave[1][1]
-            cuerpo = clave[1][2]
+    if nombre_archivo == 'fuente_unico.csv':
+    
+        with open (nombre_archivo,"a") as codigo:
             
-            funcion = "\n".join(cuerpo)
-        
-            funcion = ", ".join(cuerpo)
-        
-            #Escribo en el csv
-            codigo.write(nombre_funcion+","+parametros+","+modulo+","+funcion+"\n")
-        
-
-def csv_existen(nombre_archivo):
+            for clave in Estructura_de_datos:
+                
+                #Modelo de parametros
+                nombre_funcion = clave[0]
+                parametros = clave[1][0]
+                modulo = clave[1][1]
+                cuerpo = clave[1][2]
+                
+                funcion = "\n".join(cuerpo)
+            
+                funcion = ", ".join(cuerpo)
+            
+                #Escribo en el csv
+                codigo.write(nombre_funcion+","+parametros+","+modulo+","+funcion+"\n")
     
-    """[Autor: alfonso] """
-    """[Ayuda: Hace cosas] """
-
-    salida = None
-
-    try:
+    elif nombre_archivo == 'comentarios.csv':
         
-        mi_archivo = open(nombre_archivo)
-        
-        salida = False
+        with open (nombre_archivo,"a") as codigo:
+            
+            for elementos in Estructura_de_datos:
+                
+                #Modelo de parametros
+                nombre_funcion = elementos[0]
+                nombre_autor = elementos[1][0]
+                nombre_ayuda = elementos[1][1]
+                resto = elementos[1][2]
+
+            
+                funcion = ", ".join(resto)
+            
+                #Escribo en el csv
+                codigo.write(nombre_funcion + "," + nombre_autor + "," + nombre_ayuda + "," + funcion + "\n")
     
-    except IOError:
-        
-        salida = True
+    return None
+    
 
-    return salida
+# def csv_existen(nombre_archivo):
+    
+#     """[Autor: alfonso] """
+#     """[Ayuda: Hace cosas] """
+
+#     salida = None
+
+#     try:
+        
+#         mi_archivo = open(nombre_archivo)
+        
+#         salida = False
+    
+#     except IOError:
+        
+#         salida = True
+
+#     return salida
