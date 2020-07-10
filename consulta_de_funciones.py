@@ -2,7 +2,6 @@ def armar_diccionarios():
     """[Autor: Valentin]"""
     """[Ayuda: Imprime la lista de funciones, y da la opción de mostrar información acerca de cada una.]"""
 
-    import m_generar_archivos_csv
     diccionario_fuente_unico = {}
     diccionario_parametros = {}
     diccionario_comentarios = {}
