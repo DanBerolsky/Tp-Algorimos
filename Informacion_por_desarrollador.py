@@ -1,12 +1,14 @@
 
 import muestro_salida
+ 
 
 def capturo_datos():
     
-    """[Autor: Dan] """
+    """[Autor: Dan]"""
     """[Ayuda: recopila los parametros para el Quinta punto
     (Nombres de las funciones, autor de la funcion , lineas por funcion y
-    porcentaje de lineas del autor, sobre lineas totales del trabajo. ) ] """
+    porcentaje de lineas del autor, sobre lineas totales del trabajo. ) ]
+    """
 
     info = {}
     
@@ -24,13 +26,9 @@ def capturo_datos():
 
             nombre_funcion = datos[0]
 
-            autor0 = datos[1]
+            autor = datos[1].split(": ")[1].rstrip("]")
 
-            autor1 = autor0.split(": ")
-
-            autor2 = autor1[1].split("]")
-
-            info[nombre_funcion] = [autor2[0],None]
+            info[nombre_funcion] = [autor,None]
 
             linea = ar_coment.readline()
 
@@ -76,22 +74,41 @@ def capturo_datos():
     
     return datos_finales,porcentajes
 
+def cantidad_de_espacios(nombre_funcion):    
+    
+    """[Autor: Dan]
+        [Ayuda: Aquí se multiplica un espacio por un numero x
+        El 8 es cantidad de caracateres que tiene una tabulacion,
+        len(nom_fun) es la cantida de caracteres que tiene el nom_fun.
+        Despues quiero que partir del carater 32 obtener la cant.lineas.
+        Esta cuanta me asegura que el valor lineas_f este uno debajo del otro,
+        multiplicando un str espacio la cantidad de veces nesesaria para cada caso. ]
+    """
+  
+    if 8 + len(nombre_funcion)<33:
+        espacios = -1 * (8 + len(nombre_funcion) - 33)
+    else:
+        espacios = 2
+
+    return espacios            
 
 def participacion_info (informacion,informacion2):
     
-    """[Autor: Dan]"""
-    """[Ayuda: brindar datos sobre la participación de cada uno de los 
+    """[Autor: Dan]
+       [Ayuda: brindar datos sobre la participación de cada uno de los 
     integrantes en el desarrollo de la aplicación.
     Ademas de mostrar la informacion por pantalla,
-    genera la misma salida al archivo “participacion.txt” ]"""
+    genera la misma salida al archivo “participacion.txt” ]
+    """
 
     autor_anterior = None
-    total_funciones = 0
     
     #Muestro por pantalla...
-    muestro_salida.impresiones("\n\tInforme de Desarrollo Por Autor\n")
+    titulo = "\n\tInforme de Desarrollo Por Autor\n"
+    muestro_salida.impresiones(titulo)
+    
     #Agrego linea a participacion.txt
-    archivo_participacion_txt("\n\tInforme de Desarrollo Por Autor\n")
+    archivo_participacion_txt(titulo)
     
     
     for indice in range(len(informacion)):     
@@ -102,21 +119,19 @@ def participacion_info (informacion,informacion2):
 
         porcentaje = informacion2[autor]
 
-        total_funciones += 1
-
         if autor_anterior == None:
             
-            muestro_salida.impresiones("Autor: " + autor +"\n\n\tFuncion"+15*" "+"Lineas\n\t---------------------------------")
-            
-            espacios = 8 + len(nombre_funcion) - 32
-            espacios1 = " "*(-1*espacios)
-            
             #Muestro por pantalla...
-            muestro_salida.impresiones("\t" + nombre_funcion + espacios1 + str(lineas_funcion))
+            s1="Autor: " + autor +"\n\n\tFuncion" + 16*" " + "Lineas"+"\n\t" + 33 * "-"
+            muestro_salida.impresiones(s1)
+            
+            espacios = cantidad_de_espacios(nombre_funcion)
+            s2 = "\t" + nombre_funcion + " "*espacios + str(lineas_funcion)
+            muestro_salida.impresiones(s2)
             
             #Agrego linea a participacion.txt
-            archivo_participacion_txt("\nAutor: " + autor +"\n\n\tFuncion  \t\t\t  Lineas\n\t---------------------------------")
-            archivo_participacion_txt("\n\t" + nombre_funcion + espacios1 + str(lineas_funcion))
+            archivo_participacion_txt("\n"+s1)
+            archivo_participacion_txt("\n" + s2)
             
             contador_lineas_totales = 0
             
@@ -133,24 +148,21 @@ def participacion_info (informacion,informacion2):
         elif autor_anterior!=autor:
             
             #Muestro por pantalla...
-            muestro_salida.impresiones("\t"+str(contador_funciones) + " Funciones - Lineas\t" + str(contador_lineas) + "  " + str(porcentaje_anterior)+"%\n")
-            muestro_salida.impresiones("Autor: " + autor +"\n\n\tFuncion"+15*" "+"Lineas\n\t---------------------------------")
-                        
-            #Aquí se multiplica un espacio por un numero x
-            # el cual depende de la longitud del nombre de cada función
-            # con la finalidad de que el valor lineas_funcion
-            # se encuentre siempre a partir de la columna 29 en adelante
-            #obteniendo una salida con los valores bien columnados.
-            espacios = 8 + len(nombre_funcion) - 32
-            espacios1 = " "*(-1*espacios)
+            s1 = "\t"+str(contador_funciones) + " Funciones - Lineas\t " + str(contador_lineas) + "  " + str(porcentaje_anterior)+"%\n"
+            muestro_salida.impresiones(s1)
+            
+            s2 = "Autor: " + autor +"\n\n\tFuncion"+16*" "+"Lineas\n\t" + 33*"-"
+            muestro_salida.impresiones(s2)
             
             #Muestro por pantalla...
-            muestro_salida.impresiones("\t" + nombre_funcion + espacios1 + str(lineas_funcion))
+            espacios = cantidad_de_espacios(nombre_funcion)
+            s3 = "\t" + nombre_funcion + " "*espacios + str(lineas_funcion)
+            muestro_salida.impresiones(s3)
             
             #Agrego linea a participacion.txt
-            archivo_participacion_txt("\n\t"+str(contador_funciones) + " Funciones - Lineas\t" + str(contador_lineas) + "  " + str(porcentaje_anterior)+"%\n")
-            archivo_participacion_txt("\nAutor: " + autor +"\n\n\tFuncion  \t\t\t  Lineas\n\t---------------------------------")
-            archivo_participacion_txt("\n\t" + nombre_funcion + espacios1 + str(lineas_funcion))
+            archivo_participacion_txt("\n" + s1)
+            archivo_participacion_txt("\n"+ s2)
+            archivo_participacion_txt("\n" + s3)
             
 
             contador_funciones = 0
@@ -160,20 +172,14 @@ def participacion_info (informacion,informacion2):
             porcentaje_anterior = porcentaje
 
         else:
-            
-            #Aquí se multiplica un espacio por un numero x
-            # el cual depende de la longitud del nombre de cada función
-            # con la finalidad de que las cantidad de líneas de las función
-            # se encuentre siempre a partir de la columna 29 en adelante
-            #obteniendo una salida con los valores bien columnados.
-            espacios = 8 + len(nombre_funcion) - 32
-            espacios1 = " "*(-1*espacios)
-            
+        
             #Muestro por pantalla...
-            muestro_salida.impresiones("\t" + nombre_funcion + espacios1 + str(lineas_funcion))
+            espacios = cantidad_de_espacios(nombre_funcion)
+            s1 = "\t" + nombre_funcion + " "*espacios + str(lineas_funcion)
+            muestro_salida.impresiones(s1)
             
             #Agrego linea a participacion.txt
-            archivo_participacion_txt("\n\t" + nombre_funcion + espacios1 + str(lineas_funcion))
+            archivo_participacion_txt("\n" + s1)
             
 
         contador_lineas_totales += int(lineas_funcion)
@@ -189,12 +195,14 @@ def participacion_info (informacion,informacion2):
         if indice == len(informacion)-1 :
             
             #Muestro por pantalla...
-            muestro_salida.impresiones("\t"+str(contador_funciones) + " Funciones - Lineas\t" + str(contador_lineas) + "  " + str(porcentaje)+"%\n\n")
-            muestro_salida.impresiones("Total: "+ str(contador_funciones_totales) + " Funciones - lineas\t" + str(contador_lineas_totales)+"\n")
+            s1="\t"+str(contador_funciones) + " Funciones - Lineas\t " + str(contador_lineas) + "  " + str(porcentaje)+"%\n\n"
+            muestro_salida.impresiones(s1)
+            s2="Total: "+ str(contador_funciones_totales) + " Funciones - lineas\t " + str(contador_lineas_totales)+"\n"
+            muestro_salida.impresiones(s2)
             
             #Agrego linea a participacion.txt
-            archivo_participacion_txt("\n\t"+str(contador_funciones) + " Funciones - Lineas\t" + str(contador_lineas) + "  " + str(porcentaje)+"%\n\n")
-            archivo_participacion_txt("\nTotal: "+ str(contador_funciones_totales) + " Funciones - lineas\t" + str(contador_lineas_totales)+"\n")            
+            archivo_participacion_txt("\n"+s1)
+            archivo_participacion_txt("\n"+s2)            
     
     return None
 

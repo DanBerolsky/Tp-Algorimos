@@ -2,12 +2,12 @@
 
 def main():
     
-    """[Autor: L] """
+    """[Autor: L]"""
     """[Ayuda: Es la funcion principal]"""
     
-    import m_generar_archivos_csv
 
     # Primer punto
+    import m_generar_archivos_csv
     txt = 'programas.txt'
     m_generar_archivos_csv.armar_csv_funciones(txt)
     

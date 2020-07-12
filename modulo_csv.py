@@ -1,6 +1,6 @@
 def armo_csv(Estructura_de_datos,nombre_archivo):
     
-    """[Autor: Dan] """
+    """[Autor: Dan]"""
     """[Ayuda: Crea y agrega informacion dentro del csv] """
     
     if nombre_archivo == 'fuente_unico.csv':
