@@ -41,6 +41,7 @@ def sacar_corchetes(cadena):
         sin_corchetes = cadena.lstrip("[").rstrip("]")
     return sin_corchetes
 
+<<<<<<< HEAD
 def generar_txt(dict_fuente, dict_comentarios, txt):
     with open(txt, "w") as archivo:
         for clave1, clave2 in zip(dict_fuente, dict_comentarios):
@@ -58,6 +59,8 @@ def acomodar_txt(archivo):
                     linea = linea_acomodada
                 cantidad_caracteres += 1
             linea = txt.readline
+=======
+>>>>>>> 29a047925a28a714921030a60fe7003d5ace347e
 def generar_lista_total(dic):
     """[Autor: Valentin]"""
     """[Ayuda: Genera una lista de listas con los nombres de las funciones ordenadas alfabeticamente]"""
@@ -65,6 +68,7 @@ def generar_lista_total(dic):
 
     for i in dic:
         ultima_lista = lista_total[-1]
+<<<<<<< HEAD
         lista_format = []
         if len(ultima_lista) < 5:
             ultima_lista.append(format(i, "<26s"))
@@ -89,6 +93,21 @@ def consultar_funciones(diccionario_fuente, diccionario_comentarios):
     """[Autor: Valentin]"""
     """[Ayuda: Pide un input de nombre de función, y en base a lo ingresado muestra, o la ayuda, comentarios,
         parametros y autor de la función, o todo lo relacionado a la misma]"""
+=======
+        if len(ultima_lista) < 5:
+            ultima_lista.append(i)
+        else:
+            lista_total.append([])
+            ultima_lista = lista_total[-1]
+            ultima_lista.append(i)
+    return lista_total
+
+def imprimir_funciones(lista):
+    for i in lista:
+        print(i)
+
+def consultar_funciones(diccionario_fuente, diccionario_comentarios):
+>>>>>>> 29a047925a28a714921030a60fe7003d5ace347e
     funcion = input("Función: ")
     while funcion != "":
         nombre_funcion = funcion[1:]
@@ -102,15 +121,25 @@ def consultar_funciones(diccionario_fuente, diccionario_comentarios):
                     if i in diccionario_comentarios:
                         print("Autor: " + sacar_corchetes(diccionario_comentarios[i][0]) + "\n" + "Parametros: " + diccionario_fuente[i][0] + "\n" + "Modulo: " + diccionario_fuente[i][1] + "\n" + "Ayuda: " + sacar_corchetes(diccionario_comentarios[i][1]) + "\n" + "Cuerpo: " + str(diccionario_fuente[i][2]) + "\n" + "Comentarios: " + str(diccionario_comentarios[i][2]))
                         print("\n")
+<<<<<<< HEAD
             elif funcion == "imprimir ?todo":
                 print("Dirijase al archivo ayuda_funciones.txt.")
+=======
+
+>>>>>>> 29a047925a28a714921030a60fe7003d5ace347e
         else:
             print("La función especificada no existe. Por favor, ingrese una función valida")
         funcion = input("Función: ")
 dic_fuente, dic_comentarios, = armar_diccionarios()
+<<<<<<< HEAD
 
 imprimir_funciones(generar_lista_total(dic_fuente))
 generar_txt(dic_fuente, dic_comentarios, "ayuda_funciones.txt")
 acomodar_txt("ayuda_funciones.txt")
 consultar_funciones(dic_fuente, dic_comentarios)
 
+=======
+
+imprimir_funciones(generar_lista_total(dic_fuente))
+consultar_funciones(dic_fuente, dic_comentarios)
+>>>>>>> 29a047925a28a714921030a60fe7003d5ace347e
