@@ -1,51 +1,97 @@
 import csv
+import tabulate
 
-with open('fuente_unico.csv', 'r') as file:
-    reader = csv.reader(file)
-    lista_completa = []
-    invocaciones = 0
-    cantidad_return = 0
-    cantidad_if = 0
-    cantidad_while = 0
-    cantidad_for = 0
-    cantidad_break = 0
-    cantidad_exit = 0
-    cantidad_ayuda = 0
-    for row in reader:
-        lista_completa.append(row)
+
+def organizar_datos(lista):
+    """[Autor: Luis Andrade]
+       [Ayuda: Crea el diccionario inicial y contiene los campos Nombre
+       de Funcion, Cantidad de Parametros, Canitdad de Lineas
+    """
+    j = 0
+    primeros_3 = {"Nombre de Funcion": lista[0] + lista[2], "Cantidad de Parametros": lista[1].count('('),
+                  "Cantidad de Lineas": len(lista) - 3}
+    return primeros_3
+
+
+def contar_invocaciones(nombre_funcion, lista):
+    """[Autor: Luis Andrade]
+       [Ayuda: Crea otro diccionario que contiene la cantidad de Invoca
+       ciones]
+    """
     i = 0
-    lista_final = lista_completa
-    while i < len(lista_completa):
-        lista_final[i][0] = lista_completa[i][0] + lista_completa[i][2]  # nombre de funcion.modulo
-        lista_final[i][1] = lista_completa[i][1].count('(')  # cantidad de parametros formales
-        lista_final[i][2] = len(lista_completa[i]) - 3  # cantidad de lineas de codigo
+    invocaciones_dict = {"Cantidad de Invocaciones": 0}
+    while i < len(lista):
         j = 4
-        while j < len(lista_completa[i]):
-            if lista_completa[i][j].strip().startswith(lista_completa[i][0]):  # invocaciones
-                invocaciones = invocaciones + 1
-            elif lista_completa[i][j].strip().startswith("if") or lista_completa[i][j].strip().startswith(
-                    "elif"):  # cantidad de if
-                cantidad_if += 1
-            elif lista_completa[i][j].strip().startswith("while"):  # cantidad dce while
-                cantidad_while += 1
-            elif lista_completa[i][j].strip().startswith("for"):  # cantidad de for
-                cantidad_for += 1
-            elif lista_completa[i][j].strip().startswith("return"):  # cantidad return
-                cantidad_return = cantidad_return + 1
-            elif lista_completa[i][j].strip().startswith("break"):  # cantidad break
-                cantidad_break += 1
-            elif lista_completa[i][j].strip().startswith("exit"):  # cantidad exit
-                cantidad_exit += 1
-            elif lista_completa[i][j].strip().startswith("[Ayuda: ]"):  # cantidad Ayuda
-                cantidad_ayuda += 1
+        while j < len(lista[i]):
+            if nombre_funcion in lista[i][j]:
+                invocaciones_dict["Cantidad de Invocaciones"] += 1
             j = j + 1
-        lista_final[i][3] = invocaciones
-        lista_completa[i][4] = cantidad_return
-        lista_completa[i][5] = cantidad_if
-        lista_completa[i][6] = cantidad_for
-        lista_completa[i][7] = cantidad_while
-        lista_completa[i][8] = cantidad_break
-        lista_completa[i][9] = cantidad_exit
-        # me falta la parte de comentarios , ayuda y autor
-
         i = i + 1
+    return invocaciones_dict
+
+
+def contar_elementos_varios(lista, lista_comentarios):
+    """[Autor: Luis Andrade]
+       [Ayuda: Crea otro diccionario que contiene la cantidad de if, while
+       for, returns, break, exit y ayuda
+    """
+    cantidad_elementos = {"if": 0, "while": 0, "for": 0, "returns": 0, "break": 0, "exit": 0, "ayuda": "NO"}
+    j = 4
+    while j < len(lista):
+        if lista[j].strip().startswith("if") or lista[j].strip().startswith(
+                "elif"):  # cantidad de if / elif
+            cantidad_elementos["if"] += 1
+        elif lista[j].strip().startswith("while"):
+            cantidad_elementos["while"] += 1
+        elif lista[j].strip().startswith("for"):
+            cantidad_elementos["for"] += 1
+        elif lista[j].strip().startswith("return"):
+            cantidad_elementos["returns"] += 1
+        elif lista[j].strip().startswith("break"):
+            cantidad_elementos["break"] += 1
+        elif lista[j].strip().startswith("exit"):
+            cantidad_elementos["exit"] += 1
+        if lista_comentarios[2].strip().startswith("[Ayuda:"):
+            cantidad_elementos["ayuda"] = "SI"
+        j = j + 1
+    return cantidad_elementos
+
+
+def panel_principal():
+    """[Autor: Luis Andrade]
+        [Ayuda: Funcion principal del panel principal, se encarga de
+        tabular y unir todos los elementos
+    """
+    # Abro el archivo de comentarios
+    with open('comentarios.csv', 'r') as comentarios:
+        reader = csv.reader(comentarios)
+        lista_de_comentarios = []
+        for fila in reader:
+            lista_de_comentarios.append(fila)
+    # Abro el archivo fuente unico
+    with open('fuente_unico.csv', 'r') as file:
+        reader = csv.reader(file)
+        lista_completa = []
+        lista_final = {}
+        datos = []
+        for row in reader:
+            lista_completa.append(row)
+        lista1 = lista_completa
+        i = 0
+        # se recorre linea a linea las listas creadas
+        while i < len(lista_completa):
+            lista_final_1 = organizar_datos(lista_completa[i])
+            lista_final_2 = contar_invocaciones(lista_completa[i][0], lista_completa)
+            lista_final_3 = contar_elementos_varios(lista_completa[i], lista_de_comentarios[i])
+            # actualizando los diccionarios con cada uno de los procesos por separado
+            lista_final.update(lista_final_1)
+            lista_final.update(lista_final_2)
+            lista_final.update(lista_final_3)
+            datos.append(lista_final)
+            lista_final = {}
+            # uniendo todos los diccionarios en una lista
+            i = i + 1
+
+    header = datos[0].keys()
+    rows = [x.values() for x in datos]
+    print(tabulate.tabulate(rows, header))
