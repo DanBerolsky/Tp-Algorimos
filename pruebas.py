@@ -50,7 +50,7 @@ with open('fuente_unico.csv', 'r') as file:
     reader = csv.reader(file)
     lista_completa = []
     lista_final = {}
-    lista_total_final = []
+    datos = []
     for row in reader:
         lista_completa.append(row)
     lista1 = lista_completa
@@ -58,16 +58,17 @@ with open('fuente_unico.csv', 'r') as file:
     while i < len(lista_completa):
         lista_final_1 = organizar_datos(lista_completa[i])
         lista_final_2 = contar_invocaciones(lista_completa[i][0], lista_completa)
-        lista_final_3 = contar_elementos_varios(lista_completa[0])
+        lista_final_3 = contar_elementos_varios(lista_completa[i])
         # actualizando los diccionarios con cada uno de los procesos por separado
         lista_final.update(lista_final_1)
         lista_final.update(lista_final_2)
         lista_final.update(lista_final_3)
+        datos.append(lista_final)
+        lista_final = {}
         # uniendo todos los diccionarios en una lista
-        lista_total_final.append(lista_final)
-
         i = i + 1
 
-header = lista_total_final[0].keys()
-rows = [x.values() for x in lista_total_final]
+
+header = datos[0].keys()
+rows = [x.values() for x in datos]
 print(tabulate.tabulate(rows, header))
