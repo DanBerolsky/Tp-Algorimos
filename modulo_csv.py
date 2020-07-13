@@ -112,5 +112,6 @@ def quien_invoca_a_quien():
 
 #print(quien_invoca_a_quien())
 
-diccionario_csv = leer_csv('fuente_unico.csv')
+#diccionario_csv = leer_csv('fuente_unico.csv')
 #print(diccionario_csv)
+#print(len(diccionario_csv))
