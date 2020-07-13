@@ -110,3 +110,7 @@ def quien_invoca_a_quien():
                     resultado[clave] = [lista_de_invocacion]
     return resultado
 
+#print(quien_invoca_a_quien())
+
+diccionario_csv = leer_csv('fuente_unico.csv')
+#print(diccionario_csv)
