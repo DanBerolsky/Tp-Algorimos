@@ -72,8 +72,7 @@ def armar_tabla():
     enum_datos = list(enumerate(lista_funciones,1))
     posicion = primer_item_lista(enum_datos)
     nombre_funcion = segundo_item_lista(enum_datos)
-    
-    numeros = '     '.join(map(str, posicion))
+    numeros = '       '.join(map(str, posicion))
     titulo = "\nFuncion:                        " + numeros
     print(titulo)
     funcion_invocada = ''
@@ -82,17 +81,26 @@ def armar_tabla():
     for numero,funcion in enum_datos:
         if funcion in dicc_datos.keys():
             a = dicc_datos[funcion]
-        
-            numero_invocada = 0
-            for i,j in a:
-                numero_invocada =   [l for l in enum_datos if i in l][0][0]
-                
             primer_campo = str(numero) +' '+ funcion
-            print('{0:32} {1} {2}'.format(primer_campo, '     ' * numero_invocada,j))
+            dicc_2 = {}
+            for i,j in a:
+                numero_invocada =   [l for l in enum_datos if i in l]
+                funcion_a_invocar = numero_invocada[0][0]
+                lista = [funcion_a_invocar,j]
+                if funcion in dicc_2:
+                    dicc_2[funcion].append(lista)
+                    
+                else:    
+                    dicc_2[funcion] = [lista]
+            l = dicc_2.items()
+            l = l[1]
+            print('{0:<32}{1}'.format(primer_campo,l))
+            #print('{0:<32}{1}{2}'.format(primer_campo, 1,j))
             #print(numero,funcion, '     ' * numero_invocada,j)
-        else:
-            print(numero,funcion)
-            pass
         
+        else:
+           print(numero,funcion)
+            
+                                          
 
 armar_tabla()
