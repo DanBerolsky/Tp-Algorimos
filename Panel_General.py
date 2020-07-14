@@ -7,8 +7,7 @@ def organizar_datos(lista):
        [Ayuda: Crea el diccionario inicial y contiene los campos Nombre
        de Funcion, Cantidad de Parametros, Canitdad de Lineas
     """
-    j = 0
-    primeros_3 = {"Nombre de Funcion": lista[0] + lista[2], "Cantidad de Parametros": lista[1].count('('),
+    primeros_3 = {"Nombre de Funcion": lista[0] + '.' + lista[2], "Cantidad de Parametros": lista[1].count('('),
                   "Cantidad de Lineas": len(lista) - 3}
     return primeros_3
 
@@ -64,19 +63,18 @@ def panel_principal():
     """
     # Abro el archivo de comentarios
     with open('comentarios.csv', 'r') as comentarios:
-        reader = csv.reader(comentarios)
+        lector = csv.reader(comentarios)
         lista_de_comentarios = []
-        for fila in reader:
+        for fila in lector:
             lista_de_comentarios.append(fila)
     # Abro el archivo fuente unico
     with open('fuente_unico.csv', 'r') as file:
-        reader = csv.reader(file)
+        lector = csv.reader(file)
         lista_completa = []
         lista_final = {}
         datos = []
-        for row in reader:
-            lista_completa.append(row)
-        lista1 = lista_completa
+        for fila2 in lector:
+            lista_completa.append(fila2)
         i = 0
         # se recorre linea a linea las listas creadas
         while i < len(lista_completa):
@@ -95,3 +93,6 @@ def panel_principal():
     header = datos[0].keys()
     rows = [x.values() for x in datos]
     print(tabulate.tabulate(rows, header))
+
+
+panel_principal()
