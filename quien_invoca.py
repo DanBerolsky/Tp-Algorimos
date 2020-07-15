@@ -1,6 +1,9 @@
 import modulo_csv
-import itertools
+
+#Declaro nombre archivo
 fuente = 'fuente_unico.csv'
+
+
 def leer_csv(nombre_csv):
     """[Autor: F] """
     """[Ayuda: Hace cosas] """
@@ -84,59 +87,113 @@ def armar_tabla():
     #Csv de numero para el titulo
     numeros = ','.join(map(str, posicion))
     
-    #Formato de Titulo
-    titulo = "\nFuncion:," + numeros
-    print(titulo)
-    
     
     #Calculo la maxima cantidad de funciones
     maximo =max(posicion)
+    #Formato de Titulo
+    titulo = posicion
+    titulo.insert(0,"Funcion:                        ")
     
     lista_total = []
     
     #Reviso el enumerate por funcion
     for numero,funcion in enum_datos:
         
+        
         #Creo una variable para llenar la tabla
         conteo = 1
         
         #Armo el primero campo
-        primer_campo = str(numero) + " " + funcion
+        primer_campo = str(numero) + " " + funcion 
         
         #Genero la lista que voy a imprimir con el primer campo
-        lista_a_imprimir = [primer_campo]
+        lista_a_imprimir = [primer_campo.ljust(32)]
         
-        veces = ""
+        veces = " "
+        veces_doble = "  "
         
         #Lleno la tabla con vacios
         while conteo <= maximo:
+            
             lista_a_imprimir.append(veces)
             conteo = conteo +1
-        
+            
+        for clave, valor in dicc_datos.items():
+            for lista in valor:
+                if funcion in lista:
+                    numero_invocada =   [l for l in enum_datos if clave in l]
+                    funcion_a_invocar = numero_invocada[0][0]
+                    lista_a_imprimir[funcion_a_invocar] = 'X'
+                    
         #Reemplazo los campos vacios por las veces que fue invocada
         if funcion  in dicc_datos.keys():
-            a = dicc_datos[funcion]
+            
+            #Me quedo con los valores del diccionario
+            dicc_informacion = dicc_datos[funcion]
             lista_modificar = []
-            for i,j in a:
+            for i,j in dicc_informacion:
+                
+                #Calculo a cual funcion invoco basada en el numero
                 numero_invocada =   [l for l in enum_datos if i in l]
+                
                 funcion_a_invocar = numero_invocada[0][0]
+                
+                #Modifico la posicion en la lista con cuantas veces lo invoco
                 lista_a_imprimir[funcion_a_invocar] = j
                 
-        print(lista_a_imprimir)
+       
+        #Creo una lista de lista que contenga todo para calcular los totales en la matriz
         lista_total.append(lista_a_imprimir)        
     
     
-    a = [list(map(lambda x: x if x != '' else 0, i)) for i in lista_total]     
-    for x in a:
-        del x[0]
-    totales = []  
-    for column in enumerate(a[0]):
-        count = sum([x[column[0]] for x in a])
-        totales.append(count)
-    totales.insert(0,"Totales:")
-    print(totales)        
-        
+    #Hago una lista de listas de los totales reemplazando los vacios por 0 para poder sumarlo
+    lista_totales_numero = [list(map(lambda x: x if x != ' ' else 0 , i)) for i in lista_total]     
+    lista_totales_numero_2 = [list(map(lambda x: x if x != 'X' else 0, i)) for i in lista_totales_numero]    
+    lista_totales_numero_3 = [list(map(lambda x: x if x != '  ' else 0, i)) for i in lista_totales_numero_2]    
+    borrar_primer_indice(lista_totales_numero_3)
+    
+    totales = sumar_totales(lista_totales_numero_3)  
+   
+    
+    return titulo, lista_total, totales
             
-                                          
+def borrar_primer_indice(lista):
+    for i in lista:
+        del i[0]          
+    return lista
 
-armar_tabla()
+def sumar_totales(lista):
+    totales = []  
+    for column in enumerate(lista[0]):
+        count = sum([x[column[0]] for x in lista])
+        totales.append(count)
+    totales.insert(0,"Totales:                        ")
+    return totales
+
+
+def latabla():
+    titulo, cuerpo, total = armar_tabla()
+    
+    titulo = ' | '.join(map(str, titulo))
+    
+    print(titulo)
+    for i in cuerpo:
+        
+        for j,k in enumerate(i):
+            if j >= 10:
+               i[j] = ' ' + str(k)
+        i = ' | '.join(map(str, i))
+        print(i)
+    for i,j in  enumerate(total):
+        if i>= 10:
+            total[i] = ' ' + str(j)
+            
+    total = ' | '.join(map(str, total))    
+    print(total)
+    
+    
+        
+    
+    
+    
+latabla()
