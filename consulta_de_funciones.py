@@ -1,9 +1,3 @@
-"""info_imprimir = "Nombre de la función: " + clave1 + " " + "Parametros: " + str(dict_fuente[clave1][0]) + "" + "Modulo: " + str(dict_fuente[clave1][1]) + " " + "Autor: " + dict_comentarios[clave1][0] + " " + "Ayuda: " + sacar_corchetes(str(dict_comentarios[clave1][1])) + " " + "Cuerpo: " + str(dict_fuente[clave1][2]) + " " + "Comentarios: " + str(dict_comentarios[clave1][2]) + "\n\n "
-
-
-"Nombre de la función: " + clave1 + " " + "Parametros: " + str(dict_fuente[clave1][0]) + " " + "Modulo: " + str(dict_fuente[clave1][1]) + " " + "Autor: No especificado" + " " + "Ayuda: No especificada" + " " + "Cuerpo: " + str(dict_fuente[clave1][2]) + " " + "\n\n")
-"""
-
 def armar_diccionarios():
     """[Autor: Valentin]"""
     """[Ayuda: Imprime la lista de funciones, y da la opción de mostrar información acerca de cada una.]"""
@@ -63,18 +57,7 @@ def generar_txt(dict_fuente, dict_comentarios, txt):
             for item in range(len(diccionario_slices[lista])):
                 archivo.write(diccionario_slices[lista][item] + "\n")
 
-def acomodar_txt(archivo):
-    """with open(archivo, "r+") as txt:
-        total_lineas = txt.readlines()
-        cantidad_lineas = total_lineas.count("\n")
-        print(cantidad_lineas)
-        linea = txt.readline()
-        while linea:
-            linea_nueva = linea
-            if len(linea) > 80:
-            del total_lineas[:21]
-            linea = txt.readline()"""
-    pass
+
 
 def generar_lista_total(dic):
     """[Autor: Valentin]"""
@@ -126,8 +109,9 @@ def consultar_funciones(diccionario_fuente, diccionario_comentarios):
         funcion = input("Función: ")
 dic_fuente, dic_comentarios, = armar_diccionarios()
 
-imprimir_funciones(generar_lista_total(dic_fuente))
-generar_txt(dic_fuente, dic_comentarios, "ayuda_funciones.txt")
-acomodar_txt("ayuda_funciones.txt")
-consultar_funciones(dic_fuente, dic_comentarios)
+def main_consulta_funciones():
+    print(imprimir_funciones(generar_lista_total(dic_fuente)))
+    generar_txt(dic_fuente, dic_comentarios, "ayuda_funciones.txt")
+    acomodar_txt("ayuda_funciones.txt")
+    consultar_funciones(dic_fuente, dic_comentarios)
 

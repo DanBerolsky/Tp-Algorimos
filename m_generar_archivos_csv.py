@@ -44,7 +44,7 @@ def armar_csv_funciones(archivo):
     #Itero a traves de los modulos del txt
     for modulo in modulos:
         lineas = abro_ar(modulo)
-
+        hay_funcion = 0
         for linea in lineas:
                   
             #Busco la linea que comienze por def para encontrar el nombre de la funcion, sus parametros y cuerpo
@@ -53,17 +53,21 @@ def armar_csv_funciones(archivo):
                 index_inicial = lineas.index(funcion) + 1
                 nombre_funcion = funcion.split('def ')[1].lstrip().split('(')[0]
                 parametros = funcion.split('(')[1].lstrip().split(')')[0]
+                hay_funcion = 1
 
-            elif linea.strip().startswith('return'):
-                linea_return = linea
-                index_final = lineas.index(linea_return) + 1
-                cuerpo = lineas[index_inicial:index_final]
-                cuerpo_sin_comment = armar_csv_comentarios(cuerpo,nombre_funcion)
-                datos[nombre_funcion] = [parametros,modulo,cuerpo_sin_comment]
+            if hay_funcion == 1:
+
+                if linea.strip() == linea or linea.strip().startswith("return "):
+                    linea_return = linea
+                    index_final = lineas.index(linea_return) + 1
+                    cuerpo = lineas[index_inicial:index_final]
+                    cuerpo_sin_comment = armar_csv_comentarios(cuerpo,nombre_funcion)
+                    datos[nombre_funcion] = [parametros,modulo,cuerpo_sin_comment]
+                    hay_funcion = 0
 
     #Ordeno el diccionario
-    funciones_alfabeto = ordenar_alfabeticamente(datos)
-  
+        funciones_alfabeto = ordenar_alfabeticamente(datos)
+
     return modulo_csv.armo_csv(funciones_alfabeto,nombre_archivo)
 
 def armar_csv_comentarios(lista_cuerpo,nombre_funcion):
@@ -86,7 +90,8 @@ def armar_csv_comentarios(lista_cuerpo,nombre_funcion):
     lineas_comentadas = [i for i in lista if comentario_triple in i or '#' in i]
     #Busco las lineas que formaran el resto de mi csv
     resto = [j for j in lineas_comentadas if autor not in j and ayuda not in j]
-    #Cruzo las lineas comentadas con el cuerpo de la otra funcion para devolver solo las lineas del cuerpo de la funcion que no tienen comentario
+    # Cruzo las lineas comentadas con el cuerpo de la otra funcion para devolver solo las lineas del cuerpo de la
+    # funcion que no tienen comentario
     cuerpo_sin_comentarios = [x for x in lista if x not in lineas_comentadas]
     
     #Itero atraves de las lineas comentadas para encontrar el autor y ayuda
