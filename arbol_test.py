@@ -99,6 +99,7 @@ def generarArbol(listaFuncionesIndependientes, csv):
 
     for funcion in listaFuncionesIndependientes:
         buscoLlamadasAOtrasFunciones(funcion, 0, nombres, csv)
+        print("")
 
     return
 
@@ -119,6 +120,7 @@ def funcionesIndependientes():
 
 
 print(generarListaNombresFunciones("fuente_unico.csv"))
-buscoLlamadasAOtrasFunciones("main", 0, generarListaNombresFunciones("fuente_unico.csv"), "fuente_unico.csv")
+#buscoLlamadasAOtrasFunciones("main", 0, generarListaNombresFunciones("fuente_unico.csv"), "fuente_unico.csv")
 #print(buscoAlgo_enCodigoDe("capturo_datos", "armar_csv_funciones", "fuente_unico.csv"))
 #print(funcionesIndependientes())
+generarArbol(funcionesIndependientes(), "fuente_unico.csv")
