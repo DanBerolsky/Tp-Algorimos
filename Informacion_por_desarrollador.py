@@ -10,56 +10,56 @@ def capturo_datos():
     porcentaje de lineas del autor, sobre lineas totales del trabajo. ) ]
     """
 
-    info = {}
+    informacion_deseada = {}
     
     lineas_totales_por_autor = {}
 
     total_linea = 0
 
-    with open("comentarios.csv","rt") as ar_coment:
+    with open("comentarios.csv","rt") as archivo_comentarios:
         
-        linea = ar_coment.readline()
+        linea_archivos_comentarios = archivo_comentarios.readline()
 
-        while linea!="":
+        while linea_archivos_comentarios != "":
             
-            datos = linea.split(",")
+            linea_a_lista_de_datos = linea_archivos_comentarios.split(",")
 
-            nombre_funcion = datos[0]
+            nombre_funcion = linea_a_lista_de_datos[0]
 
-            autor = datos[1].split(": ")[1].rstrip("]")
+            autor = linea_a_lista_de_datos[1].split(": ")[1].rstrip("]")
 
-            info[nombre_funcion] = [autor,None]
+            informacion_deseada[nombre_funcion] = [autor,None]
 
-            linea = ar_coment.readline()
+            linea_archivos_comentarios = archivo_comentarios.readline()
 
-    with open ("fuente_unico.csv","rt") as ar_fuente:
+    with open ("fuente_unico.csv","rt") as archivo_fuente_unico:
 
-        linea = ar_fuente.readline()
+        linea_archivos_fuente_unico = archivo_fuente_unico.readline()
 
-        while linea!="":
+        while linea_archivos_fuente_unico != "":
 
-            datos = linea.split(",")
+            linea_a_lista_de_datos = linea_archivos_fuente_unico.split(",")
             
             contador_lineas = 0
 
-            funcion_actual = datos[0]
+            funcion_actual = linea_a_lista_de_datos[0]
             
-            total_linea += len(datos[3:])
+            total_linea += len(linea_a_lista_de_datos[3:])
             
-            contador_lineas = len(datos[3:])
+            contador_lineas = len(linea_a_lista_de_datos[3:])
             
-            for clave in info.keys():
+            for clave in informacion_deseada.keys():
                 
                 if clave == funcion_actual:
-                    info[clave][1] = contador_lineas
+                    informacion_deseada[clave][1] = contador_lineas
                     
-                    if info[clave][0] in lineas_totales_por_autor.keys():
-                        lineas_totales_por_autor[info[clave][0]]+=contador_lineas
+                    if informacion_deseada[clave][0] in lineas_totales_por_autor.keys():
+                        lineas_totales_por_autor[informacion_deseada[clave][0]]+=contador_lineas
                     
                     else:
-                        lineas_totales_por_autor[info[clave][0]]=contador_lineas
+                        lineas_totales_por_autor[informacion_deseada[clave][0]]=contador_lineas
 
-            linea = ar_fuente.readline()
+            linea_archivos_fuente_unico = archivo_fuente_unico.readline()
 
     #datos porcentajes
     porcentajes ={}
@@ -70,28 +70,11 @@ def capturo_datos():
 
     #ordeno por autores
     
-    datos_finales = sorted(info.items(), key = lambda autor: autor[1][0])
+    datos_finales = sorted(informacion_deseada.items(), key = lambda autor: autor[1][0])
     
     return datos_finales,porcentajes
 
-def cantidad_de_espacios(nombre_funcion):    
-    
-    """[Autor: Dan]
-        [Ayuda: Aquí se multiplica un espacio por un numero x
-        El 8 es cantidad de caracateres que tiene una tabulacion,
-        len(nom_fun) es la cantida de caracteres que tiene el nom_fun.
-        Despues quiero que partir del carater 32 obtener la cant.lineas.
-        Esta cuanta me asegura que el valor lineas_f este uno debajo del otro,
-        multiplicando un str espacio la cantidad de veces nesesaria para cada caso. ]
-    """
-  
-    if 8 + len(nombre_funcion)<33:
-        espacios = -1 * (8 + len(nombre_funcion) - 33)
-    else:
-        espacios = 2
-
-    return espacios            
-
+          
 def participacion_info (informacion,informacion2):
     
     """[Autor: Dan]
@@ -204,7 +187,26 @@ def participacion_info (informacion,informacion2):
             archivo_participacion_txt("\n"+s1)
             archivo_participacion_txt("\n"+s2)            
     
-    return None
+    
+
+def cantidad_de_espacios(nombre_funcion):    
+    
+    """[Autor: Dan]
+        [Ayuda: Aquí se multiplica un espacio por un numero x
+        El 8 es cantidad de caracateres que tiene una tabulacion,
+        len(nom_fun) es la cantida de caracteres que tiene el nom_fun.
+        Despues quiero que partir del carater 32 obtener la cant.lineas.
+        Esta cuanta me asegura que el valor lineas_f este uno debajo del otro,
+        multiplicando un str espacio la cantidad de veces nesesaria para cada caso. ]
+    """
+  
+    if 8 + len(nombre_funcion)<33:
+        espacios = -1 * (8 + len(nombre_funcion) - 33)
+    else:
+        espacios = 2
+
+    return espacios  
+
 
 
 def archivo_participacion_txt (agrego):
@@ -216,4 +218,4 @@ def archivo_participacion_txt (agrego):
         
         archivo_generado.write(agrego)
 
-    return None
+    
