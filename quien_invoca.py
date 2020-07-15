@@ -1,12 +1,8 @@
-import modulo_csv
-
 #Declaro nombre archivo
 fuente = 'fuente_unico.csv'
-
-
 def leer_csv(nombre_csv):
-    """[Autor: F] """
-    """[Ayuda: Hace cosas] """
+    """[Autor: Alfonso] """
+    """[Ayuda: Hace la lectura del csv] """
     dicc_csv = {}
     for linea in open(nombre_csv, 'r').readlines():
         linea = linea.strip().split(',')
@@ -14,9 +10,8 @@ def leer_csv(nombre_csv):
     return dicc_csv
         
 def archivo_analizador(texto):
-    
-    """[Autor: Alf]"""
-    """[Ayuda: Escribe en la funcion]"""
+    """[Autor: Alfonso]"""
+    """[Ayuda: Escribe en el archivo el texto que se le envie]"""
 
     with open ("analizador.txt","a") as archivo_generado:
         
@@ -24,8 +19,9 @@ def archivo_analizador(texto):
 
     return None
 
-
 def quien_invoca_a_quien():
+    """[Autor: Alfonso]"""
+    """[Ayuda: Genera un diccionario de quien inoca a quien, teniendo como clave el nombre de la funcion y como valores una lista de lista con cuantas veces lo invoca]"""
     #Invoco para leer el csv y que me devuelva un diccionario
     diccionario_csv = leer_csv(fuente)
     nombre_funcion = []
@@ -65,13 +61,13 @@ def quien_invoca_a_quien():
  
  
 def primer_item_lista(lista): 
+    """[Autor: Alfonso]"""
+    """[Ayuda: Busca el primer item de una lista]"""
     return [item[0] for item in lista] 
 
-def segundo_item_lista(lista): 
-    return [item[1] for item in lista] 
-
 def armar_tabla():
-    
+    """[Autor: Alfonso]"""
+    """[Ayuda: Genera tres listas, una con el titulo, una lista de listas con cada linea y espacio, y los totales]"""   
     #Lista de todas las funciones en el codigo
     lista_funciones = quien_invoca_a_quien()[0]
     
@@ -92,6 +88,8 @@ def armar_tabla():
     maximo =max(posicion)
     #Formato de Titulo
     titulo = posicion
+    
+    #Hay 32
     titulo.insert(0,"Funcion:                        ")
     
     lista_total = []
@@ -148,11 +146,10 @@ def armar_tabla():
     
     #Hago una lista de listas de los totales reemplazando los vacios por 0 para poder sumarlo
     lista_totales_numero = [list(map(lambda x: x if x != ' ' else 0 , i)) for i in lista_total]     
-    lista_totales_numero_2 = [list(map(lambda x: x if x != 'X' else 0, i)) for i in lista_totales_numero]    
-    lista_totales_numero_3 = [list(map(lambda x: x if x != '  ' else 0, i)) for i in lista_totales_numero_2]    
-    borrar_primer_indice(lista_totales_numero_3)
+    lista_totales_numero_2 = [list(map(lambda x: x if x != 'X' else 0, i)) for i in lista_totales_numero]       
+    borrar_primer_indice(lista_totales_numero_2)
     
-    totales = sumar_totales(lista_totales_numero_3)  
+    totales = sumar_totales(lista_totales_numero_2)  
    
     
     return titulo, lista_total, totales
@@ -174,26 +171,36 @@ def sumar_totales(lista):
 def latabla():
     titulo, cuerpo, total = armar_tabla()
     
-    titulo = ' | '.join(map(str, titulo))
-    
+    titulo = formato_tabla(titulo)
     print(titulo)
+    titulo = titulo + "\n"
+    archivo_analizador(titulo)
+    
     for i in cuerpo:
-        
-        for j,k in enumerate(i):
-            if j >= 10:
-               i[j] = ' ' + str(k)
-        i = ' | '.join(map(str, i))
+        i = dos_digitos(i)
+        i = formato_tabla(i)
         print(i)
-    for i,j in  enumerate(total):
-        if i>= 10:
-            total[i] = ' ' + str(j)
-            
-    total = ' | '.join(map(str, total))    
-    print(total)
-    
-    
+        i = i + '\n'
+        archivo_analizador(i)
         
+      
+    total = dos_digitos(total)          
+    total = formato_tabla(total)  
+    print(total)
+    total = total + "\n"
+    archivo_analizador(total)
     
-    
-    
+    return None
+        
+def formato_tabla(lista):   
+    str_nuevo = ' | '.join(map(str, lista))
+    return str_nuevo
+
+def dos_digitos(lista):
+    for j,k in enumerate(lista):
+            if j >= 10:
+               lista[j] = ' ' + str(k)
+            elif j >= 100:
+                lista[j] = ' ' + str(k)
+    return lista
 latabla()
