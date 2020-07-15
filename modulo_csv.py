@@ -2,23 +2,23 @@ def armo_csv(Estructura_de_datos,nombre_archivo):
     
     """[Autor: Dan]"""
     """[Ayuda: Crea y agrega informacion dentro del csv] """
-    
-    if nombre_archivo == 'fuente_unico.csv':
-    
-        with open (nombre_archivo,"a") as codigo:
-            
-            for clave in Estructura_de_datos:
-                
-                #Modelo de parametros
-                nombre_funcion = clave[0]
-                parametros = clave[1][0]
-                modulo = clave[1][1]
-                cuerpo = clave[1][2]
-                
-                funcion = "\n".join(cuerpo)
-            
-                funcion = ", ".join(cuerpo)
-            
+
+    if nombre_archivo.startswith("fuente_unico"):
+
+        for clave in Estructura_de_datos:
+
+            #Modelo de parametros
+            nombre_funcion = clave[0]
+            parametros = clave[1][0]
+            modulo = clave[1][1]
+            cuerpo = clave[1][2]
+
+            funcion = "\n".join(cuerpo)
+
+            funcion = ", ".join(cuerpo)
+            archivo_a_escribir = nombre_archivo + "_" + modulo + ".csv"
+
+            with open(archivo_a_escribir, "a") as codigo:
                 #Escribo en el csv
                 codigo.write(nombre_funcion+","+parametros+","+modulo+","+funcion+"\n")
     
