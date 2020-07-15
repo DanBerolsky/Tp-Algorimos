@@ -1,5 +1,5 @@
 #Programa principal
-
+import quien_invoca
 def main():
     
     """[Autor: L]"""
@@ -11,6 +11,8 @@ def main():
     txt = 'programas.txt'
     m_generar_archivos_csv.armar_csv_funciones(txt)
     
+    #Tercer punto
+    quien_invoca.latabla()
     # Quinto punto
     import Informacion_por_desarrollador
     informacion,porcentaje = Informacion_por_desarrollador.capturo_datos()
