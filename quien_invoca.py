@@ -90,7 +90,7 @@ def armar_tabla():
     titulo = posicion
     
     #Hay 32
-    titulo.insert(0,"Funcion:                        ")
+    titulo.insert(0,"Funciones                       ")
     
     lista_total = []
     
@@ -161,10 +161,10 @@ def borrar_primer_indice(lista):
 
 def sumar_totales(lista):
     totales = []  
-    for column in enumerate(lista[0]):
-        count = sum([x[column[0]] for x in lista])
-        totales.append(count)
-    totales.insert(0,"Totales:                        ")
+    for columna_matriz in enumerate(lista[0]):
+        suma_columna = sum([x[columna_matriz[0]] for x in lista])
+        totales.append(suma_columna)
+    totales.insert(0,"Total Invocaciones              ")
     return totales
 
 
