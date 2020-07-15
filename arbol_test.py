@@ -43,9 +43,11 @@ def buscoAlgo_enCodigoDe(funcion1, funcion2, csv):
     """
     cuerpo = depurarLineas(funcion2, csv)
     contador = 0
+
     for linea in cuerpo:
         if funcion1 + "(" in linea:
             contador += 1
+
     return contador
 
 
@@ -54,8 +56,10 @@ def num_de_lineas(cuerpoDeFuncion):
     Recibe el cuerpo de una funcion y regresa el numero de lineas que lo componen
     """
     cantLineas = 0
+
     for linea in cuerpoDeFuncion:
         cantLineas += 1
+
     return cantLineas
 
 
@@ -66,11 +70,13 @@ def depurarLineas(funcion, csv):
     """
     dicc = modulo_csv.leer_csv(csv)
     cuerpo_de_funcion_limpio = []
+
     for key in dicc:
         if key == funcion:
             for linea in dicc[key]:
                 if linea.strip("\n \t"):
                     cuerpo_de_funcion_limpio.append(linea)
+
     return cuerpo_de_funcion_limpio[2:]
 
 
@@ -80,6 +86,7 @@ def generarListaNombresFunciones(csv):
     """
     dicc = modulo_csv.leer_csv(csv)
     listaDeNombresDeOtrasFunciones = [key for key in dicc]
+
     return listaDeNombresDeOtrasFunciones
 
 
@@ -89,41 +96,29 @@ def generarArbol(listaFuncionesIndependientes, csv):
     y genera un arbol de invocacion
     """
     nombres = generarListaNombresFunciones(csv)
+
     for funcion in listaFuncionesIndependientes:
         buscoLlamadasAOtrasFunciones(funcion, 0, nombres, csv)
+
     return
 
 
 def funcionesIndependientes():
     """
-    Checkeo que funcion/es no es/son llamada/s por las demas, las pongo en una lista
+    Checkeo que funcion/es no es/son llamada/s por las demas, y las pongo en una lista
     """
     dicc_funciones = modulo_csv.quien_invoca_a_quien()
-    nombresFunciones = generarListaNombresFunciones("fuente.unico.csv")
+    nombresFunciones = generarListaNombresFunciones("fuente_unico.csv")
 
-    for funcion in dicc_funciones:
-        if funcion in nombresFunciones:
-            nombresFunciones.remove(funcion)
+    for key in dicc_funciones:
+        for i in range(len(dicc_funciones[key])):
+            if dicc_funciones[key][i][0] in nombresFunciones:
+                nombresFunciones.remove(dicc_funciones[key][i][0])
 
     return nombresFunciones
 
 
 print(generarListaNombresFunciones("fuente_unico.csv"))
-# print(depurarLineas("ordenar_alfabeticamente", "fuente_unico.csv"))
-# print(num_de_lineas(depurarLineas("ordenar_alfabeticamente", "fuente_unico.csv")))
 buscoLlamadasAOtrasFunciones("main", 0, generarListaNombresFunciones("fuente_unico.csv"), "fuente_unico.csv")
-#print(buscoAlgo_enCodigoDe("participacion_info ", "main", "fuente_unico.csv"))
-#print(buscoAlgo_enCodigoDe("ordenar_alfabeticamente", "main", "fuente_unico.csv"))
-#print(buscoAlgo_enCodigoDe("main", "main", "fuente_unico.csv"))
-#print(buscoAlgo_enCodigoDe("leer", "main", "fuente_unico.csv"))
-#print(buscoAlgo_enCodigoDe("impresiones ", "main", "fuente_unico.csv"))
-#print(buscoAlgo_enCodigoDe("contar_funciones", "main", "fuente_unico.csv"))
-#print(buscoAlgo_enCodigoDe("capturo_datos", "main", "fuente_unico.csv"))
-#print(buscoAlgo_enCodigoDe("armo_csv", "main", "fuente_unico.csv"))
-#print(buscoAlgo_enCodigoDe("armar_csv_funciones", "main", "fuente_unico.csv"))
-#print(buscoAlgo_enCodigoDe("armar_csv_comentarios", "main", "fuente_unico.csv"))
-#print(buscoAlgo_enCodigoDe("archivo_participacion_txt", "main", "fuente_unico.csv"))
-#print(buscoAlgo_enCodigoDe("abro_ar", "main", "fuente_unico.csv"))
-#print(num_de_lineas(depurarLineas("main", "fuente_unico.csv")))
 #print(buscoAlgo_enCodigoDe("capturo_datos", "armar_csv_funciones", "fuente_unico.csv"))
-print(funcionesIndependientes())
+#print(funcionesIndependientes())
