@@ -184,7 +184,8 @@ def latabla():
         archivo_analizador(i)
         
       
-    total = dos_digitos(total)          
+    total = dos_digitos(total)    
+    total = remover_ceros(total)      
     total = formato_tabla(total)  
     print(total)
     total = total + "\n"
@@ -203,4 +204,6 @@ def dos_digitos(lista):
             elif j >= 100:
                 lista[j] = ' ' + str(k)
     return lista
-latabla()
+def remover_ceros(lista):
+    reemplazo =[' ' if i==0 else i for i in lista]
+    return reemplazo
