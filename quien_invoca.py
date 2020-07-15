@@ -1,4 +1,5 @@
 import modulo_csv
+import itertools
 fuente = 'fuente_unico.csv'
 def leer_csv(nombre_csv):
     """[Autor: F] """
@@ -67,39 +68,74 @@ def segundo_item_lista(lista):
     return [item[1] for item in lista] 
 
 def armar_tabla():
+    
+    #Lista de todas las funciones en el codigo
     lista_funciones = quien_invoca_a_quien()[0]
+    
+    #Diccionario de funciones y quien invoca a quien
     dicc_datos = quien_invoca_a_quien()[1]
+    
+    #Enumero las funciones
     enum_datos = list(enumerate(lista_funciones,1))
+    
+    #Posicion en la lista
     posicion = primer_item_lista(enum_datos)
-    nombre_funcion = segundo_item_lista(enum_datos)
-    numeros = '       '.join(map(str, posicion))
-    titulo = "\nFuncion:                        " + numeros
+    
+    #Csv de numero para el titulo
+    numeros = ','.join(map(str, posicion))
+    
+    #Formato de Titulo
+    titulo = "\nFuncion:," + numeros
     print(titulo)
-    funcion_invocada = ''
-    veces_invocada = ''
-   
+    
+    
+    #Calculo la maxima cantidad de funciones
+    maximo =max(posicion)
+    
+    lista_total = []
+    
+    #Reviso el enumerate por funcion
     for numero,funcion in enum_datos:
-        if funcion in dicc_datos.keys():
+        
+        #Creo una variable para llenar la tabla
+        conteo = 1
+        
+        #Armo el primero campo
+        primer_campo = str(numero) + " " + funcion
+        
+        #Genero la lista que voy a imprimir con el primer campo
+        lista_a_imprimir = [primer_campo]
+        
+        veces = ""
+        
+        #Lleno la tabla con vacios
+        while conteo <= maximo:
+            lista_a_imprimir.append(veces)
+            conteo = conteo +1
+        
+        #Reemplazo los campos vacios por las veces que fue invocada
+        if funcion  in dicc_datos.keys():
             a = dicc_datos[funcion]
-            primer_campo = str(numero) +' '+ funcion
-            dicc_2 = {}
+            lista_modificar = []
             for i,j in a:
                 numero_invocada =   [l for l in enum_datos if i in l]
                 funcion_a_invocar = numero_invocada[0][0]
-                lista = [funcion_a_invocar,j]
-                if funcion in dicc_2:
-                    dicc_2[funcion].append(lista)
-                    
-                else:    
-                    dicc_2[funcion] = [lista]
-            l = dicc_2.items()
-            l = l[1]
-            print('{0:<32}{1}'.format(primer_campo,l))
-            #print('{0:<32}{1}{2}'.format(primer_campo, 1,j))
-            #print(numero,funcion, '     ' * numero_invocada,j)
+                lista_a_imprimir[funcion_a_invocar] = j
+                
+        print(lista_a_imprimir)
+        lista_total.append(lista_a_imprimir)        
+    
+    
+    a = [list(map(lambda x: x if x != '' else 0, i)) for i in lista_total]     
+    for x in a:
+        del x[0]
+    totales = []  
+    for column in enumerate(a[0]):
+        count = sum([x[column[0]] for x in a])
+        totales.append(count)
+    totales.insert(0,"Totales:")
+    print(totales)        
         
-        else:
-           print(numero,funcion)
             
                                           
 
