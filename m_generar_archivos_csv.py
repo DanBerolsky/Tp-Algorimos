@@ -27,7 +27,7 @@ def ordenar_alfabeticamente(diccionario):
     """[Autor: b]"""
     """[Ayuda: Ordena diccionario de mayor a menor, respecto las claves del mismo. Devuelvo lista de tuplas]"""
     
-    return sorted(diccionario.items(), key = lambda clave: clave[0], reverse = True)
+    return sorted(diccionario.items(), key = lambda clave: clave[0], reverse = False)
 
 def armar_csv_funciones(archivo):
     
