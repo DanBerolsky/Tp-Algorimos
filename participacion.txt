@@ -13,7 +13,7 @@ Autor: D
 	Funcion                Lineas
 	---------------------------------
 	armar_csv_comentarios    32
-	1 Funciones - Lineas	 32  8%
+	1 Funciones - Lineas	 32  10%
 
 Autor: Dan
 
@@ -22,14 +22,14 @@ Autor: Dan
 	armo_csv                 47
 	impresiones              5
 	capturo_datos            75
-	3 Funciones - Lineas	 127  34%
+	3 Funciones - Lineas	 127  40%
 
 Autor: L
 
 	Funcion                Lineas
 	---------------------------------
 	main                     14
-	1 Funciones - Lineas	 14  3%
+	1 Funciones - Lineas	 14  4%
 
 Autor: b
 
@@ -38,7 +38,7 @@ Autor: b
 	abro_ar                  7
 	ordenar_alfabeticamente  5
 	armar_csv_funciones      32
-	3 Funciones - Lineas	 44  12%
+	3 Funciones - Lineas	 44  14%
 
 
 Total: 9 Funciones - lineas	 222

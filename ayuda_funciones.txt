@@ -1,0 +1,171 @@
+
+Nombre de la función: ordenar_alfabeticamente, Parametros: diccionario, Modulo: 
+m_generar_archivos_csv.py, Autor: [Autor: b] Ayuda: Ayuda: Ordena diccionario de
+ mayor a menor, Cuerpo: ['         ', '         return sorted(diccionario.items(
+)', '     key = lambda clave: clave[0]', '     reverse = True)'], Comentarios: [
+
+
+
+Nombre de la función: main, Parametros: , Modulo: programa_principal.py, Autor: 
+[Autor: L] Ayuda: Ayuda: Es la funcion principal, Cuerpo: ['         ', '     ',
+ '         import m_generar_archivos_csv', "         txt = 'programas.txt'", '  
+       m_generar_archivos_csv.armar_csv_funciones(txt)', '         ', '         
+import Informacion_por_desarrollador', '         informacion', '    porcentaje =
+ Informacion_por_desarrollador.capturo_datos()', '         Informacion_por_desar
+rollador.participacion_info(informacion', '    porcentaje)', '         ', '     
+
+
+
+Nombre de la función: leer, Parametros: archivo, Modulo: m_generar_archivos_csv.
+py, Autor: [Autor: A] Ayuda: Ayuda: Lee el archivo linea por linea, Cuerpo: ['  
+       ', "         lineas = [linea.rstrip('\\n') for linea in archivo]", '     
+
+
+
+Nombre de la función: impresiones, Parametros: contenido_a_mostrar, Modulo: mues
+tro_salida.py, Autor: [Autor: Dan] Ayuda: Ayuda: Muestra por pantalla el paramet
+ro recibido, Cuerpo: ['     ', '         print(contenido_a_mostrar)', '     ', '
+
+
+
+Nombre de la función: capturo_datos, Parametros: , Modulo: Informacion_por_desar
+rollador.py, Autor: [Autor: Dan] Ayuda: Ayuda: recopila los parametros para el Q
+uinta punto, Cuerpo: ['         (Nombres de las funciones', '     autor de la fu
+ncion ', '     lineas por funcion y', '         porcentaje de lineas del autor',
+ '     sobre lineas totales del trabajo. ) ]', '     ', '         informacion_de
+seada = {}', '         ', '         lineas_totales_por_autor = {}', '     ', '  
+       total_linea = 0', '     ', '         with open("comentarios.csv"', '    "
+rt") as archivo_comentarios:', '             ', '             linea_archivos_com
+entarios = archivo_comentarios.readline()', '     ', '             while linea_a
+rchivos_comentarios != "":', '                 ', '                 linea_a_list
+a_de_datos = linea_archivos_comentarios.split("', '    ")', '     ', '          
+       nombre_funcion = linea_a_lista_de_datos[0]', '     ', '                 a
+utor = linea_a_lista_de_datos[1].split(": ")[1].rstrip("]")', '     ', '        
+         informacion_deseada[nombre_funcion] = [autor', '    None]', '     ', ' 
+                linea_archivos_comentarios = archivo_comentarios.readline()', ' 
+    ', '         with open ("fuente_unico.csv"', '    "rt") as archivo_fuente_un
+ico:', '     ', '             linea_archivos_fuente_unico = archivo_fuente_unico
+.readline()', '     ', '             while linea_archivos_fuente_unico != "":', 
+'     ', '                 linea_a_lista_de_datos = linea_archivos_fuente_unico.
+split("', '    ")', '                 ', '                 contador_lineas = 0',
+ '     ', '                 funcion_actual = linea_a_lista_de_datos[0]', '      
+           ', '                 total_linea += len(linea_a_lista_de_datos[3:])',
+ '                 ', '                 contador_lineas = len(linea_a_lista_de_d
+atos[3:])', '                 ', '                 for clave in informacion_dese
+ada.keys():', '                     ', '                     if clave == funcion
+_actual:', '                         informacion_deseada[clave][1] = contador_li
+neas', '                         ', '                         if informacion_des
+eada[clave][0] in lineas_totales_por_autor.keys():', '                          
+   lineas_totales_por_autor[informacion_deseada[clave][0]]+=contador_lineas', ' 
+                        ', '                         else:', '                  
+           lineas_totales_por_autor[informacion_deseada[clave][0]]=contador_line
+as', '     ', '                 linea_archivos_fuente_unico = archivo_fuente_uni
+co.readline()', '     ', '         porcentajes ={}', '     ', '         for clav
+e in lineas_totales_por_autor.keys():', '         ', '             porcentajes[c
+lave]=int((lineas_totales_por_autor[clave]/total_linea)*100)', '     ', '       
+  ', '         datos_finales = sorted(informacion_deseada.items()', '     key = 
+lambda autor: autor[1][0])', '         ', '         return datos_finales', '    
+porcentajes'], Comentarios: ['    """', '     #datos porcentajes', '     #ordeno
+
+
+
+Nombre de la función: armo_csv, Parametros: Estructura_de_datos, Modulo: nombre_
+archivo, Autor: [Autor: Dan] Ayuda: Ayuda: Crea y agrega informacion dentro del 
+csv, Cuerpo: ['modulo_csv.py    ', 'modulo_csv.py     ', "modulo_csv.py     if n
+ombre_archivo == 'fuente_unico.csv':", 'modulo_csv.py     ', 'modulo_csv.py     
+    with open (nombre_archivo', 'modulo_csv.py"a") as codigo:', 'modulo_csv.py  
+           ', 'modulo_csv.py             for clave in Estructura_de_datos:', 'mo
+dulo_csv.py                 ', 'modulo_csv.py                 nombre_funcion = c
+lave[0]', 'modulo_csv.py                 parametros = clave[1][0]', 'modulo_csv.
+py                 modulo = clave[1][1]', 'modulo_csv.py                 cuerpo 
+= clave[1][2]', 'modulo_csv.py                 ', 'modulo_csv.py                
+ funcion = "\\n".join(cuerpo)', 'modulo_csv.py             ', 'modulo_csv.py    
+             funcion = "', 'modulo_csv.py ".join(cuerpo)', 'modulo_csv.py       
+      ', 'modulo_csv.py                 codigo.write(nombre_funcion+"', 'modulo_
+csv.py"+parametros+"', 'modulo_csv.py"+modulo+"', 'modulo_csv.py"+funcion+"\\n")
+', 'modulo_csv.py     ', "modulo_csv.py     elif nombre_archivo == 'comentarios.
+csv':", 'modulo_csv.py         ', 'modulo_csv.py         with open (nombre_archi
+vo', 'modulo_csv.py"a") as codigo:', 'modulo_csv.py             ', 'modulo_csv.p
+y             for elementos in Estructura_de_datos:', 'modulo_csv.py            
+     ', 'modulo_csv.py                 nombre_funcion = elementos[0]', 'modulo_c
+sv.py                 nombre_autor = elementos[1][0]', 'modulo_csv.py           
+      nombre_ayuda = elementos[1][1]', 'modulo_csv.py                 resto = el
+ementos[1][2]', 'modulo_csv.py ', 'modulo_csv.py             ', 'modulo_csv.py  
+               funcion = "', 'modulo_csv.py ".join(resto)', 'modulo_csv.py      
+       ', 'modulo_csv.py                 codigo.write(nombre_funcion + "', 'modu
+lo_csv.py" + nombre_autor + "', 'modulo_csv.py" + nombre_ayuda + "', 'modulo_csv
+.py" + funcion + "\\n")', 'modulo_csv.py     ', 'modulo_csv.py     return None']
+, Comentarios: ['                #Modelo de parametros', '                 #Escr
+ibo en el csv', '                 #Modelo de parametros', '                 #Esc
+
+
+
+Nombre de la función: armar_csv_funciones, Parametros: archivo, Modulo: m_genera
+r_archivos_csv.py, Autor: [Autor: b] Ayuda: Ayuda: abre un archivo, Cuerpo: ['  
+       ', '         nombre_archivo = "fuente_unico.csv"', '         datos = {}',
+ '         ', '         modulos = abro_ar(archivo)', '         ', '         for 
+modulo in modulos:', '             lineas = abro_ar(modulo)', '     ', '        
+     for linea in lineas:', '                       ', "                 if line
+a.startswith('def '):", '                     funcion = linea', '               
+      index_inicial = lineas.index(funcion) + 1', "                     nombre_f
+uncion = funcion.split('def ')[1].lstrip().split('(')[0]", "                    
+ parametros = funcion.split('(')[1].lstrip().split(')')[0]", '     ', "         
+        elif linea.strip().startswith('return'):", '                     linea_r
+eturn = linea', '                     index_final = lineas.index(linea_return) +
+ 1', '                     cuerpo = lineas[index_inicial:index_final]', '       
+              cuerpo_sin_comment = armar_csv_comentarios(cuerpo', '    nombre_fu
+ncion)', '                     datos[nombre_funcion] = [parametros', '    modulo
+', '    cuerpo_sin_comment]', '     ', '         funciones_alfabeto = ordenar_al
+fabeticamente(datos)', '       ', '         return modulo_csv.armo_csv(funciones
+_alfabeto', '    nombre_archivo)'], Comentarios: ['    #Declaro variables', '   
+  #Abro los modulos', '     #Itero a traves de los modulos del txt', '          
+   #Busco la linea que comienze por def para encontrar el nombre de la funcion',
+
+
+
+Nombre de la función: armar_csv_comentarios, Parametros: lista_cuerpo, Modulo: n
+ombre_funcion, Autor: [Autor: D] Ayuda: Ayuda: Remueve los comentarios de la fun
+cion y crea el archivo comentarios.csv, Cuerpo: ['m_generar_archivos_csv.py    '
+, 'm_generar_archivos_csv.py     ', 'm_generar_archivos_csv.py     comentario_tr
+iple = \'\\"\\"\\"\'', "m_generar_archivos_csv.py     nombre_archivo = 'comentar
+ios.csv'", 'm_generar_archivos_csv.py     autor = "[Autor:"', 'm_generar_archivo
+s_csv.py     ayuda = "[Ayuda:"', 'm_generar_archivos_csv.py     nombre_autor = "
+"', 'm_generar_archivos_csv.py     nombre_ayuda = ""', 'm_generar_archivos_csv.p
+y     resto = []   ', 'm_generar_archivos_csv.py     datos_comentarios = {}', 'm
+_generar_archivos_csv.py ', 'm_generar_archivos_csv.py     lista = lista_cuerpo 
+   ', 'm_generar_archivos_csv.py     resto = [j for j in lineas_comentadas if au
+tor not in j and ayuda not in j]', 'm_generar_archivos_csv.py     cuerpo_sin_com
+entarios = [x for x in lista if x not in lineas_comentadas]', 'm_generar_archivo
+s_csv.py     ', 'm_generar_archivos_csv.py     for comentarios in lineas_comenta
+das:', 'm_generar_archivos_csv.py         if autor in comentarios:', 'm_generar_
+archivos_csv.py             nombre_autor = comentarios.split(comentario_triple)[
+1].lstrip().split(comentario_triple)[0]', 'm_generar_archivos_csv.py         eli
+f ayuda in comentarios:', 'm_generar_archivos_csv.py             nombre_ayuda = 
+comentarios.split(comentario_triple)[1].lstrip().split(comentario_triple)[0]', '
+m_generar_archivos_csv.py             ', 'm_generar_archivos_csv.py             
+datos_comentarios[nombre_funcion] = [nombre_autor', 'm_generar_archivos_csv.pyno
+mbre_ayuda', 'm_generar_archivos_csv.pyresto]', 'm_generar_archivos_csv.py      
+       ', 'm_generar_archivos_csv.py     comentarios_alfabeto = ordenar_alfabeti
+camente(datos_comentarios)', 'm_generar_archivos_csv.py     ', 'm_generar_archiv
+os_csv.py     modulo_csv.armo_csv(comentarios_alfabeto', 'm_generar_archivos_csv
+.pynombre_archivo)', 'm_generar_archivos_csv.py     ', 'm_generar_archivos_csv.p
+y     return cuerpo_sin_comentarios'], Comentarios: ['    #Declaracion de variab
+les para simplificar mi existencia', '     #Busco las lineas comentadas y me que
+do con una lista de las lineas comentadas', "     lineas_comentadas = [i for i i
+n lista if comentario_triple in i or '#' in i]", '     #Busco las lineas que for
+maran el resto de mi csv', '     #Cruzo las lineas comentadas con el cuerpo de l
+a otra funcion para devolver solo las lineas del cuerpo de la funcion que no tie
+nen comentario', '     #Itero atraves de las lineas comentadas para encontrar el
+ autor y ayuda', '             #me creo el diccionario con los campos que necesi
+to', '     #Ordeno el diccionario', ' respecto sus claves', '     #Genero el csv
+
+
+
+Nombre de la función: abro_ar, Parametros: archivo, Modulo: m_generar_archivos_c
+sv.py, Autor: [Autor: b] Ayuda: Ayuda: abre un archivo, Cuerpo: ['     ', '     
+', '         with open(archivo', '     encoding="utf8") as archivo_completo: ', 
+'            ', '             return leer(archivo_completo)'], Comentarios: ['  
+ # encoding="utf8" use eso para solucionar el error.', '    #El archivo informac
+ion_por_desarollador era el que generaba ese problema', '', '    #aprantemente e
+
+
