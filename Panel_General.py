@@ -95,3 +95,6 @@ def panel_principal():
     header = datos[0].keys()
     rows = [x.values() for x in datos]
     print(tabulate.tabulate(rows, header))
+
+
+panel_principal()
