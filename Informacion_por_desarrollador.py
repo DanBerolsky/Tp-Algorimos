@@ -77,12 +77,11 @@ def capturo_datos():
           
 def participacion_info (informacion,informacion2):
     
-    """[Autor: Dan]
-       [Ayuda: brindar datos sobre la participación de cada uno de los 
+    """[Autor: Dan]"""
+    """[Ayuda: brindar datos sobre la participación de cada uno de los 
     integrantes en el desarrollo de la aplicación.
     Ademas de mostrar la informacion por pantalla,
-    genera la misma salida al archivo “participacion.txt” ]
-    """
+    genera la misma salida al archivo “participacion.txt” ]"""
 
     autor_anterior = None
     

@@ -1,5 +1,5 @@
 import merge
-def armo_csv(Estructura_de_datos,nombre_archivo):
+def armo_csv(Estructura_de_datos,nombre_archivo, modulo):
     """ [Autor: Dan]
         [Ayuda: Recibo el nombre de archivo a escribir y la estructura de datos 
         correspondiente, la cual viene dada por una lista de tuplas,Crea y agrega 
@@ -40,16 +40,17 @@ def armo_csv(Estructura_de_datos,nombre_archivo):
             
             #------------------------------------------------------------------
 
-            # Crea/abre el csv recivido por parametro.
+            # Crea/abre el csv recibido por parametro.
             with open(archivo_a_escribir, "a") as archivo_fuente_unico:
                 
                 #Escribo en el csv
                 archivo_fuente_unico.write(nombre_funcion+","+parametros+","+modulo+","+funcion+"\n")
-        
-        merge.ciclar_modulos(lista_modulos_fuente)
+        fuente_unico = 1
+        merge.ciclar_modulos(lista_modulos_fuente, fuente_unico)
 
     elif nombre_archivo == 'comentarios.csv':
         # recorro la lista de tuplas y capturo los datos deseados   
+        lista_modulos_comentarios = [[]]
         for elementos in Estructura_de_datos:
 
             #Modelo de parametros
@@ -57,15 +58,29 @@ def armo_csv(Estructura_de_datos,nombre_archivo):
             nombre_autor = elementos[1]["Nombre del autor"]
             nombre_ayuda = elementos[1]["informacion de ayuda"]
             resto = elementos[1]["Resto de lineas comentadas"]
-
             # Une con una coma los elementos de la lista, en una cadena nueva.
             funcion = ", ".join(resto)
 
             # Genera un nombre diferente para cada funcion, para despues hacer el merge.
-            archivo_a_escribir = nombre_archivo + "_" + nombre_funcion + ".csv"    
+            archivo_a_escribir = nombre_archivo + "_" + modulo + ".csv"    
 
+            ya_esta = 0
+            index = 0
+            
+            while ya_esta == 0 and index <= len(lista_modulos_comentarios[0]) - 1:
+                
+                if lista_modulos_comentarios[0][index] == archivo_a_escribir:
+                    ya_esta = 1
+                index += 1
+            
+            if ya_esta == 0:
+                lista_modulos_comentarios[0].append(archivo_a_escribir)
+            
             # Crea/abre el csv recivido por parametro.
-            with open (nombre_archivo, "a") as archivo_comentetarios:
+            with open (archivo_a_escribir, "a") as archivo_comentarios:
 
                 #Escribo en el csv
-                archivo_comentetarios.write(nombre_funcion + "," + nombre_autor + "," + nombre_ayuda + "," + funcion + "\n") 
+                archivo_comentarios.write(nombre_funcion + "," + nombre_autor + "," + nombre_ayuda + "," + funcion + "\n") 
+        
+        comentarios = 0
+        merge.ciclar_modulos(lista_modulos_comentarios, comentarios)

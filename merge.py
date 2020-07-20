@@ -29,29 +29,55 @@ def merge_2(modulo1, modulo2, modulo_a_escribir):
     modulo2.close()
 
 
-def ciclar_modulos(lista_modulos):
-    print(lista_modulos)
-    index_nombre = 0
-    while len(lista_modulos[-1]) > 1:
-        if len(lista_modulos[-1]) % 2 != 0:
-            ult_elemento_impar = lista_modulos[-1][-1]
-            lista_modulos[-1].remove(lista_modulos[-1][-1])
-            index = 1
-            lista_modulos.append([])
-            while (index <= len(lista_modulos[-2]) - 1):
-                nombre_a_escribir = str(index_nombre) + ".csv"
-                index_nombre += 1
-                merge_2(lista_modulos[-2][index], lista_modulos[-2][index - 1], nombre_a_escribir)
-                index += 2    
-                lista_modulos[-1].append(nombre_a_escribir)
-            lista_modulos[-1].append(ult_elemento_impar)
-        else:
-            index = 1
-            lista_modulos.append([])
-            while (index <= len(lista_modulos[-2]) - 1):
-                nombre_a_escribir = str(index_nombre) + ".csv"
-                index_nombre += 1
-                merge_2(lista_modulos[-2][index], lista_modulos[-2][index - 1], nombre_a_escribir)
-                index += 2    
-                lista_modulos[-1].append(nombre_a_escribir)
-    print(lista_modulos[-1])
+def ciclar_modulos(lista_modulos, tipo):
+    if tipo == 1:
+        index_nombre = 0
+        while len(lista_modulos[-1]) > 1:
+            if len(lista_modulos[-1]) % 2 != 0:
+                ult_elemento_impar = lista_modulos[-1][-1]
+                lista_modulos[-1].remove(lista_modulos[-1][-1])
+                index = 1
+                lista_modulos.append([])
+                while (index <= len(lista_modulos[-2]) - 1):
+                    nombre_a_escribir = str(index_nombre) + ".csv"
+                    index_nombre += 1
+                    merge_2(lista_modulos[-2][index], lista_modulos[-2][index - 1], nombre_a_escribir)
+                    index += 2    
+                    lista_modulos[-1].append(nombre_a_escribir)
+                lista_modulos[-1].append(ult_elemento_impar)
+            else:
+                index = 1
+                lista_modulos.append([])
+                while (index <= len(lista_modulos[-2]) - 1):
+                    nombre_a_escribir = str(index_nombre) + ".csv"
+                    index_nombre += 1
+                    merge_2(lista_modulos[-2][index], lista_modulos[-2][index - 1], nombre_a_escribir)
+                    index += 2    
+                    lista_modulos[-1].append(nombre_a_escribir)
+    else:
+        index_nombre = 65
+        while len(lista_modulos[-1]) > 1:
+            if len(lista_modulos[-1]) % 2 != 0:
+                ult_elemento_impar = lista_modulos[-1][-1]
+                lista_modulos[-1].remove(lista_modulos[-1][-1])
+                index = 1
+                lista_modulos.append([])
+                while (index <= len(lista_modulos[-2]) - 1):
+                    nombre_a_escribir = chr(index_nombre) + ".csv"
+                    index_nombre += 1
+                    merge_2(lista_modulos[-2][index], lista_modulos[-2][index - 1], nombre_a_escribir)
+                    index += 2    
+                    lista_modulos[-1].append(nombre_a_escribir)
+                lista_modulos[-1].append(ult_elemento_impar)
+            else:
+                index = 65
+                lista_modulos.append([])
+                while (index <= len(lista_modulos[-2]) - 1):
+                    nombre_a_escribir = chr(index_nombre) + ".csv"
+                    index_nombre += 1
+                    merge_2(lista_modulos[-2][index], lista_modulos[-2][index - 1], nombre_a_escribir)
+                    index += 2    
+                    lista_modulos[-1].append(nombre_a_escribir)
+        """merge_2(lista_modulos[-1][0], lista_modulos[-1][1], "comentarios.csv")"""
+
+

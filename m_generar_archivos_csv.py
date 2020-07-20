@@ -52,14 +52,14 @@ def armar_csv_funciones(archivo):
                 funcion = linea
                 index_inicial = lineas.index(funcion) + 1
                 nombre_funcion = funcion.split('def ')[1].lstrip().split('(')[0]
-                parametros = funcion.split('(')[1].lstrip().split(')')[0]
+                parametros = "(" + funcion.split('(')[1].lstrip().split(')')[0] + ")"
                 contador_def += 1
                 
                 if contador_def >1:
                     linea_return = linea
                     index_final = lineas.index(linea_return)
                     cuerpo = lineas[index_inicial_anterior:index_final]
-                    cuerpo_sin_comment = armar_csv_comentarios(cuerpo,nombre_funcion)
+                    cuerpo_sin_comment = armar_csv_comentarios(cuerpo,nombre_funcion, modulo)
                     datos[nombre_funcion_anterior] = {"Parametros de la funcion":parametros_anterior,"Nombre del modulo":modulo,"Cuerpo de la funcion":cuerpo_sin_comment}
                     contador_def = 1
                 
@@ -67,7 +67,7 @@ def armar_csv_funciones(archivo):
                 linea_return = linea
                 index_final = lineas.index(linea_return) + 1
                 cuerpo = lineas[index_inicial:index_final]
-                cuerpo_sin_comment = armar_csv_comentarios(cuerpo,nombre_funcion)
+                cuerpo_sin_comment = armar_csv_comentarios(cuerpo,nombre_funcion, modulo)
                 datos[nombre_funcion] = {"Parametros de la funcion":parametros,"Nombre del modulo":modulo,"Cuerpo de la funcion":cuerpo_sin_comment}
                 contador_def = 0
 
@@ -77,7 +77,7 @@ def armar_csv_funciones(archivo):
             if linea == lineas[len(lineas)-1]:
                 index_final = lineas.index(ultima_linea_indentada) + 1
                 cuerpo = lineas[index_inicial:index_final]
-                cuerpo_sin_comment = armar_csv_comentarios(cuerpo,nombre_funcion)
+                cuerpo_sin_comment = armar_csv_comentarios(cuerpo,nombre_funcion, modulo)
                 datos[nombre_funcion] = {"Parametros de la funcion":parametros,"Nombre del modulo":modulo,"Cuerpo de la funcion":cuerpo_sin_comment}
 
 
@@ -91,14 +91,14 @@ def armar_csv_funciones(archivo):
     #Ordeno el diccionario
         funciones_alfabeto = ordenar_alfabeticamente(datos)
 
-    return modulo_csv.armo_csv(funciones_alfabeto,nombre_archivo)
+    return modulo_csv.armo_csv(funciones_alfabeto,nombre_archivo, modulo)
 
-def armar_csv_comentarios(lista_cuerpo,nombre_funcion):
+def armar_csv_comentarios(lista_cuerpo,nombre_funcion, modulo):
     
     """[Autor: D]"""
     """[Ayuda: Remueve los comentarios de la funcion y crea el archivo comentarios.csv]""" 
     
-    #Declaracion de variables para simplificar mi existencia
+    #Declaracion de variables
     comentario_triple = '\"\"\"'
     nombre_archivo = 'comentarios.csv'
     autor = "[Autor:"
@@ -131,6 +131,6 @@ def armar_csv_comentarios(lista_cuerpo,nombre_funcion):
     comentarios_alfabeto = ordenar_alfabeticamente(datos_comentarios)
     
     #Genero el csv.
-    modulo_csv.armo_csv(comentarios_alfabeto,nombre_archivo)
+    modulo_csv.armo_csv(comentarios_alfabeto,nombre_archivo, modulo)
     
     return cuerpo_sin_comentarios
