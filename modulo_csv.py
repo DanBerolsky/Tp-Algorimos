@@ -17,13 +17,17 @@ def armo_csv(Estructura_de_datos,nombre_archivo):
 
             funcion = ", ".join(cuerpo)
             archivo_a_escribir = nombre_archivo + "_" + modulo + ".csv"
-            if archivo_a_escribir not in lista_modulos_fuente:
+            ya_esta = 0
+            index = 0
+            while ya_esta == 0 and index <= len(lista_modulos_fuente[0]) - 1:
+                if lista_modulos_fuente[0][index] == archivo_a_escribir:
+                    ya_esta = 1
+                index += 1
+            if ya_esta == 0:
                 lista_modulos_fuente[0].append(archivo_a_escribir)
-
             with open(archivo_a_escribir, "a") as codigo:
                 #Escribo en el csv
                 codigo.write(nombre_funcion+","+parametros+","+modulo+","+funcion+"\n")
-        
         merge.ciclar_modulos(lista_modulos_fuente)
     elif nombre_archivo == 'comentarios.csv':
         
@@ -42,8 +46,6 @@ def armo_csv(Estructura_de_datos,nombre_archivo):
             
                 #Escribo en el csv
                 codigo.write(nombre_funcion + "," + nombre_autor + "," + nombre_ayuda + "," + funcion + "\n")
-    
-    
 
 # def csv_existen(nombre_archivo):
     

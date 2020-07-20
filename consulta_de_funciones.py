@@ -1,4 +1,3 @@
-
 def armar_diccionarios():
     """[Autor: Valentin]"""
     """[Ayuda: Imprime la lista de funciones, y da la opción de mostrar información acerca de cada una.]"""
@@ -14,7 +13,7 @@ def armar_diccionarios():
                 parametros = datos[1]
                 modulo = datos[2]
                 cuerpo = [datos[3] + i for i in datos[4:]]
-                diccionario_fuente_unico[nombre_funcion.rstrip(" ")] = [parametros, modulo, cuerpo]
+                diccionario_fuente_unico[nombre_funcion] = [parametros, modulo, cuerpo]
                 linea = fuente_unico.readline().rstrip("\n")
 
     with open("comentarios.csv", "r") as comentarios:
@@ -25,7 +24,7 @@ def armar_diccionarios():
             autor = datos2[1]
             ayuda = datos2[2]
             lista_comentarios = datos2[3:]
-            diccionario_comentarios[nombre_funcion.rstrip(" ")] = [autor, ayuda, lista_comentarios]
+            diccionario_comentarios[nombre_funcion] = [autor, ayuda, lista_comentarios]
             linea_comentarios = comentarios.readline().rstrip("\n")
         return diccionario_fuente_unico, diccionario_comentarios
 
@@ -45,7 +44,7 @@ def generar_txt(dict_fuente, dict_comentarios, txt):
         if clave in dict_comentarios:
             indice_anterior = 0
             diccionario_slices[clave] = []
-            info_imprimir = "Nombre de la función: " + clave + ", " + "Parametros: " + str(dict_fuente[clave][0]) + ", " + "Modulo: " + str(dict_fuente[clave][1]) + ", " + "Autor: " + dict_comentarios[clave][0] + " " + "Ayuda: " + sacar_corchetes(str(dict_comentarios[clave][1])) + ", " + "Cuerpo: " + str(dict_fuente[clave][2]) + ", " + "Comentarios: " + str(dict_comentarios[clave][2]) + "\n\n"
+            info_imprimir = "Nombre de la función: " + clave + " " + "Parametros: " + str(dict_fuente[clave][0]) + "" + "Modulo: " + str(dict_fuente[clave][1]) + " " + "Autor: " + dict_comentarios[clave][0] + " " + "Ayuda: " + sacar_corchetes(str(dict_comentarios[clave][1])) + " " + "Cuerpo: " + str(dict_fuente[clave][2]) + " " + "Comentarios: " + str(dict_comentarios[clave][2]) + "\n\n "
             for caracter in range(len(info_imprimir)):
                 if caracter % 80 == 0:
                     diccionario_slices[clave].append(info_imprimir[indice_anterior:caracter])
@@ -57,6 +56,7 @@ def generar_txt(dict_fuente, dict_comentarios, txt):
         for lista in diccionario_slices:
             for item in range(len(diccionario_slices[lista])):
                 archivo.write(diccionario_slices[lista][item] + "\n")
+
 
 
 def generar_lista_total(dic):
@@ -96,19 +96,22 @@ def consultar_funciones(diccionario_fuente, diccionario_comentarios):
             if funcion.startswith("?") and funcion != "?todo":
                 print(sacar_corchetes(diccionario_comentarios[nombre_funcion][1]) + "\n" + "Parametros: " + str(diccionario_fuente[nombre_funcion][0]) + "\n" + "Modulo: " + str(diccionario_fuente[nombre_funcion][1]) + "\n" + sacar_corchetes(str(diccionario_comentarios[nombre_funcion][0])))
             elif funcion.startswith("#") and funcion != "#todo":
-                print(sacar_corchetes(str(diccionario_comentarios[nombre_funcion][0])) + "\n" + "Parametros: " + str(diccionario_fuente[nombre_funcion][0]) + "\n" + "Modulo: " + str(diccionario_fuente[nombre_funcion][1]) + "\n" + sacar_corchetes(str(diccionario_comentarios[nombre_funcion][1])) + "\n" + "Cuerpo: " + str(diccionario_fuente[nombre_funcion][2]) + "\n" + "Comentarios: " + str(diccionario_comentarios[nombre_funcion][2]))
+                print(sacar_corchetes(str(diccionario_comentarios[nombre_funcion][0])) + "\n" + "Parametros: " + str(diccionario_fuente[nombre_funcion][0]) + "\n" + "Modulo: " + str(diccionario_fuente[nombre_funcion][1]) + "\n" + "Ayuda: " + sacar_corchetes(str(diccionario_comentarios[nombre_funcion][1])) + "\n" + "Cuerpo: " + str(diccionario_fuente[nombre_funcion][2]) + "\n" + "Comentarios: " + str(diccionario_comentarios[nombre_funcion][2]))
             elif funcion == "?todo" or funcion == "#todo":
                 for i in diccionario_fuente:
                     if i in diccionario_comentarios:
-                        print("Autor: " + sacar_corchetes(diccionario_comentarios[i][0]) + "\n" + "Parametros: " + diccionario_fuente[i][0] + "\n" + "Modulo: " + diccionario_fuente[i][1] + "\n" + sacar_corchetes(diccionario_comentarios[i][1]) + "\n" + "Cuerpo: " + str(diccionario_fuente[i][2]) + "\n" + "Comentarios: " + str(diccionario_comentarios[i][2]))
+                        print("Autor: " + sacar_corchetes(diccionario_comentarios[i][0]) + "\n" + "Parametros: " + diccionario_fuente[i][0] + "\n" + "Modulo: " + diccionario_fuente[i][1] + "\n" + "Ayuda: " + sacar_corchetes(diccionario_comentarios[i][1]) + "\n" + "Cuerpo: " + str(diccionario_fuente[i][2]) + "\n" + "Comentarios: " + str(diccionario_comentarios[i][2]))
                         print("\n")
             elif funcion == "imprimir ?todo":
-                generar_txt(dic_fuente, dic_comentarios, "ayuda_funciones.txt")
+                pass
         else:
             print("La función especificada no existe. Por favor, ingrese una función valida")
         funcion = input("Función: ")
 dic_fuente, dic_comentarios, = armar_diccionarios()
 
-imprimir_funciones(generar_lista_total(dic_fuente))
-consultar_funciones(dic_fuente, dic_comentarios)
+def main_consulta_funciones():
+    print(imprimir_funciones(generar_lista_total(dic_fuente)))
+    generar_txt(dic_fuente, dic_comentarios, "ayuda_funciones.txt")
+    acomodar_txt("ayuda_funciones.txt")
+    consultar_funciones(dic_fuente, dic_comentarios)
 
