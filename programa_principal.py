@@ -10,6 +10,7 @@ def main():
     import m_generar_archivos_csv
     txt = 'programas.txt'
     m_generar_archivos_csv.armar_csv_funciones(txt)
+    
     funcionalidad = input("Ingrese la funcionalidad que quiere ver: ")
     while funcionalidad != "":
         if funcionalidad == 1:
