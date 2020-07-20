@@ -27,7 +27,7 @@ def ordenar_alfabeticamente(diccionario):
     """[Autor: b]"""
     """[Ayuda: Ordena diccionario de mayor a menor, respecto las claves del mismo. Devuelvo lista de tuplas]"""
     
-    return sorted(diccionario.items(), key = lambda clave: clave[0], reverse = False)
+    return sorted(diccionario.items(), key = lambda clave: clave[0])
 
 def armar_csv_funciones(archivo):
     
@@ -60,7 +60,7 @@ def armar_csv_funciones(archivo):
                     index_final = lineas.index(linea_return)
                     cuerpo = lineas[index_inicial_anterior:index_final]
                     cuerpo_sin_comment = armar_csv_comentarios(cuerpo,nombre_funcion)
-                    datos[nombre_funcion_anterior] = [parametros_anterior,modulo,cuerpo_sin_comment]
+                    datos[nombre_funcion_anterior] = {"Parametros de la funcion":parametros_anterior,"Nombre del modulo":modulo,"Cuerpo de la funcion":cuerpo_sin_comment}
                     contador_def = 1
                 
             if linea.strip().startswith("return "):
@@ -68,7 +68,7 @@ def armar_csv_funciones(archivo):
                 index_final = lineas.index(linea_return) + 1
                 cuerpo = lineas[index_inicial:index_final]
                 cuerpo_sin_comment = armar_csv_comentarios(cuerpo,nombre_funcion)
-                datos[nombre_funcion] = [parametros,modulo,cuerpo_sin_comment]
+                datos[nombre_funcion] = {"Parametros de la funcion":parametros,"Nombre del modulo":modulo,"Cuerpo de la funcion":cuerpo_sin_comment}
                 contador_def = 0
 
             if linea.startswith("    "):
@@ -78,7 +78,7 @@ def armar_csv_funciones(archivo):
                 index_final = lineas.index(ultima_linea_indentada) + 1
                 cuerpo = lineas[index_inicial:index_final]
                 cuerpo_sin_comment = armar_csv_comentarios(cuerpo,nombre_funcion)
-                datos[nombre_funcion] = [parametros,modulo,cuerpo_sin_comment]
+                datos[nombre_funcion] = {"Parametros de la funcion":parametros,"Nombre del modulo":modulo,"Cuerpo de la funcion":cuerpo_sin_comment}
 
 
 
@@ -125,7 +125,7 @@ def armar_csv_comentarios(lista_cuerpo,nombre_funcion):
             nombre_ayuda = comentarios.split(comentario_triple)[1].lstrip().split(comentario_triple)[0]
             
             #me creo el diccionario con los campos que necesito
-            datos_comentarios[nombre_funcion] = [nombre_autor,nombre_ayuda,resto]
+            datos_comentarios[nombre_funcion] = {"Nombre del autor":nombre_autor,"informacion de ayuda":nombre_ayuda,"Resto de lineas comentadas":resto}
             
     #Ordeno el diccionario, respecto sus claves
     comentarios_alfabeto = ordenar_alfabeticamente(datos_comentarios)
