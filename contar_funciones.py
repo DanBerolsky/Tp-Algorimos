@@ -1,7 +1,5 @@
 def contar_funciones(linea):
-    """[Autor : F] 
-        [Ayuda: Funciones]
-    """
+    """[Autor : F] """
     cantidad_funciones = {"if": 0, "while": 0, "for": 0, "returns": 0, "break": 0, "exit": 0, "ayuda": 0}
     if linea.strip().startswith("if"):
         cantidad_funciones["if"] += 1
