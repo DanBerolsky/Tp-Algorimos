@@ -5,8 +5,9 @@ import tabulate
 def organizar_datos(lista):
     """[Autor: Luis Andrade]
        [Ayuda: Crea el diccionario inicial y contiene los campos Nombre
-       de Funcion, Cantidad de Parametros, Canitdad de Lineas
+       de Funcion, Cantidad de Parametros, Canitdad de Lineas]
     """
+    j = 0
     primeros_3 = {"Nombre de Funcion": lista[0] + '.' + lista[2], "Cantidad de Parametros": lista[1].count('('),
                   "Cantidad de Lineas": len(lista) - 3}
     return primeros_3
@@ -34,9 +35,11 @@ def contar_elementos_varios(lista, lista_comentarios):
        [Ayuda: Crea otro diccionario que contiene la cantidad de if, while
        for, returns, break, exit y ayuda
     """
-    cantidad_elementos = {"if": 0, "while": 0, "for": 0, "returns": 0, "break": 0, "exit": 0, "ayuda": "NO"}
+    cantidad_elementos = {"if": 0, "while": 0, "for": 0, "returns": 0, "break": 0, "exit": 0, "autor": "",
+                          "ayuda": "NO"}
     j = 4
     while j < len(lista):
+
         if lista[j].strip().startswith("if") or lista[j].strip().startswith(
                 "elif"):  # cantidad de if / elif
             cantidad_elementos["if"] += 1
@@ -50,8 +53,10 @@ def contar_elementos_varios(lista, lista_comentarios):
             cantidad_elementos["break"] += 1
         elif lista[j].strip().startswith("exit"):
             cantidad_elementos["exit"] += 1
-        if lista_comentarios[2].strip().startswith("[Ayuda:"):
-            cantidad_elementos["ayuda"] = "SI"
+        cantidad_elementos["autor"] = lista_comentarios[1].strip()
+        cantidad_elementos["ayuda"] = lista_comentarios[
+            2].strip()  # preguntar si debo meter lo que dice ayuda con Todos
+
         j = j + 1
     return cantidad_elementos
 
@@ -63,18 +68,19 @@ def panel_principal():
     """
     # Abro el archivo de comentarios
     with open('comentarios.csv', 'r') as comentarios:
-        lector = csv.reader(comentarios)
+        reader = csv.reader(comentarios)
         lista_de_comentarios = []
-        for fila in lector:
+        for fila in reader:
             lista_de_comentarios.append(fila)
     # Abro el archivo fuente unico
     with open('fuente_unico.csv', 'r') as file:
-        lector = csv.reader(file)
+        reader = csv.reader(file)
         lista_completa = []
         lista_final = {}
         datos = []
-        for fila2 in lector:
-            lista_completa.append(fila2)
+        for row in reader:
+            lista_completa.append(row)
+        lista1 = lista_completa
         i = 0
         # se recorre linea a linea las listas creadas
         while i < len(lista_completa):
