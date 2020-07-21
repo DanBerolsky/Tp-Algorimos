@@ -1,13 +1,7 @@
 def escribir(linea, archivo):
-    """[Autor: (FILL)]
-        [Ayuda : (FILL)]
-    """
     archivo.write(linea)
 
 def merge_2(modulo1, modulo2, modulo_a_escribir):
-    """[Autor: (FILL)]
-        [Ayuda : (FILL)]
-    """
     modulo1 = open(modulo1)
     modulo2 = open(modulo2)
     linea1 = modulo1.readline()
@@ -36,9 +30,6 @@ def merge_2(modulo1, modulo2, modulo_a_escribir):
 
 
 def ciclar_modulos(lista_modulos, tipo):
-    """[Autor: (FILL)]
-        [Ayuda : (FILL)]
-    """
     if tipo == 1:
         index_nombre = 0
         while len(lista_modulos[-1]) > 1:
@@ -87,6 +78,6 @@ def ciclar_modulos(lista_modulos, tipo):
                     merge_2(lista_modulos[-2][index], lista_modulos[-2][index - 1], nombre_a_escribir)
                     index += 2    
                     lista_modulos[-1].append(nombre_a_escribir)
-        #merge_2(lista_modulos[-1][0], lista_modulos[-1][1], "comentarios.csv")"""
+        """merge_2(lista_modulos[-1][0], lista_modulos[-1][1], "comentarios.csv")"""
 
 
