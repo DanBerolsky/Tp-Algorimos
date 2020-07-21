@@ -55,7 +55,8 @@ def contar_elementos_varios(lista, lista_comentarios):
             cantidad_elementos["exit"] += 1
         cantidad_elementos["autor"] = lista_comentarios[1].strip()
         cantidad_elementos["ayuda"] = lista_comentarios[
-            2].strip()  # preguntar si debo meter lo que dice ayuda con Todos
+            2].strip()
+        """ preguntar si debo meter lo que dice ayuda con Todos"""
 
         j = j + 1
     return cantidad_elementos
@@ -66,13 +67,13 @@ def panel_principal():
         [Ayuda: Funcion principal del panel principal, se encarga de
         tabular y unir todos los elementos
     """
-    # Abro el archivo de comentarios
+    """Abro el archivo de comentarios"""
     with open('comentarios.csv', 'r') as comentarios:
         reader = csv.reader(comentarios)
         lista_de_comentarios = []
         for fila in reader:
             lista_de_comentarios.append(fila)
-    # Abro el archivo fuente unico
+    """Abro el archivo fuente unico"""
     with open('fuente_unico.csv', 'r') as file:
         reader = csv.reader(file)
         lista_completa = []
@@ -82,18 +83,18 @@ def panel_principal():
             lista_completa.append(row)
         lista1 = lista_completa
         i = 0
-        # se recorre linea a linea las listas creadas
+        """se recorre linea a linea las listas creadas"""
         while i < len(lista_completa):
             lista_final_1 = organizar_datos(lista_completa[i])
             lista_final_2 = contar_invocaciones(lista_completa[i][0], lista_completa)
             lista_final_3 = contar_elementos_varios(lista_completa[i], lista_de_comentarios[i])
-            # actualizando los diccionarios con cada uno de los procesos por separado
+            """actualizando los diccionarios con cada uno de los procesos por separado"""
             lista_final.update(lista_final_1)
             lista_final.update(lista_final_2)
             lista_final.update(lista_final_3)
             datos.append(lista_final)
             lista_final = {}
-            # uniendo todos los diccionarios en una lista
+            """uniendo todos los diccionarios en una lista"""
             i = i + 1
 
     header = datos[0].keys()
