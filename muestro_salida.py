@@ -6,4 +6,3 @@ def impresiones (contenido_a_mostrar):
 
     print(contenido_a_mostrar)
 
-    return None
