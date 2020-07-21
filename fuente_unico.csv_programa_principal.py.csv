@@ -1,0 +1,1 @@
+main,(),programa_principal.py,    ,     ,     import m_generar_archivos_csv,     txt = 'programas.txt',     m_generar_archivos_csv.armar_csv_funciones(txt), 

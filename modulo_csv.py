@@ -1,5 +1,5 @@
 import merge
-def armo_csv(Estructura_de_datos,nombre_archivo, modulo):
+def armo_csv(Estructura_de_datos,nombre_archivo, modulo, lista_modulos_comentarios):
     """ [Autor: Dan]
         [Ayuda: Recibo el nombre de archivo a escribir y la estructura de datos 
         correspondiente, la cual viene dada por una lista de tuplas,Crea y agrega 
@@ -47,10 +47,10 @@ def armo_csv(Estructura_de_datos,nombre_archivo, modulo):
                 archivo_fuente_unico.write(nombre_funcion+","+parametros+","+modulo+","+funcion+"\n")
         fuente_unico = 1
         merge.ciclar_modulos(lista_modulos_fuente, fuente_unico)
+        merge.ciclar_modulos(lista_modulos_comentarios, lista_modulos_comentarios)
 
     elif nombre_archivo == 'comentarios.csv':
         # recorro la lista de tuplas y capturo los datos deseados   
-        lista_modulos_comentarios = [[]]
         for elementos in Estructura_de_datos:
 
             #Modelo de parametros
@@ -64,23 +64,12 @@ def armo_csv(Estructura_de_datos,nombre_archivo, modulo):
             # Genera un nombre diferente para cada funcion, para despues hacer el merge.
             archivo_a_escribir = nombre_archivo + "_" + modulo + ".csv"    
 
-            ya_esta = 0
-            index = 0
-            
-            while ya_esta == 0 and index <= len(lista_modulos_comentarios[0]) - 1:
-                
-                if lista_modulos_comentarios[0][index] == archivo_a_escribir:
-                    ya_esta = 1
-                index += 1
-            
-            if ya_esta == 0:
-                lista_modulos_comentarios[0].append(archivo_a_escribir)
+
             
             # Crea/abre el csv recivido por parametro.
             with open (archivo_a_escribir, "a") as archivo_comentarios:
 
                 #Escribo en el csv
                 archivo_comentarios.write(nombre_funcion + "," + nombre_autor + "," + nombre_ayuda + "," + funcion + "\n") 
-        
-        comentarios = 0
-        merge.ciclar_modulos(lista_modulos_comentarios, comentarios)
+
+        return archivo_a_escribir

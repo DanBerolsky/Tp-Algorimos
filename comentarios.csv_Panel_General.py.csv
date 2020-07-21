@@ -1,0 +1,4 @@
+contar_elementos_varios,[Autor: Luis Andrade],           [Ayuda: Crea otro diccionario que contiene la cantidad de if, while       for, returns, break, exit y ayuda    ,                "elif"):  # cantidad de if / elif
+contar_invocaciones,[Autor: Luis Andrade],           [Ayuda: Crea otro diccionario que contiene la cantidad de Invoca       ciones]    ,
+organizar_datos,[Autor: Luis Andrade],           [Ayuda: Crea el diccionario inicial y contiene los campos Nombre       de Funcion, Cantidad de Parametros, Canitdad de Lineas    ,
+panel_principal,[Autor: Luis Andrade],            [Ayuda: Funcion principal del panel principal, se encarga de        tabular y unir todos los elementos    ,    # Abro el archivo de comentarios,     # Abro el archivo fuente unico,         # se recorre linea a linea las listas creadas,             # actualizando los diccionarios con cada uno de los procesos por separado,             # uniendo todos los diccionarios en una lista

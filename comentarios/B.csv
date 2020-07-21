@@ -1,0 +1,9 @@
+contar_elementos_varios,[Autor: Luis Andrade],           [Ayuda: Crea otro diccionario que contiene la cantidad de if, while       for, returns, break, exit y ayuda    ,                "elif"):  # cantidad de if / elif
+contar_invocaciones,[Autor: Luis Andrade],           [Ayuda: Crea otro diccionario que contiene la cantidad de Invoca       ciones]    ,
+es_primo,[Autor: Juan Perez],           [Ayuda: Evlua si el numero recibido es primo o no, devolviendo True en        caso de serlo, y False en caso contrario.]    ,        # Evaluacion de si el numero es primo
+factorial,[Autor: Juan Perez],           [Ayuda: Calcula el factorial de el numero recibido, que debe ser        mayor o igual a cero]    ,
+mcd,[Autor: Ana Garcia],           [Ayuda: Calcula el MCD entre los dos numeros recibidos, utilizando el        metodo de Euclides. En caso de no existir MCD, devolverá -1.]    ,    if menor == mayor == 0:   # Si ambos iguales a 0 no es posible mcd,     else:                     # Implementacion del algoritmo de Euclides
+mcm,[Autor: Ana Garcia],           [Ayuda: Calcula el MCM (minimo comun multiplo) entre los dos numeros        recibidos. En caso de no existir, devolverá -1.        Para el calculo se utiliza mcm(a,b) = (a*b)/MCD(a,b)]    ,
+organizar_datos,[Autor: Luis Andrade],           [Ayuda: Crea el diccionario inicial y contiene los campos Nombre       de Funcion, Cantidad de Parametros, Canitdad de Lineas    ,
+panel_principal,[Autor: Luis Andrade],            [Ayuda: Funcion principal del panel principal, se encarga de        tabular y unir todos los elementos    ,    # Abro el archivo de comentarios,     # Abro el archivo fuente unico,         # se recorre linea a linea las listas creadas,             # actualizando los diccionarios con cada uno de los procesos por separado,             # uniendo todos los diccionarios en una lista
+potencia,,,

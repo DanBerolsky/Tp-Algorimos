@@ -46,15 +46,15 @@ def armar_csv_funciones(archivo):
     #Abro los modulos
     modulos = abro_ar(archivo)
     ultima_linea_indentada = None
+    lista_modulos_comentarios = [[]]
     #Itero a traves de los modulos del txt
     for modulo in modulos:
         lineas = abro_ar(modulo)
         contador_def = 0
         datos_comentarios = {}
-        
         for linea in lineas:
                   
-            #Busco la linea que comienze por def para encontrar el nombre de la funcion, sus parametros y cuerpo
+            #Busco la linea que comience por def para encontrar el nombre de la funcion, sus parametros y cuerpo
             if linea.startswith('def '):
                 funcion = linea
                 index_inicial = lineas.index(funcion) + 1
@@ -99,8 +99,8 @@ def armar_csv_funciones(archivo):
     #Ordeno el diccionario
         funciones_alfabeto = ordenar_alfabeticamente(datos)
         comentarios_alfabeto = ordenar_alfabeticamente(datos_comentarios)
-        modulo_csv.armo_csv(comentarios_alfabeto,'comentarios.csv',modulo)
-    return modulo_csv.armo_csv(funciones_alfabeto,nombre_archivo, modulo) 
+        lista_modulos_comentarios[0].append(modulo_csv.armo_csv(comentarios_alfabeto,'comentarios.csv',modulo, lista_modulos_comentarios))
+    return modulo_csv.armo_csv(funciones_alfabeto,nombre_archivo, modulo, lista_modulos_comentarios) 
 
 def armar_csv_comentarios(lista_cuerpo,nombre_funcion, modulo):
     

@@ -1,12 +1,12 @@
 def escribir(linea, archivo):
-    """[Autor: (FILL)]
-        [Ayuda : (FILL)]
+    """[Autor: Valentin]
+        [Ayuda : Escribe el parametro linea en el parametro archivo]
     """
     archivo.write(linea)
 
 def merge_2(modulo1, modulo2, modulo_a_escribir):
-    """[Autor: (FILL)]
-        [Ayuda : (FILL)]
+    """[Autor: Valentin]
+    [Ayuda : Mergea 2 archivos en 1 nuevo]
     """
     modulo1 = open(modulo1)
     modulo2 = open(modulo2)
@@ -36,8 +36,9 @@ def merge_2(modulo1, modulo2, modulo_a_escribir):
 
 
 def ciclar_modulos(lista_modulos, tipo):
-    """[Autor: (FILL)]
-        [Ayuda : (FILL)]
+    """[Autor: Valentin]
+        [Ayuda : Recorre los modulos de las listas hasta llegar a un archivo con la información 
+        de todos los demas]
     """
     if tipo == 1:
         index_nombre = 0
@@ -48,7 +49,7 @@ def ciclar_modulos(lista_modulos, tipo):
                 index = 1
                 lista_modulos.append([])
                 while (index <= len(lista_modulos[-2]) - 1):
-                    nombre_a_escribir = str(index_nombre) + ".csv"
+                    nombre_a_escribir = ".\\fuente_unico\\" + str(index_nombre) + ".csv"
                     index_nombre += 1
                     merge_2(lista_modulos[-2][index], lista_modulos[-2][index - 1], nombre_a_escribir)
                     index += 2    
@@ -58,7 +59,7 @@ def ciclar_modulos(lista_modulos, tipo):
                 index = 1
                 lista_modulos.append([])
                 while (index <= len(lista_modulos[-2]) - 1):
-                    nombre_a_escribir = str(index_nombre) + ".csv"
+                    nombre_a_escribir = ".\\fuente_unico\\" + str(index_nombre) + ".csv"
                     index_nombre += 1
                     merge_2(lista_modulos[-2][index], lista_modulos[-2][index - 1], nombre_a_escribir)
                     index += 2    
@@ -73,21 +74,19 @@ def ciclar_modulos(lista_modulos, tipo):
                 index = 1
                 lista_modulos.append([])
                 while (index <= len(lista_modulos[-2]) - 1):
-                    nombre_a_escribir = chr(index_nombre) + ".csv"
+                    nombre_a_escribir = ".\\comentarios\\" + chr(index_nombre) + ".csv"
                     index_nombre += 1
                     merge_2(lista_modulos[-2][index], lista_modulos[-2][index - 1], nombre_a_escribir)
                     index += 2    
                     lista_modulos[-1].append(nombre_a_escribir)
                 lista_modulos[-1].append(ult_elemento_impar)
             else:
-                index = 65
+                index = 1
                 lista_modulos.append([])
                 while (index <= len(lista_modulos[-2]) - 1):
-                    nombre_a_escribir = chr(index_nombre) + ".csv"
+                    nombre_a_escribir = ".\\comentarios\\" + chr(index_nombre) + ".csv"
                     index_nombre += 1
                     merge_2(lista_modulos[-2][index], lista_modulos[-2][index - 1], nombre_a_escribir)
                     index += 2    
                     lista_modulos[-1].append(nombre_a_escribir)
-        #merge_2(lista_modulos[-1][0], lista_modulos[-1][1], "comentarios.csv")"""
-
-
+        merge_2(lista_modulos[-1][0], lista_modulos[-1][1], "comentarios.csv")
