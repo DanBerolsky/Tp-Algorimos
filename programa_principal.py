@@ -1,5 +1,5 @@
 #Programa principal
-
+import quien_invoca
 def main():
     
     """[Autor: L]"""

@@ -1,9 +1,13 @@
 #Declaro nombre archivo
 fuente = 'fuente_unico.csv'
+
 def leer_csv(nombre_csv):
-    """[Autor: Alfonso] """
-    """[Ayuda: Hace la lectura del csv] """
+    """[Autor: Alfonso]
+        Ayuda: Hace la lectura del csv] 
+    """
+        
     dicc_csv = {}
+    
     for linea in open(nombre_csv, 'r').readlines():
         linea = linea.strip().split(',')
         dicc_csv[linea[0]] = linea[1:] 
@@ -20,8 +24,9 @@ def archivo_analizador(texto):
     return None
 
 def quien_invoca_a_quien():
-    """[Autor: Alfonso]"""
-    """[Ayuda: Genera un diccionario de quien inoca a quien, teniendo como clave el nombre de la funcion y como valores una lista de lista con cuantas veces lo invoca]"""
+    """[Autor: Alfonso]
+       [Ayuda: Genera un diccionario de quien inoca a quien, teniendo como clave el nombre de la funcion y como valores una lista de lista con cuantas veces lo invoca]
+    """
     #Invoco para leer el csv y que me devuelva un diccionario
     diccionario_csv = leer_csv(fuente)
     nombre_funcion = []
@@ -61,19 +66,17 @@ def quien_invoca_a_quien():
  
  
 def primer_item_lista(lista): 
-    """[Autor: Alfonso]"""
-    """[Ayuda: Busca el primer item de una lista]"""
+    """[Autor: Alfonso]
+        [Ayuda: Busca el primer item de una lista]
+    """
+    
     return [item[0] for item in lista] 
 
 def armar_tabla():
-    """[Autor: Alfonso]"""
-    """[Ayuda: Genera tres listas, una con el titulo, una lista de listas con cada linea y espacio, y los totales]"""   
-    #Lista de todas las funciones en el codigo
-    lista_funciones = quien_invoca_a_quien()[0]
+    """[Autor: Alfonso]
+    [Ayuda: Genera tres listas, una con el titulo, una lista de listas con cada linea y espacio, y los totales]"""   
     
-    #Diccionario de funciones y quien invoca a quien
-    dicc_datos = quien_invoca_a_quien()[1]
-    
+    lista_funciones , dicc_datos = quien_invoca_a_quien()
     #Enumero las funciones
     enum_datos = list(enumerate(lista_funciones,1))
     
@@ -83,20 +86,12 @@ def armar_tabla():
     #Csv de numero para el titulo
     numeros = ','.join(map(str, posicion))
     
-    
     #Calculo la maxima cantidad de funciones
-    maximo =max(posicion)
-    #Formato de Titulo
-    titulo = posicion
-    
-    #Hay 32
-    titulo.insert(0,"Funciones                       ")
-    
-    lista_total = []
-    
+    maximo,titulo = formato_titulo(posicion)
+    lista_total = []   
+    vacio = " "
     #Reviso el enumerate por funcion
     for numero,funcion in enum_datos:
-        
         
         #Creo una variable para llenar la tabla
         conteo = 1
@@ -107,14 +102,12 @@ def armar_tabla():
         #Genero la lista que voy a imprimir con el primer campo
         lista_a_imprimir = [primer_campo.ljust(32)]
         
-        veces = " "
-        veces_doble = "  "
-        
         #Lleno la tabla con vacios
         while conteo <= maximo:
             
-            lista_a_imprimir.append(veces)
-            conteo = conteo +1
+            lista_a_imprimir.append(vacio)
+            conteo += 1
+        
             
         for clave, valor in dicc_datos.items():
             for lista in valor:
@@ -132,7 +125,7 @@ def armar_tabla():
             for i,j in dicc_informacion:
                 
                 #Calculo a cual funcion invoco basada en el numero
-                numero_invocada =   [l for l in enum_datos if i in l]
+                numero_invocada =   [l for l in enum_datos if i in l] 
                 
                 funcion_a_invocar = numero_invocada[0][0]
                 
@@ -145,8 +138,8 @@ def armar_tabla():
     
     
     #Hago una lista de listas de los totales reemplazando los vacios por 0 para poder sumarlo
-    lista_totales_numero = [list(map(lambda x: x if x != ' ' else 0 , i)) for i in lista_total]     
-    lista_totales_numero_2 = [list(map(lambda x: x if x != 'X' else 0, i)) for i in lista_totales_numero]       
+    lista_totales_numero = borrar_un_valor_lista(lista_total,vacio)
+    lista_totales_numero_2 = borrar_un_valor_lista(lista_totales_numero, 'X')   
     borrar_primer_indice(lista_totales_numero_2)
     
     totales = sumar_totales(lista_totales_numero_2)  
@@ -155,11 +148,25 @@ def armar_tabla():
     return titulo, lista_total, totales
             
 def borrar_primer_indice(lista):
+    """ [Autor: Alfonso]
+        [Ayuda: Borra el primer indice de una lista, acepta como parametro de entrada una lista]
+    """
+    
     for i in lista:
         del i[0]          
     return lista
 
+def borrar_un_valor_lista(lista,valor):
+    """ [Autor: Alfonso]
+        [Ayuda: Reemplaza un valor en especifico de una lista por vacio]
+    """
+    lista_valor =[list(map(lambda x: x if x!= valor else 0, i)) for i in lista]
+    return lista_valor
+
 def sumar_totales(lista):
+    """ [Autor: Alfonso]
+        [Ayuda: Sumariza la columna de una matriz]
+    """
     totales = []  
     for columna_matriz in enumerate(lista[0]):
         suma_columna = sum([x[columna_matriz[0]] for x in lista])
@@ -167,26 +174,38 @@ def sumar_totales(lista):
     totales.insert(0,"Total Invocaciones              ")
     return totales
 
+def formato_titulo(lista):
+    """ [Autor: Alfonso]
+        [Ayuda: Le da formato al titulo]
+    """
+    #Calculo la maxima cantidad de funciones
+    maximo =max(lista)
+    #Formato de Titulo
+    titulo = lista
+    #Hay 32
+    titulo.insert(0,"Funciones                       ")
+    
+    return maximo,titulo
+    
 
-def latabla():
+
+def la_tabla():
+    """ [Autor: Alfonso]
+        [Ayuda: Armado de la tabla para el analizador]
+    """
     titulo, cuerpo, total = armar_tabla()
     
+    #Titulo
     titulo = formato_tabla(titulo)
     print(titulo)
     titulo = titulo + "\n"
     archivo_analizador(titulo)
     
-    for i in cuerpo:
-        i = dos_digitos(i)
-        i = formato_tabla(i)
-        print(i)
-        i = i + '\n'
-        archivo_analizador(i)
-        
-      
-    total = dos_digitos(total)    
-    total = remover_ceros(total)      
-    total = formato_tabla(total)  
+    #Cuerpo
+    formato_cuerpo(cuerpo)
+    
+    #Total
+    total = formato_tabla(remover_ceros(correcto_espaciado(total)))
     print(total)
     total = total + "\n"
     archivo_analizador(total)
@@ -194,16 +213,39 @@ def latabla():
     return None
         
 def formato_tabla(lista):   
+    """[Autor: Alfonso]
+        [Ayuda: Le da formato de tabla a una lista con espaciado y divisiones]
+    """
+    
     str_nuevo = ' | '.join(map(str, lista))
     return str_nuevo
 
-def dos_digitos(lista):
+def formato_cuerpo(lista):
+    """[Autor: Alfonso]
+    [Ayuda: Le da formato a una lista para que imprima el cuerpo]
+    """
+    for i in lista:
+        i = formato_tabla(correcto_espaciado(i))
+        print(i)
+        i = i + '\n'
+        archivo_analizador(i)
+    return i
+
+def correcto_espaciado(lista):
+    """[Autor: Alfonso]
+    [Ayuda: Modifica el espaciado de los espacios en blanco para que quede a la par cada columna despues de la decima]
+    """
     for j,k in enumerate(lista):
             if j >= 10:
                lista[j] = ' ' + str(k)
             elif j >= 100:
-                lista[j] = ' ' + str(k)
+                lista[j] = '  ' + str(k)
     return lista
 def remover_ceros(lista):
+    """[Autor: Alfonso]
+    [Ayuda: Reemplaza por un espacio los 0 que se encuentren en una lista]
+    """
     reemplazo =[' ' if i==0 else i for i in lista]
     return reemplazo
+
+la_tabla()
