@@ -42,6 +42,7 @@ def armar_csv_funciones(archivo):
     nombre_archivo = "fuente_unico.csv"
     datos = {}
     
+    
     #Abro los modulos
     modulos = abro_ar(archivo)
     ultima_linea_indentada = None
@@ -49,6 +50,8 @@ def armar_csv_funciones(archivo):
     for modulo in modulos:
         lineas = abro_ar(modulo)
         contador_def = 0
+        datos_comentarios = {}
+        
         for linea in lineas:
                   
             #Busco la linea que comienze por def para encontrar el nombre de la funcion, sus parametros y cuerpo
@@ -63,7 +66,8 @@ def armar_csv_funciones(archivo):
                     linea_return = linea
                     index_final = lineas.index(linea_return)
                     cuerpo = lineas[index_inicial_anterior:index_final]
-                    cuerpo_sin_comment = armar_csv_comentarios(cuerpo,nombre_funcion, modulo)
+                    cuerpo_sin_comment,nombre_autor,nombre_ayuda,resto = armar_csv_comentarios(cuerpo,nombre_funcion, modulo)
+                    datos_comentarios[nombre_funcion] = {"Nombre del autor":nombre_autor,"informacion de ayuda":nombre_ayuda,"Resto de lineas comentadas":resto}
                     datos[nombre_funcion_anterior] = {"Parametros de la funcion":parametros_anterior,"Nombre del modulo":modulo,"Cuerpo de la funcion":cuerpo_sin_comment}
                     contador_def = 1
                 
@@ -71,7 +75,8 @@ def armar_csv_funciones(archivo):
                 linea_return = linea
                 index_final = lineas.index(linea_return) + 1
                 cuerpo = lineas[index_inicial:index_final]
-                cuerpo_sin_comment = armar_csv_comentarios(cuerpo,nombre_funcion, modulo)
+                cuerpo_sin_comment,nombre_autor,nombre_ayuda,resto = armar_csv_comentarios(cuerpo,nombre_funcion, modulo)
+                datos_comentarios[nombre_funcion] = {"Nombre del autor":nombre_autor,"informacion de ayuda":nombre_ayuda,"Resto de lineas comentadas":resto}
                 datos[nombre_funcion] = {"Parametros de la funcion":parametros,"Nombre del modulo":modulo,"Cuerpo de la funcion":cuerpo_sin_comment}
                 contador_def = 0
 
@@ -81,7 +86,8 @@ def armar_csv_funciones(archivo):
             if linea == lineas[len(lineas)-1]:
                 index_final = lineas.index(ultima_linea_indentada) + 1
                 cuerpo = lineas[index_inicial:index_final]
-                cuerpo_sin_comment = armar_csv_comentarios(cuerpo,nombre_funcion, modulo)
+                cuerpo_sin_comment,nombre_autor,nombre_ayuda,resto = armar_csv_comentarios(cuerpo,nombre_funcion, modulo)
+                datos_comentarios[nombre_funcion] = {"Nombre del autor":nombre_autor,"informacion de ayuda":nombre_ayuda,"Resto de lineas comentadas":resto}
                 datos[nombre_funcion] = {"Parametros de la funcion":parametros,"Nombre del modulo":modulo,"Cuerpo de la funcion":cuerpo_sin_comment}
                 
             if linea.startswith('def '):
@@ -92,8 +98,9 @@ def armar_csv_funciones(archivo):
 
     #Ordeno el diccionario
         funciones_alfabeto = ordenar_alfabeticamente(datos)
-    
-    return modulo_csv.armo_csv(funciones_alfabeto,nombre_archivo, modulo)
+        comentarios_alfabeto = ordenar_alfabeticamente(datos_comentarios)
+        modulo_csv.armo_csv(comentarios_alfabeto,'comentarios.csv',modulo)
+    return modulo_csv.armo_csv(funciones_alfabeto,nombre_archivo, modulo) 
 
 def armar_csv_comentarios(lista_cuerpo,nombre_funcion, modulo):
     
@@ -121,14 +128,14 @@ def armar_csv_comentarios(lista_cuerpo,nombre_funcion, modulo):
     
     #Itero atraves de las lineas comentadas para encontrar el autor y ayuda
     #me creo el diccionario con los campos que necesito
-    datos_comentarios[nombre_funcion] = {"Nombre del autor":nombre_autor,"informacion de ayuda":nombre_ayuda,"Resto de lineas comentadas":resto}
+    #datos_comentarios[nombre_funcion] = {"Nombre del autor":nombre_autor,"informacion de ayuda":nombre_ayuda,"Resto de lineas comentadas":resto}
             
     #Ordeno el diccionario, respecto sus claves
-    comentarios_alfabeto = ordenar_alfabeticamente(datos_comentarios)
+    #comentarios_alfabeto = ordenar_alfabeticamente(datos_comentarios)
     #Genero el csv.
-    modulo_csv.armo_csv(comentarios_alfabeto,nombre_archivo, modulo)
+    #modulo_csv.armo_csv(comentarios_alfabeto,nombre_archivo, modulo)
     
-    return cuerpo_sin_comentarios
+    return cuerpo_sin_comentarios ,nombre_autor,nombre_ayuda,resto
 
 
 
