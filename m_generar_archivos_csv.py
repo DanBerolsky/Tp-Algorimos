@@ -83,7 +83,7 @@ def armar_csv_funciones(archivo):
                 cuerpo = lineas[index_inicial:index_final]
                 cuerpo_sin_comment = armar_csv_comentarios(cuerpo,nombre_funcion, modulo)
                 datos[nombre_funcion] = {"Parametros de la funcion":parametros,"Nombre del modulo":modulo,"Cuerpo de la funcion":cuerpo_sin_comment}
-
+                
             if linea.startswith('def '):
                 funcion = linea
                 index_inicial_anterior = lineas.index(funcion) + 1
@@ -107,7 +107,6 @@ def armar_csv_comentarios(lista_cuerpo,nombre_funcion, modulo):
     #Busco las lineas comentadas y me quedo con una lista de las lineas comentadas
     resto = [i for i in lista if '#' in i]
     lineas_multiples = lista_comentarios(lista)
-    
     
     if not resto:
         lineas_comentadas = lineas_multiples 
@@ -166,4 +165,3 @@ def  autor_ayuda(lista):
     return nombre_autor, nombre_ayuda
 
 
-armar_csv_funciones('programas.txt')
