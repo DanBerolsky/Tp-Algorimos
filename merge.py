@@ -41,7 +41,7 @@ def ciclar_modulos(lista_modulos, tipo):
     """
     if tipo == 1:
         index_nombre = 0
-        while len(lista_modulos[-1]) > 1:
+        while len(lista_modulos[-1]) > 2:
             if len(lista_modulos[-1]) % 2 != 0:
                 ult_elemento_impar = lista_modulos[-1][-1]
                 lista_modulos[-1].remove(lista_modulos[-1][-1])
@@ -63,9 +63,10 @@ def ciclar_modulos(lista_modulos, tipo):
                     merge_2(lista_modulos[-2][index], lista_modulos[-2][index - 1], nombre_a_escribir)
                     index += 2    
                     lista_modulos[-1].append(nombre_a_escribir)
+        merge_2(lista_modulos[-1][0], lista_modulos[-1][1], "fuente_unico.csv")
     else:
         index_nombre = 65
-        while len(lista_modulos[-1]) > 1:
+        while len(lista_modulos[-1]) > 2:
             if len(lista_modulos[-1]) % 2 != 0:
                 ult_elemento_impar = lista_modulos[-1][-1]
                 lista_modulos[-1].remove(lista_modulos[-1][-1])

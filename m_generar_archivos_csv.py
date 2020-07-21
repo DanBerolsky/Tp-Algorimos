@@ -103,7 +103,7 @@ def armar_csv_comentarios(lista_cuerpo,nombre_funcion, modulo):
     #Declaracion de variables
     nombre_archivo = 'comentarios.csv'
     datos_comentarios = {}
-    lista = lista_cuerpo    
+    lista = lista_cuerpo
     #Busco las lineas comentadas y me quedo con una lista de las lineas comentadas
     resto = [i for i in lista if '#' in i]
     lineas_multiples = lista_comentarios(lista)
@@ -120,7 +120,7 @@ def armar_csv_comentarios(lista_cuerpo,nombre_funcion, modulo):
     cuerpo_sin_comentarios = [x for x in lista if x not in lineas_comentadas]
     
     #Itero atraves de las lineas comentadas para encontrar el autor y ayuda
-            #me creo el diccionario con los campos que necesito
+    #me creo el diccionario con los campos que necesito
     datos_comentarios[nombre_funcion] = {"Nombre del autor":nombre_autor,"informacion de ayuda":nombre_ayuda,"Resto de lineas comentadas":resto}
             
     #Ordeno el diccionario, respecto sus claves
@@ -145,7 +145,7 @@ def lista_comentarios(lista):
             index_lista.append(index)
     if index_lista:
         inicial = index_lista[0]
-        final = index_lista[1]+1
+        final = index_lista[1] +1
         comentarios_triples = lista[inicial:final]
         
     return comentarios_triples
@@ -153,8 +153,9 @@ def lista_comentarios(lista):
    
    
 def  autor_ayuda(lista):
-    """[Autor: Alfonso]
-    [Ayuda: Remueve los comentarios de la funcion y crea el archivo comentarios.csv]
+    """[Autor: Alfonso],
+    [Ayuda: Remueve los comentarios de la funcion
+    y crea el archivo comentarios.csv]
     """    
     nombre_autor = ""
     for i in lista:
@@ -163,5 +164,3 @@ def  autor_ayuda(lista):
     b = ''.join(lista)        
     nombre_ayuda = b.replace(nombre_autor,'').replace('"""','')
     return nombre_autor, nombre_ayuda
-
-
