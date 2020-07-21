@@ -4,8 +4,8 @@ import muestro_salida
 
 def capturo_datos():
     
-    """[Autor: Dan]"""
-    """[Ayuda: recopila los parametros para el Quinta punto
+    """[Autor: Dan]
+    [Ayuda: recopila los parametros para el Quinta punto
     (Nombres de las funciones, autor de la funcion , lineas por funcion y
     porcentaje de lineas del autor, sobre lineas totales del trabajo. ) ]
     """
@@ -77,11 +77,12 @@ def capturo_datos():
           
 def participacion_info (informacion,informacion2):
     
-    """[Autor: Dan]"""
-    """[Ayuda: brindar datos sobre la participación de cada uno de los 
+    """[Autor: Dan]
+    [Ayuda: brindar datos sobre la participación de cada uno de los 
     integrantes en el desarrollo de la aplicación.
     Ademas de mostrar la informacion por pantalla,
-    genera la misma salida al archivo “participacion.txt” ]"""
+    genera la misma salida al archivo “participacion.txt” ]
+    """
 
     autor_anterior = None
     
@@ -210,8 +211,9 @@ def cantidad_de_espacios(nombre_funcion):
 
 def archivo_participacion_txt (agrego):
     
-    """[Autor: Dan]"""
-    """[Ayuda: Agrega los datos generados por la funcion participacion_info]"""
+    """[Autor: Dan]
+    [Ayuda: Agrega los datos generados por la funcion participacion_info]
+    """
 
     with open ("participacion.txt","a") as archivo_generado:
         

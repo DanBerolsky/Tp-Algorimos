@@ -1,6 +1,7 @@
 def armar_diccionarios():
-    """[Autor: Valentin]"""
-    """[Ayuda: Imprime la lista de funciones, y da la opción de mostrar información acerca de cada una.]"""
+    """[Autor: Valentin]
+    [Ayuda: Imprime la lista de funciones, y da la opción de mostrar información acerca de cada una.]
+    """
 
     diccionario_fuente_unico = {}
     diccionario_comentarios = {}
@@ -31,7 +32,8 @@ def armar_diccionarios():
 
 def sacar_corchetes(cadena):
     """[Autor: Valentin]
-    [Ayuda: Recibe como parametro una cadena y le saca los corchetes de adelante y atrás]"""
+    [Ayuda: Recibe como parametro una cadena y le saca los corchetes de adelante y atrás]
+    """
     if cadena.endswith(" "):
         sin_corchetes = cadena.lstrip("[").rstrip("] ")
     else:
@@ -59,8 +61,9 @@ def generar_txt(dict_fuente, dict_comentarios, txt):
 
 
 def generar_lista_total(dic):
-    """[Autor: Valentin]"""
-    """[Ayuda: Genera una lista de listas con los nombres de las funciones ordenadas alfabeticamente]"""
+    """[Autor: Valentin]
+    [Ayuda: Genera una lista de listas con los nombres de las funciones ordenadas alfabeticamente]
+    """
     lista_total = [[]]
     for i in dic:
         ultima_lista = lista_total[-1]
@@ -77,17 +80,19 @@ def generar_lista_total(dic):
 
 
 def imprimir_funciones(listas):
-    """[Autor: Valentin]"""
-    """[Ayuda: Imprime la lista de funciones]"""
+    """[Autor: Valentin]
+    [Ayuda: Imprime la lista de funciones]
+    """
 
     for lista in listas:
         print(lista)
 
 
 def consultar_funciones(diccionario_fuente, diccionario_comentarios):
-    """[Autor: Valentin]"""
-    """[Ayuda: Pide un input de nombre de función, y en base a lo ingresado muestra, o la ayuda, comentarios,
-        parametros y autor de la función, o todo lo relacionado a la misma]"""
+    """[Autor: Valentin]
+    [Ayuda: Pide un input de nombre de función, y en base a lo ingresado muestra, o la ayuda, comentarios,
+        parametros y autor de la función, o todo lo relacionado a la misma]
+    """
     funcion = input("Función: ")
     while funcion != "":
         nombre_funcion = funcion[1:]
@@ -109,6 +114,9 @@ def consultar_funciones(diccionario_fuente, diccionario_comentarios):
 
 
 def main_consulta_funciones():
+    """[Autor: Valentin]
+    [Ayuda: Funcion Principal de consulta funciones]
+    """
     dic_fuente, dic_comentarios = armar_diccionarios()
     print(imprimir_funciones(generar_lista_total(dic_fuente)))
     generar_txt(dic_fuente, dic_comentarios, "ayuda_funciones.txt")
