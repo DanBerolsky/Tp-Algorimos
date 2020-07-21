@@ -190,6 +190,9 @@ def formato_titulo(lista):
 
 
 def la_tabla():
+    """ [Autor: Alfonso]
+        [Ayuda: Armado de la tabla para el analizador]
+    """
     titulo, cuerpo, total = armar_tabla()
     
     #Titulo
@@ -202,7 +205,7 @@ def la_tabla():
     formato_cuerpo(cuerpo)
     
     #Total
-    total = formato_tabla(remover_ceros(dos_digitos(total)))
+    total = formato_tabla(remover_ceros(correcto_espaciado(total)))
     print(total)
     total = total + "\n"
     archivo_analizador(total)
@@ -210,25 +213,38 @@ def la_tabla():
     return None
         
 def formato_tabla(lista):   
+    """[Autor: Alfonso]
+        [Ayuda: Le da formato de tabla a una lista con espaciado y divisiones]
+    """
+    
     str_nuevo = ' | '.join(map(str, lista))
     return str_nuevo
 
 def formato_cuerpo(lista):
+    """[Autor: Alfonso]
+    [Ayuda: Le da formato a una lista para que imprima el cuerpo]
+    """
     for i in lista:
-        i = formato_tabla(dos_digitos(i))
+        i = formato_tabla(correcto_espaciado(i))
         print(i)
         i = i + '\n'
         archivo_analizador(i)
     return i
 
-def dos_digitos(lista):
+def correcto_espaciado(lista):
+    """[Autor: Alfonso]
+    [Ayuda: Modifica el espaciado de los espacios en blanco para que quede a la par cada columna despues de la decima]
+    """
     for j,k in enumerate(lista):
             if j >= 10:
                lista[j] = ' ' + str(k)
             elif j >= 100:
-                lista[j] = ' ' + str(k)
+                lista[j] = '  ' + str(k)
     return lista
 def remover_ceros(lista):
+    """[Autor: Alfonso]
+    [Ayuda: Reemplaza por un espacio los 0 que se encuentren en una lista]
+    """
     reemplazo =[' ' if i==0 else i for i in lista]
     return reemplazo
 
