@@ -85,13 +85,7 @@ def armar_csv_funciones(archivo):
                 cuerpo_sin_comment,nombre_autor,nombre_ayuda,resto = armar_csv_comentarios(cuerpo,nombre_funcion, modulo)
                 datos_comentarios[nombre_funcion] = {"Nombre del autor":nombre_autor,"informacion de ayuda":nombre_ayuda,"Resto de lineas comentadas":resto}
                 datos[nombre_funcion] = {"Parametros de la funcion":parametros,"Nombre del modulo":modulo,"Cuerpo de la funcion":cuerpo_sin_comment}
-<<<<<<< HEAD
                 
-=======
-
-
-
->>>>>>> master
             if linea.startswith('def '):
                 funcion = linea
                 index_inicial_anterior = lineas.index(funcion) + 1
@@ -100,14 +94,9 @@ def armar_csv_funciones(archivo):
 
     #Ordeno el diccionario
         funciones_alfabeto = ordenar_alfabeticamente(datos)
-<<<<<<< HEAD
         comentarios_alfabeto = ordenar_alfabeticamente(datos_comentarios)
         lista_modulos_comentarios[0].append(modulo_csv.armo_csv(comentarios_alfabeto,'comentarios.csv',modulo, lista_modulos_comentarios))
         return modulo_csv.armo_csv(funciones_alfabeto,nombre_archivo, modulo, lista_modulos_comentarios) 
-=======
-
-    return modulo_csv.armo_csv(funciones_alfabeto,nombre_archivo, modulo)
->>>>>>> master
 
 def armar_csv_comentarios(lista_cuerpo,nombre_funcion, modulo):
     
@@ -123,7 +112,6 @@ def armar_csv_comentarios(lista_cuerpo,nombre_funcion, modulo):
     nombre_ayuda = ""
     resto = []   
     datos_comentarios = {}
-<<<<<<< HEAD
     lista = lista_cuerpo
     #Busco las lineas comentadas y me quedo con una lista de las lineas comentadas
     resto = [i for i in lista if '#' in i]
@@ -136,43 +124,19 @@ def armar_csv_comentarios(lista_cuerpo,nombre_funcion, modulo):
     
     nombre_autor,nombre_ayuda = autor_ayuda(lineas_multiples)
     
-=======
-
-    lista = lista_cuerpo    
-    #Busco las lineas comentadas y me quedo con una lista de las lineas comentadas
-    lineas_comentadas = [i for i in lista if comentario_triple in i or '#' in i]
-    #Busco las lineas que formaran el resto de mi csv
-    resto = [j for j in lineas_comentadas if autor not in j and ayuda not in j]
->>>>>>> master
     # Cruzo las lineas comentadas con el cuerpo de la otra funcion para devolver solo las lineas del cuerpo de la
     # funcion que no tienen comentario
     cuerpo_sin_comentarios = [x for x in lista if x not in lineas_comentadas]
     
     #Itero atraves de las lineas comentadas para encontrar el autor y ayuda
-<<<<<<< HEAD
     #me creo el diccionario con los campos que necesito
     #datos_comentarios[nombre_funcion] = {"Nombre del autor":nombre_autor,"informacion de ayuda":nombre_ayuda,"Resto de lineas comentadas":resto}
             
     #Ordeno el diccionario, respecto sus claves
     #comentarios_alfabeto = ordenar_alfabeticamente(datos_comentarios)
-=======
-    for comentarios in lineas_comentadas:
-        if autor in comentarios:
-            nombre_autor = comentarios.split(comentario_triple)[1].lstrip().split(comentario_triple)[0]
-        elif ayuda in comentarios:
-            nombre_ayuda = comentarios.split(comentario_triple)[1].lstrip().split(comentario_triple)[0]
-            
-            #me creo el diccionario con los campos que necesito
-            datos_comentarios[nombre_funcion] = {"Nombre del autor":nombre_autor,"informacion de ayuda":nombre_ayuda,"Resto de lineas comentadas":resto}
-            
-    #Ordeno el diccionario, respecto sus claves
-    comentarios_alfabeto = ordenar_alfabeticamente(datos_comentarios)
-    
->>>>>>> master
     #Genero el csv.
     #modulo_csv.armo_csv(comentarios_alfabeto,nombre_archivo, modulo)
     
-<<<<<<< HEAD
     return cuerpo_sin_comentarios ,nombre_autor,nombre_ayuda,resto
 
 
@@ -209,6 +173,3 @@ def  autor_ayuda(lista):
     b = ''.join(lista)        
     nombre_ayuda = b.replace(nombre_autor,'').replace('"""','')
     return nombre_autor, nombre_ayuda
-=======
-    return cuerpo_sin_comentarios
->>>>>>> master

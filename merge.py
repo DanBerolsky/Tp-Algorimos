@@ -1,5 +1,4 @@
 def escribir(linea, archivo):
-<<<<<<< HEAD
     """[Autor: Valentin]
         [Ayuda : Escribe el parametro linea en el parametro archivo]
     """
