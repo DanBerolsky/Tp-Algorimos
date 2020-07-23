@@ -1,171 +1,852 @@
 
-Nombre de la función: ordenar_alfabeticamente, Parametros: diccionario, Modulo: 
-m_generar_archivos_csv.py, Autor: [Autor: b] Ayuda: Ayuda: Ordena diccionario de
- mayor a menor, Cuerpo: ['         ', '         return sorted(diccionario.items(
-)', '     key = lambda clave: clave[0]', '     reverse = True)'], Comentarios: [
+Nombre de la función: abro_ar, Parametros: (archivo), Modulo: m_generar_archivos
+_csv.py, Autor: [Autor: Alfonso] Ayuda:         [Ayuda: abre un archivo, Cuerpo:
+ ['     ', '     ', '         with open(archivo', '     encoding="utf8") as arch
+ivo_completo: ', '            ', '             return leer(archivo_completo)'], 
+Comentarios: ['   # encoding="utf8" use eso para solucionar el error.', '    #El
+ archivo informacion_por_desarollador era el que generaba ese problema', '', '  
 
 
 
-Nombre de la función: main, Parametros: , Modulo: programa_principal.py, Autor: 
-[Autor: L] Ayuda: Ayuda: Es la funcion principal, Cuerpo: ['         ', '     ',
- '         import m_generar_archivos_csv', "         txt = 'programas.txt'", '  
-       m_generar_archivos_csv.armar_csv_funciones(txt)', '         ', '         
-import Informacion_por_desarrollador', '         informacion', '    porcentaje =
- Informacion_por_desarrollador.capturo_datos()', '         Informacion_por_desar
-rollador.participacion_info(informacion', '    porcentaje)', '         ', '     
+Nombre de la función: archivo_analizador, Parametros: (texto), Modulo: quien_inv
+oca.py, Autor: [Autor: Alfonso] Ayuda:         [Ayuda: Escribe en el archivo el 
+texto que se le envie, Cuerpo: ['     with open ("analizador.txt"', '"a") as arc
+hivo_generado:', '         ', '         archivo_generado.write(texto)', ' ', '  
 
 
 
-Nombre de la función: leer, Parametros: archivo, Modulo: m_generar_archivos_csv.
-py, Autor: [Autor: A] Ayuda: Ayuda: Lee el archivo linea por linea, Cuerpo: ['  
-       ', "         lineas = [linea.rstrip('\\n') for linea in archivo]", '     
+Nombre de la función: archivo_participacion_txt, Parametros: (agrego), Modulo: I
+nformacion_por_desarrollador.py, Autor:  Ayuda: , Cuerpo: [], Comentarios: ['']
 
 
 
-Nombre de la función: impresiones, Parametros: contenido_a_mostrar, Modulo: mues
-tro_salida.py, Autor: [Autor: Dan] Ayuda: Ayuda: Muestra por pantalla el paramet
-ro recibido, Cuerpo: ['     ', '         print(contenido_a_mostrar)', '     ', '
+
+Nombre de la función: armar_csv_comentarios, Parametros: (lista_cuerpo, Modulo: 
+nombre_funcion, Autor: [Autor: Alfonso] Ayuda:         [Ayuda: Remueve los comen
+tarios de la funcion y crea el archivo comentarios.csv, Cuerpo: [' modulo)m_gene
+rar_archivos_csv.py', ' modulo)    ', " modulo)     nombre_archivo = 'comentario
+s.csv'", ' modulo)     datos_comentarios = {}', ' modulo)     lista = lista_cuer
+po', ' modulo)     lineas_multiples = lista_comentarios(lista)', ' modulo)     '
+, ' modulo)     if not resto:', ' modulo)         lineas_comentadas = lineas_mul
+tiples ', ' modulo)     else:', ' modulo)         lineas_comentadas = lineas_mul
+tiples + resto', ' modulo)     ', ' modulo)     nombre_autor', ' modulo)nombre_a
+yuda = autor_ayuda(lineas_multiples)', ' modulo)     ', ' modulo)     cuerpo_sin
+_comentarios = [x for x in lista if x not in lineas_comentadas]', ' modulo)     
+', ' modulo)             ', ' modulo)     ', ' modulo)     return cuerpo_sin_com
+entarios ', ' modulo)nombre_autor', ' modulo)nombre_ayuda', ' modulo)resto'], Co
+mentarios: ['    #Declaracion de variables', '     #Busco las lineas comentadas 
+y me quedo con una lista de las lineas comentadas', "     resto = [i for i in li
+sta if '#' in i]", '     # Cruzo las lineas comentadas con el cuerpo de la otra 
+funcion para devolver solo las lineas del cuerpo de la', '     # funcion que no 
+tienen comentario', '     #Itero atraves de las lineas comentadas para encontrar
+ el autor y ayuda', '     #me creo el diccionario con los campos que necesito', 
+'     #datos_comentarios[nombre_funcion] = {"Nombre del autor":nombre_autor', '"
+informacion de ayuda":nombre_ayuda', '"Resto de lineas comentadas":resto}', '   
+  #Ordeno el diccionario', ' respecto sus claves', '     #comentarios_alfabeto =
+ ordenar_alfabeticamente(datos_comentarios)', '     #Genero el csv.', '     #mod
 
 
 
-Nombre de la función: capturo_datos, Parametros: , Modulo: Informacion_por_desar
-rollador.py, Autor: [Autor: Dan] Ayuda: Ayuda: recopila los parametros para el Q
-uinta punto, Cuerpo: ['         (Nombres de las funciones', '     autor de la fu
-ncion ', '     lineas por funcion y', '         porcentaje de lineas del autor',
- '     sobre lineas totales del trabajo. ) ]', '     ', '         informacion_de
-seada = {}', '         ', '         lineas_totales_por_autor = {}', '     ', '  
-       total_linea = 0', '     ', '         with open("comentarios.csv"', '    "
-rt") as archivo_comentarios:', '             ', '             linea_archivos_com
-entarios = archivo_comentarios.readline()', '     ', '             while linea_a
-rchivos_comentarios != "":', '                 ', '                 linea_a_list
-a_de_datos = linea_archivos_comentarios.split("', '    ")', '     ', '          
-       nombre_funcion = linea_a_lista_de_datos[0]', '     ', '                 a
-utor = linea_a_lista_de_datos[1].split(": ")[1].rstrip("]")', '     ', '        
-         informacion_deseada[nombre_funcion] = [autor', '    None]', '     ', ' 
-                linea_archivos_comentarios = archivo_comentarios.readline()', ' 
-    ', '         with open ("fuente_unico.csv"', '    "rt") as archivo_fuente_un
-ico:', '     ', '             linea_archivos_fuente_unico = archivo_fuente_unico
-.readline()', '     ', '             while linea_archivos_fuente_unico != "":', 
-'     ', '                 linea_a_lista_de_datos = linea_archivos_fuente_unico.
-split("', '    ")', '                 ', '                 contador_lineas = 0',
- '     ', '                 funcion_actual = linea_a_lista_de_datos[0]', '      
-           ', '                 total_linea += len(linea_a_lista_de_datos[3:])',
- '                 ', '                 contador_lineas = len(linea_a_lista_de_d
-atos[3:])', '                 ', '                 for clave in informacion_dese
-ada.keys():', '                     ', '                     if clave == funcion
-_actual:', '                         informacion_deseada[clave][1] = contador_li
-neas', '                         ', '                         if informacion_des
-eada[clave][0] in lineas_totales_por_autor.keys():', '                          
-   lineas_totales_por_autor[informacion_deseada[clave][0]]+=contador_lineas', ' 
-                        ', '                         else:', '                  
-           lineas_totales_por_autor[informacion_deseada[clave][0]]=contador_line
-as', '     ', '                 linea_archivos_fuente_unico = archivo_fuente_uni
-co.readline()', '     ', '         porcentajes ={}', '     ', '         for clav
-e in lineas_totales_por_autor.keys():', '         ', '             porcentajes[c
-lave]=int((lineas_totales_por_autor[clave]/total_linea)*100)', '     ', '       
-  ', '         datos_finales = sorted(informacion_deseada.items()', '     key = 
-lambda autor: autor[1][0])', '         ', '         return datos_finales', '    
-porcentajes'], Comentarios: ['    """', '     #datos porcentajes', '     #ordeno
+Nombre de la función: armar_csv_funciones, Parametros: (archivo), Modulo: m_gene
+rar_archivos_csv.py, Autor: [Autor: Alfonso] Ayuda:         [Ayuda: abre un arch
+ivo, Cuerpo: ['         ', '         nombre_archivo = "fuente_unico.csv"', '    
+     datos = {}', '         ', '         ', '         modulos = abro_ar(archivo)
+', '         ultima_linea_indentada = None', '         lista_modulos_comentarios
+ = [[]]', '         for modulo in modulos:', '             lineas = abro_ar(modu
+lo)', '             contador_def = 0', '             datos_comentarios = {}', ' 
+            for linea in lineas:', '                       ', "                 
+if linea.startswith('def '):", '                     funcion = linea', '        
+             index_inicial = lineas.index(funcion) + 1', "                     n
+ombre_funcion = funcion.split('def ')[1].lstrip().split('(')[0]", '             
+        parametros = "(" + funcion.split(\'(\')[1].lstrip().split(\')\')[0] + ")
+"', '                     contador_def += 1', '                     ', '        
+             if contador_def >1:', '                         linea_return = line
+a', '                         index_final = lineas.index(linea_return)', '      
+                   cuerpo = lineas[index_inicial_anterior:index_final]', '      
+                   cuerpo_sin_comment', '    nombre_autor', '    nombre_ayuda', 
+'    resto = armar_csv_comentarios(cuerpo', '    nombre_funcion', '     modulo)'
+, '                         datos_comentarios[nombre_funcion] = {"Nombre del aut
+or":nombre_autor', '    "informacion de ayuda":nombre_ayuda', '    "Resto de lin
+eas comentadas":resto}', '                         datos[nombre_funcion_anterior
+] = {"Parametros de la funcion":parametros_anterior', '    "Nombre del modulo":m
+odulo', '    "Cuerpo de la funcion":cuerpo_sin_comment}', '                     
+    contador_def = 1', '                     ', '                 if linea.strip
+().startswith("return "):', '                     linea_return = linea', '      
+               index_final = lineas.index(linea_return) + 1', '                 
+    cuerpo = lineas[index_inicial:index_final]', '                     cuerpo_si
+n_comment', '    nombre_autor', '    nombre_ayuda', '    resto = armar_csv_comen
+tarios(cuerpo', '    nombre_funcion', '     modulo)', '                     dato
+s_comentarios[nombre_funcion] = {"Nombre del autor":nombre_autor', '    "informa
+cion de ayuda":nombre_ayuda', '    "Resto de lineas comentadas":resto}', '      
+               datos[nombre_funcion] = {"Parametros de la funcion":parametros', 
+'    "Nombre del modulo":modulo', '    "Cuerpo de la funcion":cuerpo_sin_comment
+}', '                     contador_def = 0', '     ', '                 if linea
+.startswith("    "):', '                     ultima_linea_indentada = linea', ' 
+                    ', '                 if linea == lineas[len(lineas)-1]:', ' 
+                    index_final = lineas.index(ultima_linea_indentada) + 1', '  
+                   cuerpo = lineas[index_inicial:index_final]', '               
+      cuerpo_sin_comment', '    nombre_autor', '    nombre_ayuda', '    resto = 
+armar_csv_comentarios(cuerpo', '    nombre_funcion', '     modulo)', '          
+           datos_comentarios[nombre_funcion] = {"Nombre del autor":nombre_autor'
+, '    "informacion de ayuda":nombre_ayuda', '    "Resto de lineas comentadas":r
+esto}', '                     datos[nombre_funcion] = {"Parametros de la funcion
+":parametros', '    "Nombre del modulo":modulo', '    "Cuerpo de la funcion":cue
+rpo_sin_comment}', '                     ', "                 if linea.startswit
+h('def '):", '                     funcion = linea', '                     index
+_inicial_anterior = lineas.index(funcion) + 1', "                     nombre_fun
+cion_anterior = funcion.split('def ')[1].lstrip().split('(')[0]", "             
+        parametros_anterior = funcion.split('(')[1].lstrip().split(')')[0]", '  
+   ', '             funciones_alfabeto = ordenar_alfabeticamente(datos)', '     
+        comentarios_alfabeto = ordenar_alfabeticamente(datos_comentarios)', '   
+          lista_modulos_comentarios[0].append(modulo_csv.armo_csv(comentarios_al
+fabeto', "    'comentarios.csv'", '    modulo', '     lista_modulos_comentarios)
+)', '         return modulo_csv.armo_csv(funciones_alfabeto', '    nombre_archiv
+o', '     modulo', '     lista_modulos_comentarios) '], Comentarios: ['    #Decl
+aro variables', '     #Abro los modulos', '     #Itero a traves de los modulos d
+el txt', '             #Busco la linea que comience por def para encontrar el no
+mbre de la funcion', ' sus parametros y cuerpo', '     #Ordeno el diccionario']
 
 
 
-Nombre de la función: armo_csv, Parametros: Estructura_de_datos, Modulo: nombre_
-archivo, Autor: [Autor: Dan] Ayuda: Ayuda: Crea y agrega informacion dentro del 
-csv, Cuerpo: ['modulo_csv.py    ', 'modulo_csv.py     ', "modulo_csv.py     if n
-ombre_archivo == 'fuente_unico.csv':", 'modulo_csv.py     ', 'modulo_csv.py     
-    with open (nombre_archivo', 'modulo_csv.py"a") as codigo:', 'modulo_csv.py  
-           ', 'modulo_csv.py             for clave in Estructura_de_datos:', 'mo
-dulo_csv.py                 ', 'modulo_csv.py                 nombre_funcion = c
-lave[0]', 'modulo_csv.py                 parametros = clave[1][0]', 'modulo_csv.
-py                 modulo = clave[1][1]', 'modulo_csv.py                 cuerpo 
-= clave[1][2]', 'modulo_csv.py                 ', 'modulo_csv.py                
- funcion = "\\n".join(cuerpo)', 'modulo_csv.py             ', 'modulo_csv.py    
-             funcion = "', 'modulo_csv.py ".join(cuerpo)', 'modulo_csv.py       
-      ', 'modulo_csv.py                 codigo.write(nombre_funcion+"', 'modulo_
-csv.py"+parametros+"', 'modulo_csv.py"+modulo+"', 'modulo_csv.py"+funcion+"\\n")
-', 'modulo_csv.py     ', "modulo_csv.py     elif nombre_archivo == 'comentarios.
-csv':", 'modulo_csv.py         ', 'modulo_csv.py         with open (nombre_archi
-vo', 'modulo_csv.py"a") as codigo:', 'modulo_csv.py             ', 'modulo_csv.p
-y             for elementos in Estructura_de_datos:', 'modulo_csv.py            
-     ', 'modulo_csv.py                 nombre_funcion = elementos[0]', 'modulo_c
-sv.py                 nombre_autor = elementos[1][0]', 'modulo_csv.py           
-      nombre_ayuda = elementos[1][1]', 'modulo_csv.py                 resto = el
-ementos[1][2]', 'modulo_csv.py ', 'modulo_csv.py             ', 'modulo_csv.py  
-               funcion = "', 'modulo_csv.py ".join(resto)', 'modulo_csv.py      
-       ', 'modulo_csv.py                 codigo.write(nombre_funcion + "', 'modu
-lo_csv.py" + nombre_autor + "', 'modulo_csv.py" + nombre_ayuda + "', 'modulo_csv
-.py" + funcion + "\\n")', 'modulo_csv.py     ', 'modulo_csv.py     return None']
-, Comentarios: ['                #Modelo de parametros', '                 #Escr
-ibo en el csv', '                 #Modelo de parametros', '                 #Esc
+
+Nombre de la función: armar_diccionarios, Parametros: (), Modulo: consulta_de_fu
+nciones.py, Autor: [Autor: Valentin] Ayuda: Ayuda: Imprime la lista de funciones
+, Cuerpo: ['     diccionario_fuente_unico = {}', '     diccionario_comentarios =
+ {}', '     with open("fuente_unico.csv"', ' "r") as fuente_unico:', '         l
+inea = fuente_unico.readline().rstrip("\\n")', '         while linea != "":', ' 
+            datos = linea.split("', '")', '             if len(datos) > 1:', '  
+               nombre_funcion = datos[0]', '                 parametros = datos[
+1]', '                 modulo = datos[2]', '                 cuerpo = [datos[3] 
++ i for i in datos[4:]]', '                 diccionario_fuente_unico[nombre_func
+ion.rstrip(" ")] = [parametros', ' modulo', ' cuerpo]', '                 linea 
+= fuente_unico.readline().rstrip("\\n")', ' ', '     with open("comentarios.csv"
+', ' "r") as comentarios:', '         linea_comentarios = comentarios.readline()
+.rstrip("\\n")', '         while linea_comentarios:', '             datos2 = lin
+ea_comentarios.split("', '")', '             nombre_funcion = datos2[0]', '     
+        autor = datos2[1]', '             ayuda = datos2[2]', '             list
+a_comentarios = datos2[3:]', '             diccionario_comentarios[nombre_funcio
+n.rstrip(" ")] = [autor', ' ayuda', ' lista_comentarios]', '             linea_c
+omentarios = comentarios.readline().rstrip("\\n")', '         return diccionario
+_fuente_unico', ' diccionario_comentarios'], Comentarios: [' y da la opción de m
 
 
 
-Nombre de la función: armar_csv_funciones, Parametros: archivo, Modulo: m_genera
-r_archivos_csv.py, Autor: [Autor: b] Ayuda: Ayuda: abre un archivo, Cuerpo: ['  
-       ', '         nombre_archivo = "fuente_unico.csv"', '         datos = {}',
- '         ', '         modulos = abro_ar(archivo)', '         ', '         for 
-modulo in modulos:', '             lineas = abro_ar(modulo)', '     ', '        
-     for linea in lineas:', '                       ', "                 if line
-a.startswith('def '):", '                     funcion = linea', '               
-      index_inicial = lineas.index(funcion) + 1', "                     nombre_f
-uncion = funcion.split('def ')[1].lstrip().split('(')[0]", "                    
- parametros = funcion.split('(')[1].lstrip().split(')')[0]", '     ', "         
-        elif linea.strip().startswith('return'):", '                     linea_r
-eturn = linea', '                     index_final = lineas.index(linea_return) +
- 1', '                     cuerpo = lineas[index_inicial:index_final]', '       
-              cuerpo_sin_comment = armar_csv_comentarios(cuerpo', '    nombre_fu
-ncion)', '                     datos[nombre_funcion] = [parametros', '    modulo
-', '    cuerpo_sin_comment]', '     ', '         funciones_alfabeto = ordenar_al
-fabeticamente(datos)', '       ', '         return modulo_csv.armo_csv(funciones
-_alfabeto', '    nombre_archivo)'], Comentarios: ['    #Declaro variables', '   
-  #Abro los modulos', '     #Itero a traves de los modulos del txt', '          
-   #Busco la linea que comienze por def para encontrar el nombre de la funcion',
+Nombre de la función: armar_tabla, Parametros: (), Modulo: quien_invoca.py, Auto
+r: [Autor: Alfonso] Ayuda: Ayuda: Genera tres listas, Cuerpo: ['         lista_f
+unciones ', '     dicc_datos = quien_invoca_a_quien()', '         enum_datos = l
+ist(enumerate(lista_funciones', '    1))', '         ', '         posicion = pri
+mer_item_lista(enum_datos)', '         ', "         numeros = '", "    '.join(ma
+p(str", '     posicion))', '         ', '         maximo', '    titulo = formato
+_titulo(posicion)', '         lista_total = []   ', '         vacio = " "', '   
+      for numero', '    funcion in enum_datos:', '             ', '             
+conteo = 1', '             ', '             primer_campo = str(numero) + " " + f
+uncion ', '             ', '             lista_a_imprimir = [primer_campo.ljust(
+32)]', '             ', '             while conteo <= maximo:', '               
+  ', '                 lista_a_imprimir.append(vacio)', '                 conteo
+ += 1', '             ', '                 ', '             for clave', '     va
+lor in dicc_datos.items():', '                 for lista in valor:', '          
+           if funcion in lista:', '                         numero_invocada =   
+[l for l in enum_datos if clave in l]', '                         funcion_a_invo
+car = numero_invocada[0][0]', "                         lista_a_imprimir[funcion
+_a_invocar] = 'X'", '                         ', '             if funcion  in di
+cc_datos.keys():', '                 ', '                 dicc_informacion = dic
+c_datos[funcion]', '                 lista_modificar = []', '                 fo
+r i', '    j in dicc_informacion:', '                     ', '                  
+   numero_invocada =   [l for l in enum_datos if i in l] ', '                   
+  ', '                     funcion_a_invocar = numero_invocada[0][0]', '        
+             ', '                     lista_a_imprimir[funcion_a_invocar] = j', 
+'                     ', '            ', '             lista_total.append(lista_
+a_imprimir)        ', '         ', '         ', '         lista_totales_numero =
+ borrar_un_valor_lista(lista_total', '    vacio)', '         lista_totales_numer
+o_2 = borrar_un_valor_lista(lista_totales_numero', "     'X')   ", '         bor
+rar_primer_indice(lista_totales_numero_2)', '         ', '         totales = sum
+ar_totales(lista_totales_numero_2)  ', '        ', '         ', '         return
+ titulo', '     lista_total', '     totales'], Comentarios: [' una con el titulo
+', ' una lista de listas con cada linea y espacio', ' y los totales]       ', ' 
+   #Enumero las funciones', '     #Posicion en la lista', '     #Csv de numero p
+ara el titulo', '     #Calculo la maxima cantidad de funciones', '     #Reviso e
+l enumerate por funcion', '         #Creo una variable para llenar la tabla', ' 
+        #Armo el primero campo', '         #Genero la lista que voy a imprimir c
+on el primer campo', '         #Lleno la tabla con vacios', '         #Reemplazo
+ los campos vacios por las veces que fue invocada', '             #Me quedo con 
+los valores del diccionario', '                 #Calculo a cual funcion invoco b
+asada en el numero', '                 #Modifico la posicion en la lista con cua
+ntas veces lo invoco', '         #Creo una lista de lista que contenga todo para
+ calcular los totales en la matriz', '     #Hago una lista de listas de los tota
 
 
 
-Nombre de la función: armar_csv_comentarios, Parametros: lista_cuerpo, Modulo: n
-ombre_funcion, Autor: [Autor: D] Ayuda: Ayuda: Remueve los comentarios de la fun
-cion y crea el archivo comentarios.csv, Cuerpo: ['m_generar_archivos_csv.py    '
-, 'm_generar_archivos_csv.py     ', 'm_generar_archivos_csv.py     comentario_tr
-iple = \'\\"\\"\\"\'', "m_generar_archivos_csv.py     nombre_archivo = 'comentar
-ios.csv'", 'm_generar_archivos_csv.py     autor = "[Autor:"', 'm_generar_archivo
-s_csv.py     ayuda = "[Ayuda:"', 'm_generar_archivos_csv.py     nombre_autor = "
-"', 'm_generar_archivos_csv.py     nombre_ayuda = ""', 'm_generar_archivos_csv.p
-y     resto = []   ', 'm_generar_archivos_csv.py     datos_comentarios = {}', 'm
-_generar_archivos_csv.py ', 'm_generar_archivos_csv.py     lista = lista_cuerpo 
-   ', 'm_generar_archivos_csv.py     resto = [j for j in lineas_comentadas if au
-tor not in j and ayuda not in j]', 'm_generar_archivos_csv.py     cuerpo_sin_com
-entarios = [x for x in lista if x not in lineas_comentadas]', 'm_generar_archivo
-s_csv.py     ', 'm_generar_archivos_csv.py     for comentarios in lineas_comenta
-das:', 'm_generar_archivos_csv.py         if autor in comentarios:', 'm_generar_
-archivos_csv.py             nombre_autor = comentarios.split(comentario_triple)[
-1].lstrip().split(comentario_triple)[0]', 'm_generar_archivos_csv.py         eli
-f ayuda in comentarios:', 'm_generar_archivos_csv.py             nombre_ayuda = 
-comentarios.split(comentario_triple)[1].lstrip().split(comentario_triple)[0]', '
-m_generar_archivos_csv.py             ', 'm_generar_archivos_csv.py             
-datos_comentarios[nombre_funcion] = [nombre_autor', 'm_generar_archivos_csv.pyno
-mbre_ayuda', 'm_generar_archivos_csv.pyresto]', 'm_generar_archivos_csv.py      
-       ', 'm_generar_archivos_csv.py     comentarios_alfabeto = ordenar_alfabeti
-camente(datos_comentarios)', 'm_generar_archivos_csv.py     ', 'm_generar_archiv
-os_csv.py     modulo_csv.armo_csv(comentarios_alfabeto', 'm_generar_archivos_csv
-.pynombre_archivo)', 'm_generar_archivos_csv.py     ', 'm_generar_archivos_csv.p
-y     return cuerpo_sin_comentarios'], Comentarios: ['    #Declaracion de variab
-les para simplificar mi existencia', '     #Busco las lineas comentadas y me que
-do con una lista de las lineas comentadas', "     lineas_comentadas = [i for i i
-n lista if comentario_triple in i or '#' in i]", '     #Busco las lineas que for
-maran el resto de mi csv', '     #Cruzo las lineas comentadas con el cuerpo de l
-a otra funcion para devolver solo las lineas del cuerpo de la funcion que no tie
-nen comentario', '     #Itero atraves de las lineas comentadas para encontrar el
- autor y ayuda', '             #me creo el diccionario con los campos que necesi
-to', '     #Ordeno el diccionario', ' respecto sus claves', '     #Genero el csv
+Nombre de la función: armo_csv, Parametros: (Estructura_de_datos, Modulo: nombre
+_archivo, Autor: [Autor: Dan] Ayuda: Ayuda: Recibo el nombre de archivo a escrib
+ir y la estructura de datos         correspondiente, Cuerpo: [' modulo lista_mod
+ulos_comentarios)', ' modulomodulo_csv.py', ' modulo', ' modulo     if nombre_ar
+chivo == "fuente_unico.csv":', ' modulo         ', ' modulo         lista_modulo
+s_fuente = [[]]', ' modulo ', ' modulo         for clave in Estructura_de_datos:
+', ' modulo ', ' modulo             nombre_funcion = clave[0]', ' modulo        
+     parametros = clave[1]["Parametros de la funcion"]', ' modulo             mo
+dulo = clave[1]["Nombre del modulo"]', ' modulo             cuerpo = clave[1]["C
+uerpo de la funcion"]', ' modulo             ', ' modulo             funcion = "
+', ' modulo ".join(cuerpo)', ' modulo ', ' modulo             archivo_a_escribir
+ = nombre_archivo + "_" + modulo + ".csv"', ' modulo             ', ' modulo    
+         ', ' modulo             ya_esta = 0', ' modulo             index = 0', 
+' modulo             ', ' modulo             while ya_esta == 0 and index <= len
+(lista_modulos_fuente[0]) - 1:', ' modulo                 ', ' modulo           
+      if lista_modulos_fuente[0][index] == archivo_a_escribir:', ' modulo       
+              ya_esta = 1', ' modulo                 index += 1', ' modulo      
+       ', ' modulo             if ya_esta == 0:', ' modulo                 lista
+_modulos_fuente[0].append(archivo_a_escribir)', ' modulo             ', ' modulo
+ ', ' modulo             with open(archivo_a_escribir', ' modulo "a") as archivo
+_fuente_unico:', ' modulo                 ', ' modulo                 archivo_fu
+ente_unico.write(nombre_funcion+"', ' modulo"+parametros+"', ' modulo"+modulo+"'
+, ' modulo"+funcion+"\\n")', ' modulo         fuente_unico = 1', ' modulo       
+  merge.ciclar_modulos(lista_modulos_fuente', ' modulo fuente_unico)', ' modulo 
+        merge.ciclar_modulos(lista_modulos_comentarios', ' modulo lista_modulos_
+comentarios)', ' modulo ', " modulo     elif nombre_archivo == 'comentarios.csv'
+:", ' modulo         for elementos in Estructura_de_datos:', ' modulo ', ' modul
+o             nombre_funcion = elementos[0]', ' modulo             nombre_autor 
+= elementos[1]["Nombre del autor"]', ' modulo             nombre_ayuda = element
+os[1]["informacion de ayuda"]', ' modulo             resto = elementos[1]["Resto
+ de lineas comentadas"]', ' modulo             funcion = "', ' modulo ".join(res
+to)', ' modulo ', ' modulo             archivo_a_escribir = nombre_archivo + "_"
+ + modulo + ".csv"    ', ' modulo ', ' modulo ', ' modulo             ', ' modul
+o             with open (archivo_a_escribir', ' modulo "a") as archivo_comentari
+os:', ' modulo ', ' modulo                 archivo_comentarios.write(nombre_func
+ion + "', ' modulo" + nombre_autor + "', ' modulo" + nombre_ayuda + "', ' modulo
+" + funcion + "\\n") ', ' modulo ', ' modulo         return archivo_a_escribir']
+, Comentarios: [' la cual viene dada por una lista de tuplas', 'Crea y agrega   
+      informacion dentro del csv]     ', '            # Modelo de parametros', '
+             # Une con una coma los elementos de la lista', ' en una cadena nuev
+a.', '             # Genera un nombre diferente para cada modulo', ' para despue
+s hacer el merge.', '             #---------------------------------------------
+---------------------', '             #-----------------------------------------
+-------------------------', '             # Crea/abre el csv recibido por parame
+tro.', '                 #Escribo en el csv', '         # recorro la lista de tu
+plas y capturo los datos deseados   ', '             #Modelo de parametros', '  
+           # Une con una coma los elementos de la lista', ' en una cadena nueva.
+', '             # Genera un nombre diferente para cada funcion', ' para despues
+ hacer el merge.', '             # Crea/abre el csv recivido por parametro.', ' 
 
 
 
-Nombre de la función: abro_ar, Parametros: archivo, Modulo: m_generar_archivos_c
-sv.py, Autor: [Autor: b] Ayuda: Ayuda: abre un archivo, Cuerpo: ['     ', '     
-', '         with open(archivo', '     encoding="utf8") as archivo_completo: ', 
-'            ', '             return leer(archivo_completo)'], Comentarios: ['  
- # encoding="utf8" use eso para solucionar el error.', '    #El archivo informac
-ion_por_desarollador era el que generaba ese problema', '', '    #aprantemente e
+Nombre de la función: autor_ayuda, Parametros: (lista), Modulo: m_generar_archiv
+os_csv.py, Autor: [Autor: Alfonso] Ayuda: , Cuerpo: ['    nombre_autor = ""     
+for i in lista:', '    nombre_autor = ""         if \'Autor:\' in i:', '    nomb
+re_autor = ""             nombre_autor = i.split(\'"""\')[1].lstrip()', '    nom
+bre_autor = ""     b = \'\'.join(lista)        ', '    nombre_autor = ""     nom
+bre_ayuda = b.replace(nombre_autor', '    nombre_autor = ""\'\').replace(\'"""\'
+', '    nombre_autor = ""\'\')', '    nombre_autor = ""     return nombre_autor'
+, '    nombre_autor = "" nombre_ayuda'], Comentarios: ['        [Ayuda: Remueve 
+los comentarios de la funcion    y crea el archivo comentarios.csv]        ', ''
+
+
+
+Nombre de la función: borrar_primer_indice, Parametros: (lista), Modulo: quien_i
+nvoca.py, Autor: [Autor: Alfonso] Ayuda: Ayuda: Borra el primer indice de una li
+sta, Cuerpo: ['         for i in lista:', '             del i[0]          ', '  
+       return lista'], Comentarios: [' acepta como parametro de entrada una list
+
+
+
+Nombre de la función: borrar_un_valor_lista, Parametros: (lista, Modulo: valor),
+ Autor: [Autor: Alfonso] Ayuda:              [Ayuda: Reemplaza un valor en espec
+ifico de una lista por vacio, Cuerpo: ['quien_invoca.py    lista_valor =[list(ma
+p(lambda x: x if x!= valor else 0', 'quien_invoca.py i)) for i in lista]', 'quie
+
+
+
+Nombre de la función: cantidad_de_espacios, Parametros: (nombre_funcion), Modulo
+: Informacion_por_desarrollador.py, Autor: [Autor: Dan] Ayuda: Ayuda: Aquí se mu
+ltiplica un espacio por un numero x        El 8 es cantidad de caracateres que t
+iene una tabulacion, Cuerpo: ['       ', '         if 8 + len(nombre_funcion)<33
+:', '             ', '             espacios = -1 * (8 + len(nombre_funcion) - 33
+)', '         ', '         else:', '             ', '             espacios = 2',
+ '     ', '         return espacios  '], Comentarios: ['        len(nom_fun) es 
+la cantida de caracteres que tiene el nom_fun.        Despues quiero que partir 
+del carater 32 obtener la cant.lineas.        Esta cuanta me asegura que el valo
+r lineas_f este uno debajo del otro', '        multiplicando un str espacio la c
+
+
+
+Nombre de la función: capturo_datos, Parametros: (), Modulo: Informacion_por_des
+arrollador.py, Autor: [Autor: Dan] Ayuda: Ayuda: recopila los parametros para el
+ Quinta punto    (Nombres de las funciones, Cuerpo: ['     ', '         informac
+ion_deseada = {}', '         ', '         lineas_totales_por_autor = {}', '     
+', '         total_linea = 0', '     ', '         with open("comentarios.csv"', 
+'    "rt") as archivo_comentarios:', '             ', '             linea_archiv
+os_comentarios = archivo_comentarios.readline()', '     ', '             while l
+inea_archivos_comentarios != "":', '                 ', '                 linea_
+a_lista_de_datos = linea_archivos_comentarios.split("', '    ")', '     ', '    
+             nombre_funcion = linea_a_lista_de_datos[0]', '     ', '            
+     autor = linea_a_lista_de_datos[1].split(": ")[1].rstrip("]")', '     ', '  
+               informacion_deseada[nombre_funcion] = [autor', '    None]', '    
+ ', '                 linea_archivos_comentarios = archivo_comentarios.readline(
+)', '     ', '         with open ("fuente_unico.csv"', '    "rt") as archivo_fue
+nte_unico:', '     ', '             linea_archivos_fuente_unico = archivo_fuente
+_unico.readline()', '     ', '             while linea_archivos_fuente_unico != 
+"":', '     ', '                 linea_a_lista_de_datos = linea_archivos_fuente_
+unico.split("', '    ")', '                 ', '                 contador_lineas
+ = 0', '     ', '                 funcion_actual = linea_a_lista_de_datos[0]', '
+                 ', '                 total_linea += len(linea_a_lista_de_datos[
+3:])', '                 ', '                 contador_lineas = len(linea_a_list
+a_de_datos[3:])', '                 ', '                 for clave in informacio
+n_deseada.keys():', '                     ', '                     if clave == f
+uncion_actual:', '                         informacion_deseada[clave][1] = conta
+dor_lineas', '                         ', '                         if informaci
+on_deseada[clave][0] in lineas_totales_por_autor.keys():', '                    
+         lineas_totales_por_autor[informacion_deseada[clave][0]] += contador_lin
+eas', '                         ', '                         else:', '          
+                   lineas_totales_por_autor[informacion_deseada[clave][0]] = con
+tador_lineas', '     ', '                 linea_archivos_fuente_unico = archivo_
+fuente_unico.readline()', '     ', '         porcentajes = {}', '     ', '      
+   for clave in lineas_totales_por_autor.keys():', '         ', '             po
+rcentajes[clave] = int((lineas_totales_por_autor[clave]/total_linea)*100)', '   
+  ', '         ', '         datos_finales = sorted(informacion_deseada.items()',
+ '     key = lambda autor: autor[1][0])', '         ', '         return datos_fi
+nales', '    porcentajes'], Comentarios: [' autor de la funcion ', ' lineas por 
+funcion y    porcentaje de lineas del autor', ' sobre lineas totales del trabajo
+
+
+
+Nombre de la función: consultar_funciones, Parametros: diccionario_fuente, Modul
+o:  diccionario_comentarios, Autor: [Autor: Valentin] Ayuda:         [Ayuda: Imp
+rime la lista de funciones, Cuerpo: ['consulta_de_funciones.py    funcion = inpu
+t("Función: ")', 'consulta_de_funciones.py     while funcion != "":', 'consulta_
+de_funciones.py         nombre_funcion = funcion[1:]', 'consulta_de_funciones.py
+             if funcion.startswith("?") and funcion != "?todo":', 'consulta_de_f
+unciones.py                 print(sacar_corchetes(diccionario_comentarios[nombre
+_funcion][1]) + "\\n" + "Parametros: " + str(diccionario_fuente[nombre_funcion][
+0]) + "\\n" + "Modulo: " + str(diccionario_fuente[nombre_funcion][1]) + "\\n" + 
+sacar_corchetes(str(diccionario_comentarios[nombre_funcion][0])))', 'consulta_de
+_funciones.py                 print(sacar_corchetes(str(diccionario_comentarios[
+nombre_funcion][0])) + "\\n" + "Parametros: " + str(diccionario_fuente[nombre_fu
+ncion][0]) + "\\n" + "Modulo: " + str(diccionario_fuente[nombre_funcion][1]) + "
+\\n" + sacar_corchetes(str(diccionario_comentarios[nombre_funcion][1])) + "\\n" 
++ "Cuerpo: " + str(diccionario_fuente[nombre_funcion][2]) + "\\n" + "Comentarios
+: " + str(diccionario_comentarios[nombre_funcion][2]))', 'consulta_de_funciones.
+py                 for i in diccionario_fuente:', 'consulta_de_funciones.py     
+                if i in diccionario_comentarios:', 'consulta_de_funciones.py    
+                     print("Autor: " + sacar_corchetes(diccionario_comentarios[i
+][0]) + "\\n" + "Parametros: " + diccionario_fuente[i][0] + "\\n" + "Modulo: " +
+ diccionario_fuente[i][1] + "\\n" + sacar_corchetes(diccionario_comentarios[i][1
+]) + "\\n" + "Cuerpo: " + str(diccionario_fuente[i][2]) + "\\n" + "Comentarios: 
+" + str(diccionario_comentarios[i][2]))', 'consulta_de_funciones.py             
+            print("\\n")', 'consulta_de_funciones.py             elif funcion ==
+ "imprimir ?todo":', 'consulta_de_funciones.py                 generar_txt(dicci
+onario_fuente', 'consulta_de_funciones.py diccionario_comentarios', 'consulta_de
+_funciones.py "ayuda_funciones.txt")', 'consulta_de_funciones.py         else:',
+ 'consulta_de_funciones.py             print("La función especificada no existe.
+ Por favor', 'consulta_de_funciones.py ingrese una función valida")', 'consulta_
+de_funciones.py         funcion = input("Función: ")', 'consulta_de_funciones.py
+
+
+
+Nombre de la función: contar_elementos_varios, Parametros: (lista, Modulo:  list
+a_comentarios), Autor: [Autor: Luis Andrade] Ayuda: Ayuda: Crea otro diccionario
+ que contiene la cantidad de if, Cuerpo: ['Panel_General.py    cantidad_elemento
+s = {"if": 0', 'Panel_General.py "while": 0', 'Panel_General.py "for": 0', 'Pane
+l_General.py "returns": 0', 'Panel_General.py "break": 0', 'Panel_General.py "ex
+it": 0', 'Panel_General.py "ayuda": "NO"}', 'Panel_General.py     j = 4', 'Panel
+_General.py     while j < len(lista):', 'Panel_General.py         if lista[j].st
+rip().startswith("if") or lista[j].strip().startswith(', 'Panel_General.py      
+       cantidad_elementos["if"] += 1', 'Panel_General.py         elif lista[j].s
+trip().startswith("while"):', 'Panel_General.py             cantidad_elementos["
+while"] += 1', 'Panel_General.py         elif lista[j].strip().startswith("for")
+:', 'Panel_General.py             cantidad_elementos["for"] += 1', 'Panel_Genera
+l.py         elif lista[j].strip().startswith("return"):', 'Panel_General.py    
+         cantidad_elementos["returns"] += 1', 'Panel_General.py         elif lis
+ta[j].strip().startswith("break"):', 'Panel_General.py             cantidad_elem
+entos["break"] += 1', 'Panel_General.py         elif lista[j].strip().startswith
+("exit"):', 'Panel_General.py             cantidad_elementos["exit"] += 1', 'Pan
+el_General.py         if lista_comentarios[2].strip().startswith("[Ayuda:"):', '
+Panel_General.py             cantidad_elementos["ayuda"] = "SI"', 'Panel_General
+.py         j = j + 1', 'Panel_General.py     return cantidad_elementos'], Comen
+tarios: [' while       for', ' returns', ' break', ' exit y ayuda    ', '       
+
+
+
+Nombre de la función: contar_funciones, Parametros: (linea), Modulo: contar_func
+iones.py, Autor:  Ayuda:     [Autor : F]         [Ayuda: Funciones, Cuerpo: ['  
+  cantidad_funciones = {"if": 0 "while": 0', '    cantidad_funciones = {"if": 0 
+"for": 0', '    cantidad_funciones = {"if": 0 "returns": 0', '    cantidad_funci
+ones = {"if": 0 "break": 0', '    cantidad_funciones = {"if": 0 "exit": 0', '   
+ cantidad_funciones = {"if": 0 "ayuda": 0}', '    cantidad_funciones = {"if": 0 
+    if linea.strip().startswith("if"):', '    cantidad_funciones = {"if": 0     
+    cantidad_funciones["if"] += 1', '    cantidad_funciones = {"if": 0     elif 
+linea.strip().startswith("while"):', '    cantidad_funciones = {"if": 0         
+cantidad_funciones["while"] += 1', '    cantidad_funciones = {"if": 0     elif l
+inea.strip().startswith("for"):', '    cantidad_funciones = {"if": 0         can
+tidad_funciones["for"] += 1', '    cantidad_funciones = {"if": 0     elif linea.
+strip().startswith("return"):', '    cantidad_funciones = {"if": 0         canti
+dad_funciones["returns"] += 1', '    cantidad_funciones = {"if": 0     elif line
+a.strip().startswith("break"):', '    cantidad_funciones = {"if": 0         cant
+idad_funciones["break"] += 1', '    cantidad_funciones = {"if": 0     elif linea
+.strip().startswith("exit"):', '    cantidad_funciones = {"if": 0         cantid
+ad_funciones["exit"] += 1', '    cantidad_funciones = {"if": 0     elif linea.st
+rip().startswith("[Ayuda: ]"):', '    cantidad_funciones = {"if": 0         cant
+idad_funciones["ayuda"] += 1', '    cantidad_funciones = {"if": 0     return can
+
+
+
+Nombre de la función: contar_invocaciones, Parametros: (nombre_funcion, Modulo: 
+ lista), Autor: [Autor: Luis Andrade] Ayuda:            [Ayuda: Crea otro diccio
+nario que contiene la cantidad de Invoca       ciones, Cuerpo: ['Panel_General.p
+y    i = 0', 'Panel_General.py     invocaciones_dict = {"Cantidad de Invocacione
+s": 0}', 'Panel_General.py     while i < len(lista):', 'Panel_General.py        
+ j = 4', 'Panel_General.py         while j < len(lista[i]):', 'Panel_General.py 
+            if nombre_funcion in lista[i][j]:', 'Panel_General.py               
+  invocaciones_dict["Cantidad de Invocaciones"] += 1', 'Panel_General.py        
+     j = j + 1', 'Panel_General.py         i = i + 1', 'Panel_General.py     ret
+
+
+
+Nombre de la función: correcto_espaciado, Parametros: (lista), Modulo: quien_inv
+
+
+
+Nombre de la función: es_primo, Parametros: (valor), Modulo: lib_matematica.py, 
+Autor: [Autor: Juan Perez] Ayuda: Ayuda: Evlua si el numero recibido es primo o 
+no, Cuerpo: ['     devolver = True', '     if valor <= 1:', '         devolver =
+ False', '     else:', '         divisor = 2', '         while (((valor % diviso
+r)!=0) and (divisor <= valor/2)):', '             divisor += 1', ' ', '         
+if divisor <= valor/2:', '             devolver = False', ' ', '         return 
+devolver'], Comentarios: [' devolviendo True en        caso de serlo', ' y False
+
+
+
+Nombre de la función: factorial, Parametros: (n), Modulo: lib_matematica.py, Aut
+or: [Autor: Juan Perez] Ayuda: Ayuda: Calcula el factorial de el numero recibido
+, Cuerpo: ['     resultado = 1', '     for i in range(2', ' n+1):', '         re
+sultado = resultado * i', ' ', '     return resultado'], Comentarios: [' que deb
+
+
+
+Nombre de la función: formato_cuerpo, Parametros: (lista), Modulo: quien_invoca.
+py, Autor: [Autor: Alfonso] Ayuda:         [Ayuda: Le da formato a una lista par
+a que imprima el cuerpo, Cuerpo: ['    for i in lista:         i = formato_tabla
+(correcto_espaciado(i))', '    for i in lista:         print(i)', "    for i in 
+lista:         i = i + '\\n'", '    for i in lista:         archivo_analizador(i
+
+
+
+Nombre de la función: formato_tabla, Parametros: (lista), Modulo: quien_invoca.p
+y, Autor: [Autor: Alfonso] Ayuda:             [Ayuda: Le da formato de tabla a u
+na lista con espaciado y divisiones, Cuerpo: ["         str_nuevo = ' | '.join(m
+
+
+
+Nombre de la función: formato_titulo, Parametros: (lista), Modulo: quien_invoca.
+py, Autor: [Autor: Alfonso] Ayuda:              [Ayuda: Le da formato al titulo,
+ Cuerpo: ['    maximo =max(lista)     titulo = lista', '    maximo =max(lista)  
+   titulo.insert(0', '    maximo =max(lista)"Funciones                       ")'
+, '    maximo =max(lista)     ', '    maximo =max(lista)     return maximo', '  
+  maximo =max(lista)titulo'], Comentarios: ['    #Calculo la maxima cantidad de 
+
+
+
+Nombre de la función: generar_lista_total, Parametros: (dic), Modulo: consulta_d
+e_funciones.py, Autor: [Autor: Valentin] Ayuda:         [Ayuda: Genera una lista
+ de listas con los nombres de las funciones ordenadas alfabeticamente, Cuerpo: [
+'    lista_total = [[]]     for i in dic:', '    lista_total = [[]]         ulti
+ma_lista = lista_total[-1]', '    lista_total = [[]]         if len(ultima_lista
+) < 5:', '    lista_total = [[]]             ultima_lista.append(format(i', '   
+ lista_total = [[]] "<26s"))', '    lista_total = [[]]         else:', '    list
+a_total = [[]]             lista_total.append([])', '    lista_total = [[]]     
+        ultima_lista = lista_total[-1]', '    lista_total = [[]]             ult
+ima_lista.append(format(i', '    lista_total = [[]] "<26s"))', '    lista_total 
+= [[]]     if len(lista_total[-1]) < 5:', '    lista_total = [[]]         for i 
+in range(0', '    lista_total = [[]] 5-len(lista_total[-1])):', '    lista_total
+ = [[]]             lista_total[-1].append(format(" "', '    lista_total = [[]] 
+
+
+
+Nombre de la función: impresiones, Parametros: (contenido_a_mostrar), Modulo: mu
+estro_salida.py, Autor: [Autor: Dan] Ayuda:         [Ayuda: Muestra por pantalla
+ el parametro recibido, Cuerpo: ['     ', '         print(contenido_a_mostrar)']
+
+
+
+Nombre de la función: la_tabla, Parametros: (), Modulo: quien_invoca.py, Autor: 
+
+
+
+Nombre de la función: leer, Parametros: (archivo), Modulo: m_generar_archivos_cs
+v.py, Autor: [Autor: Alfonso] Ayuda:         [Ayuda: Lee el archivo linea por li
+nea, Cuerpo: ['         ', "         lineas = [linea.rstrip('\\n') for linea in 
+
+
+
+Nombre de la función: leer_csv, Parametros: (nombre_csv), Modulo: quien_invoca.p
+y, Autor: [Autor: Alfonso] Ayuda:             Ayuda: Hace la lectura del csv, Cu
+erpo: ['             dicc_csv = {}', '             ', '             for linea in
+ open(nombre_csv', "         'r').readlines():", "                 linea = linea
+.strip().split('", "        ')", '                 dicc_csv[linea[0]] = linea[1:
+
+
+
+Nombre de la función: lista_comentarios, Parametros: (lista), Modulo: m_generar_
+archivos_csv.py, Autor: [Autor: Alfonso] Ayuda:         [Ayuda: Remueve los come
+ntarios de la funcion y crea el archivo comentarios.csv, Cuerpo: ['         inde
+x_lista = []', '         comentarios_triples = []', '         for i in lista:', 
+'             if i.strip().startswith(\'"""\'):', '                 index = list
+a.index(i)', '                 index_lista.append(index)', '         if index_li
+sta:', '             inicial = index_lista[0]', '             final = index_list
+a[1] +1', '             comentarios_triples = lista[inicial:final]', '          
+
+
+
+Nombre de la función: main, Parametros: (), Modulo: programa_principal.py, Autor
+: [Autor: L] Ayuda:         [Ayuda: Es la funcion principal, Cuerpo: ['         
+', '         import m_generar_archivos_csv', "         txt = 'programas.txt'", '
+         m_generar_archivos_csv.armar_csv_funciones(txt)', '     '], Comentarios
+: ['    #funcionalidad = input("Ingrese la funcionalidad que quiere ver: ")', ' 
+    #', '     #while funcionalidad != "":', '     #   if funcionalidad == "1":',
+ '     #       # Primer punto', '     #   ', '     #   elif funcionalidad == "2"
+: ', '     #       import consulta_de_funciones', '     #       consulta_de_func
+iones.main_consulta_funciones()', '     #   ', '     #   elif funcionalidad == "
+3":', '     #       Integrar punto 3', '     #   ', '     #   elif funcionalidad
+ == "4":', '     #       Integrar punto 4', '     #   ', '     #   elif funciona
+lidad == "5":', '     #       # Quinto punto', '     #       import Informacion_
+por_desarrollador', '     #       informacion', 'porcentaje = Informacion_por_de
+sarrollador.capturo_datos()', '     #       Informacion_por_desarrollador.partic
+ipacion_info(informacion', 'porcentaje)', '     #   ', '     #   funcionalidad =
+
+
+
+Nombre de la función: main_consulta_funciones, Parametros: (), Modulo: consulta_
+de_funciones.py, Autor: [Autor: Valentin] Ayuda:         [Ayuda: Funcion Princip
+al de consulta funciones, Cuerpo: ['    dic_fuente dic_comentarios = armar_dicci
+onarios()', '    dic_fuente     print(imprimir_funciones(generar_lista_total(dic
+_fuente)))', '    dic_fuente     generar_txt(dic_fuente', '    dic_fuente dic_co
+mentarios', '    dic_fuente "ayuda_funciones.txt")', '    dic_fuente     consult
+ar_funciones(dic_fuente', '    dic_fuente dic_comentarios)'], Comentarios: ['']
+
+
+
+
+Nombre de la función: mcd, Parametros: (nro_1, Modulo:  nro_2), Autor: [Autor: A
+na Garcia] Ayuda: Ayuda: Calcula el MCD entre los dos numeros recibidos, Cuerpo:
+ ['lib_matematica.py', 'lib_matematica.py     if abs(nro_1) < abs(nro_2):', 'lib
+_matematica.py         menor = abs(nro_1)', 'lib_matematica.py         mayor = a
+bs(nro_2)', 'lib_matematica.py     else:', 'lib_matematica.py         menor = ab
+s(nro_2)', 'lib_matematica.py         mayor = abs(nro_1)', 'lib_matematica.py ',
+ 'lib_matematica.py         devovler = -1', 'lib_matematica.py     elif menor ==
+ 0:', 'lib_matematica.py         devolver = mayor', 'lib_matematica.py         d
+ividendo = mayor', 'lib_matematica.py         divisor = menor', 'lib_matematica.
+py         resto = mayor % divisor', 'lib_matematica.py ', 'lib_matematica.py   
+      while resto != 0:', 'lib_matematica.py             dividendo = divisor', '
+lib_matematica.py             divisor = resto', 'lib_matematica.py             r
+esto = dividendo % divisor', 'lib_matematica.py ', 'lib_matematica.py         de
+volver = divisor', 'lib_matematica.py ', 'lib_matematica.py     return devolver'
+], Comentarios: [' utilizando el        metodo de Euclides. En caso de no existi
+r MCD', ' devolverá -1.]    ', '    if menor == mayor == 0:   # Si ambos iguales
+ a 0 no es posible mcd', '     else:                     # Implementacion del al
+
+
+
+Nombre de la función: mcm, Parametros: (nro_1, Modulo:  nro_2), Autor: [Autor: A
+na Garcia] Ayuda: Ayuda: Calcula el MCM (minimo comun multiplo) entre los dos nu
+meros        recibidos. En caso de no existir, Cuerpo: ['lib_matematica.py    re
+turn (nro_1 * nro_2)//mcd(nro_1', 'lib_matematica.py nro_2)', 'lib_matematica.py
+     '], Comentarios: [' devolverá -1.        Para el calculo se utiliza mcm(a',
+
+
+
+Nombre de la función: menu_MCD, Parametros: , Modulo: app_matematica.py, Autor: 
+[Autor: Alan Gonzalez] Ayuda:            [Ayuda: submenu de la opcion primo, Cue
+rpo: ['    print("\\nMCD (Maximo comun divisor)")     valor_1 = solicitar_valor(
+"Numero 1: "', '    print("\\nMCD (Maximo comun divisor)") -100000', '    print(
+"\\nMCD (Maximo comun divisor)") 100000 )', '    print("\\nMCD (Maximo comun div
+isor)")     valor_2 = solicitar_valor("Numero 2: "', '    print("\\nMCD (Maximo 
+comun divisor)") -100000', '    print("\\nMCD (Maximo comun divisor)") 100000 )'
+, '    print("\\nMCD (Maximo comun divisor)")     print("El MCD es: "', '    pri
+nt("\\nMCD (Maximo comun divisor)") lib_matematica.mcd(valor_1', '    print("\\n
+MCD (Maximo comun divisor)") valor_2)', '    print("\\nMCD (Maximo comun divisor
+
+
+
+Nombre de la función: menu_MCM, Parametros: , Modulo: app_matematica.py, Autor: 
+[Autor: Juan Perez] Ayuda:            [Ayuda: submenu de la opcion mcd, Cuerpo: 
+['    print("\\nMCM (Minimo comun multiplo)")     valor_1 = solicitar_valor("Num
+ero 1: "', '    print("\\nMCM (Minimo comun multiplo)") -100000', '    print("\\
+nMCM (Minimo comun multiplo)") 100000 )', '    print("\\nMCM (Minimo comun multi
+plo)")     valor_2 = solicitar_valor("Numero 2: "', '    print("\\nMCM (Minimo c
+omun multiplo)") -100000', '    print("\\nMCM (Minimo comun multiplo)") 100000 )
+', '    print("\\nMCM (Minimo comun multiplo)")     print("El MCM es: "', '    p
+rint("\\nMCM (Minimo comun multiplo)") lib_matematica.mcm(valor_1', '    print("
+\\nMCM (Minimo comun multiplo)") valor_2)', '    print("\\nMCM (Minimo comun mul
+tiplo)") "\\n")', '    print("\\nMCM (Minimo comun multiplo)") '], Comentarios: 
+
+
+
+Nombre de la función: menu_elegir, Parametros: (), Modulo: app_matematica.py, Au
+tor: [Autor: Alan Gonzalez] Ayuda:            [Ayuda: Menu de opciones, Cuerpo: 
+['    menu_opciones()     opcion = solicitar_valor("Opcion: "', '    menu_opcion
+es() 1', '    menu_opciones() 6)', '    menu_opciones()     print("-------------
+------------------")', '    menu_opciones()     while opcion != 6:', '    menu_o
+pciones()         if opcion == 1:', '    menu_opciones()             menu_factor
+ial()', '    menu_opciones()         elif opcion == 2:', '    menu_opciones()   
+          menu_potencia()', '    menu_opciones()         elif opcion == 3:', '  
+  menu_opciones()             menu_primo()', '    menu_opciones()         elif o
+pcion == 4:', '    menu_opciones()             menu_MCD()', '    menu_opciones()
+         else:', '    menu_opciones()             menu_MCM()', '    menu_opcione
+s()         menu_opciones()', '    menu_opciones()         opcion = solicitar_va
+lor("Opcion: "', '    menu_opciones() 1', '    menu_opciones() 6)', '    menu_op
+
+
+
+Nombre de la función: menu_opciones, Parametros: , Modulo: app_matematica.py, Au
+tor: [Autor: Juan Perez] Ayuda:            [Ayuda: submenu de la opcion mcm, Cue
+rpo: ['    print("-------------------------------")     print("MENU DE OPERACION
+ES MATEMATICAS")', '    print("-------------------------------")     print()', '
+    print("-------------------------------")     print("1. Factorial")', '    pr
+int("-------------------------------")     print("2. Potencia")', '    print("--
+-----------------------------")     print("3. Primo")', '    print("------------
+-------------------")     print("4. MCD (Maximo Comun Divisor)")', '    print("-
+------------------------------")     print("5. MCM (Minimo Comun Multiplo)")', '
+    print("-------------------------------")     print("6. Terminar")', '    pri
+nt("-------------------------------")     print()', '    print("----------------
+
+
+
+Nombre de la función: menu_potencia, Parametros: , Modulo: app_matematica.py, Au
+tor: [Autor: Alan Gonzalez] Ayuda:            [Ayuda: submenu de la opcion facto
+rial, Cuerpo: ['    print("\\nCalculo de Potencia")     base = solicitar_valor("
+Base: "', '    print("\\nCalculo de Potencia") -100', '    print("\\nCalculo de 
+Potencia") 100)', '    print("\\nCalculo de Potencia")     exponente = solicitar
+_valor("Exponente: "', '    print("\\nCalculo de Potencia") -100', '    print("\
+\nCalculo de Potencia") 100)', '    print("\\nCalculo de Potencia")     print("L
+a potencia es: "', '    print("\\nCalculo de Potencia") lib_matematica.potencia(
+base', '    print("\\nCalculo de Potencia") exponente)', '    print("\\nCalculo 
+de Potencia") "\\n")', '    print("\\nCalculo de Potencia") '], Comentarios: [''
+
+
+
+Nombre de la función: menu_primo, Parametros: , Modulo: app_matematica.py, Autor
+: [Autor: Juan Perez] Ayuda:            [Ayuda: submenu de la opcion Potencia, C
+uerpo: ['    print("\\nEvaluar Primo")     valor = solicitar_valor("Numero: "', 
+'    print("\\nEvaluar Primo") -100000', '    print("\\nEvaluar Primo") 100000)'
+, '    print("\\nEvaluar Primo")     print("Es Primo\\n" if lib_matematica.es_pr
+imo(valor) else "No es primo\\n")', '    print("\\nEvaluar Primo") '], Comentari
+
+
+
+Nombre de la función: ordenar_alfabeticamente, Parametros: (diccionario), Modulo
+: m_generar_archivos_csv.py, Autor: [Autor: Alfonso] Ayuda: Ayuda: Ordena diccio
+nario de mayor a menor, Cuerpo: ['         ', '         return sorted(diccionari
+o.items()', '     key = lambda clave: clave[0])'], Comentarios: [' respecto las 
+
+
+
+Nombre de la función: organizar_datos, Parametros: (lista), Modulo: Panel_Genera
+l.py, Autor: [Autor: Luis Andrade] Ayuda: Ayuda: Crea el diccionario inicial y c
+ontiene los campos Nombre       de Funcion, Cuerpo: ['    j = 0     primeros_3 =
+ {"Nombre de Funcion": lista[0] + lista[2]', '    j = 0 "Cantidad de Parametros"
+: lista[1].count(\'(\')', '    j = 0', '    j = 0                   "Cantidad de
+ Lineas": len(lista) - 3}', '    j = 0     return primeros_3'], Comentarios: [' 
+
+
+
+Nombre de la función: panel_principal, Parametros: (), Modulo: Panel_General.py,
+ Autor: [Autor: Luis Andrade] Ayuda: Ayuda: Funcion principal del panel principa
+l, Cuerpo: ["    with open('comentarios.csv' 'r') as comentarios:", "    with op
+en('comentarios.csv'         reader = csv.reader(comentarios)", "    with open('
+comentarios.csv'         lista_de_comentarios = []", "    with open('comentarios
+.csv'         for fila in reader:", "    with open('comentarios.csv'            
+ lista_de_comentarios.append(fila)", "    with open('comentarios.csv'     with o
+pen('fuente_unico.csv'", "    with open('comentarios.csv' 'r') as file:", "    w
+ith open('comentarios.csv'         reader = csv.reader(file)", "    with open('c
+omentarios.csv'         lista_completa = []", "    with open('comentarios.csv'  
+       lista_final = {}", "    with open('comentarios.csv'         datos = []", 
+"    with open('comentarios.csv'         for row in reader:", "    with open('co
+mentarios.csv'             lista_completa.append(row)", "    with open('comentar
+ios.csv'         lista1 = lista_completa", "    with open('comentarios.csv'     
+    i = 0", "    with open('comentarios.csv'         while i < len(lista_complet
+a):", "    with open('comentarios.csv'             lista_final_1 = organizar_dat
+os(lista_completa[i])", "    with open('comentarios.csv'             lista_final
+_2 = contar_invocaciones(lista_completa[i][0]", "    with open('comentarios.csv'
+ lista_completa)", "    with open('comentarios.csv'             lista_final_3 = 
+contar_elementos_varios(lista_completa[i]", "    with open('comentarios.csv' lis
+ta_de_comentarios[i])", "    with open('comentarios.csv'             lista_final
+.update(lista_final_1)", "    with open('comentarios.csv'             lista_fina
+l.update(lista_final_2)", "    with open('comentarios.csv'             lista_fin
+al.update(lista_final_3)", "    with open('comentarios.csv'             datos.ap
+pend(lista_final)", "    with open('comentarios.csv'             lista_final = {
+}", "    with open('comentarios.csv'             i = i + 1", "    with open('com
+entarios.csv' ", "    with open('comentarios.csv'     header = datos[0].keys()",
+ "    with open('comentarios.csv'     rows = [x.values() for x in datos]", "    
+with open('comentarios.csv'     print(tabulate.tabulate(rows", "    with open('c
+omentarios.csv' header))"], Comentarios: [' se encarga de        tabular y unir 
+todos los elementos    ', '    # Abro el archivo de comentarios', '     # Abro e
+l archivo fuente unico', '         # se recorre linea a linea las listas creadas
+', '             # actualizando los diccionarios con cada uno de los procesos po
+
+
+
+Nombre de la función: participacion_info, Parametros: informacion, Modulo: infor
+macion2, Autor:  Ayuda: , Cuerpo: ['Informacion_por_desarrollador.py', 'Informac
+ion_por_desarrollador.py     autor_anterior = None', 'Informacion_por_desarrolla
+dor.py     ', 'Informacion_por_desarrollador.py     titulo = "\\n\\tInforme de D
+esarrollo Por Autor\\n"', 'Informacion_por_desarrollador.py     muestro_salida.i
+mpresiones(titulo)', 'Informacion_por_desarrollador.py     ', 'Informacion_por_d
+esarrollador.py     archivo_participacion_txt(titulo)', 'Informacion_por_desarro
+llador.py     ', 'Informacion_por_desarrollador.py     ', 'Informacion_por_desar
+rollador.py     for indice in range(len(informacion)):     ', 'Informacion_por_d
+esarrollador.py         ', 'Informacion_por_desarrollador.py         nombre_func
+ion = informacion[indice][0]', 'Informacion_por_desarrollador.py         ', 'Inf
+ormacion_por_desarrollador.py         autor', 'Informacion_por_desarrollador.py 
+lineas_funcion = informacion[indice][1]', 'Informacion_por_desarrollador.py ', '
+Informacion_por_desarrollador.py         porcentaje = informacion2[autor]', 'Inf
+ormacion_por_desarrollador.py ', 'Informacion_por_desarrollador.py         if au
+tor_anterior == None:', 'Informacion_por_desarrollador.py             ', 'Inform
+acion_por_desarrollador.py             s1 = "Autor: " + autor + "\\n\\n\\tFuncio
+n" + 16*" " + "Lineas"+"\\n\\t" + 33 * "-"', 'Informacion_por_desarrollador.py  
+           muestro_salida.impresiones(s1)', 'Informacion_por_desarrollador.py   
+          ', 'Informacion_por_desarrollador.py             espacios = cantidad_d
+e_espacios(nombre_funcion)', 'Informacion_por_desarrollador.py             s2 = 
+"\\t" + nombre_funcion + (" " * espacios) + str(lineas_funcion)', 'Informacion_p
+or_desarrollador.py             muestro_salida.impresiones(s2)', 'Informacion_po
+r_desarrollador.py             ', 'Informacion_por_desarrollador.py             
+archivo_participacion_txt("\\n" + s1)', 'Informacion_por_desarrollador.py       
+      archivo_participacion_txt("\\n" + s2)', 'Informacion_por_desarrollador.py 
+            ', 'Informacion_por_desarrollador.py             contador_lineas_tot
+ales = 0', 'Informacion_por_desarrollador.py             ', 'Informacion_por_des
+arrollador.py             contador_funciones_totales = 0', 'Informacion_por_desa
+rrollador.py             ', 'Informacion_por_desarrollador.py             contad
+or_funciones = 0', 'Informacion_por_desarrollador.py ', 'Informacion_por_desarro
+llador.py             contador_lineas = 0', 'Informacion_por_desarrollador.py ',
+ 'Informacion_por_desarrollador.py             porcentaje_anterior = porcentaje'
+, 'Informacion_por_desarrollador.py ', 'Informacion_por_desarrollador.py        
+     autor_anterior = autor', 'Informacion_por_desarrollador.py ', 'Informacion_
+por_desarrollador.py         elif autor_anterior != autor:', 'Informacion_por_de
+sarrollador.py             ', 'Informacion_por_desarrollador.py             s1 =
+ "\\t"+str(contador_funciones) + " Funciones - Lineas\\t " + str(contador_lineas
+) + "  " + str(porcentaje_anterior)+"%\\n"', 'Informacion_por_desarrollador.py  
+           muestro_salida.impresiones(s1)', 'Informacion_por_desarrollador.py   
+          ', 'Informacion_por_desarrollador.py             s2 = "Autor: " + auto
+r +"\\n\\n\\tFuncion"+16*" "+"Lineas\\n\\t" + 33*"-"', 'Informacion_por_desarrol
+lador.py             muestro_salida.impresiones(s2)', 'Informacion_por_desarroll
+ador.py             ', 'Informacion_por_desarrollador.py             espacios = 
+cantidad_de_espacios(nombre_funcion)', 'Informacion_por_desarrollador.py        
+     s3 = "\\t" + nombre_funcion + (" " * espacios) + str(lineas_funcion)', 'Inf
+ormacion_por_desarrollador.py             muestro_salida.impresiones(s3)', 'Info
+rmacion_por_desarrollador.py             ', 'Informacion_por_desarrollador.py   
+          archivo_participacion_txt("\\n" + s1)', 'Informacion_por_desarrollador
+.py             archivo_participacion_txt("\\n" + s2)', 'Informacion_por_desarro
+llador.py             archivo_participacion_txt("\\n" + s3)', 'Informacion_por_d
+esarrollador.py             ', 'Informacion_por_desarrollador.py ', 'Informacion
+_por_desarrollador.py             contador_funciones = 0', 'Informacion_por_desa
+rrollador.py ', 'Informacion_por_desarrollador.py             contador_lineas = 
+0', 'Informacion_por_desarrollador.py ', 'Informacion_por_desarrollador.py      
+       porcentaje_anterior = porcentaje', 'Informacion_por_desarrollador.py ', '
+Informacion_por_desarrollador.py         else:', 'Informacion_por_desarrollador.
+py         ', 'Informacion_por_desarrollador.py             espacios = cantidad_
+de_espacios(nombre_funcion)', 'Informacion_por_desarrollador.py             s1 =
+ "\\t" + nombre_funcion + " "*espacios + str(lineas_funcion)', 'Informacion_por_
+desarrollador.py             muestro_salida.impresiones(s1)', 'Informacion_por_d
+esarrollador.py             ', 'Informacion_por_desarrollador.py             arc
+hivo_participacion_txt("\\n" + s1)', 'Informacion_por_desarrollador.py          
+   ', 'Informacion_por_desarrollador.py ', 'Informacion_por_desarrollador.py    
+     contador_lineas_totales += int(lineas_funcion)', 'Informacion_por_desarroll
+ador.py ', 'Informacion_por_desarrollador.py         contador_funciones_totales 
++= 1', 'Informacion_por_desarrollador.py ', 'Informacion_por_desarrollador.py   
+      contador_funciones += 1', 'Informacion_por_desarrollador.py ', 'Informacio
+n_por_desarrollador.py         contador_lineas += int(lineas_funcion)', 'Informa
+cion_por_desarrollador.py ', 'Informacion_por_desarrollador.py         autor_ant
+erior = autor', 'Informacion_por_desarrollador.py ', 'Informacion_por_desarrolla
+dor.py         if indice == len(informacion)-1 :', 'Informacion_por_desarrollado
+r.py             ', 'Informacion_por_desarrollador.py             s1 = "\\t"+str
+(contador_funciones) + " Funciones - Lineas\\t " + str(contador_lineas) + "  " +
+ str(porcentaje)+"%\\n\\n"', 'Informacion_por_desarrollador.py             muest
+ro_salida.impresiones(s1)', 'Informacion_por_desarrollador.py             s2 = "
+Total: "+ str(contador_funciones_totales) + " Funciones - lineas\\t " + str(cont
+ador_lineas_totales)+"\\n"', 'Informacion_por_desarrollador.py             muest
+ro_salida.impresiones(s2)', 'Informacion_por_desarrollador.py             ', 'In
+formacion_por_desarrollador.py             archivo_participacion_txt("\\n" + s1)
+', 'Informacion_por_desarrollador.py             archivo_participacion_txt("\\n"
+ + s2)            ', 'Informacion_por_desarrollador.py     ', 'Informacion_por_d
+
+
+
+Nombre de la función: potencia, Parametros: (base, Modulo:  exponente), Autor:  
+
+
+
+Nombre de la función: primer_item_lista, Parametros: (lista), Modulo: quien_invo
+ca.py, Autor: [Autor: Alfonso] Ayuda:             [Ayuda: Busca el primer item d
+e una lista, Cuerpo: ['         return [item[0] for item in lista] '], Comentari
+
+
+
+Nombre de la función: quien_invoca_a_quien, Parametros: (), Modulo: quien_invoca
+.py, Autor: [Autor: Alfonso] Ayuda: Ayuda: Genera un diccionario de quien inoca 
+a quien, Cuerpo: ['    diccionario_csv = leer_csv(fuente)     nombre_funcion = [
+]', '    diccionario_csv = leer_csv(fuente)     resultado = {}', '    diccionari
+o_csv = leer_csv(fuente) ', '    diccionario_csv = leer_csv(fuente)     for fila
+ in diccionario_csv:', '    diccionario_csv = leer_csv(fuente)         nombre_fu
+ncion.append(fila)', '    diccionario_csv = leer_csv(fuente)         ', '    dic
+cionario_csv = leer_csv(fuente)     for fila in diccionario_csv.items():', '    
+diccionario_csv = leer_csv(fuente)         clave = fila[0]', '    diccionario_cs
+v = leer_csv(fuente)         cuerpo = fila[1][2:]', '    diccionario_csv = leer_
+csv(fuente)         ', '    diccionario_csv = leer_csv(fuente)         for funci
+on in nombre_funcion:', '    diccionario_csv = leer_csv(fuente)             ', '
+    diccionario_csv = leer_csv(fuente)             ', '    diccionario_csv = lee
+r_csv(fuente)             funciones_en_cuerpo = [s for s in cuerpo if funcion in
+ s]', '    diccionario_csv = leer_csv(fuente)             ', '    diccionario_cs
+v = leer_csv(fuente)             contador = len(funciones_en_cuerpo)', '    dicc
+ionario_csv = leer_csv(fuente)             lista_de_invocacion = [funcion', '   
+ diccionario_csv = leer_csv(fuente)contador]', '    diccionario_csv = leer_csv(f
+uente)             ', '    diccionario_csv = leer_csv(fuente)             if con
+tador > 0:', '    diccionario_csv = leer_csv(fuente)                 ', '    dic
+cionario_csv = leer_csv(fuente)                 if clave in resultado:', '    di
+ccionario_csv = leer_csv(fuente)                     resultado[clave].append(lis
+ta_de_invocacion)', '    diccionario_csv = leer_csv(fuente)                     
+', '    diccionario_csv = leer_csv(fuente)                 else:    ', '    dicc
+ionario_csv = leer_csv(fuente)                     resultado[clave] = [lista_de_
+invocacion]', '    diccionario_csv = leer_csv(fuente)                     ', '  
+  diccionario_csv = leer_csv(fuente)     return nombre_funcion', '    diccionari
+o_csv = leer_csv(fuente) resultado'], Comentarios: [' teniendo como clave el nom
+bre de la funcion y como valores una lista de lista con cuantas veces lo invoca]
+    ', '    #Invoco para leer el csv y que me devuelva un diccionario', '     #M
+e quedo con el nombre de las funciones', '     #Recorre las filas y me quedo con
+ la clave (nombre_funcion) y el cuerpo de la funcion', '         #Por cada funci
+on en la lista de funciones itera', '             #Cruza los nombres de las func
+iones y chequea si esta en el cuerpo de otra funcion', '             #Cuenta cua
+ntas veces ocurre que una funcion este dentro de ota ', '             #Si ocurre
+ al menos 1 vez', '                 #Si la clave ya existe', ' agrego otra lista
+
+
+
+Nombre de la función: remover_ceros, Parametros: (lista), Modulo: quien_invoca.p
+y, Autor: [Autor: Alfonso] Ayuda:         [Ayuda: Reemplaza por un espacio los 0
+ que se encuentren en una lista, Cuerpo: ["    reemplazo =[' ' if i==0 else i fo
+
+
+
+Nombre de la función: sacar_corchetes, Parametros: (cadena), Modulo: consulta_de
+_funciones.py, Autor: [Autor: Valentin] Ayuda:         [Ayuda: Recibe como param
+etro una cadena y le saca los corchetes de adelante y atrás, Cuerpo: ['    if ca
+dena.endswith(" "):         sin_corchetes = cadena.lstrip("[").rstrip("] ")', ' 
+   if cadena.endswith(" "):     else:', '    if cadena.endswith(" "):         si
+n_corchetes = cadena.lstrip("[").rstrip("]")', '    if cadena.endswith(" "):    
+
+
+
+Nombre de la función: solicitar_valor, Parametros: (mensaje, Modulo:  minimo, Au
+tor: [Autor: Juan Perez] Ayuda: Ayuda: Solicitar el ingreso de un valor y devolv
+erlo, Cuerpo: [' maximo)app_matematica.py', ' maximo)    valor = input(mensaje)'
+, ' maximo)     while (not valor.isdigit()) or ((int(valor) < minimo) or (int(va
+lor) > maximo)):', ' maximo)         print("Error: Valor debe estar entre"', ' m
+aximo) minimo', ' maximo) "y"', ' maximo) maximo)', ' maximo)         valor = in
+put(mensaje)', ' maximo)         ', ' maximo)     return int(valor)'], Comentari
+os: [' asegurando que        estara entre el minimo y el maximo pasado por param
+
+
+
+Nombre de la función: sumar_totales, Parametros: (lista), Modulo: quien_invoca.p
+y, Autor: [Autor: Alfonso] Ayuda:              [Ayuda: Sumariza la columna de un
+a matriz, Cuerpo: ['    totales = []       for columna_matriz in enumerate(lista
+[0]):', '    totales = []           suma_columna = sum([x[columna_matriz[0]] for
+ x in lista])', '    totales = []           totales.append(suma_columna)', '    
+totales = []       totales.insert(0', '    totales = []  "Total Invocaciones    
 
 

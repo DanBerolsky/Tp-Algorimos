@@ -1,5 +1,12 @@
-archivo_participacion_txt ,,,
-cantidad_de_espacios,[Autor: Dan],            [Ayuda: Aquí se multiplica un espacio por un numero x        El 8 es cantidad de caracateres que tiene una tabulacion,        len(nom_fun) es la cantida de caracteres que tiene el nom_fun.        Despues quiero que partir del carater 32 obtener la cant.lineas.        Esta cuanta me asegura que el valor lineas_f este uno debajo del otro,        multiplicando un str espacio la cantidad de veces nesesaria para cada caso. ]    ,
-capturo_datos,[Autor: Dan],        [Ayuda: recopila los parametros para el Quinta punto    (Nombres de las funciones, autor de la funcion , lineas por funcion y    porcentaje de lineas del autor, sobre lineas totales del trabajo. ) ]    ,    #datos porcentajes,     #ordeno por autores
-impresiones ,[Autor: Dan],        [Ayuda: Muestra por pantalla el parametro recibido]    ,
-participacion_info ,,,
+armar_diccionarios,[Autor: Valentin],        [Ayuda: Imprime la lista de funciones, y da la opción de mostrar información acerca de cada una.],        #Ciclo a través de las lineas del archivo para añadir a un diccionario los datos de fuente unico,         #que necesito,         #Ídem comentarios
+consultar_funciones,[Autor: Valentin],        [Ayuda: Imprime la lista de funciones],
+generar_lista_total,[Autor: Valentin],        [Ayuda: Genera una lista de listas con los nombres de las funciones ordenadas alfabeticamente],    #Añado los nombres de funciones del diccionario a una lista de listas, para imprimir ordenado,     #Verifico si la ultima lista generada tiene menos de 5 elementos, para formatear espacios y que quede parejo
+main_consulta_funciones,,,
+menu_MCD,[Autor: Alan Gonzalez],           [Ayuda: submenu de la opcion primo]    ,
+menu_MCM,[Autor: Juan Perez],           [Ayuda: submenu de la opcion mcd]    ,
+menu_elegir,,,
+menu_opciones,[Autor: Juan Perez],           [Ayuda: submenu de la opcion mcm]    ,
+menu_potencia,[Autor: Alan Gonzalez],           [Ayuda: submenu de la opcion factorial]    ,
+menu_primo,[Autor: Juan Perez],           [Ayuda: submenu de la opcion Potencia]    ,
+sacar_corchetes,,,
+solicitar_valor,[Autor: Juan Perez],           [Ayuda: Solicitar el ingreso de un valor y devolverlo, asegurando que        estara entre el minimo y el maximo pasado por parametro]    ,

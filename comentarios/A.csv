@@ -4,11 +4,5 @@ armar_csv_funciones,[Autor: Alfonso],        [Ayuda: abre un archivo]    ,    #D
 autor_ayuda,[Autor: Alfonso],,        [Ayuda: Remueve los comentarios de la funcion    y crea el archivo comentarios.csv]        ,
 leer,[Autor: Alfonso],        [Ayuda: Lee el archivo linea por linea]    ,
 lista_comentarios,[Autor: Alfonso],        [Ayuda: Remueve los comentarios de la funcion y crea el archivo comentarios.csv]     ,
-menu_MCD,[Autor: Alan Gonzalez],           [Ayuda: submenu de la opcion primo]    ,
-menu_MCM,[Autor: Juan Perez],           [Ayuda: submenu de la opcion mcd]    ,
-menu_elegir,[Autor: Alan Gonzalez],           [Ayuda: Menu de opciones]    ,
-menu_opciones,[Autor: Juan Perez],           [Ayuda: submenu de la opcion mcm]    ,
-menu_potencia,[Autor: Alan Gonzalez],           [Ayuda: submenu de la opcion factorial]    ,
-menu_primo,[Autor: Juan Perez],           [Ayuda: submenu de la opcion Potencia]    ,
+main,[Autor: L],        [Ayuda: Es la funcion principal]    ,            #Punto 1,             # Quinto punto
 ordenar_alfabeticamente,[Autor: Alfonso],        [Ayuda: Ordena diccionario de mayor a menor, respecto las claves del mismo. Devuelvo lista de tuplas]    ,
-solicitar_valor,[Autor: Juan Perez],           [Ayuda: Solicitar el ingreso de un valor y devolverlo, asegurando que        estara entre el minimo y el maximo pasado por parametro]    ,

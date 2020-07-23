@@ -5,6 +5,8 @@ def armar_diccionarios():
     diccionario_fuente_unico = {}
     diccionario_comentarios = {}
     with open("fuente_unico.csv", "r") as fuente_unico:
+        #Ciclo a través de las lineas del archivo para añadir a un diccionario los datos de fuente unico
+        #que necesito
         linea = fuente_unico.readline().rstrip("\n")
         while linea != "":
             datos = linea.split(",")
@@ -17,6 +19,7 @@ def armar_diccionarios():
                 linea = fuente_unico.readline().rstrip("\n")
 
     with open("comentarios.csv", "r") as comentarios:
+        #Ídem comentarios
         linea_comentarios = comentarios.readline().rstrip("\n")
         while linea_comentarios:
             datos2 = linea_comentarios.split(",")
@@ -34,6 +37,8 @@ def sacar_corchetes(cadena):
     [Ayuda: Recibe como parametro una cadena y le saca los corchetes de adelante y atrás]"""
     if cadena.endswith(" "):
         sin_corchetes = cadena.lstrip("[").rstrip("] ")
+    elif cadena.lstrip() != cadena:
+        sin_corchetes = cadena.strip().lstrip("[").rstrip("]")
     else:
         sin_corchetes = cadena.lstrip("[").rstrip("]")
     return sin_corchetes
@@ -62,6 +67,7 @@ def generar_lista_total(dic):
     """[Autor: Valentin]"""
     """[Ayuda: Genera una lista de listas con los nombres de las funciones ordenadas alfabeticamente]"""
     lista_total = [[]]
+    #Añado los nombres de funciones del diccionario a una lista de listas, para imprimir ordenado
     for i in dic:
         ultima_lista = lista_total[-1]
         if len(ultima_lista) < 5:
@@ -70,6 +76,7 @@ def generar_lista_total(dic):
             lista_total.append([])
             ultima_lista = lista_total[-1]
             ultima_lista.append(format(i, "<26s"))
+    #Verifico si la ultima lista generada tiene menos de 5 elementos, para formatear espacios y que quede parejo
     if len(lista_total[-1]) < 5:
         for i in range(0, 5-len(lista_total[-1])):
             lista_total[-1].append(format(" ", "<26s"))
@@ -84,18 +91,22 @@ def imprimir_funciones(listas):
         print(lista)
 
 
-def consultar_funciones(diccionario_fuente, diccionario_comentarios):
+def consultar_funciones(diccionario_fuente, diccionario_comentarios, lista_total):
     """[Autor: Valentin]"""
     """[Ayuda: Pide un input de nombre de función, y en base a lo ingresado muestra, o la ayuda, comentarios,
         parametros y autor de la función, o todo lo relacionado a la misma]"""
+    #Pregunto la funcion y la continuo preguntando hasta que el usuario aprete enter
+    print("Puede ingresar la función buscada, '?todo', 'imprimir ?todo' o 'imprimir tabla' para mostrar la tabla de funciones de vuelta.")
     funcion = input("Función: ")
     while funcion != "":
         nombre_funcion = funcion[1:]
+        #Verifico si la funcion ingresada pertenece al diccionario o si es alguna de las funciones propuestas
         if nombre_funcion in diccionario_fuente or funcion == "?todo" or funcion == "#todo" or funcion == "imprimir ?todo":
+            #Imprimo la funcion ingresada en base al criterio pedido(?, #)
             if funcion.startswith("?") and funcion != "?todo":
                 print(sacar_corchetes(diccionario_comentarios[nombre_funcion][1]) + "\n" + "Parametros: " + str(diccionario_fuente[nombre_funcion][0]) + "\n" + "Modulo: " + str(diccionario_fuente[nombre_funcion][1]) + "\n" + sacar_corchetes(str(diccionario_comentarios[nombre_funcion][0])))
             elif funcion.startswith("#") and funcion != "#todo":
-                print(sacar_corchetes(str(diccionario_comentarios[nombre_funcion][0])) + "\n" + "Parametros: " + str(diccionario_fuente[nombre_funcion][0]) + "\n" + "Modulo: " + str(diccionario_fuente[nombre_funcion][1]) + "\n" + sacar_corchetes(str(diccionario_comentarios[nombre_funcion][1])) + "\n" + "Cuerpo: " + str(diccionario_fuente[nombre_funcion][2]) + "\n" + "Comentarios: " + str(diccionario_comentarios[nombre_funcion][2]))
+                print(sacar_corchetes(str(diccionario_comentarios[nombre_funcion][0])) + "\n" + "Parametros: " + str(diccionario_fuente[nombre_funcion][0]) + "\n" + "Modulo: " + str(diccionario_fuente[nombre_funcion][1]) + "\n" + sacar_corchetes(str(diccionario_comentarios[nombre_funcion][1])).lstrip() + "\n" + "Cuerpo: " + str(diccionario_fuente[nombre_funcion][2]) + "\n" + "Comentarios: " + str(diccionario_comentarios[nombre_funcion][2]))
             elif funcion == "?todo" or funcion == "#todo":
                 for i in diccionario_fuente:
                     if i in diccionario_comentarios:
@@ -103,6 +114,8 @@ def consultar_funciones(diccionario_fuente, diccionario_comentarios):
                         print("\n")
             elif funcion == "imprimir ?todo":
                 generar_txt(diccionario_fuente, diccionario_comentarios, "ayuda_funciones.txt")
+        elif funcion == "imprimir tabla":
+            imprimir_funciones(lista_total)
         else:
             print("La función especificada no existe. Por favor, ingrese una función valida")
         funcion = input("Función: ")
@@ -110,6 +123,8 @@ def consultar_funciones(diccionario_fuente, diccionario_comentarios):
 
 def main_consulta_funciones():
     dic_fuente, dic_comentarios = armar_diccionarios()
-    print(imprimir_funciones(generar_lista_total(dic_fuente)))
-    generar_txt(dic_fuente, dic_comentarios, "ayuda_funciones.txt")
-    consultar_funciones(dic_fuente, dic_comentarios)
+    lista_total = generar_lista_total(dic_fuente)
+    imprimir_funciones(lista_total)
+    consultar_funciones(dic_fuente, dic_comentarios, lista_total)
+
+main_consulta_funciones()

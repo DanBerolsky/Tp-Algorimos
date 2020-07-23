@@ -1,8 +1,9 @@
 #Programa principal
 def main():
     
-    """[Autor: L]"""
-    """[Ayuda: Es la funcion principal]"""
+    """[Autor: L]
+    [Ayuda: Es la funcion principal]
+    """
     
     import m_generar_archivos_csv
     txt = 'programas.txt'
@@ -12,7 +13,7 @@ def main():
     while funcionalidad != "":
 
         if funcionalidad == "1":
-            # Primer punto
+            #Punto 1
         
         elif funcionalidad == "2": 
             import consulta_de_funciones
