@@ -1,0 +1,5 @@
+armar_diccionarios,[Autor: Valentin],        [Ayuda: Imprime la lista de funciones, y da la opción de mostrar información acerca de cada una.]    ,
+consultar_funciones,[Autor: Valentin],        [Ayuda: Imprime la lista de funciones]    ,
+generar_lista_total,[Autor: Valentin],        [Ayuda: Genera una lista de listas con los nombres de las funciones ordenadas alfabeticamente]    ,
+main_consulta_funciones,[Autor: Valentin],        [Ayuda: Funcion Principal de consulta funciones]    ,
+sacar_corchetes,[Autor: Valentin],        [Ayuda: Recibe como parametro una cadena y le saca los corchetes de adelante y atrás]    ,

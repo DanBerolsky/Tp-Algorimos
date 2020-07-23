@@ -1,0 +1,2 @@
+impresiones ,(contenido_a_mostrar),muestro_salida.py,    , ,     print(contenido_a_mostrar)
+main,(),programa_principal.py,    ,     ,     import m_generar_archivos_csv,     txt = 'programas.txt',     m_generar_archivos_csv.armar_csv_funciones(txt), 

@@ -42,3 +42,745 @@ Autor: b
 
 
 Total: 9 Funciones - lineas	 222
+
+	Informe de Desarrollo Por Autor
+
+Autor: A
+
+	Funcion                Lineas
+	---------------------------------
+	leer                     5
+	1 Funciones - Lineas	 5  1%
+
+Autor: D
+
+	Funcion                Lineas
+	---------------------------------
+	armar_csv_comentarios    32
+	1 Funciones - Lineas	 32  8%
+
+Autor: Dan
+
+	Funcion                Lineas
+	---------------------------------
+	armo_csv                 47
+	impresiones              5
+	capturo_datos            75
+	3 Funciones - Lineas	 127  35%
+
+Autor: L
+
+	Funcion                Lineas
+	---------------------------------
+	main                     14
+	1 Funciones - Lineas	 14  3%
+
+Autor: Valentin
+
+	Funcion                Lineas
+	---------------------------------
+	armar_diccionarios       35
+	sacar_corchetes          5
+	generar_lista_total      17
+	3 Funciones - Lineas	 57  5%
+
+Autor: b
+
+	Funcion                Lineas
+	---------------------------------
+	abro_ar                  7
+	ordenar_alfabeticamente  5
+	armar_csv_funciones      32
+	3 Funciones - Lineas	 44  12%
+
+
+Total: 12 Funciones - lineas	 279
+
+	Informe de Desarrollo Por Autor
+
+Autor: A
+
+	Funcion                Lineas
+	---------------------------------
+	leer                     5
+	1 Funciones - Lineas	 5  1%
+
+Autor: D
+
+	Funcion                Lineas
+	---------------------------------
+	armar_csv_comentarios    32
+	1 Funciones - Lineas	 32  8%
+
+Autor: Dan
+
+	Funcion                Lineas
+	---------------------------------
+	armo_csv                 47
+	impresiones              5
+	capturo_datos            75
+	3 Funciones - Lineas	 127  33%
+
+Autor: L
+
+	Funcion                Lineas
+	---------------------------------
+	main                     14
+	1 Funciones - Lineas	 14  3%
+
+Autor: Valentin
+
+	Funcion                Lineas
+	---------------------------------
+	armar_diccionarios       35
+	sacar_corchetes          5
+	generar_lista_total      17
+	3 Funciones - Lineas	 57  7%
+
+Autor: b
+
+	Funcion                Lineas
+	---------------------------------
+	abro_ar                  7
+	ordenar_alfabeticamente  5
+	armar_csv_funciones      32
+	3 Funciones - Lineas	 44  11%
+
+
+Total: 12 Funciones - lineas	 279
+
+	Informe de Desarrollo Por Autor
+
+Autor: A
+
+	Funcion                Lineas
+	---------------------------------
+	leer                     5
+	1 Funciones - Lineas	 5  1%
+
+Autor: D
+
+	Funcion                Lineas
+	---------------------------------
+	armar_csv_comentarios    32
+	1 Funciones - Lineas	 32  8%
+
+Autor: Dan
+
+	Funcion                Lineas
+	---------------------------------
+	armo_csv                 47
+	impresiones              5
+	capturo_datos            75
+	3 Funciones - Lineas	 127  32%
+
+Autor: L
+
+	Funcion                Lineas
+	---------------------------------
+	main                     14
+	1 Funciones - Lineas	 14  3%
+
+Autor: Valentin
+
+	Funcion                Lineas
+	---------------------------------
+	armar_diccionarios       35
+	sacar_corchetes          5
+	generar_lista_total      17
+	3 Funciones - Lineas	 57  8%
+
+Autor: b
+
+	Funcion                Lineas
+	---------------------------------
+	abro_ar                  7
+	ordenar_alfabeticamente  5
+	armar_csv_funciones      32
+	3 Funciones - Lineas	 44  11%
+
+
+Total: 12 Funciones - lineas	 279
+
+	Informe de Desarrollo Por Autor
+
+Autor: A
+
+	Funcion                Lineas
+	---------------------------------
+	leer                     5
+	1 Funciones - Lineas	 5  1%
+
+Autor: D
+
+	Funcion                Lineas
+	---------------------------------
+	armar_csv_comentarios    32
+	1 Funciones - Lineas	 32  7%
+
+Autor: Dan
+
+	Funcion                Lineas
+	---------------------------------
+	armo_csv                 47
+	impresiones              5
+	capturo_datos            75
+	3 Funciones - Lineas	 127  31%
+
+Autor: L
+
+	Funcion                Lineas
+	---------------------------------
+	main                     14
+	1 Funciones - Lineas	 14  3%
+
+Autor: Valentin
+
+	Funcion                Lineas
+	---------------------------------
+	armar_diccionarios       35
+	sacar_corchetes          5
+	generar_lista_total      17
+	3 Funciones - Lineas	 57  9%
+
+Autor: b
+
+	Funcion                Lineas
+	---------------------------------
+	abro_ar                  7
+	ordenar_alfabeticamente  5
+	armar_csv_funciones      32
+	3 Funciones - Lineas	 44  10%
+
+
+Total: 12 Funciones - lineas	 279
+
+	Informe de Desarrollo Por Autor
+
+Autor: A
+
+	Funcion                Lineas
+	---------------------------------
+	leer                     5
+	1 Funciones - Lineas	 5  1%
+
+Autor: D
+
+	Funcion                Lineas
+	---------------------------------
+	armar_csv_comentarios    32
+	1 Funciones - Lineas	 32  7%
+
+Autor: Dan
+
+	Funcion                Lineas
+	---------------------------------
+	armo_csv                 47
+	impresiones              5
+	capturo_datos            75
+	3 Funciones - Lineas	 127  30%
+
+Autor: L
+
+	Funcion                Lineas
+	---------------------------------
+	main                     14
+	1 Funciones - Lineas	 14  3%
+
+Autor: Valentin
+
+	Funcion                Lineas
+	---------------------------------
+	armar_diccionarios       35
+	sacar_corchetes          5
+	generar_lista_total      17
+	3 Funciones - Lineas	 57  9%
+
+Autor: b
+
+	Funcion                Lineas
+	---------------------------------
+	abro_ar                  7
+	ordenar_alfabeticamente  5
+	armar_csv_funciones      32
+	3 Funciones - Lineas	 44  10%
+
+
+Total: 12 Funciones - lineas	 279
+
+	Informe de Desarrollo Por Autor
+
+Autor: A
+
+	Funcion                Lineas
+	---------------------------------
+	leer                     5
+	1 Funciones - Lineas	 5  1%
+
+Autor: D
+
+	Funcion                Lineas
+	---------------------------------
+	armar_csv_comentarios    32
+	1 Funciones - Lineas	 32  7%
+
+Autor: Dan
+
+	Funcion                Lineas
+	---------------------------------
+	armo_csv                 47
+	impresiones              5
+	capturo_datos            75
+	3 Funciones - Lineas	 127  30%
+
+Autor: L
+
+	Funcion                Lineas
+	---------------------------------
+	main                     14
+	1 Funciones - Lineas	 14  3%
+
+Autor: Valentin
+
+	Funcion                Lineas
+	---------------------------------
+	armar_diccionarios       35
+	sacar_corchetes          5
+	generar_lista_total      17
+	3 Funciones - Lineas	 57  10%
+
+Autor: b
+
+	Funcion                Lineas
+	---------------------------------
+	abro_ar                  7
+	ordenar_alfabeticamente  5
+	armar_csv_funciones      32
+	3 Funciones - Lineas	 44  10%
+
+
+Total: 12 Funciones - lineas	 279
+
+	Informe de Desarrollo Por Autor
+
+Autor: A
+
+	Funcion                Lineas
+	---------------------------------
+	leer                     1
+	1 Funciones - Lineas	 1  1%
+
+Autor: D
+
+	Funcion                Lineas
+	---------------------------------
+	armar_csv_comentarios    2
+	1 Funciones - Lineas	 2  7%
+
+Autor: Dan
+
+	Funcion                Lineas
+	---------------------------------
+	armo_csv                 2
+	impresiones              1
+	capturo_datos            1
+	3 Funciones - Lineas	 4  30%
+
+Autor: L
+
+	Funcion                Lineas
+	---------------------------------
+	main                     1
+	1 Funciones - Lineas	 1  3%
+
+Autor: Valentin
+
+	Funcion                Lineas
+	---------------------------------
+	armar_diccionarios       1
+	sacar_corchetes          1
+	generar_lista_total      1
+	3 Funciones - Lineas	 3  10%
+
+Autor: b
+
+	Funcion                Lineas
+	---------------------------------
+	abro_ar                  1
+	ordenar_alfabeticamente  1
+	armar_csv_funciones      1
+	3 Funciones - Lineas	 3  10%
+
+
+Total: 12 Funciones - lineas	 14
+
+	Informe de Desarrollo Por Autor
+
+Autor: A
+
+	Funcion                Lineas
+	---------------------------------
+	leer                     1
+	1 Funciones - Lineas	 1  1%
+
+Autor: D
+
+	Funcion                Lineas
+	---------------------------------
+	armar_csv_comentarios    2
+	1 Funciones - Lineas	 2  7%
+
+Autor: Dan
+
+	Funcion                Lineas
+	---------------------------------
+	armo_csv                 2
+	impresiones              1
+	capturo_datos            1
+	3 Funciones - Lineas	 4  29%
+
+Autor: L
+
+	Funcion                Lineas
+	---------------------------------
+	main                     1
+	1 Funciones - Lineas	 1  3%
+
+Autor: Valentin
+
+	Funcion                Lineas
+	---------------------------------
+	armar_diccionarios       1
+	sacar_corchetes          1
+	generar_lista_total      1
+	3 Funciones - Lineas	 3  10%
+
+Autor: b
+
+	Funcion                Lineas
+	---------------------------------
+	abro_ar                  1
+	ordenar_alfabeticamente  1
+	armar_csv_funciones      1
+	3 Funciones - Lineas	 3  10%
+
+
+Total: 12 Funciones - lineas	 14
+
+	Informe de Desarrollo Por Autor
+
+Autor: A
+
+	Funcion                Lineas
+	---------------------------------
+	leer                     1
+	1 Funciones - Lineas	 1  1%
+
+Autor: D
+
+	Funcion                Lineas
+	---------------------------------
+	armar_csv_comentarios    2
+	1 Funciones - Lineas	 2  7%
+
+Autor: Dan
+
+	Funcion                Lineas
+	---------------------------------
+	armo_csv                 2
+	impresiones              1
+	capturo_datos            1
+	3 Funciones - Lineas	 4  29%
+
+Autor: L
+
+	Funcion                Lineas
+	---------------------------------
+	main                     1
+	1 Funciones - Lineas	 1  3%
+
+Autor: Valentin
+
+	Funcion                Lineas
+	---------------------------------
+	armar_diccionarios       1
+	sacar_corchetes          1
+	generar_lista_total      1
+	3 Funciones - Lineas	 3  10%
+
+Autor: b
+
+	Funcion                Lineas
+	---------------------------------
+	abro_ar                  1
+	ordenar_alfabeticamente  1
+	armar_csv_funciones      1
+	3 Funciones - Lineas	 3  10%
+
+
+Total: 12 Funciones - lineas	 14
+
+	Informe de Desarrollo Por Autor
+
+Autor: A
+
+	Funcion                Lineas
+	---------------------------------
+	leer                     1
+	1 Funciones - Lineas	 1  1%
+
+Autor: D
+
+	Funcion                Lineas
+	---------------------------------
+	armar_csv_comentarios    2
+	1 Funciones - Lineas	 2  7%
+
+Autor: Dan
+
+	Funcion                Lineas
+	---------------------------------
+	armo_csv                 2
+	impresiones              1
+	capturo_datos            1
+	3 Funciones - Lineas	 4  29%
+
+Autor: L
+
+	Funcion                Lineas
+	---------------------------------
+	main                     1
+	1 Funciones - Lineas	 1  3%
+
+Autor: Valentin
+
+	Funcion                Lineas
+	---------------------------------
+	armar_diccionarios       1
+	sacar_corchetes          1
+	generar_lista_total      1
+	3 Funciones - Lineas	 3  10%
+
+Autor: b
+
+	Funcion                Lineas
+	---------------------------------
+	abro_ar                  1
+	ordenar_alfabeticamente  1
+	armar_csv_funciones      1
+	3 Funciones - Lineas	 3  10%
+
+
+Total: 12 Funciones - lineas	 14
+
+	Informe de Desarrollo Por Autor
+
+Autor: A
+
+	Funcion                Lineas
+	---------------------------------
+	leer                     1
+	1 Funciones - Lineas	 1  1%
+
+Autor: D
+
+	Funcion                Lineas
+	---------------------------------
+	armar_csv_comentarios    2
+	1 Funciones - Lineas	 2  7%
+
+Autor: Dan
+
+	Funcion                Lineas
+	---------------------------------
+	armo_csv                 2
+	impresiones              1
+	capturo_datos            1
+	3 Funciones - Lineas	 4  29%
+
+Autor: L
+
+	Funcion                Lineas
+	---------------------------------
+	main                     1
+	1 Funciones - Lineas	 1  3%
+
+Autor: Valentin
+
+	Funcion                Lineas
+	---------------------------------
+	armar_diccionarios       1
+	sacar_corchetes          1
+	generar_lista_total      1
+	3 Funciones - Lineas	 3  10%
+
+Autor: b
+
+	Funcion                Lineas
+	---------------------------------
+	abro_ar                  1
+	ordenar_alfabeticamente  1
+	armar_csv_funciones      1
+	3 Funciones - Lineas	 3  10%
+
+
+Total: 12 Funciones - lineas	 14
+
+	Informe de Desarrollo Por Autor
+
+Autor: A
+
+	Funcion                Lineas
+	---------------------------------
+	leer                     1
+	1 Funciones - Lineas	 1  1%
+
+Autor: D
+
+	Funcion                Lineas
+	---------------------------------
+	armar_csv_comentarios    2
+	1 Funciones - Lineas	 2  7%
+
+Autor: Dan
+
+	Funcion                Lineas
+	---------------------------------
+	armo_csv                 2
+	impresiones              1
+	capturo_datos            1
+	3 Funciones - Lineas	 4  29%
+
+Autor: L
+
+	Funcion                Lineas
+	---------------------------------
+	main                     1
+	1 Funciones - Lineas	 1  3%
+
+Autor: Valentin
+
+	Funcion                Lineas
+	---------------------------------
+	armar_diccionarios       1
+	sacar_corchetes          1
+	generar_lista_total      1
+	3 Funciones - Lineas	 3  10%
+
+Autor: b
+
+	Funcion                Lineas
+	---------------------------------
+	abro_ar                  1
+	ordenar_alfabeticamente  1
+	armar_csv_funciones      1
+	3 Funciones - Lineas	 3  10%
+
+
+Total: 12 Funciones - lineas	 14
+
+	Informe de Desarrollo Por Autor
+
+Autor: A
+
+	Funcion                Lineas
+	---------------------------------
+	leer                     1
+	1 Funciones - Lineas	 1  1%
+
+Autor: D
+
+	Funcion                Lineas
+	---------------------------------
+	armar_csv_comentarios    2
+	1 Funciones - Lineas	 2  7%
+
+Autor: Dan
+
+	Funcion                Lineas
+	---------------------------------
+	armo_csv                 2
+	impresiones              1
+	capturo_datos            1
+	3 Funciones - Lineas	 4  29%
+
+Autor: L
+
+	Funcion                Lineas
+	---------------------------------
+	main                     1
+	1 Funciones - Lineas	 1  3%
+
+Autor: Valentin
+
+	Funcion                Lineas
+	---------------------------------
+	armar_diccionarios       1
+	sacar_corchetes          1
+	generar_lista_total      1
+	3 Funciones - Lineas	 3  10%
+
+Autor: b
+
+	Funcion                Lineas
+	---------------------------------
+	abro_ar                  1
+	ordenar_alfabeticamente  1
+	armar_csv_funciones      1
+	3 Funciones - Lineas	 3  10%
+
+
+Total: 12 Funciones - lineas	 14
+
+	Informe de Desarrollo Por Autor
+
+Autor: A
+
+	Funcion                Lineas
+	---------------------------------
+	leer                     1
+	1 Funciones - Lineas	 1  1%
+
+Autor: D
+
+	Funcion                Lineas
+	---------------------------------
+	armar_csv_comentarios    2
+	1 Funciones - Lineas	 2  7%
+
+Autor: Dan
+
+	Funcion                Lineas
+	---------------------------------
+	armo_csv                 2
+	impresiones              1
+	capturo_datos            1
+	3 Funciones - Lineas	 4  29%
+
+Autor: L
+
+	Funcion                Lineas
+	---------------------------------
+	main                     1
+	1 Funciones - Lineas	 1  3%
+
+Autor: Valentin
+
+	Funcion                Lineas
+	---------------------------------
+	armar_diccionarios       1
+	sacar_corchetes          1
+	generar_lista_total      1
+	3 Funciones - Lineas	 3  10%
+
+Autor: b
+
+	Funcion                Lineas
+	---------------------------------
+	abro_ar                  1
+	ordenar_alfabeticamente  1
+	armar_csv_funciones      1
+	3 Funciones - Lineas	 3  10%
+
+
+Total: 12 Funciones - lineas	 14

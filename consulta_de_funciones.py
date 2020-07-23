@@ -1,4 +1,3 @@
-
 def armar_diccionarios():
     """[Autor: Valentin]"""
     """[Ayuda: Imprime la lista de funciones, y da la opción de mostrar información acerca de cada una.]"""
@@ -103,12 +102,14 @@ def consultar_funciones(diccionario_fuente, diccionario_comentarios):
                         print("Autor: " + sacar_corchetes(diccionario_comentarios[i][0]) + "\n" + "Parametros: " + diccionario_fuente[i][0] + "\n" + "Modulo: " + diccionario_fuente[i][1] + "\n" + sacar_corchetes(diccionario_comentarios[i][1]) + "\n" + "Cuerpo: " + str(diccionario_fuente[i][2]) + "\n" + "Comentarios: " + str(diccionario_comentarios[i][2]))
                         print("\n")
             elif funcion == "imprimir ?todo":
-                generar_txt(dic_fuente, dic_comentarios, "ayuda_funciones.txt")
+                generar_txt(diccionario_fuente, diccionario_comentarios, "ayuda_funciones.txt")
         else:
             print("La función especificada no existe. Por favor, ingrese una función valida")
         funcion = input("Función: ")
-dic_fuente, dic_comentarios, = armar_diccionarios()
 
-imprimir_funciones(generar_lista_total(dic_fuente))
-consultar_funciones(dic_fuente, dic_comentarios)
 
+def main_consulta_funciones():
+    dic_fuente, dic_comentarios = armar_diccionarios()
+    print(imprimir_funciones(generar_lista_total(dic_fuente)))
+    generar_txt(dic_fuente, dic_comentarios, "ayuda_funciones.txt")
+    consultar_funciones(dic_fuente, dic_comentarios)

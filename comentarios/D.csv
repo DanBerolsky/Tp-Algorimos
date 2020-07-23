@@ -1,0 +1,5 @@
+archivo_participacion_txt ,,,
+cantidad_de_espacios,[Autor: Dan],            [Ayuda: Aquí se multiplica un espacio por un numero x        El 8 es cantidad de caracateres que tiene una tabulacion,        len(nom_fun) es la cantida de caracteres que tiene el nom_fun.        Despues quiero que partir del carater 32 obtener la cant.lineas.        Esta cuanta me asegura que el valor lineas_f este uno debajo del otro,        multiplicando un str espacio la cantidad de veces nesesaria para cada caso. ]    ,
+capturo_datos,[Autor: Dan],        [Ayuda: recopila los parametros para el Quinta punto    (Nombres de las funciones, autor de la funcion , lineas por funcion y    porcentaje de lineas del autor, sobre lineas totales del trabajo. ) ]    ,    #datos porcentajes,     #ordeno por autores
+impresiones ,[Autor: Dan],        [Ayuda: Muestra por pantalla el parametro recibido]    ,
+participacion_info ,,,
