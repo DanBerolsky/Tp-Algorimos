@@ -73,9 +73,7 @@ def menu_opciones():
     print()
 
 def menu_elegir():
-    """[Autor: Alan Gonzalez]
-       [Ayuda: Menu de opciones]
-    """
+
     menu_opciones()
     opcion = solicitar_valor("Opcion: ", 1, 6)
     print("-------------------------------")

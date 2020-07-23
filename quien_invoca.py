@@ -15,9 +15,8 @@ def leer_csv(nombre_csv):
     return dicc_csv
         
 def archivo_analizador(texto):
-    """[Autor: Alfonso]
-    [Ayuda: Escribe en el archivo el texto que se le envie]
-    """
+    """[Autor: Alfonso]"""
+    """[Ayuda: Escribe en el archivo el texto que se le envie]"""
 
     with open ("analizador.txt","a") as archivo_generado:
         
@@ -76,8 +75,7 @@ def primer_item_lista(lista):
 
 def armar_tabla():
     """[Autor: Alfonso]
-    [Ayuda: Genera tres listas, una con el titulo, una lista de listas con cada linea y espacio, y los totales]
-    """   
+    [Ayuda: Genera tres listas, una con el titulo, una lista de listas con cada linea y espacio, y los totales]"""   
     
     lista_funciones , dicc_datos = quien_invoca_a_quien()
     #Enumero las funciones
