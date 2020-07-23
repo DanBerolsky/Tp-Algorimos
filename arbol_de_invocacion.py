@@ -78,7 +78,8 @@ def buscoAlgo_enCodigoDe(funcion1, funcion2, csv):
 def num_de_lineas(cuerpoDeFuncion):
 
     """ [Autor: Alejo Mariño]
-        [Ayuda: Recibe el cuerpo de una funcion y regresa el numero de lineas que lo componen]
+        [Ayuda: Recibe el cuerpo de una funcion en un formato de lista (un elemento en forma de string por linea) y
+        regresa el numero de lineas que lo componen (int)]
     """
 
     cantLineas = 0
@@ -93,7 +94,8 @@ def depurarLineas(funcion, csv):
 
     """ [Autor: Alejo Mariño]
         [Ayuda: Recibe el nombre de una funcion la cual se encuentra en un determinado archivo .csv y devuelve el codigo
-        de la funcion ingresada libre de lineas con solo tabulaciones y espacios]
+        de la funcion ingresada libre de lineas con solo tabulaciones y espacios en forma de lista (un elemento (string)
+        por linea)]
     """
 
     dicc = modulo_csv.leer_csv(csv)
@@ -124,7 +126,7 @@ def generarArbol(listaFuncionesIndependientes, csv):
 
     """ [Autor: Alejo Mariño]
         [Ayuda: Recibe una lista con todas las funciones que no son llamadas por otras en un determinado archivo .csv
-        y genera un arbol de invocacion]
+        y genera un arbol de invocacion para cada una de ellas]
     """
 
     nombres = generarListaNombresFunciones(csv)
@@ -139,7 +141,7 @@ def generarArbol(listaFuncionesIndependientes, csv):
 def funcionesIndependientes():
 
     """ [Autor: Alejo Mariño]
-        [Ayuda: Checkeo que funcion/es no es/son llamada/s por las demas, y guardo sus nombres en una lista]
+        [Ayuda: Checkeo que funcion/es no es/son llamada/s por las demas, y devuelvo sus nombres en una lista]
     """
     dicc_funciones = modulo_csv.quien_invoca_a_quien()
     nombresFunciones = generarListaNombresFunciones("fuente_unico.csv")
