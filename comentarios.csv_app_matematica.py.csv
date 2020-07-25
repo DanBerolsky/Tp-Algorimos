@@ -1,7 +1,0 @@
-menu_MCD,[Autor: Alan Gonzalez],           [Ayuda: submenu de la opcion primo]    ,
-menu_MCM,[Autor: Juan Perez],           [Ayuda: submenu de la opcion mcd]    ,
-menu_elegir,[Autor: Alan Gonzalez],           [Ayuda: Menu de opciones]    ,
-menu_opciones,[Autor: Juan Perez],           [Ayuda: submenu de la opcion mcm]    ,
-menu_potencia,[Autor: Alan Gonzalez],           [Ayuda: submenu de la opcion factorial]    ,
-menu_primo,[Autor: Juan Perez],           [Ayuda: submenu de la opcion Potencia]    ,
-solicitar_valor,[Autor: Juan Perez],           [Ayuda: Solicitar el ingreso de un valor y devolverlo, asegurando que        estara entre el minimo y el maximo pasado por parametro]    ,

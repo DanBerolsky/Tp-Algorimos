@@ -1,5 +1,9 @@
-archivo_participacion_txt ,,,
-cantidad_de_espacios,[Autor: Dan],            [Ayuda: Aquí se multiplica un espacio por un numero x        El 8 es cantidad de caracateres que tiene una tabulacion,        len(nom_fun) es la cantida de caracteres que tiene el nom_fun.        Despues quiero que partir del carater 32 obtener la cant.lineas.        Esta cuanta me asegura que el valor lineas_f este uno debajo del otro,        multiplicando un str espacio la cantidad de veces nesesaria para cada caso. ]    ,
-capturo_datos,[Autor: Dan],        [Ayuda: recopila los parametros para el Quinta punto    (Nombres de las funciones, autor de la funcion , lineas por funcion y    porcentaje de lineas del autor, sobre lineas totales del trabajo. ) ]    ,    #datos porcentajes,     #ordeno por autores
-impresiones ,[Autor: Dan],        [Ayuda: Muestra por pantalla el parametro recibido]    ,
-participacion_info ,,,
+armar_diccionarios,[Autor: Valentin],        [Ayuda: Imprime la lista de funciones, y da la opción de mostrar información    acerca de cada una.]     ,        #Ciclo a través de las lineas del archivo para añadir a un diccionario los datos de fuente unico,         #que necesito,         #Ídem comentarios
+consultar_funciones,[Autor: Valentin],        [Ayuda: Imprime la lista de funciones]    ,
+contar_elementos_varios,[Autor: Luis Andrade],           [Ayuda: Crea otro diccionario que contiene la cantidad de if, while       for, returns, break, exit y ayuda    ,                "elif"):  # cantidad de if / elif
+contar_invocaciones,[Autor: Luis Andrade],           [Ayuda: Crea otro diccionario que contiene la cantidad de Invoca       ciones]    ,
+generar_lista_total,[Autor: Valentin],        [Ayuda: Genera una lista de listas con los nombres de las funciones ordenadas alfabeticamente]    ,    #Añado los nombres de funciones del diccionario a una lista de listas, para imprimir ordenado,     #Verifico si la ultima lista generada tiene menos de 5 elementos, para formatear espacios y que quede parejo
+main_consulta_funciones,[Autor: Valentin],        [Ayuda: Modulariza para poder llamar el modulo en el programa principal]    ,
+organizar_datos,[Autor: Luis Andrade],           [Ayuda: Crea el diccionario inicial y contiene los campos Nombre       de Funcion, Cantidad de Parametros, Canitdad de Lineas    ,
+panel_principal,[Autor: Luis Andrade],            [Ayuda: Funcion principal del panel principal, se encarga de        tabular y unir todos los elementos    ,    # Abro el archivo de comentarios,     # Abro el archivo fuente unico,         # se recorre linea a linea las listas creadas,             # actualizando los diccionarios con cada uno de los procesos por separado,             # uniendo todos los diccionarios en una lista
+sacar_corchetes,[Autor: Valentin],        [Ayuda: Recibe como parametro una cadena y le saca los corchetes de adelante y atrás]    ,
