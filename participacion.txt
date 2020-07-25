@@ -1,4 +1,5 @@
 
+
 	Informe de Desarrollo Por Autor
 
 
@@ -6,8 +7,8 @@
 	Funcion                Lineas
 	---------------------------------
 	archivo_participacion_txt   1
-	contar_funciones         22
 	correcto_espaciado       1
+	contar_funciones         22
 	la_tabla                 1
 	participacion_info       97
 	potencia                 2

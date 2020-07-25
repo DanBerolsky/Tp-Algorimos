@@ -55,7 +55,6 @@ def buscoLlamadasAOtrasFunciones(funcion, indice, listaDeNombres, csv):
     if contador == len(listaDeNombres):
         print("")
 
-    return
 
 
 def buscoAlgo_enCodigoDe(funcion1, funcion2, csv):
@@ -133,7 +132,6 @@ def generarArbol(listaFuncionesIndependientes, csv):
         buscoLlamadasAOtrasFunciones(funcion, 0, nombres, csv)
         print("")
 
-    return
 
 
 def funcionesIndependientes():

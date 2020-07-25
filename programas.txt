@@ -5,9 +5,7 @@ contar_funciones.py
 Salida.py
 Informacion_por_desarrollador.py
 consulta_de_funciones.py
-app_matematica.py
 Panel_General.py
-lib_matematica.py
 quien_invoca.py
 merge.py
 arbol_de_invocacion.py
