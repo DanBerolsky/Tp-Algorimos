@@ -11,70 +11,115 @@ def capturo_datos():
 
     informacion_deseada = {}
     
+    # Quiero esta informacion para sacar el porcentaje que realizo cada autor,
+    #  q debe se mostrado al lado del total de lineas por autor por pantalla posteriormente.
     lineas_totales_por_autor = {}
-
+    
+    # De igual forma este dato lo nesesito para sacar el porsentaje que realizo cada autor q
+    #  su vez debe ser mostrado este dato alfinal de la salida por pantalla acompañado de otros datos...
     total_linea = 0
-
+    
+    # Abro comentarios csv en lectura para saber que funcion
+    #  hizo cada uno de los participantes.
     with open("comentarios.csv","rt") as archivo_comentarios:
         
         linea_archivos_comentarios = archivo_comentarios.readline()
 
         while linea_archivos_comentarios != "":
             
+            # Convierte en otra variable, la linea que es un string que separa
+            #  los campos con "," en una lista para poder acceder a la 
+            #   informacion facilmente...
             linea_a_lista_de_datos = linea_archivos_comentarios.split(",")
-
+            
+            # Primer campo tenemos el nombre de la funcion.
             nombre_funcion = linea_a_lista_de_datos[0]
-
+            
+            # Segundo campo esta el autor de la funcion.
             autor = linea_a_lista_de_datos[1].lstrip("[").rstrip("]")
-
-            informacion_deseada[nombre_funcion] = [autor,None]
-
+            
+            # Esos dos datos los guardo en dicionario.
+            # Lineas por funcion todavia no lo se pero lo llena despues de este bucle...
+            informacion_deseada[nombre_funcion] = {"Autor":autor,"Lineas_por_funcion":None}
+            
             linea_archivos_comentarios = archivo_comentarios.readline()
 
+    # Abro a fuente unico csv para sacar cuantas lineas tiene cada una de las funciones,
+    # cantidad total de lineas de codigo por autor y cantidad total de lineas en todos los .py...
+    # para eso tengo que saber de que funcion estoy contando la cantida de lineas y
+    # rellenar el valor en la clave corespondiente del dic informacion_deseada...
     with open ("fuente_unico.csv","rt") as archivo_fuente_unico:
-
+        
+        # Lee la primera linea...
         linea_archivos_fuente_unico = archivo_fuente_unico.readline()
-
+        
+        # Si llega al final de archivo corta el bucle.
         while linea_archivos_fuente_unico != "":
-
+            
+            # de igual manera genera en otra variable una lista,
+            # la cual cada elemento es un campo del csv.
             linea_a_lista_de_datos = linea_archivos_fuente_unico.split(",")
             
+            # Por cada funcion inicializo el contador de lineas por fucion en cero. 
             contador_lineas = 0
 
+            # Se queda con el nombre de la funcion actual.
+            # Para lo que ya vimos...
             funcion_actual = linea_a_lista_de_datos[0]
             
+            # Aca sumo todas lineas de codigo,
+            # que contienen todas las funciones.
+            # Porque es nesesario el dato para la ultima linea de la salida...
             total_linea += len(linea_a_lista_de_datos[3:])
             
+            # Bueno ahora si tengo el dato de lineas por funcion
+            # ahora solo falta rellenar la informacion en el diccionario
+            # en donde corresponde como se vera en las siguientes lineas.
             contador_lineas = len(linea_a_lista_de_datos[3:])
             
+            # Recorro las claves del dic
             for clave in informacion_deseada.keys():
                 
+                # Si funcion actual es igual a clave..
                 if clave == funcion_actual:
-                    informacion_deseada[clave][1] = contador_lineas
                     
-                    if informacion_deseada[clave][0] in lineas_totales_por_autor.keys():
-                        lineas_totales_por_autor[informacion_deseada[clave][0]] += contador_lineas
+                    # Ingreso al dic en la clave y en la clave "Lineas_por_funcion"
+                    #  y rellena la informacion ahora si..
+                    informacion_deseada[clave]["Lineas_por_funcion"] = contador_lineas
                     
+                    # Si el autor es una clave en lineas_totales_por_autor.
+                    if informacion_deseada[clave]["Autor"] in lineas_totales_por_autor.keys():
+                        
+                        # Le suma las lineas que conto en la funcion actual.
+                        lineas_totales_por_autor[informacion_deseada[clave]["Autor"]] += contador_lineas                    
+                    
+                    # De no estar el autor en las claves del dic lineas_totales_por_autor.
                     else:
-                        lineas_totales_por_autor[informacion_deseada[clave][0]] = contador_lineas
-
+                        # Crea la clave que va ser el nombre del autor
+                        #  y la cantidad total de lineas por autor por el momento.
+                        lineas_totales_por_autor[informacion_deseada[clave]["Autor"]] = contador_lineas
+            
+            # Vuelve a leer otra linea y continua hasta no tner mas funciones en el csv.            
             linea_archivos_fuente_unico = archivo_fuente_unico.readline()
 
-    #datos porcentajes
+    # aca saco los porcentajes de realizacion por autor
+    #  y los guardo como el autor como clave del dic
     porcentajes = {}
-
-    for clave in lineas_totales_por_autor.keys():
     
+    # Recorro las claves de lineas_totales_por_autor que son los autores...
+    for clave in lineas_totales_por_autor.keys():
+        
+        # Aca es donde gurada el porcentaje por autor ...
         porcentajes[clave] = int((lineas_totales_por_autor[clave]/total_linea)*100)
 
-    #ordeno por autores
-    
-    datos_finales = sorted(informacion_deseada.items(), key = lambda autor: autor[1][0])
+    # Ordeno por autores por que es la mejor manera asi no tenego que anidar bucles
+    # posteriormete para hacer la salida por pantalla y la escritura del txt...
+    datos_finales = sorted(informacion_deseada.items(), key = lambda autor: autor[1]["Autor"])
     
     return datos_finales,porcentajes
 
           
-def participacion_info (informacion,informacion2):
+def participacion_info (lista_tuplas_funciones_autor_lineas_por_autor, diccionario_de_porcentajes_por_autores):
     
     """ [Autor: Dan]
         [Ayuda: brindar datos sobre la participación de cada uno de los 
@@ -89,14 +134,16 @@ def participacion_info (informacion,informacion2):
     titulo = "\n\tInforme de Desarrollo Por Autor\n"
     Salida.escribir_imprimir(titulo, "participacion.txt", "a", titulo)
     
-    for indice in range(len(informacion)):     
+    for indice in range(len(lista_tuplas_funciones_autor_lineas_por_autor)):     
         
-        nombre_funcion = informacion[indice][0]
+        nombre_funcion = lista_tuplas_funciones_autor_lineas_por_autor[indice][0]
         
-        autor, lineas_funcion = informacion[indice][1]
+        autor = lista_tuplas_funciones_autor_lineas_por_autor[indice][1]["Autor"]
 
-        porcentaje = informacion2[autor]
+        lineas_funcion = lista_tuplas_funciones_autor_lineas_por_autor[indice][1]["Lineas_por_funcion"]
 
+        porcentaje = diccionario_de_porcentajes_por_autores[autor]
+        
         if autor_anterior == None:
             
             # Muestro por pantalla... y Agrego linea a participacion.txt
@@ -158,7 +205,7 @@ def participacion_info (informacion,informacion2):
 
         autor_anterior = autor
 
-        if indice == len(informacion)-1 :
+        if indice == len(lista_tuplas_funciones_autor_lineas_por_autor)-1 :
             
             #Muestro por pantalla... y Agrego linea a participacion.txt
             s1 = "\t"+str(contador_funciones) + " Funciones - Lineas\t " + str(contador_lineas) + "  " + str(porcentaje)+"%\n\n"
