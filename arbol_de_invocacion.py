@@ -1,7 +1,7 @@
 import modulo_csv
 
 
-def buscoLlamadasAOtrasFunciones(funcion, indice, listaDeNombres, csv):
+def generar_arbol(funcion, indice, listaDeNombres, csv):
 
     """ [Autor: Alejo Mariño]
         [Ayuda: Recibe una funcion (string), un indice (int), un determinado archivo .csv y una lista
@@ -22,13 +22,13 @@ def buscoLlamadasAOtrasFunciones(funcion, indice, listaDeNombres, csv):
             if cant_llamados == 1:
                 print(" " * (len(a) + indice), end="")
                 print(" --> ", end="")
-                buscoLlamadasAOtrasFunciones(nombre, indice + len(a) + 5, listaDeNombres, csv)
+                generar_arbol(nombre, indice + len(a) + 5, listaDeNombres, csv)
 
             elif cant_llamados > 1:
                 for f in range(cant_llamados):
                     print(" " * (len(a) + indice), end="")
                     print(" --> ", end="")
-                    buscoLlamadasAOtrasFunciones(nombre, indice + len(a) + 5, listaDeNombres, csv)
+                    generar_arbol(nombre, indice + len(a) + 5, listaDeNombres, csv)
 
             else:
                 contador += 1
@@ -37,16 +37,16 @@ def buscoLlamadasAOtrasFunciones(funcion, indice, listaDeNombres, csv):
 
             if cant_llamados == 1:
                 print(" --> ", end="")
-                buscoLlamadasAOtrasFunciones(nombre, indice + len(a) + 5, listaDeNombres, csv)
+                generar_arbol(nombre, indice + len(a) + 5, listaDeNombres, csv)
                 primer_rama = False
 
             elif cant_llamados > 1:
                 print(" --> ", end="")
-                buscoLlamadasAOtrasFunciones(nombre, indice + len(a) + 5, listaDeNombres, csv)
+                generar_arbol(nombre, indice + len(a) + 5, listaDeNombres, csv)
                 for f in range(cant_llamados - 1):
                     print(" " * (len(a) + indice), end="")
                     print(" --> ", end="")
-                    buscoLlamadasAOtrasFunciones(nombre, indice + len(a) + 5, listaDeNombres, csv)
+                    generar_arbol(nombre, indice + len(a) + 5, listaDeNombres, csv)
                 primer_rama = False
 
             else:
@@ -120,36 +120,26 @@ def generarListaNombresFunciones(csv):
     return listaDeNombresDeOtrasFunciones
 
 
-def generarArbol(listaFuncionesIndependientes, csv):
+def encontrarMain(csv):
 
     """ [Autor: Alejo Mariño]
-        [Ayuda: Recibe una lista con todas las funciones que no son llamadas por otras en un determinado archivo .csv
-        y genera un arbol de invocacion]
+        [Ayuda: Recibe un csv, en el que compara cada modulo hasta encontrar aquel que sea igual al primer modulo
+        del archivo "programas.txt", el cual deberia ser el modulo en el cual se encuentra solo la funcion main.
+        Una vez encontrado el modulo toma el nombre de la funcion main cualquier sea su nombre y lo devuelve]
     """
 
-    nombres = generarListaNombresFunciones(csv)
+    dicc = modulo_csv.leer_csv(csv)
+    nombre_de_main = None
 
-    for funcion in listaFuncionesIndependientes:
-        buscoLlamadasAOtrasFunciones(funcion, 0, nombres, csv)
-        print("")
+    with open("programas.txt") as f:
+        modulo_de_main = (f.readline()).rstrip()
 
-    return
+    while not nombre_de_main:
+        for key in dicc:
+            if dicc[key][1] == modulo_de_main:
+                nombre_de_main = key
 
-
-def funcionesIndependientes():
-
-    """ [Autor: Alejo Mariño]
-        [Ayuda: Checkeo que funcion/es no es/son llamada/s por las demas, y guardo sus nombres en una lista]
-    """
-    dicc_funciones = modulo_csv.quien_invoca_a_quien()
-    nombresFunciones = generarListaNombresFunciones("fuente_unico.csv")
-
-    for key in dicc_funciones:
-        for i in range(len(dicc_funciones[key])):
-            if dicc_funciones[key][i][0] in nombresFunciones:
-                nombresFunciones.remove(dicc_funciones[key][i][0])
-
-    return nombresFunciones
+    return nombre_de_main
 
 
-generarArbol(funcionesIndependientes(), "fuente_unico.csv")
+generar_arbol(encontrarMain("fuente_unico.csv"), 0, generarListaNombresFunciones("fuente_unico.csv"), "fuente_unico.csv")
