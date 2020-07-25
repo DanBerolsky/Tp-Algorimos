@@ -2,9 +2,12 @@ programa_principal.py
 m_generar_archivos_csv.py
 modulo_csv.py
 contar_funciones.py
-muestro_salida.py
+Salida.py
 Informacion_por_desarrollador.py
 consulta_de_funciones.py
 app_matematica.py
 Panel_General.py
 lib_matematica.py
+quien_invoca.py
+merge.py
+arbol_de_invocacion.py
