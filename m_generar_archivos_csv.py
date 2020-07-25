@@ -2,8 +2,9 @@ import modulo_csv
 
 def leer(archivo):
     
-    """[Autor: A]"""
-    """[Ayuda: Lee el archivo linea por linea]"""
+    """[Autor: A]
+    [Ayuda: Lee el archivo linea por linea]
+    """
     
     lineas = [linea.rstrip('\n') for linea in archivo]
     
@@ -11,8 +12,9 @@ def leer(archivo):
 
 def abro_ar(archivo):
     
-    """[Autor: b]"""
-    """[Ayuda: abre un archivo]"""
+    """[Autor: b]
+    [Ayuda: abre un archivo]
+    """
 
    # encoding="utf8" use eso para solucionar el error.
    #El archivo informacion_por_desarollador era el que generaba ese problema,
@@ -24,15 +26,18 @@ def abro_ar(archivo):
 
 def ordenar_alfabeticamente(diccionario):
     
-    """[Autor: b]"""
-    """[Ayuda: Ordena diccionario de mayor a menor, respecto las claves del mismo. Devuelvo lista de tuplas]"""
+    """[Autor: b]
+    [Ayuda: Ordena diccionario de mayor a menor, respecto las claves del mismo.
+    Devuelvo lista de tuplas]
+    """
     
     return sorted(diccionario.items(), key = lambda clave: clave[0])
 
 def armar_csv_funciones(archivo):
     
-    """[Autor: b]"""
-    """[Ayuda: abre un archivo]"""
+    """[Autor: b]
+    [Ayuda: abre un archivo]
+    """
     
     #Declaro variables
     nombre_archivo = "fuente_unico.csv"
@@ -96,12 +101,13 @@ def armar_csv_funciones(archivo):
         funciones_alfabeto = ordenar_alfabeticamente(datos)
         comentarios_alfabeto = ordenar_alfabeticamente(datos_comentarios)
         lista_modulos_comentarios[0].append(modulo_csv.armo_csv(comentarios_alfabeto,'comentarios.csv',modulo, lista_modulos_comentarios))
-        return modulo_csv.armo_csv(funciones_alfabeto,nombre_archivo, modulo, lista_modulos_comentarios) 
+    return modulo_csv.armo_csv(funciones_alfabeto,nombre_archivo, modulo, lista_modulos_comentarios) 
 
 def armar_csv_comentarios(lista_cuerpo,nombre_funcion, modulo):
     
-    """[Autor: D]"""
-    """[Ayuda: Remueve los comentarios de la funcion y crea el archivo comentarios.csv]""" 
+    """[Autor: D]
+    [Ayuda: Remueve los comentarios de la funcion y crea el archivo comentarios.csv]
+    """ 
     
     #Declaracion de variables
     comentario_triple = '\"\"\"'
@@ -152,7 +158,7 @@ def lista_comentarios(lista):
         if i.strip().startswith('"""'):
             index = lista.index(i)
             index_lista.append(index)
-    if index_lista:
+    if index_lista and len(index_lista) > 1:
         inicial = index_lista[0]
         final = index_lista[1] +1
         comentarios_triples = lista[inicial:final]
@@ -161,7 +167,7 @@ def lista_comentarios(lista):
  
    
    
-def  autor_ayuda(lista):
+def autor_ayuda(lista):
     """[Autor: Alfonso],
     [Ayuda: Remueve los comentarios de la funcion
     y crea el archivo comentarios.csv]

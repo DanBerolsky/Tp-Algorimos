@@ -1,0 +1,5 @@
+buscoAlgo_enCodigoDe,[Autor: Alejo Mariño],             [Ayuda: Recibe dos funciones (strings) y un archivo .csv en donde se encuentren, devuelve el numero de veces que        la funcion 1 se encuentra en el codigo de la funcion 2]    ,
+depurarLineas,[Autor: Alejo Mariño],             [Ayuda: Recibe el nombre de una funcion la cual se encuentra en un determinado archivo .csv y devuelve el codigo        de la funcion ingresada libre de lineas con solo tabulaciones y espacios]    ,
+funcionesIndependientes,[Autor: Alejo Mariño],             [Ayuda: Checkeo que funcion/es no es/son llamada/s por las demas, y guardo sus nombres en una lista]    ,
+generarListaNombresFunciones,[Autor: Alejo Mariño],             [Ayuda: Recibe un archivo .csv y devuelve una lista con cada uno de los nombres de las funciones en el]    ,
+num_de_lineas,[Autor: Alejo Mariño],             [Ayuda: Recibe el cuerpo de una funcion y regresa el numero de lineas que lo componen]    ,

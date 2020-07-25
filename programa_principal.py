@@ -2,7 +2,8 @@
 def main():
     
     """[Autor: L]
-    [Ayuda: Es la funcion principal]"""
+    [Ayuda: Es la funcion principal]
+    """
     
     import m_generar_archivos_csv
     txt = 'programas.txt'
@@ -39,6 +40,5 @@ def main():
             Informacion_por_desarrollador.participacion_info(informacion,porcentaje)
         
         funcionalidad = input("Ingrese la funcionalidad que quiere ver: ")
-
 
 main()
