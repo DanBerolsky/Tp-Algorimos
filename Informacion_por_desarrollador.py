@@ -1,6 +1,3 @@
-
-import Salida
- 
 def capturo_datos():
     
     """ [Autor: Dan]
@@ -132,7 +129,7 @@ def participacion_info (lista_tuplas_funciones_autor_lineas_por_autor, diccionar
     
     #Muestro por pantalla... y Agrego linea a participacion.txt
     titulo = "\n\tInforme de Desarrollo Por Autor\n"
-    Salida.escribir_imprimir(titulo, "participacion.txt", "a", titulo)
+    escribir_imprimir(titulo, "participacion.txt", "a", titulo)
     
     for indice in range(len(lista_tuplas_funciones_autor_lineas_por_autor)):     
         
@@ -148,12 +145,12 @@ def participacion_info (lista_tuplas_funciones_autor_lineas_por_autor, diccionar
             
             # Muestro por pantalla... y Agrego linea a participacion.txt
             s1 = autor + "\n\n\tFuncion" + 16*" " + "Lineas"+"\n\t" + 33 * "-"
-            Salida.escribir_imprimir(s1, "participacion.txt", "a", "\n" + s1)
+            escribir_imprimir(s1, "participacion.txt", "a", "\n" + s1)
             
             # Muestro por pantalla... y Agrego linea a participacion.txt
             espacios = cantidad_de_espacios(nombre_funcion)
             s2 = "\t" + nombre_funcion + (" " * espacios) + str(lineas_funcion)
-            Salida.escribir_imprimir(s2, "participacion.txt", "a","\n" + s2 )
+            escribir_imprimir(s2, "participacion.txt", "a","\n" + s2 )
             
             contador_lineas_totales = 0
             
@@ -171,16 +168,16 @@ def participacion_info (lista_tuplas_funciones_autor_lineas_por_autor, diccionar
             
             #Muestro por pantalla... y Agrego linea a participacion.txt
             s1 = "\t"+str(contador_funciones) + " Funciones - Lineas\t " + str(contador_lineas) + "  " + str(porcentaje_anterior)+"%\n"
-            Salida.escribir_imprimir(s1, "participacion.txt", "a", "\n" + s1)
+            escribir_imprimir(s1, "participacion.txt", "a", "\n" + s1)
             
             #Muestro por pantalla... y   #Agrego linea a participacion.txt
             s2 = autor +"\n\n\tFuncion"+16*" "+"Lineas\n\t" + 33*"-"
-            Salida.escribir_imprimir(s2, "participacion.txt", "a", "\n" + s2)
+            escribir_imprimir(s2, "participacion.txt", "a", "\n" + s2)
             
             #Muestro por pantalla... y  Agrego linea a participacion.txt
             espacios = cantidad_de_espacios(nombre_funcion)
             s3 = "\t" + nombre_funcion + (" " * espacios) + str(lineas_funcion)
-            Salida.escribir_imprimir(s3, "participacion.txt", "a", "\n" + s3)
+            escribir_imprimir(s3, "participacion.txt", "a", "\n" + s3)
            
             contador_funciones = 0
 
@@ -193,7 +190,7 @@ def participacion_info (lista_tuplas_funciones_autor_lineas_por_autor, diccionar
             #Muestro por pantalla... y   #Agrego linea a participacion.txt
             espacios = cantidad_de_espacios(nombre_funcion)
             s1 = "\t" + nombre_funcion + " "*espacios + str(lineas_funcion)
-            Salida.escribir_imprimir(s1, "participacion.txt", "a", "\n" + s1)
+            escribir_imprimir(s1, "participacion.txt", "a", "\n" + s1)
 
         contador_lineas_totales += int(lineas_funcion)
 
@@ -209,11 +206,11 @@ def participacion_info (lista_tuplas_funciones_autor_lineas_por_autor, diccionar
             
             #Muestro por pantalla... y Agrego linea a participacion.txt
             s1 = "\t"+str(contador_funciones) + " Funciones - Lineas\t " + str(contador_lineas) + "  " + str(porcentaje)+"%\n\n"
-            Salida.escribir_imprimir(s1, "participacion.txt", "a", "\n" + s1)
+            escribir_imprimir(s1, "participacion.txt", "a", "\n" + s1)
             
             #Muestro por pantalla... y Agrego linea a participacion.txt
             s2 = "Total: "+ str(contador_funciones_totales) + " Funciones - lineas\t " + str(contador_lineas_totales)+"\n"
-            Salida.escribir_imprimir(s2, "participacion.txt", "a", "\n" + s2)
+            escribir_imprimir(s2, "participacion.txt", "a", "\n" + s2)
                    
 
 def cantidad_de_espacios(nombre_funcion):    
@@ -237,3 +234,23 @@ def cantidad_de_espacios(nombre_funcion):
 
     return espacios  
 
+def escribir_imprimir (contenido_a_mostrar,archivo_a_abrir,modalida_de_apertura,escritura):
+    
+    """ [Autor: Dan]
+        [Ayuda: esta fucion puede recibir en el primer parametro un dato a imprimir,
+        en el segundo parametro puede recibir el nombre de un archivo para que sea abierto,
+        en el tercer parametro de que forma o modo quiere que el archivo sea abierto y 
+        el ultiumo parametro debe ser la linea que quiere ser escrita dentro del archivo.
+        Si no se quiere utilizar, ya sea la impresion o la apertura de un archivo debe
+        recibir el valor de None.]
+    """
+    if contenido_a_mostrar != None :
+        print(contenido_a_mostrar)
+
+    if archivo_a_abrir != None and modalida_de_apertura != None :
+        with open (archivo_a_abrir,modalida_de_apertura) as archivo:
+
+            if escritura != None and modalida_de_apertura == "a" or modalida_de_apertura == "w" or modalida_de_apertura == "r+":
+
+                archivo.write(escritura)
+            

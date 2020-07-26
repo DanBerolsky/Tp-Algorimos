@@ -2,7 +2,6 @@ import modulo_csv
 
 
 def generar_arbol(funcion, indice, listaDeNombres, csv):
-
     """ [Autor: Alejo Mariño]
         [Ayuda: Recibe una funcion (string), un indice (int), un determinado archivo .csv y una lista
         con los nombres de las funciones en dicho archivo y genera un arbol de invocacion para la determinada funcion]
@@ -54,8 +53,6 @@ def generar_arbol(funcion, indice, listaDeNombres, csv):
 
     if contador == len(listaDeNombres):
         print("")
-
-    return
 
 
 def buscoAlgo_enCodigoDe(funcion1, funcion2, csv):

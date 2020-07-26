@@ -1,3 +1,3 @@
-ciclar_modulos,[Autor: Valentin],            [Ayuda : Recorre los modulos de las listas hasta llegar a un archivo con la información         de todos los demas]    ,
-escribir,[Autor: Valentin],            [Ayuda : Escribe el parametro linea en el parametro archivo]    ,
-merge_2,[Autor: Valentin],        [Ayuda : Mergea 2 archivos en 1 nuevo]    ,
+ciclar_modulos;[Autor: Valentin];            [Ayuda : Recorre los modulos de las listas hasta llegar a un archivo con la información         de todos los demas]    ;
+escribir;[Autor: Valentin];            [Ayuda : Escribe el parametro linea en el parametro archivo]    ;
+merge_2;[Autor: Valentin];        [Ayuda : Mergea 2 archivos en 1 nuevo]    ;

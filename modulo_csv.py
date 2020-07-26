@@ -19,7 +19,7 @@ def armo_csv(Estructura_de_datos,nombre_archivo, modulo, lista_modulos_comentari
             cuerpo = clave[1]["Cuerpo de la funcion"]
             
             # Une con una coma los elementos de la lista, en una cadena nueva.
-            funcion = ", ".join(cuerpo)
+            funcion = "; ".join(cuerpo)
 
             # Genera un nombre diferente para cada modulo, para despues hacer el merge.
             archivo_a_escribir = nombre_archivo + "_" + modulo + ".csv"
@@ -44,7 +44,7 @@ def armo_csv(Estructura_de_datos,nombre_archivo, modulo, lista_modulos_comentari
             with open(archivo_a_escribir, "a") as archivo_fuente_unico:
                 
                 #Escribo en el csv
-                archivo_fuente_unico.write(nombre_funcion+","+parametros+","+modulo+","+funcion+"\n")
+                archivo_fuente_unico.write(nombre_funcion+";"+parametros+";"+modulo+";"+funcion+"\n")
         fuente_unico = 1
         merge.ciclar_modulos(lista_modulos_fuente, fuente_unico)
         merge.ciclar_modulos(lista_modulos_comentarios, lista_modulos_comentarios)
@@ -59,7 +59,7 @@ def armo_csv(Estructura_de_datos,nombre_archivo, modulo, lista_modulos_comentari
             nombre_ayuda = elementos[1]["informacion de ayuda"]
             resto = elementos[1]["Resto de lineas comentadas"]
             # Une con una coma los elementos de la lista, en una cadena nueva.
-            funcion = ", ".join(resto)
+            funcion = "; ".join(resto)
 
             # Genera un nombre diferente para cada funcion, para despues hacer el merge.
             archivo_a_escribir = nombre_archivo + "_" + modulo + ".csv"    
@@ -70,12 +70,12 @@ def armo_csv(Estructura_de_datos,nombre_archivo, modulo, lista_modulos_comentari
             with open (archivo_a_escribir, "a") as archivo_comentarios:
 
                 #Escribo en el csv
-                archivo_comentarios.write(nombre_funcion + "," + nombre_autor + "," + nombre_ayuda + "," + funcion + "\n") 
+                archivo_comentarios.write(nombre_funcion + ";" + nombre_autor + ";" + nombre_ayuda + ";" + funcion + "\n") 
 
         return archivo_a_escribir
 
 
-def leer_csv(nombre_csv):
+def leer_csv_1(nombre_csv):
 
     """ [Autor: F]
         [Ayuda: Hace cosas]
@@ -85,4 +85,5 @@ def leer_csv(nombre_csv):
     for linea in open(nombre_csv, 'r').readlines():
         linea = linea.strip().split(',')
         dicc_csv[linea[0]] = linea[1:]
+    
     return dicc_csv
