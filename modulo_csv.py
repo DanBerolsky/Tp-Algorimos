@@ -70,7 +70,7 @@ def armo_csv(Estructura_de_datos,nombre_archivo, modulo, lista_modulos_comentari
             with open (archivo_a_escribir, "a") as archivo_comentarios:
 
                 #Escribo en el csv
-                archivo_comentarios.write(nombre_funcion + ";" + nombre_autor + ";" + nombre_ayuda + ";" + funcion + "\n") 
+                archivo_comentarios.write(nombre_funcion + ";" + nombre_autor + ";" + nombre_ayuda.strip() + ";" + funcion + "\n") 
 
         return archivo_a_escribir
 
