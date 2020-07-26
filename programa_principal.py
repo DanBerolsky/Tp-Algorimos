@@ -7,7 +7,7 @@ def main():
     
     import m_generar_archivos_csv
     txt = 'programas.txt'
-    m_generar_archivos_csv.armar_csv_funciones(txt)
+    #m_generar_archivos_csv.armar_csv_funciones(txt)
     
     funcionalidad = input("Ingrese la funcionalidad que quiere ver: ")
     
@@ -29,10 +29,10 @@ def main():
             quien_invoca.la_tabla()
         
         elif funcionalidad == "4":
-            # Integrar punto 4
+            # Integrar punto 4!!!
             import arbol_de_invocacion
-            arbol_de_invocacion.generar_arbol(arbol_de_invocacion.encontrarMain("fuente_unico.csv"), 0,
-            arbol_de_invocacion.generarListaNombresFunciones("fuente_unico.csv"), "fuente_unico.csv")
+            arbol_de_invocacion.generar_arbol(arbol_de_invocacion.encontrar_main("fuente_unico.csv"), 0,
+            arbol_de_invocacion.nombres_funciones("fuente_unico.csv"), "fuente_unico.csv")
 
         elif funcionalidad == "5":
             # Quinto punto

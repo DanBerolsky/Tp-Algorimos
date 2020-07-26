@@ -4,11 +4,11 @@ import tabulate
 
 def organizar_datos(lista):
     """[Autor: Luis Andrade]
-       [Ayuda:Crea el diccionario inicial y contiene los campos Nombre
-       de Funcion, Cantidad de Parametros, Canitdad de Lineas]
+       [Ayuda: Crea el diccionario inicial y contiene los campos Nombre
+       de Funcion, Cantidad de Parametros, Canitdad de Lineas
     """
     j = 0
-    primeros_3 = {"Nombre de Funcion": lista[0] + '.' + lista[2], "Cantidad de Parametros": lista[1].count('('),
+    primeros_3 = {"Nombre de Funcion": lista[2] + "." + lista[0], "Cantidad de Parametros": lista[1].count('('),
                   "Cantidad de Lineas": len(lista) - 3}
     return primeros_3
 
@@ -31,11 +31,11 @@ def contar_invocaciones(nombre_funcion, lista):
 
 
 def contar_elementos_varios(lista, lista_comentarios):
-    """[Autor:* Luis Andrade]
+    """[Autor: Luis Andrade]
        [Ayuda: Crea otro diccionario que contiene la cantidad de if, while
-       for, returns, break, exit y ayuda]
+       for, returns, break, exit y ayuda
     """
-    cantidad_elementos = {"if": 0, "while": 0, "for": 0, "returns": 0, "break": 0, "exit": 0, "ayuda": "SI"}
+    cantidad_elementos = {"if": 0, "while": 0, "for": 0, "returns": 0, "break": 0, "exit": 0, "ayuda": "NO"}
     j = 4
     while j < len(lista):
         if lista[j].strip().startswith("if") or lista[j].strip().startswith(
@@ -51,8 +51,8 @@ def contar_elementos_varios(lista, lista_comentarios):
             cantidad_elementos["break"] += 1
         elif lista[j].strip().startswith("exit"):
             cantidad_elementos["exit"] += 1
-        if lista_comentarios[2].strip().startswith("[Ayuda:]"):
-            cantidad_elementos["ayuda"] = "NO"
+        if lista_comentarios[2].strip().startswith("[Ayuda:"):
+            cantidad_elementos["ayuda"] = "SI"
         j = j + 1
     return cantidad_elementos
 
@@ -60,33 +60,26 @@ def contar_elementos_varios(lista, lista_comentarios):
 def panel_principal():
     """[Autor: Luis Andrade]
         [Ayuda: Funcion principal del panel principal, se encarga de
-        tabular y unir todos los elementos]
+        tabular y unir todos los elementos
     """
     # Abro el archivo de comentarios
     with open('comentarios.csv', 'r') as comentarios:
-        reader = csv.reader(comentarios)
+        reader = csv.reader(comentarios, delimiter = ";")
         lista_de_comentarios = []
         for fila in reader:
-            print (fila)
             lista_de_comentarios.append(fila)
     # Abro el archivo fuente unico
     with open('fuente_unico.csv', 'r') as file:
-        lector = file.readline()
+        reader = csv.reader(file, delimiter = ";")
         lista_completa = []
         lista_final = {}
         datos = []
-        lista = []
-        while lector != "":
-            #reader = csv.reader(file)
-            lista.append(lector)
-            lector = file.readline()
-        print(lista_completa[0][0])
+        for row in reader:
+            lista_completa.append(row)
         lista1 = lista_completa
-        for j in lista_completa:
-            #print(j)
-            i = 0
+        i = 0
         # se recorre linea a linea las listas creadas
-"""        while i < len(lista_completa):
+        while i < len(lista_completa):
             lista_final_1 = organizar_datos(lista_completa[i])
             lista_final_2 = contar_invocaciones(lista_completa[i][0], lista_completa)
             lista_final_3 = contar_elementos_varios(lista_completa[i], lista_de_comentarios[i])
@@ -101,7 +94,6 @@ def panel_principal():
 
     header = datos[0].keys()
     rows = [x.values() for x in datos]
-    print(tabulate.tabulate(rows, header))"""
-
+    print(tabulate.tabulate(rows, header))
 
 panel_principal()
