@@ -67,19 +67,26 @@ def panel_principal():
         reader = csv.reader(comentarios)
         lista_de_comentarios = []
         for fila in reader:
+            print (fila)
             lista_de_comentarios.append(fila)
     # Abro el archivo fuente unico
     with open('fuente_unico.csv', 'r') as file:
-        reader = csv.reader(file)
+        lector = file.readline()
         lista_completa = []
         lista_final = {}
         datos = []
-        for row in reader:
-            lista_completa.append(row)
+        lista = []
+        while lector != "":
+            #reader = csv.reader(file)
+            lista.append(lector)
+            lector = file.readline()
+        print(lista_completa[0][0])
         lista1 = lista_completa
-        i = 0
+        for j in lista_completa:
+            #print(j)
+            i = 0
         # se recorre linea a linea las listas creadas
-        while i < len(lista_completa):
+"""        while i < len(lista_completa):
             lista_final_1 = organizar_datos(lista_completa[i])
             lista_final_2 = contar_invocaciones(lista_completa[i][0], lista_completa)
             lista_final_3 = contar_elementos_varios(lista_completa[i], lista_de_comentarios[i])
@@ -94,7 +101,7 @@ def panel_principal():
 
     header = datos[0].keys()
     rows = [x.values() for x in datos]
-    print(tabulate.tabulate(rows, header))
+    print(tabulate.tabulate(rows, header))"""
 
 
 panel_principal()
