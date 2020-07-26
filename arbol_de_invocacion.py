@@ -142,6 +142,3 @@ def encontrarMain(csv):
                 nombre_de_main = key
 
     return nombre_de_main
-
-
-generar_arbol(encontrarMain("fuente_unico.csv"), 0, generarListaNombresFunciones("fuente_unico.csv"), "fuente_unico.csv")

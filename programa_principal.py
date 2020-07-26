@@ -34,7 +34,6 @@ def main():
             arbol_de_invocacion.generar_arbol(arbol_de_invocacion.encontrarMain("fuente_unico.csv"), 0,
             arbol_de_invocacion.generarListaNombresFunciones("fuente_unico.csv"), "fuente_unico.csv")
 
-
         elif funcionalidad == "5":
             # Quinto punto
             import Informacion_por_desarrollador
