@@ -14,42 +14,47 @@ def generar_arbol(funcion, indice, listaDeNombres, csv):
 
     for nombre in listaDeNombres:
 
-        cant_llamados = buscoAlgo_enCodigoDe(nombre, funcion, csv)
-
-        if not primer_rama:
-
-            if cant_llamados == 1:
-                print(" " * (len(a) + indice), end="")
-                print(" --> ", end="")
-                generar_arbol(nombre, indice + len(a) + 5, listaDeNombres, csv)
-
-            elif cant_llamados > 1:
-                for f in range(cant_llamados):
-                    print(" " * (len(a) + indice), end="")
-                    print(" --> ", end="")
-                    generar_arbol(nombre, indice + len(a) + 5, listaDeNombres, csv)
-
-            else:
-                contador += 1
+        if nombre == funcion:
+            contador += 1
 
         else:
 
-            if cant_llamados == 1:
-                print(" --> ", end="")
-                generar_arbol(nombre, indice + len(a) + 5, listaDeNombres, csv)
-                primer_rama = False
+            cant_llamados = buscoAlgo_enCodigoDe(nombre, funcion, csv)
 
-            elif cant_llamados > 1:
-                print(" --> ", end="")
-                generar_arbol(nombre, indice + len(a) + 5, listaDeNombres, csv)
-                for f in range(cant_llamados - 1):
+            if not primer_rama:
+
+                if cant_llamados == 1:
                     print(" " * (len(a) + indice), end="")
                     print(" --> ", end="")
                     generar_arbol(nombre, indice + len(a) + 5, listaDeNombres, csv)
-                primer_rama = False
+
+                elif cant_llamados > 1:
+                    for f in range(cant_llamados):
+                        print(" " * (len(a) + indice), end="")
+                        print(" --> ", end="")
+                        generar_arbol(nombre, indice + len(a) + 5, listaDeNombres, csv)
+
+                else:
+                    contador += 1
 
             else:
-                contador += 1
+
+                if cant_llamados == 1:
+                    print(" --> ", end="")
+                    generar_arbol(nombre, indice + len(a) + 5, listaDeNombres, csv)
+                    primer_rama = False
+
+                elif cant_llamados > 1:
+                    print(" --> ", end="")
+                    generar_arbol(nombre, indice + len(a) + 5, listaDeNombres, csv)
+                    for f in range(cant_llamados - 1):
+                        print(" " * (len(a) + indice), end="")
+                        print(" --> ", end="")
+                        generar_arbol(nombre, indice + len(a) + 5, listaDeNombres, csv)
+                    primer_rama = False
+
+                else:
+                    contador += 1
 
     if contador == len(listaDeNombres):
         print("")
@@ -93,7 +98,7 @@ def depurarLineas(funcion, csv):
         de la funcion ingresada libre de lineas con solo tabulaciones y espacios]
     """
 
-    dicc = modulo_csv.leer_csv(csv)
+    dicc = modulo_csv.leer_csv_1(csv)
     cuerpo_de_funcion_limpio = []
     
     for key in dicc:
@@ -111,7 +116,7 @@ def generarListaNombresFunciones(csv):
         [Ayuda: Recibe un archivo .csv y devuelve una lista con cada uno de los nombres de las funciones en el]
     """
 
-    dicc = modulo_csv.leer_csv(csv)
+    dicc = modulo_csv.leer_csv_1(csv)
     listaDeNombresDeOtrasFunciones = [key for key in dicc]
 
     return listaDeNombresDeOtrasFunciones
@@ -125,7 +130,7 @@ def encontrarMain(csv):
         Una vez encontrado el modulo toma el nombre de la funcion main cualquier sea su nombre y lo devuelve]
     """
 
-    dicc = modulo_csv.leer_csv(csv)
+    dicc = modulo_csv.leer_csv_1(csv)
     nombre_de_main = None
 
     with open("programas.txt") as f:
