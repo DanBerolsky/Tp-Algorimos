@@ -60,7 +60,7 @@ def generar_arbol(funcion, indice, listaDeNombres, csv):
         print("")
 
 
-def buscoAlgo_enCodigoDe(funcion1, funcion2, csv):
+def busco_algo_en_codigo_de(funcion1, funcion2, csv):
 
     """ [Autor: Alejo Mariño]
         [Ayuda: Recibe dos funciones (strings) y un archivo .csv en donde se encuentren, devuelve el numero de veces que
@@ -91,7 +91,7 @@ def num_de_lineas(cuerpoDeFuncion):
     return cantLineas
 
 
-def depurarLineas(funcion, csv):
+def depurar_lineas(funcion, csv):
 
     """ [Autor: Alejo Mariño]
         [Ayuda: Recibe el nombre de una funcion la cual se encuentra en un determinado archivo .csv y devuelve el codigo
@@ -110,7 +110,7 @@ def depurarLineas(funcion, csv):
     return cuerpo_de_funcion_limpio[2:]
 
 
-def generarListaNombresFunciones(csv):
+def nombres_funciones(csv):
 
     """ [Autor: Alejo Mariño]
         [Ayuda: Recibe un archivo .csv y devuelve una lista con cada uno de los nombres de las funciones en el]
@@ -122,7 +122,7 @@ def generarListaNombresFunciones(csv):
     return listaDeNombresDeOtrasFunciones
 
 
-def encontrarMain(csv):
+def encontrar_main(csv):
 
     """ [Autor: Alejo Mariño]
         [Ayuda: Recibe un csv, en el que compara cada modulo hasta encontrar aquel que sea igual al primer modulo
