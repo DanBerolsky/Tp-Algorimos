@@ -3,7 +3,7 @@ fuente = 'fuente_unico.csv'
 
 def leer_csv(nombre_csv):
     """[Autor: Alfonso]
-        Ayuda: Hace la lectura del csv] 
+    [Ayuda: Hace la lectura del csv] 
     """
         
     dicc_csv = {}
@@ -14,14 +14,14 @@ def leer_csv(nombre_csv):
     return dicc_csv
         
 def archivo_analizador(texto):
-    """[Autor: Alfonso]"""
-    """[Ayuda: Escribe en el archivo el texto que se le envie]"""
+    """[Autor: Alfonso]
+    [Ayuda: Escribe en el archivo el texto que se le envie]
+    """
 
     with open ("analizador.txt","a") as archivo_generado:
         
         archivo_generado.write(texto)
 
-    return None
 
 def quien_invoca_a_quien():
     """[Autor: Alfonso]
@@ -74,7 +74,8 @@ def primer_item_lista(lista):
 
 def armar_tabla():
     """[Autor: Alfonso]
-    [Ayuda: Genera tres listas, una con el titulo, una lista de listas con cada linea y espacio, y los totales]"""   
+    [Ayuda: Genera tres listas, una con el titulo, una lista de listas con cada linea y espacio, y los totales]
+    """   
     
     lista_funciones , dicc_datos = quien_invoca_a_quien()
     #Enumero las funciones
@@ -210,11 +211,10 @@ def la_tabla():
     total = total + "\n"
     archivo_analizador(total)
     
-    return None
         
 def formato_tabla(lista):   
     """[Autor: Alfonso]
-        [Ayuda: Le da formato de tabla a una lista con espaciado y divisiones]
+    [Ayuda: Le da formato de tabla a una lista con espaciado y divisiones]
     """
     
     str_nuevo = ' | '.join(map(str, lista))

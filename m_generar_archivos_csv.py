@@ -68,7 +68,7 @@ def armar_csv_funciones(archivo):
                     index_final = lineas.index(linea_return)
                     cuerpo = lineas[index_inicial_anterior:index_final]
                     cuerpo_sin_comment,nombre_autor,nombre_ayuda,resto = armar_csv_comentarios(cuerpo,nombre_funcion, modulo)
-                    datos_comentarios[nombre_funcion] = {"Nombre del autor":nombre_autor,"informacion de ayuda":nombre_ayuda,"Resto de lineas comentadas":resto}
+                    datos_comentarios[nombre_funcion_anterior] = {"Nombre del autor":nombre_autor,"informacion de ayuda":nombre_ayuda,"Resto de lineas comentadas":resto}
                     datos[nombre_funcion_anterior] = {"Parametros de la funcion":parametros_anterior,"Nombre del modulo":modulo,"Cuerpo de la funcion":cuerpo_sin_comment}
                     contador_def = 1
                 
@@ -95,7 +95,8 @@ def armar_csv_funciones(archivo):
                 funcion = linea
                 index_inicial_anterior = lineas.index(funcion) + 1
                 nombre_funcion_anterior = funcion.split('def ')[1].lstrip().split('(')[0]
-                parametros_anterior = funcion.split('(')[1].lstrip().split(')')[0]
+                parametros_anterior = "(" + funcion.split('(')[1].lstrip().split(')')[0] + ")"
+
 
     #Ordeno el diccionario
         funciones_alfabeto = ordenar_alfabeticamente(datos)
@@ -155,7 +156,7 @@ def lista_comentarios(lista):
     index_lista = []
     comentarios_triples = []
     for i in lista:
-        if i.strip().startswith('"""'):
+        if i.strip().startswith('"' + '"' + '"'):
             index = lista.index(i)
             index_lista.append(index)
     if index_lista and len(index_lista) > 1:
@@ -175,7 +176,7 @@ def autor_ayuda(lista):
     nombre_autor = ""
     for i in lista:
         if 'Autor:' in i:
-            nombre_autor = i.split('"""')[1].lstrip()
+            nombre_autor = i.split('"' + '"' + '"')[1].lstrip()
     b = ''.join(lista)        
-    nombre_ayuda = b.replace(nombre_autor,'').replace('"""','')
+    nombre_ayuda = b.replace(nombre_autor,'').replace('"' + '"' + '"','')
     return nombre_autor, nombre_ayuda
