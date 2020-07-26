@@ -29,9 +29,11 @@ def main():
             quien_invoca.la_tabla()
         
         elif funcionalidad == "4":
-            # Integrar punto 4!!!
+            # Integrar punto 4
             import arbol_de_invocacion
-            pass
+            arbol_de_invocacion.generar_arbol(arbol_de_invocacion.encontrarMain("fuente_unico.csv"), 0,
+            arbol_de_invocacion.generarListaNombresFunciones("fuente_unico.csv"), "fuente_unico.csv")
+
 
         elif funcionalidad == "5":
             # Quinto punto
