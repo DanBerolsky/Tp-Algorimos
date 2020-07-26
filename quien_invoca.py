@@ -248,5 +248,3 @@ def remover_ceros(lista):
     """
     reemplazo =[' ' if i==0 else i for i in lista]
     return reemplazo
-
-la_tabla()

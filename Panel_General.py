@@ -8,7 +8,7 @@ def organizar_datos(lista):
        de Funcion, Cantidad de Parametros, Canitdad de Lineas
     """
     j = 0
-    primeros_3 = {"Nombre de Funcion": lista[2] + "." + lista[0], "Cantidad de Parametros": lista[1].count('('),
+    primeros_3 = {"Nombre de Funcion": lista[0] + "." + lista[2], "Cantidad de Parametros": lista[1].count('('),
                   "Cantidad de Lineas": len(lista) - 3}
     return primeros_3
 
@@ -95,5 +95,3 @@ def panel_principal():
     header = datos[0].keys()
     rows = [x.values() for x in datos]
     print(tabulate.tabulate(rows, header))
-
-panel_principal()
