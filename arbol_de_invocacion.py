@@ -1,5 +1,3 @@
-import modulo_csv
-
 def generar_arbol(funcion, indice, listaDeNombres, dicc):
     """ [Autor: Alejo Mariño]
         [Ayuda: Recibe una funcion (string); un indice (int); un determinado diccionario de la forma: clave = nombre de
@@ -8,7 +6,7 @@ def generar_arbol(funcion, indice, listaDeNombres, dicc):
         diccionario y genera un arbol de invocacion para la determinada funcion]
     """
 
-    a = funcion + " (" + str(num_de_lineas(depurar_lineas(funcion, dicc))) + ")"
+    a = funcion + " (" + str(len(depurar_lineas(funcion, dicc))) + ")"
     print(a, end="")
     contador = 0
     primer_rama = True
@@ -77,20 +75,6 @@ def busco_algo_en_codigo_de(funcion1, funcion2, dicc):
             contador += 1
 
     return contador
-
-
-def num_de_lineas(cuerpoDeFuncion):
-
-    """ [Autor: Alejo Mariño]
-        [Ayuda: Recibe el cuerpo de una funcion y regresa el numero de lineas que lo componen]
-    """
-
-    cantLineas = 0
-
-    for linea in cuerpoDeFuncion:
-        cantLineas += 1
-
-    return cantLineas
 
 
 def depurar_lineas(funcion, dicc):
