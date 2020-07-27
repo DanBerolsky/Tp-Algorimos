@@ -1,3 +1,5 @@
+import modulo_csv
+
 def generar_arbol(funcion, indice, listaDeNombres, dicc):
     """ [Autor: Alejo Mariño]
         [Ayuda: Recibe una funcion (string); un indice (int); un determinado diccionario de la forma: clave = nombre de
@@ -142,17 +144,3 @@ def encontrar_main(dicc):
                 nombre_de_main = key
 
     return nombre_de_main
-
-
-def leer_csv(csv):
-    """ [Autor: Alejo Mariño]
-        [Ayuda: Recibe un archivo .csv y devuelve un diccionario con clave = nombre de funcion y como valor, una lista
-        con cada uno de los valores siendo una separacion del csv]
-    """
-
-    dicc_csv = {}
-    for linea in open(csv, 'r').readlines():
-        linea = linea.strip().split(';')
-        dicc_csv[linea[0]] = linea[1:]
-
-    return dicc_csv
