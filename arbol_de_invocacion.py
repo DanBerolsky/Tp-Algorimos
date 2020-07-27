@@ -1,10 +1,12 @@
 def generar_arbol(funcion, indice, listaDeNombres, dicc):
     """ [Autor: Alejo Mariño]
-        [Ayuda: Recibe una funcion (string), un indice (int), un determinado archivo .csv y una lista
-        con los nombres de las funciones en dicho archivo y genera un arbol de invocacion para la determinada funcion]
+        [Ayuda: Recibe una funcion (string); un indice (int); un determinado diccionario de la forma: clave = nombre de
+        funcion, valor = lista con los parametros de la funcion en el indice 0, el modulo en el indice 1 y cada linea
+        del cuerpo de la funcion a partir del indice dos; una lista con los nombres de las funciones en dicho
+        diccionario y genera un arbol de invocacion para la determinada funcion]
     """
 
-    a = funcion + " (" + str(num_de_lineas(depurar_lineas(funcion, dicc))) + ")"
+    a = funcion + " (" + str(len(depurar_lineas(funcion, dicc))) + ")"
     print(a, end="")
     contador = 0
     primer_rama = True
@@ -60,8 +62,9 @@ def generar_arbol(funcion, indice, listaDeNombres, dicc):
 def busco_algo_en_codigo_de(funcion1, funcion2, dicc):
 
     """ [Autor: Alejo Mariño]
-        [Ayuda: Recibe dos funciones (strings) y un archivo .csv en donde se encuentren, devuelve el numero de veces que
-        la funcion 1 se encuentra en el codigo de la funcion 2]
+        [Ayuda: Recibe dos funciones (strings) y un diccionario en donde se encuentren ambas funciones como claves y su
+        valor, el cuerpo de la funcion en una lista, devuelve el numero de veces que la funcion 1 se encuentra en el
+        codigo de la funcion 2]
     """
 
     cuerpo = depurar_lineas(funcion2, dicc)
@@ -74,25 +77,12 @@ def busco_algo_en_codigo_de(funcion1, funcion2, dicc):
     return contador
 
 
-def num_de_lineas(cuerpoDeFuncion):
-
-    """ [Autor: Alejo Mariño]
-        [Ayuda: Recibe el cuerpo de una funcion y regresa el numero de lineas que lo componen]
-    """
-
-    cantLineas = 0
-
-    for linea in cuerpoDeFuncion:
-        cantLineas += 1
-
-    return cantLineas
-
-
 def depurar_lineas(funcion, dicc):
 
     """ [Autor: Alejo Mariño]
-        [Ayuda: Recibe el nombre de una funcion la cual se encuentra en un determinado archivo .csv y devuelve el codigo
-        de la funcion ingresada libre de lineas con solo tabulaciones y espacios]
+        [Ayuda: Recibe el nombre de una funcion la cual se encuentra en un determinado diccionario de la forma
+        previamente usada y devuelve el codigo de la funcion ingresada libre de lineas con solo tabulaciones y espacios
+        en forma de lista]
     """
 
     cuerpo_de_funcion_limpio = []
@@ -109,7 +99,8 @@ def depurar_lineas(funcion, dicc):
 def nombres_funciones(dicc):
 
     """ [Autor: Alejo Mariño]
-        [Ayuda: Recibe un archivo .csv y devuelve una lista con cada uno de los nombres de las funciones en el]
+        [Ayuda: Recibe un diccionario de la forma previamente usada y devuelve una lista con cada uno de los nombres de
+        las funciones en el]
     """
 
     listaDeNombresDeOtrasFunciones = [key for key in dicc]
@@ -120,9 +111,10 @@ def nombres_funciones(dicc):
 def encontrar_main(dicc):
 
     """ [Autor: Alejo Mariño]
-        [Ayuda: Recibe un csv, en el que compara cada modulo hasta encontrar aquel que sea igual al primer modulo
-        del archivo "programas.txt", el cual deberia ser el modulo en el cual se encuentra solo la funcion main.
-        Una vez encontrado el modulo toma el nombre de la funcion main cualquier sea su nombre y lo devuelve]
+        [Ayuda: Recibe un diccionario de la forma previamente usada, en el que compara cada modulo hasta encontrar aquel
+        que sea igual al primer modulo del archivo "programas.txt", el cual deberia ser el modulo en el cual se
+        encuentra solo la funcion main. Una vez encontrado el modulo toma el nombre de la funcion main cualquier sea su
+        nombre y lo devuelve]
     """
 
     nombre_de_main = None
@@ -136,17 +128,3 @@ def encontrar_main(dicc):
                 nombre_de_main = key
 
     return nombre_de_main
-
-
-def leer_csv(csv):
-    """ [Autor: Alejo Mariño]
-        [Ayuda: Recibe un archivo .csv y devuelve un diccionario con clave = nombre de funcion y como valor, una lista
-        con cada uno de los valores siendo una separacion del csv]
-    """
-
-    dicc_csv = {}
-    for linea in open(csv, 'r').readlines():
-        linea = linea.strip().split(';')
-        dicc_csv[linea[0]] = linea[1:]
-
-    return dicc_csv

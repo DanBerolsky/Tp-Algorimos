@@ -75,3 +75,17 @@ def armo_csv(Estructura_de_datos,nombre_archivo, modulo, lista_modulos_comentari
                 archivo_comentarios.write(nombre_funcion + ";" + nombre_autor + ";" + nombre_ayuda.strip() + ";" + funcion + "\n") 
 
         return archivo_a_escribir
+
+
+def leer_csv(csv):
+    """ [Autor: Alejo Mariño]
+        [Ayuda: Recibe un archivo .csv y devuelve un diccionario con clave = nombre de funcion y como valor, una lista
+        con cada uno de los valores siendo una separacion del csv]
+    """
+
+    dicc_csv = {}
+    for linea in open(csv, 'r').readlines():
+        linea = linea.strip().split(';')
+        dicc_csv[linea[0]] = linea[1:]
+
+    return dicc_csv

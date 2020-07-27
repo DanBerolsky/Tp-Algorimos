@@ -6,6 +6,7 @@ def main():
     """
     
     import m_generar_archivos_csv
+    import modulo_csv
     txt = 'programas.txt'
     m_generar_archivos_csv.armar_csv_funciones(txt)
     
@@ -31,7 +32,7 @@ def main():
         elif funcionalidad == "4":
             #Cuarto punto
             import arbol_de_invocacion
-            dicc = arbol_de_invocacion.leer_csv("fuente_unico.csv")
+            dicc = modulo_csv.leer_csv("fuente_unico.csv")
             arbol_de_invocacion.generar_arbol(arbol_de_invocacion.encontrar_main(dicc), 0,
             arbol_de_invocacion.nombres_funciones(dicc), dicc)
 
