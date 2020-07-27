@@ -141,15 +141,8 @@ def armar_tabla():
         #Creo una lista de lista que contenga todo para calcular los totales en la matriz
         lista_total.append(lista_a_imprimir)        
     
-    
-    #Hago una lista de listas de los totales reemplazando los vacios por 0 para poder sumarlo
-    lista_totales_numero = borrar_un_valor_lista(lista_total,vacio)
-    lista_totales_numero_2 = borrar_un_valor_lista(lista_totales_numero, 'X')   
-    borrar_primer_indice(lista_totales_numero_2)
-    
-    totales = sumar_totales(lista_totales_numero_2)  
+    totales = generar_totales(lista_total)
    
-    
     return titulo, lista_total, totales
             
 def borrar_primer_indice(lista):
@@ -167,6 +160,16 @@ def borrar_un_valor_lista(lista,valor):
     """
     lista_valor =[list(map(lambda x: x if x!= valor else 0, i)) for i in lista]
     return lista_valor
+
+def generar_totales(lista):
+    #Hago una lista de listas de los totales reemplazando los vacios por 0 para poder sumarlo
+    lista_totales_numero = borrar_un_valor_lista(lista,vacio)
+    lista_totales_numero_2 = borrar_un_valor_lista(lista_totales_numero, 'X')   
+    borrar_primer_indice(lista_totales_numero_2)
+    
+    totales = sumar_totales(lista_totales_numero_2)  
+    
+    return totales
 
 def sumar_totales(lista):
     """ [Autor: Alfonso]
