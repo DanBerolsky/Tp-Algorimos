@@ -1,11 +1,6 @@
-#Declaro nombre archivo
-import modulo_csv
-
-fuente = 'fuente_unico.csv'
-        
 def archivo_analizador(texto):
     """[Autor: Alfonso]
-    [Ayuda: recibe un string como parametro y escribe en un archivo]
+    [Ayuda: recibe un string como parametro y escribe en el archivo analizador.txt]
     """
     with open ("analizador.txt","a") as archivo_generado:
         archivo_generado.write(texto)
@@ -16,9 +11,12 @@ def quien_invoca_a_quien():
        teniendo como clave el nombre de la funcion y como valores una lista de lista con cuantas veces lo invoca, 
        ademas devuelve los nombres de todas las funciones del programa]
     """
-    
+    import modulo_csv
+    fuente = 'fuente_unico.csv'
     #Invoco para leer el csv y que me devuelva un diccionario
     diccionario_csv = modulo_csv.leer_csv(fuente)
+    
+    #Declaro variables
     nombre_funcion = []
     resultado = {}
 
@@ -26,26 +24,27 @@ def quien_invoca_a_quien():
     for fila in diccionario_csv:
         nombre_funcion.append(fila)
         
-    #Recorre las filas y me quedo con la clave (nombre_funcion) y el cuerpo de la funcion
+    #Recorre las filas del diccionario y me quedo con la clave (nombre_funcion) y el cuerpo de la funcion
     for fila in diccionario_csv.items():
-        #Me quedo con el nombre de la funcion que es la clave
+        #Asigno el nombre de la funcion a la variable clave
         clave = fila[0]
         #Busco el cuerpo de la funcion que seria todo lo posterior al 2do campo
         cuerpo = fila[1][2:]
         
-        #Por cada funcion en la lista de funciones itera
+        #Por cada funcion en la lista de  todas las funciones itera
         for funcion in nombre_funcion:
             
-            #Cruza los nombres de las funciones y chequea si esta en el cuerpo de otra funcion
+            #Cheque si en el cuerpo de la funcion existe el nombre de la funcion y lo anade a la lista
             funciones_en_cuerpo = [s for s in cuerpo if funcion in s]
             
             #Cuenta cuantas veces ocurre que una funcion este dentro de ota 
             contador = len(funciones_en_cuerpo)
+            #Genera una lista con el nombre de la funcion invocada y cuantas veces fue invocada
             lista_de_invocacion = [funcion,contador]
             
             #Si ocurre al menos 1 vez
             if contador > 0:
-                #Si la clave ya existe, agrego otra lista, en caso de que no exista, crea la clave
+                #Si la funcion que la invoco ya existe, agrego otra lista, en caso de que no exista, crea la clave con el nombre de la funcion invocadora
                 if clave in resultado:
                     resultado[clave].append(lista_de_invocacion)
                 #Si no existe la clave me creo un nuevo campo
@@ -53,47 +52,41 @@ def quien_invoca_a_quien():
                     resultado[clave] = [lista_de_invocacion]
     #Devuelvo una lista de todas las funciones y el diccionario de quien invoca a quien       
     return nombre_funcion, resultado
- 
- 
-def primer_item_lista(lista): 
-    """[Autor: Alfonso]
-        [Ayuda: Busca el primer item de una lista, recibe una lista, y devuelve un item]
-    """
-    
-    return [item[0] for item in lista] 
 
 def armar_tabla():
     """[Autor: Alfonso]
     [Ayuda: Genera tres listas, una con el titulo, una lista de listas con cada linea y espacio, y los totales]
     """   
     
+    #Obtengo los parametros de toda la lista de funciones y un diccionario de quien invoca a quien y cuantas veces
     lista_funciones , dicc_datos = quien_invoca_a_quien()
     
-    #Enumero las funciones a partir de 1 numero
+    #Enumero la lista de todas las funciones a partir del numero 1
     enum_datos = list(enumerate(lista_funciones,1))
     
-    #Posicion en la lista
+    #Obtengo una lista con  el numero de cada funcion
     posicion = primer_item_lista(enum_datos)
     
-    #Calculo la maxima cantidad de funciones
+    #Calculo la maxima cantidad de funciones y le doy formato al titulo de la tabla
     maximo,titulo = formato_titulo(posicion)
     
+    #Declaro Variables
     lista_total = []   
     vacio = " "
     
-    #Reviso el enumerate por funcion
+    #Recorro la lista que genera el enumerate
     for numero,funcion in enum_datos:
         
         #Creo una variable para llenar la tabla
         conteo = 1
         
-        #Armo el primero campo
+        #Armo el primero campo con el numero de la funcion y su nombre
         primer_campo = str(numero) + " " + funcion 
         
-        #Genero la lista que voy a imprimir con el primer campo
+        #Genero la lista que voy a imprimir con el primer campo justificandola a 32 espacios
         lista_a_imprimir = [primer_campo.ljust(32)]
         
-        #Lleno la tabla con vacios
+        #Lleno la tabla con vacios para formar una grilla validando contra el numero total de funciones
         while conteo <= maximo:
             
             #Genero la grilla con todos los campos por funciones
@@ -209,7 +202,7 @@ def la_tabla():
     formato_cuerpo(cuerpo)
     
     #Total
-    total = formato_tabla(remover_ceros(correcto_espaciado(total)))
+    total = formato_tabla(correcto_espaciado(total))
     print(total)
     total = total + "\n"
     archivo_analizador(total)
@@ -237,8 +230,6 @@ def correcto_espaciado(lista_1):
     """[Autor: Alfonso]
     [Ayuda: Modifica el espaciado de los espacios en blanco para que quede a la par cada columna despues de la decima]
     """
-    
-    
     for j,k in enumerate(lista_1):
             if j >= 10 and len(str(k))<2:
                lista_1[j] = ' ' + str(k)
@@ -250,10 +241,8 @@ def correcto_espaciado(lista_1):
                 lista_1[j] = ' ' + str(k)    
     return lista_1
 
-    
-def remover_ceros(lista):
+def primer_item_lista(lista): 
     """[Autor: Alfonso]
-    [Ayuda: Reemplaza por un espacio los 0 que se encuentren en una lista]
+        [Ayuda: Busca el primer item de una lista, recibe una lista, y devuelve un item]
     """
-    reemplazo =[' ' if i==0 else i for i in lista]
-    return reemplazo
+    return [item[0] for item in lista] 
