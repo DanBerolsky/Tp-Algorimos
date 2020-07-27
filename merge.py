@@ -13,25 +13,44 @@ def merge_2(modulo1, modulo2, modulo_a_escribir):
     modulo2 = open(modulo2)
     linea1 = modulo1.readline()
     linea2 = modulo2.readline()
+    if modulo_a_escribir != "fuente_unico.csv" and modulo_a_escribir != "comentarios.csv":
+        with open(modulo_a_escribir, "a") as escritura:
+            while linea1 != "" and linea2 != "":
+            
+                if linea1 < linea2:
+                    escritura.write(linea1)
+                    linea1 = modulo1.readline()
+                elif linea1 > linea2:
+                    escritura.write(linea2)
+                    linea2 = modulo2.readline()
 
-    with open(modulo_a_escribir, "a") as escritura:
-        while linea1 != "" and linea2 != "":
-        
-            if linea1 < linea2:
-                escritura.write(linea1)
-                linea1 = modulo1.readline()
-            elif linea1 > linea2:
-                escritura.write(linea2)
-                linea2 = modulo2.readline()
+            if linea1 != "":
+                while linea1:
+                    escribir(linea1, escritura)
+                    linea1 = modulo1.readline()
+            elif linea2 != "":
+                while linea2:
+                    escribir(linea2, escritura)
+                    linea2 = modulo2.readline()
+    else:
+        with open(modulo_a_escribir, "w") as escritura:
+            while linea1 != "" and linea2 != "":
+            
+                if linea1 < linea2:
+                    escritura.write(linea1)
+                    linea1 = modulo1.readline()
+                elif linea1 > linea2:
+                    escritura.write(linea2)
+                    linea2 = modulo2.readline()
 
-        if linea1 != "":
-            while linea1:
-                escribir(linea1, escritura)
-                linea1 = modulo1.readline()
-        elif linea2 != "":
-            while linea2:
-                escribir(linea2, escritura)
-                linea2 = modulo2.readline()
+            if linea1 != "":
+                while linea1:
+                    escribir(linea1, escritura)
+                    linea1 = modulo1.readline()
+            elif linea2 != "":
+                while linea2:
+                    escribir(linea2, escritura)
+                    linea2 = modulo2.readline()
     modulo1.close()
     modulo2.close()
 
@@ -94,4 +113,9 @@ def ciclar_modulos(lista_modulos, tipo):
 
         merge_2(lista_modulos[-1][0], lista_modulos[-1][1], "comentarios.csv")
 
+
+    for lista in lista_modulos:
+        for archivo in lista:
+            with open(archivo, "w"):
+                pass
 

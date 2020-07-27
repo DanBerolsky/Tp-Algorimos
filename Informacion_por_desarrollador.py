@@ -27,7 +27,7 @@ def capturo_datos():
             # Convierte en otra variable, la linea que es un string que separa
             #  los campos con "," en una lista para poder acceder a la 
             #   informacion facilmente...
-            linea_a_lista_de_datos = linea_archivos_comentarios.split(",")
+            linea_a_lista_de_datos = linea_archivos_comentarios.split(";")
             
             # Primer campo tenemos el nombre de la funcion.
             nombre_funcion = linea_a_lista_de_datos[0]
@@ -55,7 +55,7 @@ def capturo_datos():
             
             # de igual manera genera en otra variable una lista,
             # la cual cada elemento es un campo del csv.
-            linea_a_lista_de_datos = linea_archivos_fuente_unico.split(",")
+            linea_a_lista_de_datos = linea_archivos_fuente_unico.split(";")
             
             # Por cada funcion inicializo el contador de lineas por fucion en cero. 
             contador_lineas = 0

@@ -1,4 +1,6 @@
 import merge
+
+
 def armo_csv(Estructura_de_datos,nombre_archivo, modulo, lista_modulos_comentarios):
     """ [Autor: Dan]
         [Ayuda: Recibo el nombre de archivo a escribir y la estructura de datos 
@@ -70,20 +72,6 @@ def armo_csv(Estructura_de_datos,nombre_archivo, modulo, lista_modulos_comentari
             with open (archivo_a_escribir, "a") as archivo_comentarios:
 
                 #Escribo en el csv
-                archivo_comentarios.write(nombre_funcion + ";" + nombre_autor + ";" + nombre_ayuda + ";" + funcion + "\n") 
+                archivo_comentarios.write(nombre_funcion + ";" + nombre_autor + ";" + nombre_ayuda.strip() + ";" + funcion + "\n") 
 
         return archivo_a_escribir
-
-
-def leer_csv_1(nombre_csv):
-
-    """ [Autor: F]
-        [Ayuda: Hace cosas]
-    """
-
-    dicc_csv = {}
-    for linea in open(nombre_csv, 'r').readlines():
-        linea = linea.strip().split(',')
-        dicc_csv[linea[0]] = linea[1:]
-    
-    return dicc_csv

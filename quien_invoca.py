@@ -10,7 +10,7 @@ def leer_csv(nombre_csv):
     dicc_csv = {}
     
     for linea in open(nombre_csv, 'r').readlines():
-        linea = linea.strip().split(',')
+        linea = linea.strip().split(';')
         dicc_csv[linea[0]] = linea[1:] 
     return dicc_csv
         
@@ -252,10 +252,10 @@ def correcto_espaciado(lista):
             elif j >= 100 and k >= 10:
                 lista[j] = ' ' + str(k)    
     return lista
+    
 def remover_ceros(lista):
     """[Autor: Alfonso]
     [Ayuda: Reemplaza por un espacio los 0 que se encuentren en una lista]
     """
     reemplazo =[' ' if i==0 else i for i in lista]
     return reemplazo
-

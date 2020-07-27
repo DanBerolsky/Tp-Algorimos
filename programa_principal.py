@@ -24,17 +24,19 @@ def main():
             consulta_de_funciones.main_consulta_funciones()
         
         elif funcionalidad == "3":
-            # Tercer punto 3?
+            #Tercer punto 3
             import quien_invoca
             quien_invoca.la_tabla()
         
         elif funcionalidad == "4":
-            # Integrar punto 4!!!
+            #Cuarto punto
             import arbol_de_invocacion
-            pass
+            dicc = arbol_de_invocacion.leer_csv("fuente_unico.csv")
+            arbol_de_invocacion.generar_arbol(arbol_de_invocacion.encontrar_main(dicc), 0,
+            arbol_de_invocacion.nombres_funciones(dicc), dicc)
 
         elif funcionalidad == "5":
-            # Quinto punto
+            #Quinto punto
             import Informacion_por_desarrollador
             informacion,porcentaje = Informacion_por_desarrollador.capturo_datos()
             Informacion_por_desarrollador.participacion_info(informacion,porcentaje)
