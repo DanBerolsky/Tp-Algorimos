@@ -231,16 +231,16 @@ def formato_cuerpo(lista):
         archivo_analizador(i)
     return i
 
-def correcto_espaciado(lista):
+def correcto_espaciado(lista1):
     """[Autor: Alfonso]
     [Ayuda: Modifica el espaciado de los espacios en blanco para que quede a la par cada columna despues de la decima]
     """
-    for j,k in enumerate(lista):
+    for j,k in enumerate(lista1):
             if j >= 10:
-               lista[j] = ' ' + str(k)
+               lista1[j] = ' ' + str(k)
             elif j >= 100:
-                lista[j] = '  ' + str(k)
-    return lista
+                lista1[j] = '  ' + str(k)
+    return lista1
     
 def remover_ceros(lista):
     """[Autor: Alfonso]
