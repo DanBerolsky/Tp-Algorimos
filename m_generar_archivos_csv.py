@@ -43,7 +43,6 @@ def armar_csv_funciones(archivo):
     nombre_archivo = "fuente_unico.csv"
     datos = {}
     
-    
     #Abro los modulos
     modulos = abro_ar(archivo)
     ultima_linea_indentada = None
@@ -52,6 +51,8 @@ def armar_csv_funciones(archivo):
     for modulo in modulos:
         lineas = abro_ar(modulo)
         contador_def = 0
+        cuento_linea = 0
+        
         datos_comentarios = {}
         for linea in lineas:
                   
@@ -84,13 +85,16 @@ def armar_csv_funciones(archivo):
             if linea.startswith("    "):
                 ultima_linea_indentada = linea
 
-            if linea == lineas[len(lineas)-1]:
-                index_final = lineas.index(ultima_linea_indentada) + 1
+            cuento_linea += 1
+
+            if cuento_linea == len(lineas):
+                index_final = len(lineas)-1
                 cuerpo = lineas[index_inicial:index_final]
                 cuerpo_sin_comment,nombre_autor,nombre_ayuda,resto = armar_csv_comentarios(cuerpo,nombre_funcion, modulo)
                 datos_comentarios[nombre_funcion] = {"Nombre del autor":nombre_autor,"informacion de ayuda":nombre_ayuda,"Resto de lineas comentadas":resto}
                 datos[nombre_funcion] = {"Parametros de la funcion":parametros,"Nombre del modulo":modulo,"Cuerpo de la funcion":cuerpo_sin_comment}
-                
+
+
             if linea.startswith('def '):
                 funcion = linea
                 index_inicial_anterior = lineas.index(funcion) + 1
