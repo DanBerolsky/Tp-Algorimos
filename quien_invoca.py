@@ -3,7 +3,8 @@ fuente = 'fuente_unico.csv'
 
 def leer_csv(nombre_csv):
     """[Autor: Alfonso]
-    [Ayuda: Hace la lectura del csv] 
+    [Ayuda: Recibe como parametro un string con el nombre del archivo y devuelve un diccionario con el nombre de la funcion
+    como clave principal. ] 
     """
         
     dicc_csv = {}
@@ -15,17 +16,20 @@ def leer_csv(nombre_csv):
         
 def archivo_analizador(texto):
     """[Autor: Alfonso]
-    [Ayuda: Escribe en el archivo el texto que se le envie]
+    [Ayuda: recibe un string como parametro y escribe en un archivo]
     """
 
     with open ("analizador.txt","a") as archivo_generado:
         
         archivo_generado.write(texto)
+    return None
 
 
 def quien_invoca_a_quien():
     """[Autor: Alfonso]
-       [Ayuda: Genera un diccionario de quien inoca a quien, teniendo como clave el nombre de la funcion y como valores una lista de lista con cuantas veces lo invoca]
+       [Ayuda: Genera un diccionario de quien inoca a quien, 
+       teniendo como clave el nombre de la funcion y como valores una lista de lista con cuantas veces lo invoca, 
+       ademas devuelve los nombres de todas las funciones del programa]
     """
     #Invoco para leer el csv y que me devuelva un diccionario
     diccionario_csv = leer_csv(fuente)
@@ -67,7 +71,7 @@ def quien_invoca_a_quien():
  
 def primer_item_lista(lista): 
     """[Autor: Alfonso]
-        [Ayuda: Busca el primer item de una lista]
+        [Ayuda: Busca el primer item de una lista, recibe una lista, y devuelve un item]
     """
     
     return [item[0] for item in lista] 
@@ -159,14 +163,14 @@ def borrar_primer_indice(lista):
 
 def borrar_un_valor_lista(lista,valor):
     """ [Autor: Alfonso]
-        [Ayuda: Reemplaza un valor en especifico de una lista por vacio]
+        [Ayuda: Reemplaza un valor en especifico de una lista por vacio y retorna la lista modificada]
     """
     lista_valor =[list(map(lambda x: x if x!= valor else 0, i)) for i in lista]
     return lista_valor
 
 def sumar_totales(lista):
     """ [Autor: Alfonso]
-        [Ayuda: Sumariza la columna de una matriz]
+        [Ayuda: Toma como parametro de entrada una lista, y genera una nueva lista sumando los valores de cada columna de la lista inicial]
     """
     totales = []  
     for columna_matriz in enumerate(lista[0]):
@@ -236,10 +240,14 @@ def correcto_espaciado(lista):
     [Ayuda: Modifica el espaciado de los espacios en blanco para que quede a la par cada columna despues de la decima]
     """
     for j,k in enumerate(lista):
-            if j >= 10:
+            if j >= 10 and k < 10:
                lista[j] = ' ' + str(k)
-            elif j >= 100:
+            elif j >= 10 and k >= 10:
+                lista[j] = str(k)
+            elif j >= 100 and k < 10:
                 lista[j] = '  ' + str(k)
+            elif j >= 100 and k >= 10:
+                lista[j] = ' ' + str(k)    
     return lista
 def remover_ceros(lista):
     """[Autor: Alfonso]
@@ -248,4 +256,3 @@ def remover_ceros(lista):
     reemplazo =[' ' if i==0 else i for i in lista]
     return reemplazo
 
-la_tabla()
