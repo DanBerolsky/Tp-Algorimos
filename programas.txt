@@ -1,7 +1,6 @@
 programa_principal.py
 m_generar_archivos_csv.py
 modulo_csv.py
-contar_funciones.py
 Informacion_por_desarrollador.py
 consulta_de_funciones.py
 Panel_General.py

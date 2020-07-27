@@ -156,14 +156,18 @@ def borrar_un_valor_lista(lista,valor):
     return lista_valor
 
 def generar_totales(lista):
+    """ [Autor: Alfonso]
+        [Ayuda: Recibe una lista y genera la lista de sumatoria de totales y la devuelve]
+    """
+    
     vacio = ' '
     #Hago una lista de listas de los totales reemplazando los vacios por 0 para poder sumarlo
     lista_totales_numero = borrar_un_valor_lista(lista,vacio)
     lista_totales_numero_2 = borrar_un_valor_lista(lista_totales_numero, 'X')   
     borrar_primer_indice(lista_totales_numero_2)
-    totales = sumar_totales(lista_totales_numero_2)  
+    totales1 = sumar_totales(lista_totales_numero_2)  
     
-    return totales
+    return totales1
 
 def sumar_totales(lista):
     """ [Autor: Alfonso]
@@ -229,14 +233,13 @@ def formato_cuerpo(lista):
         archivo_analizador(i)
     return i
 
-def correcto_espaciado(lista1):
+def correcto_espaciado(lista_1):
     """[Autor: Alfonso]
     [Ayuda: Modifica el espaciado de los espacios en blanco para que quede a la par cada columna despues de la decima]
     """
     
-    lista_1 = lista
     
-    for j,k in enumerate(lista):
+    for j,k in enumerate(lista_1):
             if j >= 10 and len(str(k))<2:
                lista_1[j] = ' ' + str(k)
             elif j >= 10 and len(str(k))>=2:

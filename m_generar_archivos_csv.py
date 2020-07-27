@@ -2,7 +2,7 @@ import modulo_csv
 
 def leer(archivo):
     
-    """[Autor: A]
+    """[Autor: Alfonso]
     [Ayuda: Lee el archivo linea por linea]
     """
     
@@ -12,7 +12,7 @@ def leer(archivo):
 
 def abro_ar(archivo):
     
-    """[Autor: b]
+    """[Autor: Alfonso]
     [Ayuda: abre un archivo]
     """
 
@@ -26,7 +26,7 @@ def abro_ar(archivo):
 
 def ordenar_alfabeticamente(diccionario):
     
-    """[Autor: b]
+    """[Autor: Alfonso]
     [Ayuda: Ordena diccionario de mayor a menor, respecto las claves del mismo.
     Devuelvo lista de tuplas]
     """
@@ -35,7 +35,7 @@ def ordenar_alfabeticamente(diccionario):
 
 def armar_csv_funciones(archivo):
     
-    """[Autor: b]
+    """[Autor: Dan]
     [Ayuda: abre un archivo]
     """
     
@@ -107,7 +107,7 @@ def armar_csv_funciones(archivo):
 
 def armar_csv_comentarios(lista_cuerpo,nombre_funcion, modulo):
     
-    """[Autor: D]
+    """[Autor: Alfonso]
     [Ayuda: Remueve los comentarios de la funcion y crea el archivo comentarios.csv]
     """ 
     
@@ -168,7 +168,7 @@ def lista_comentarios(lista):
    
    
 def autor_ayuda(lista):
-    """[Autor: Alfonso],
+    """[Autor: Alfonso]
     [Ayuda: Remueve los comentarios de la funcion
     y crea el archivo comentarios.csv]
     """    

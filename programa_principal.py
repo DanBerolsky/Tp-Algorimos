@@ -1,7 +1,7 @@
 #Programa principal
 def main():
     
-    """[Autor: L]
+    """[Autor: Equipo Azul]
     [Ayuda: Es la funcion principal]
     """
     
@@ -9,7 +9,12 @@ def main():
     import modulo_csv
     txt = 'programas.txt'
     m_generar_archivos_csv.armar_csv_funciones(txt)
-    
+    print("Funcionalidades:")
+    print("1: Panel General")
+    print("2: Consulta de funciones")
+    print("3: Tabla de invocacion")
+    print("4: Arbol de invocacion")
+    print("5: Información por desarrollador")
     funcionalidad = input("Ingrese la funcionalidad que quiere ver: ")
     
     while funcionalidad != "":

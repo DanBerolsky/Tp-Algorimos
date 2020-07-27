@@ -1,0 +1,496 @@
+
+	Informe de Desarrollo Por Autor
+
+
+
+	Funcion                Lineas
+	---------------------------------
+	generar_totales          7
+	sumar_totales            1
+	2 Funciones - Lineas	 8  0%
+
+Autor: A
+
+	Funcion                Lineas
+	---------------------------------
+	leer                     5
+	1 Funciones - Lineas	 5  0%
+
+Autor: Alejo Mariño
+
+	Funcion                Lineas
+	---------------------------------
+	busco_algo_en_codigo_de  10
+	depurar_lineas           11
+	encontrar_main           12
+	generar_arbol            54
+	leer_csv                 7
+	nombres_funciones        5
+	6 Funciones - Lineas	 99  10%
+
+Autor: Alfonso
+
+	Funcion                Lineas
+	---------------------------------
+	archivo_analizador       3
+	armar_tabla              52
+	borrar_primer_indice     4
+	borrar_un_valor_lista    2
+	correcto_espaciado       12
+	formato_cuerpo           6
+	formato_tabla            2
+	formato_titulo           5
+	la_tabla                 15
+	lista_comentarios        13
+	primer_item_lista        2
+	quien_invoca_a_quien     25
+	remover_ceros            1
+	13 Funciones - Lineas	 142  15%
+
+Autor: Alfonso],
+
+	Funcion                Lineas
+	---------------------------------
+	autor_ayuda              6
+	1 Funciones - Lineas	 6  0%
+
+Autor: D
+
+	Funcion                Lineas
+	---------------------------------
+	armar_csv_comentarios    23
+	1 Funciones - Lineas	 23  2%
+
+Autor: Dan
+
+	Funcion                Lineas
+	---------------------------------
+	armo_csv                 63
+	cantidad_de_espacios     11
+	capturo_datos            66
+	escribir_imprimir        10
+	participacion_info       81
+	5 Funciones - Lineas	 231  25%
+
+Autor: F
+
+	Funcion                Lineas
+	---------------------------------
+	contar_funciones         15
+	1 Funciones - Lineas	 15  1%
+
+Autor: L
+
+	Funcion                Lineas
+	---------------------------------
+	main                     36
+	1 Funciones - Lineas	 36  3%
+
+Autor: Luis Andrade
+
+	Funcion                Lineas
+	---------------------------------
+	contar_elementos_varios  19
+	contar_invocaciones      10
+	organizar_datos          4
+	panel_principal          29
+	4 Funciones - Lineas	 62  6%
+
+Autor: Valentin
+
+	Funcion                Lineas
+	---------------------------------
+	armar_diccionarios       31
+	ciclar_modulos           58
+	consultar_funciones      18
+	escribir                 2
+	generar_lista_total      14
+	generar_txt              19
+	imprimir_funciones       5
+	main_consulta_funciones  3
+	merge_2                  47
+	sacar_corchetes          7
+	10 Funciones - Lineas	 204  22%
+
+Autor: b
+
+	Funcion                Lineas
+	---------------------------------
+	abro_ar                  6
+	armar_csv_funciones      62
+	ordenar_alfabeticamente  3
+	3 Funciones - Lineas	 71  7%
+
+
+Total: 48 Funciones - lineas	 902
+
+	Informe de Desarrollo Por Autor
+
+Autor: Alejo Mariño
+
+	Funcion                Lineas
+	---------------------------------
+	busco_algo_en_codigo_de  10
+	depurar_lineas           11
+	encontrar_main           12
+	generar_arbol            54
+	leer_csv                 7
+	nombres_funciones        5
+	6 Funciones - Lineas	 99  10%
+
+Autor: Alfonso
+
+	Funcion                Lineas
+	---------------------------------
+	abro_ar                  6
+	archivo_analizador       3
+	armar_csv_comentarios    23
+	armar_tabla              52
+	borrar_primer_indice     4
+	borrar_un_valor_lista    2
+	correcto_espaciado       12
+	formato_cuerpo           6
+	formato_tabla            2
+	formato_titulo           5
+	generar_totales          8
+	la_tabla                 15
+	leer                     5
+	lista_comentarios        13
+	ordenar_alfabeticamente  3
+	primer_item_lista        2
+	quien_invoca_a_quien     25
+	remover_ceros            1
+	sumar_totales            6
+	19 Funciones - Lineas	 193  21%
+
+Autor: Alfonso],
+
+	Funcion                Lineas
+	---------------------------------
+	autor_ayuda              6
+	1 Funciones - Lineas	 6  0%
+
+Autor: Dan
+
+	Funcion                Lineas
+	---------------------------------
+	armar_csv_funciones      62
+	armo_csv                 63
+	cantidad_de_espacios     11
+	capturo_datos            66
+	escribir_imprimir        10
+	participacion_info       81
+	6 Funciones - Lineas	 293  32%
+
+Autor: Equipo Azul
+
+	Funcion                Lineas
+	---------------------------------
+	main                     36
+	1 Funciones - Lineas	 36  3%
+
+Autor: F
+
+	Funcion                Lineas
+	---------------------------------
+	contar_funciones         15
+	1 Funciones - Lineas	 15  1%
+
+Autor: Luis Andrade
+
+	Funcion                Lineas
+	---------------------------------
+	contar_elementos_varios  19
+	contar_invocaciones      10
+	organizar_datos          4
+	panel_principal          29
+	4 Funciones - Lineas	 62  6%
+
+Autor: Valentin
+
+	Funcion                Lineas
+	---------------------------------
+	armar_diccionarios       31
+	ciclar_modulos           58
+	consultar_funciones      18
+	escribir                 2
+	generar_lista_total      14
+	generar_txt              19
+	imprimir_funciones       5
+	main_consulta_funciones  3
+	merge_2                  47
+	sacar_corchetes          7
+	10 Funciones - Lineas	 204  22%
+
+
+Total: 48 Funciones - lineas	 908
+
+	Informe de Desarrollo Por Autor
+
+Autor: Alejo Mariño
+
+	Funcion                Lineas
+	---------------------------------
+	busco_algo_en_codigo_de  10
+	depurar_lineas           11
+	encontrar_main           12
+	generar_arbol            54
+	leer_csv                 7
+	nombres_funciones        5
+	6 Funciones - Lineas	 99  11%
+
+Autor: Alfonso
+
+	Funcion                Lineas
+	---------------------------------
+	abro_ar                  6
+	archivo_analizador       3
+	armar_csv_comentarios    23
+	armar_tabla              52
+	borrar_primer_indice     4
+	borrar_un_valor_lista    2
+	correcto_espaciado       12
+	formato_cuerpo           6
+	formato_tabla            2
+	formato_titulo           5
+	generar_totales          8
+	la_tabla                 15
+	leer                     5
+	lista_comentarios        13
+	ordenar_alfabeticamente  3
+	primer_item_lista        2
+	quien_invoca_a_quien     25
+	remover_ceros            1
+	sumar_totales            6
+	19 Funciones - Lineas	 193  21%
+
+Autor: Alfonso],
+
+	Funcion                Lineas
+	---------------------------------
+	autor_ayuda              6
+	1 Funciones - Lineas	 6  0%
+
+Autor: Dan
+
+	Funcion                Lineas
+	---------------------------------
+	armar_csv_funciones      62
+	armo_csv                 63
+	cantidad_de_espacios     11
+	capturo_datos            66
+	escribir_imprimir        10
+	participacion_info       81
+	6 Funciones - Lineas	 293  32%
+
+Autor: Equipo Azul
+
+	Funcion                Lineas
+	---------------------------------
+	main                     36
+	1 Funciones - Lineas	 36  4%
+
+Autor: Luis Andrade
+
+	Funcion                Lineas
+	---------------------------------
+	contar_elementos_varios  19
+	contar_invocaciones      10
+	organizar_datos          4
+	panel_principal          29
+	4 Funciones - Lineas	 62  6%
+
+Autor: Valentin
+
+	Funcion                Lineas
+	---------------------------------
+	armar_diccionarios       31
+	ciclar_modulos           58
+	consultar_funciones      18
+	escribir                 2
+	generar_lista_total      14
+	generar_txt              19
+	imprimir_funciones       5
+	main_consulta_funciones  3
+	merge_2                  47
+	sacar_corchetes          7
+	10 Funciones - Lineas	 204  22%
+
+
+Total: 47 Funciones - lineas	 893
+
+	Informe de Desarrollo Por Autor
+
+Autor: Alejo Mariño
+
+	Funcion                Lineas
+	---------------------------------
+	busco_algo_en_codigo_de  10
+	depurar_lineas           11
+	encontrar_main           12
+	generar_arbol            54
+	leer_csv                 7
+	nombres_funciones        5
+	6 Funciones - Lineas	 99  11%
+
+Autor: Alfonso
+
+	Funcion                Lineas
+	---------------------------------
+	abro_ar                  6
+	archivo_analizador       3
+	armar_csv_comentarios    23
+	armar_tabla              52
+	autor_ayuda              6
+	borrar_primer_indice     4
+	borrar_un_valor_lista    2
+	correcto_espaciado       12
+	formato_cuerpo           6
+	formato_tabla            2
+	formato_titulo           5
+	generar_totales          8
+	la_tabla                 15
+	leer                     5
+	lista_comentarios        13
+	ordenar_alfabeticamente  3
+	primer_item_lista        2
+	quien_invoca_a_quien     25
+	remover_ceros            1
+	sumar_totales            6
+	20 Funciones - Lineas	 199  22%
+
+Autor: Dan
+
+	Funcion                Lineas
+	---------------------------------
+	armar_csv_funciones      62
+	armo_csv                 63
+	cantidad_de_espacios     11
+	capturo_datos            66
+	escribir_imprimir        10
+	participacion_info       81
+	6 Funciones - Lineas	 293  32%
+
+Autor: Equipo Azul
+
+	Funcion                Lineas
+	---------------------------------
+	main                     36
+	1 Funciones - Lineas	 36  4%
+
+Autor: Luis Andrade
+
+	Funcion                Lineas
+	---------------------------------
+	contar_elementos_varios  19
+	contar_invocaciones      10
+	organizar_datos          4
+	panel_principal          29
+	4 Funciones - Lineas	 62  6%
+
+Autor: Valentin
+
+	Funcion                Lineas
+	---------------------------------
+	armar_diccionarios       31
+	ciclar_modulos           58
+	consultar_funciones      18
+	escribir                 2
+	generar_lista_total      14
+	generar_txt              19
+	imprimir_funciones       5
+	main_consulta_funciones  3
+	merge_2                  47
+	sacar_corchetes          7
+	10 Funciones - Lineas	 204  22%
+
+
+Total: 47 Funciones - lineas	 893
+
+	Informe de Desarrollo Por Autor
+
+Autor: Alejo Mariño
+
+	Funcion                Lineas
+	---------------------------------
+	busco_algo_en_codigo_de  10
+	depurar_lineas           11
+	encontrar_main           12
+	generar_arbol            54
+	leer_csv                 7
+	nombres_funciones        5
+	6 Funciones - Lineas	 99  11%
+
+Autor: Alfonso
+
+	Funcion                Lineas
+	---------------------------------
+	abro_ar                  6
+	archivo_analizador       3
+	armar_csv_comentarios    23
+	armar_tabla              52
+	autor_ayuda              6
+	borrar_primer_indice     4
+	borrar_un_valor_lista    2
+	correcto_espaciado       12
+	formato_cuerpo           6
+	formato_tabla            2
+	formato_titulo           5
+	generar_totales          8
+	la_tabla                 15
+	leer                     5
+	lista_comentarios        13
+	ordenar_alfabeticamente  3
+	primer_item_lista        2
+	quien_invoca_a_quien     25
+	remover_ceros            1
+	sumar_totales            6
+	20 Funciones - Lineas	 199  22%
+
+Autor: Dan
+
+	Funcion                Lineas
+	---------------------------------
+	armar_csv_funciones      62
+	armo_csv                 63
+	cantidad_de_espacios     11
+	capturo_datos            66
+	escribir_imprimir        10
+	participacion_info       81
+	6 Funciones - Lineas	 293  32%
+
+Autor: Equipo Azul
+
+	Funcion                Lineas
+	---------------------------------
+	main                     41
+	1 Funciones - Lineas	 41  4%
+
+Autor: Luis Andrade
+
+	Funcion                Lineas
+	---------------------------------
+	contar_elementos_varios  19
+	contar_invocaciones      10
+	organizar_datos          4
+	panel_principal          29
+	4 Funciones - Lineas	 62  6%
+
+Autor: Valentin
+
+	Funcion                Lineas
+	---------------------------------
+	armar_diccionarios       31
+	ciclar_modulos           58
+	consultar_funciones      18
+	escribir                 2
+	generar_lista_total      14
+	generar_txt              19
+	imprimir_funciones       5
+	main_consulta_funciones  3
+	merge_2                  47
+	sacar_corchetes          7
+	10 Funciones - Lineas	 204  22%
+
+
+Total: 47 Funciones - lineas	 898
