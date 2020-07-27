@@ -128,6 +128,8 @@ def consultar_funciones(diccionario_fuente, diccionario_comentarios, lista_total
                 generar_txt(diccionario_fuente, diccionario_comentarios, "ayuda_funciones.txt")
         elif funcion == "imprimir tabla":
             imprimir_funciones(lista_total)
+            print("Puede ingresar la función buscada, '?todo', 'imprimir ?todo' o 'imprimir tabla' para mostrar la tabla de funciones de vuelta.")
+
         else:
             print("La función especificada no existe. Por favor, ingrese una función valida")
         funcion = input("Función: ")
