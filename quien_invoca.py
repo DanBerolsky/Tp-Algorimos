@@ -156,6 +156,7 @@ def borrar_un_valor_lista(lista,valor):
     return lista_valor
 
 def generar_totales(lista):
+    vacio = ' '
     #Hago una lista de listas de los totales reemplazando los vacios por 0 para poder sumarlo
     lista_totales_numero = borrar_un_valor_lista(lista,vacio)
     lista_totales_numero_2 = borrar_un_valor_lista(lista_totales_numero, 'X')   
@@ -235,13 +236,13 @@ def correcto_espaciado(lista):
     lista_1 = lista
     
     for j,k in enumerate(lista):
-            if j >= 10 and k < 10:
+            if j >= 10 and len(str(k))<2:
                lista_1[j] = ' ' + str(k)
-            elif j >= 10 and k >= 10:
+            elif j >= 10 and len(str(k))>=2:
                 lista_1[j] = str(k)
-            elif j >= 100 and k < 10:
+            elif j >= 100 and len(str(k))<2:
                 lista_1[j] = '  ' + str(k)
-            elif j >= 100 and k >= 10:
+            elif j >= 100 and len(str(k))>=2:
                 lista_1[j] = ' ' + str(k)    
     return lista_1
     
