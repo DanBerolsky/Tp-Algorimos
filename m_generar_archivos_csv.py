@@ -134,17 +134,7 @@ def armar_csv_comentarios(lista_cuerpo,nombre_funcion, modulo):
     # funcion que no tienen comentario
     cuerpo_sin_comentarios = [x for x in lista if x not in lineas_comentadas]
     
-    #Itero atraves de las lineas comentadas para encontrar el autor y ayuda
-    #me creo el diccionario con los campos que necesito
-    #datos_comentarios[nombre_funcion] = {"Nombre del autor":nombre_autor,"informacion de ayuda":nombre_ayuda,"Resto de lineas comentadas":resto}
-            
-    #Ordeno el diccionario, respecto sus claves
-    #comentarios_alfabeto = ordenar_alfabeticamente(datos_comentarios)
-    #Genero el csv.
-    #modulo_csv.armo_csv(comentarios_alfabeto,nombre_archivo, modulo)
-    
     return cuerpo_sin_comentarios ,nombre_autor,nombre_ayuda,resto
-
 
 
 def lista_comentarios(lista):
