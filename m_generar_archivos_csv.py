@@ -114,8 +114,6 @@ def armar_csv_comentarios(lista_cuerpo,nombre_funcion, modulo):
     #Declaracion de variables
     comentario_triple = '\"\"\"'
     nombre_archivo = 'comentarios.csv'
-    autor = "[Autor:"
-    ayuda = "[Ayuda:"
     nombre_autor = ""
     nombre_ayuda = ""
     resto = []   
