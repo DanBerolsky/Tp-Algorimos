@@ -64,18 +64,18 @@ def panel_principal():
     """
     # Abro el archivo de comentarios
     with open('comentarios.csv', 'r') as comentarios:
-        reader = csv.reader(comentarios, delimiter = ";")
+        lector_comentarios = csv.reader(comentarios, delimiter=";")
         lista_de_comentarios = []
-        for fila in reader:
-            lista_de_comentarios.append(fila)
+        for fila_comentario in lector_comentarios:
+            lista_de_comentarios.append(fila_comentario)
     # Abro el archivo fuente unico
     with open('fuente_unico.csv', 'r') as file:
-        reader = csv.reader(file, delimiter = ";")
+        lector_fuente = csv.reader(file, delimiter=";")
         lista_completa = []
         lista_final = {}
         datos = []
-        for row in reader:
-            lista_completa.append(row)
+        for fila_fuente in lector_fuente:
+            lista_completa.append(fila_fuente)
         lista1 = lista_completa
         i = 0
         # se recorre linea a linea las listas creadas
@@ -91,7 +91,7 @@ def panel_principal():
             lista_final = {}
             # uniendo todos los diccionarios en una lista
             i = i + 1
-
-    header = datos[0].keys()
-    rows = [x.values() for x in datos]
-    print(tabulate.tabulate(rows, header))
+    # Tabular
+    encabezado = datos[0].keys()
+    filas = [x.values() for x in datos]
+    print(tabulate.tabulate(filas, encabezado))
