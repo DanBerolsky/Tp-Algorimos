@@ -15,8 +15,8 @@ def organizar_datos(lista):
 
 def contar_invocaciones(nombre_funcion, lista):
     """[Autor: Luis Andrade]
-       [Ayuda: Crea otro diccionario que contiene la cantidad de Invoca
-       ciones]
+       [Ayuda: Busca el primer párametro en el cuerpo de las demas funciones, y crea otro diccionario que
+        contiene la cantidad de Invocaciones]
     """
     i = 0
     invocaciones_dict = {"Cantidad de Invocaciones": 0}
@@ -35,7 +35,7 @@ def contar_elementos_varios(lista, lista_comentarios):
        [Ayuda: Crea otro diccionario que contiene la cantidad de if, while
        for, returns, break, exit y ayuda
     """
-    cantidad_elementos = {"if": 0, "while": 0, "for": 0, "returns": 0, "break": 0, "exit": 0, "ayuda": "NO"}
+    cantidad_elementos = {"if": 0, "while": 0, "for": 0, "returns": 0, "break": 0, "exit": 0, "ayuda": "NO", "Cantidad de comentarios": 0, "Autor": ""}
     j = 4
     while j < len(lista):
         if lista[j].strip().startswith("if") or lista[j].strip().startswith(
@@ -54,6 +54,10 @@ def contar_elementos_varios(lista, lista_comentarios):
         if lista_comentarios[2].strip().startswith("[Ayuda:"):
             cantidad_elementos["ayuda"] = "SI"
         j = j + 1
+
+    cantidad_elementos["Cantidad de comentarios"] = len(lista_comentarios) - 3
+    cantidad_elementos["Autor"] = lista_comentarios[1].split(":")[1].rstrip("]")
+
     return cantidad_elementos
 
 
