@@ -15,6 +15,7 @@ def main():
     print("3: Tabla de invocacion")
     print("4: Arbol de invocacion")
     print("5: Información por desarrollador")
+    print("Presione enter para salir.")
     funcionalidad = input("Ingrese la funcionalidad que quiere ver: ")
     
     while funcionalidad != "":

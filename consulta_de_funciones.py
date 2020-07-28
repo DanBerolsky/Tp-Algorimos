@@ -110,6 +110,8 @@ def consultar_funciones(diccionario_fuente, diccionario_comentarios, lista_total
         """
     #Pregunto la funcion y la continuo preguntando hasta que el usuario aprete enter
     print("Puede ingresar la función buscada, '?todo', 'imprimir ?todo' o 'imprimir tabla' para mostrar la tabla de funciones de vuelta.")
+    print("Presione enter para volver a las funcionalidades")
+
     funcion = input("Función: ")
     while funcion != "":
         nombre_funcion = funcion[1:]
@@ -128,7 +130,9 @@ def consultar_funciones(diccionario_fuente, diccionario_comentarios, lista_total
                 generar_txt(diccionario_fuente, diccionario_comentarios, "ayuda_funciones.txt")
         elif funcion == "imprimir tabla":
             imprimir_funciones(lista_total)
-            print("Puede ingresar la función buscada, '?todo', 'imprimir ?todo' o 'imprimir tabla' para mostrar la tabla de funciones de vuelta.")
+            print("Puede ingresar la función buscada, '?todo', 'imprimir ?todo' o 'imprimir tabla' para mostrar la tabla de funciones de vuelta")
+            print("Presione enter para volver a las funcionalidades")
+            
 
         else:
             print("La función especificada no existe. Por favor, ingrese una función valida")
