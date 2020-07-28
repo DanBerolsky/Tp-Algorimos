@@ -35,7 +35,8 @@ def contar_elementos_varios(lista, lista_comentarios):
        [Ayuda: Crea otro diccionario que contiene la cantidad de if, while
        for, returns, break, exit y ayuda
     """
-    cantidad_elementos = {"if": 0, "while": 0, "for": 0, "returns": 0, "break": 0, "exit": 0, "ayuda": "NO", "Cantidad de comentarios": 0, "Autor": ""}
+    cantidad_elementos = {"if": 0, "while": 0, "for": 0, "returns": 0, "break": 0, "exit": 0, "ayuda": "NO",
+                          "Cantidad de comentarios": 0, "Autor": ""}
     j = 4
     while j < len(lista):
         if lista[j].strip().startswith("if") or lista[j].strip().startswith(
@@ -44,6 +45,9 @@ def contar_elementos_varios(lista, lista_comentarios):
         elif lista[j].strip().startswith("while"):
             cantidad_elementos["while"] += 1
         elif lista[j].strip().startswith("for"):
+            cantidad_elementos["for"] += 1
+            # se consiguen los short for
+        elif " for " in lista[j]:
             cantidad_elementos["for"] += 1
         elif lista[j].strip().startswith("return"):
             cantidad_elementos["returns"] += 1
@@ -80,10 +84,10 @@ def panel_principal():
         datos = []
         for fila_fuente in lector_fuente:
             lista_completa.append(fila_fuente)
-        lista1 = lista_completa
         i = 0
         # se recorre linea a linea las listas creadas
         while i < len(lista_completa):
+            # invocando cada funcion para asi crear diccionarios
             lista_final_1 = organizar_datos(lista_completa[i])
             lista_final_2 = contar_invocaciones(lista_completa[i][0], lista_completa)
             lista_final_3 = contar_elementos_varios(lista_completa[i], lista_de_comentarios[i])
@@ -91,11 +95,24 @@ def panel_principal():
             lista_final.update(lista_final_1)
             lista_final.update(lista_final_2)
             lista_final.update(lista_final_3)
+            # uniendo todos los diccionarios en una lista
             datos.append(lista_final)
             lista_final = {}
-            # uniendo todos los diccionarios en una lista
             i = i + 1
+
     # Tabular
     encabezado = datos[0].keys()
     filas = [x.values() for x in datos]
     print(tabulate.tabulate(filas, encabezado))
+
+    # creacion del csv
+
+    # es el encabezado del csv
+    datos2 = {'funcion': 0, 'parametros': 0, 'lineas': 0, 'invocaciones': 0, 'if/elif': 0, 'while': 0,
+              'for': 0, 'returns': 0, 'break': 0, 'exit': 0, 'ayuda': 0, 'coment': 0, 'Autor': 0}
+    primer_linea = [datos2.keys()]
+
+    with open('panel_general.csv', 'w+', newline=''):
+        escribir = csv.writer(open('panel_general.csv', 'w+', newline=''))
+        escribir.writerows(primer_linea)
+        escribir.writerows(filas)
