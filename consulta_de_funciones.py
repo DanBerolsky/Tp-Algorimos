@@ -13,15 +13,14 @@ def armar_diccionarios():
         nombre_mas_largo = 0
         while linea != "":
             datos = linea.split(";")
-            if len(datos) > 1:
-                nombre_funcion = datos[0]
-                if len(nombre_funcion) > nombre_mas_largo:
-                    nombre_mas_largo = len(nombre_funcion)
-                parametros = datos[1]
-                modulo = datos[2]
-                cuerpo = [datos[3] + i for i in datos[4:]]
-                diccionario_fuente_unico[nombre_funcion.rstrip(" ")] = [parametros, modulo, cuerpo]
-                linea = fuente_unico.readline().rstrip("\n")
+            nombre_funcion = datos[0]
+            if len(nombre_funcion) > nombre_mas_largo:
+                nombre_mas_largo = len(nombre_funcion)
+            parametros = datos[1]
+            modulo = datos[2]
+            cuerpo = [datos[3] + i for i in datos[4:]]
+            diccionario_fuente_unico[nombre_funcion.rstrip(" ")] = [parametros, modulo, cuerpo]
+            linea = fuente_unico.readline().rstrip("\n")
 
     with open("comentarios.csv", "r") as comentarios:
         #Ídem comentarios
@@ -64,6 +63,7 @@ def generar_txt(dict_fuente, dict_comentarios, txt):
             if caracter % 80 == 0:
                 diccionario_slices[clave].append(info_imprimir[indice_anterior:caracter])
                 indice_anterior = caracter
+        
         diccionario_slices[clave].append("\n")
 
 

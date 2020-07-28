@@ -217,16 +217,16 @@ def cantidad_de_espacios(nombre_funcion):
     
     """[Autor: Dan]
         [Ayuda: Aquí se multiplica un espacio por un numero x
-        El 8 es cantidad de caracateres que tiene una tabulacion,
+        El 4 es cantidad de caracateres que tiene una tabulacion,
         len(nom_fun) es la cantida de caracteres que tiene el nom_fun.
         Despues quiero que partir del carater 32 obtener la cant.lineas.
         Esta cuanta me asegura que el valor lineas_f este uno debajo del otro,
         multiplicando un str espacio la cantidad de veces nesesaria para cada caso. ]
     """
   
-    if 8 + len(nombre_funcion)<33:
+    if 4 + len(nombre_funcion)<29:
         
-        espacios = -1 * (8 + len(nombre_funcion) - 33)
+        espacios = -1 * (4 + len(nombre_funcion) - 29)
     
     else:
         
@@ -234,7 +234,7 @@ def cantidad_de_espacios(nombre_funcion):
 
     return espacios  
 
-def escribir_imprimir(contenido_a_mostrar,archivo_a_abrir,modalida_de_apertura,escritura):
+def escribir_imprimir(contenido_a_mostrar,archivo_a_abrir,modalidad_de_apertura,escritura):
     
     """ [Autor: Dan]
         [Ayuda: esta fucion puede recibir en el primer parametro un dato a imprimir,
@@ -247,10 +247,10 @@ def escribir_imprimir(contenido_a_mostrar,archivo_a_abrir,modalida_de_apertura,e
     if contenido_a_mostrar != None :
         print(contenido_a_mostrar)
 
-    if archivo_a_abrir != None and modalida_de_apertura != None :
-        with open (archivo_a_abrir,modalida_de_apertura) as archivo:
+    if archivo_a_abrir != None and modalidad_de_apertura != None :
+        with open (archivo_a_abrir,modalidad_de_apertura) as archivo:
 
-            if escritura != None and modalida_de_apertura == "a" or modalida_de_apertura == "w" or modalida_de_apertura == "r+":
+            if escritura != None and modalidad_de_apertura == "a" or modalida_de_apertura == "w" or modalida_de_apertura == "r+":
 
                 archivo.write(escritura)
             
