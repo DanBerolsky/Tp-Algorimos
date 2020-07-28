@@ -244,13 +244,15 @@ def escribir_imprimir(contenido_a_mostrar,archivo_a_abrir,modalidad_de_apertura,
         Si no se quiere utilizar, ya sea la impresion o la apertura de un archivo debe
         recibir el valor de None.]
     """
+    modalidades = ["a","w","r+"]
+
     if contenido_a_mostrar != None :
         print(contenido_a_mostrar)
 
-    if archivo_a_abrir != None and modalidad_de_apertura != None :
+    if archivo_a_abrir != None and modalidad_de_apertura in modalidades :
+        
         with open (archivo_a_abrir,modalidad_de_apertura) as archivo:
 
-            if escritura != None and modalidad_de_apertura == "a" or modalida_de_apertura == "w" or modalida_de_apertura == "r+":
-
+            if escritura != None and modalidad_de_apertura in modalidades:
                 archivo.write(escritura)
             
