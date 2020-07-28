@@ -18,7 +18,7 @@ def capturo_datos():
     
     # Abro comentarios csv en lectura para saber que funcion
     #  hizo cada uno de los participantes.
-    with open("comentarios.csv","rt") as archivo_comentarios:
+    with open ("comentarios.csv","rt") as archivo_comentarios:
         
         linea_archivos_comentarios = archivo_comentarios.readline()
 
@@ -116,7 +116,7 @@ def capturo_datos():
     return datos_finales,porcentajes
 
           
-def participacion_info (lista_tuplas_funciones_autor_lineas_por_autor, diccionario_de_porcentajes_por_autores):
+def participacion_info(lista_tuplas_funciones_autor_lineas_por_autor, diccionario_de_porcentajes_por_autores):
     
     """ [Autor: Dan]
         [Ayuda: brindar datos sobre la participación de cada uno de los 
@@ -234,7 +234,7 @@ def cantidad_de_espacios(nombre_funcion):
 
     return espacios  
 
-def escribir_imprimir (contenido_a_mostrar,archivo_a_abrir,modalida_de_apertura,escritura):
+def escribir_imprimir(contenido_a_mostrar,archivo_a_abrir,modalida_de_apertura,escritura):
     
     """ [Autor: Dan]
         [Ayuda: esta fucion puede recibir en el primer parametro un dato a imprimir,
