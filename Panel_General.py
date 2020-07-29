@@ -60,7 +60,10 @@ def contar_elementos_varios(lista, lista_comentarios):
         j = j + 1
 
     cantidad_elementos["Cantidad de comentarios"] = len(lista_comentarios) - 3
-    cantidad_elementos["Autor"] = lista_comentarios[1].split(":")[1].rstrip("]")
+    if lista_comentarios[1] != "":
+        cantidad_elementos["Autor"] = lista_comentarios[1].split(":")[1].rstrip("]")
+    else:
+        cantidad_elementos["Autor"] = "No tiene autor"
 
     return cantidad_elementos
 

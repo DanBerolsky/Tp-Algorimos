@@ -54,6 +54,7 @@ def armar_csv_funciones(archivo):
         contador_def = 0
         datos_comentarios = {}
         cuento_linea = 0
+        lista_returns = []
         for linea in lineas:
                   
             #Busco la linea que comience por def para encontrar el nombre de la funcion, sus parametros y cuerpo
@@ -75,7 +76,7 @@ def armar_csv_funciones(archivo):
                 
             if linea.strip().startswith("return "):
                 linea_return = linea
-                index_final = lineas.index(linea_return) + 1
+                index_final = lineas.index(linea_return, index_inicial_anterior) + 1
                 cuerpo = lineas[index_inicial:index_final]
                 cuerpo_sin_comment,nombre_autor,nombre_ayuda,resto = armar_csv_comentarios(cuerpo,nombre_funcion, modulo)
                 datos_comentarios[nombre_funcion] = {"Nombre del autor":nombre_autor,"informacion de ayuda":nombre_ayuda,"Resto de lineas comentadas":resto}
