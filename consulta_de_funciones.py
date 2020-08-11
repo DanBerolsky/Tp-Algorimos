@@ -72,14 +72,14 @@ def generar_txt(dict_fuente, dict_comentarios, txt):
             for item in range(len(diccionario_slices[lista])):
                 archivo.write(diccionario_slices[lista][item] + "\n")
 
-def generar_lista_total(dic, nombre):
+def generar_lista_total(diccionario_fuente, nombre):
     """[Autor: Valentin]
     [Ayuda: Genera una lista de listas con los nombres de las funciones ordenadas alfabeticamente]
     """
     lista_total = [[]]
     #Añado los nombres de funciones del diccionario a una lista de listas, para imprimir ordenado
     espacio = "<" + str(nombre) + "s"
-    for i in dic:
+    for i in diccionario_fuente:
         ultima_lista = lista_total[-1]
         if len(ultima_lista) < 5:
             ultima_lista.append(format(i, espacio))
