@@ -45,7 +45,8 @@ def main():
         elif funcionalidad == "5":
             #Quinto punto
             import Informacion_por_desarrollador
-            informacion,porcentaje = Informacion_por_desarrollador.capturo_datos()
+            informacion_deseada,lineas_totales_por_autor,total_linea = Informacion_por_desarrollador.capturo_comentarios()
+            informacion,porcentaje = Informacion_por_desarrollador.capturo_datos(informacion_deseada,lineas_totales_por_autor,total_linea)
             Informacion_por_desarrollador.participacion_info(informacion,porcentaje)
         
         funcionalidad = input("Ingrese la funcionalidad que quiere ver: ")
