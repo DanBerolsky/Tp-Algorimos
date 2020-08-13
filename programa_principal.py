@@ -1,4 +1,4 @@
-from arbol_de_invocacion import generar_arbol, encontrar_main, nombres_funciones
+import arbol_de_invocacion, quien_invoca, consulta_de_funciones, Informacion_por_desarrollador, Panel_General
 
 
 #Programa principal
