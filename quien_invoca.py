@@ -15,17 +15,12 @@ def quien_invoca_a_quien():
     fuente = 'fuente_unico.csv'
     #Invoco para leer el csv y que me devuelva un diccionario
     diccionario_csv = modulo_csv.leer_csv(fuente)
-    
     #Declaro variables
     nombre_funcion = []
     resultado = {}
-
-    #Me quedo con el nombre de todas las funciones del archivo fuente_unico.csv
-    for fila in diccionario_csv:
-        nombre_funcion.append(fila)
-        
     #Recorre las filas del diccionario y me quedo con la clave (nombre_funcion) y el cuerpo de la funcion
     for fila in diccionario_csv.items():
+        nombre_funcion.append(fila)
         #Asigno el nombre de la funcion a la variable clave
         clave = fila[0]
         #Busco el cuerpo de la funcion que seria todo lo posterior al 2do campo
@@ -109,7 +104,7 @@ def armar_tabla():
                     lista_a_imprimir[funcion_a_invocar] = 'X'
                     
         #Reemplazo los campos vacios por las veces que fue invocada
-        if funcion  in dicc_datos.keys():
+        if funcion  in dicc_datos:
             
             #Me quedo con los valores del diccionario
             dicc_informacion = dicc_datos[funcion]
