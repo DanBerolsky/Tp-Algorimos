@@ -1,4 +1,4 @@
-import arbol_de_invocacion, quien_invoca, consulta_de_funciones, Informacion_por_desarrollador, Panel_General
+import arbol_de_invocacion, quien_invoca, consulta_de_funciones, Informacion_por_desarrollador, Panel_General, m_generar_archivos_csv, modulo_csv
 
 
 #Programa principal
@@ -7,9 +7,7 @@ def main():
     """[Autor: Equipo Azul]
     [Ayuda: Es la funcion principal]
     """
-    
-    import m_generar_archivos_csv
-    import modulo_csv
+
     txt = 'programas.txt'
     m_generar_archivos_csv.armar_csv_funciones(txt)
     print("Funcionalidades:")
