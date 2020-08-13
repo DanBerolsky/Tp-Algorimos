@@ -1,4 +1,4 @@
-def generar_arbol(funcion, indice, listaDeNombres, dicc):
+def generar_arbol(funcion, indice, lista_de_nombres, dicc_funcion_y_cuerpo):
     """ [Autor: Alejo Mariño]
         [Ayuda: Recibe una funcion (string); un indice (int); un determinado diccionario de la forma: clave = nombre de
         funcion, valor = lista con los parametros de la funcion en el indice 0, el modulo en el indice 1 y cada linea
@@ -6,32 +6,32 @@ def generar_arbol(funcion, indice, listaDeNombres, dicc):
         diccionario y genera un arbol de invocacion para la determinada funcion]
     """
 
-    a = funcion + " (" + str(len(depurar_lineas(funcion, dicc))) + ")"
+    a = funcion + " (" + str(len(depurar_lineas(funcion, dicc_funcion_y_cuerpo))) + ")"
     print(a, end="")
     contador = 0
     primer_rama = True
 
-    for nombre in listaDeNombres:
+    for nombre in lista_de_nombres:
 
         if nombre == funcion:
             contador += 1
 
         else:
 
-            cant_llamados = busco_algo_en_codigo_de(nombre, funcion, dicc)
+            cant_llamados = busco_algo_en_codigo_de(nombre, funcion, dicc_funcion_y_cuerpo)
 
             if not primer_rama:
 
                 if cant_llamados == 1:
                     print(" " * (len(a) + indice), end="")
                     print(" --> ", end="")
-                    generar_arbol(nombre, indice + len(a) + 5, listaDeNombres, dicc)
+                    generar_arbol(nombre, indice + len(a) + 5, lista_de_nombres, dicc_funcion_y_cuerpo)
 
                 elif cant_llamados > 1:
                     for f in range(cant_llamados):
                         print(" " * (len(a) + indice), end="")
                         print(" --> ", end="")
-                        generar_arbol(nombre, indice + len(a) + 5, listaDeNombres, dicc)
+                        generar_arbol(nombre, indice + len(a) + 5, lista_de_nombres, dicc_funcion_y_cuerpo)
 
                 else:
                     contador += 1
@@ -40,26 +40,26 @@ def generar_arbol(funcion, indice, listaDeNombres, dicc):
 
                 if cant_llamados == 1:
                     print(" --> ", end="")
-                    generar_arbol(nombre, indice + len(a) + 5, listaDeNombres, dicc)
+                    generar_arbol(nombre, indice + len(a) + 5, lista_de_nombres, dicc_funcion_y_cuerpo)
                     primer_rama = False
 
                 elif cant_llamados > 1:
                     print(" --> ", end="")
-                    generar_arbol(nombre, indice + len(a) + 5, listaDeNombres, dicc)
+                    generar_arbol(nombre, indice + len(a) + 5, lista_de_nombres, dicc_funcion_y_cuerpo)
                     for f in range(cant_llamados - 1):
                         print(" " * (len(a) + indice), end="")
                         print(" --> ", end="")
-                        generar_arbol(nombre, indice + len(a) + 5, listaDeNombres, dicc)
+                        generar_arbol(nombre, indice + len(a) + 5, lista_de_nombres, dicc_funcion_y_cuerpo)
                     primer_rama = False
 
                 else:
                     contador += 1
 
-    if contador == len(listaDeNombres):
+    if contador == len(lista_de_nombres):
         print("")
 
 
-def busco_algo_en_codigo_de(funcion1, funcion2, dicc):
+def busco_algo_en_codigo_de(funcion1, funcion2, dicc_funcion_y_cuerpo):
 
     """ [Autor: Alejo Mariño]
         [Ayuda: Recibe dos funciones (strings) y un diccionario en donde se encuentren ambas funciones como claves y su
@@ -67,7 +67,7 @@ def busco_algo_en_codigo_de(funcion1, funcion2, dicc):
         codigo de la funcion 2]
     """
 
-    cuerpo = depurar_lineas(funcion2, dicc)
+    cuerpo = depurar_lineas(funcion2, dicc_funcion_y_cuerpo)
     contador = 0
 
     for linea in cuerpo:
@@ -77,7 +77,7 @@ def busco_algo_en_codigo_de(funcion1, funcion2, dicc):
     return contador
 
 
-def depurar_lineas(funcion, dicc):
+def depurar_lineas(funcion, dicc_funcion_y_cuerpo):
 
     """ [Autor: Alejo Mariño]
         [Ayuda: Recibe el nombre de una funcion la cual se encuentra en un determinado diccionario de la forma
@@ -87,28 +87,28 @@ def depurar_lineas(funcion, dicc):
 
     cuerpo_de_funcion_limpio = []
     
-    for key in dicc:
+    for key in dicc_funcion_y_cuerpo:
         if key == funcion:
-            for linea in dicc[key]:
+            for linea in dicc_funcion_y_cuerpo[key]:
                 if linea.strip("\n \t"):
                     cuerpo_de_funcion_limpio.append(linea)
 
     return cuerpo_de_funcion_limpio[2:]
 
 
-def nombres_funciones(dicc):
+def nombres_funciones(dicc_funcion_y_cuerpo):
 
     """ [Autor: Alejo Mariño]
         [Ayuda: Recibe un diccionario de la forma previamente usada y devuelve una lista con cada uno de los nombres de
         las funciones en el]
     """
 
-    listaDeNombresDeOtrasFunciones = [key for key in dicc]
+    lista_de_nombres_de_otras_funciones = [key for key in dicc_funcion_y_cuerpo]
 
-    return listaDeNombresDeOtrasFunciones
+    return lista_de_nombres_de_otras_funciones
 
 
-def encontrar_main(dicc):
+def encontrar_main(dicc_funcion_y_cuerpo):
 
     """ [Autor: Alejo Mariño]
         [Ayuda: Recibe un diccionario de la forma previamente usada, en el que compara cada modulo hasta encontrar aquel
@@ -123,8 +123,8 @@ def encontrar_main(dicc):
         modulo_de_main = (f.readline()).rstrip()
 
     while not nombre_de_main:
-        for key in dicc:
-            if dicc[key][1] == modulo_de_main:
+        for key in dicc_funcion_y_cuerpo:
+            if dicc_funcion_y_cuerpo[key][1] == modulo_de_main:
                 nombre_de_main = key
 
     return nombre_de_main

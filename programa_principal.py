@@ -1,3 +1,6 @@
+from arbol_de_invocacion import generar_arbol, encontrar_main, nombres_funciones
+
+
 #Programa principal
 def main():
     
@@ -31,19 +34,17 @@ def main():
             consulta_de_funciones.main_consulta_funciones()
         
         elif funcionalidad == "3":
-            #Tercer punto 3
+            # Tercer punto 3
             import quien_invoca
             quien_invoca.la_tabla()
         
         elif funcionalidad == "4":
-            #Cuarto punto
-            import arbol_de_invocacion
+            # Cuarto punto
             dicc = modulo_csv.leer_csv("fuente_unico.csv")
-            arbol_de_invocacion.generar_arbol(arbol_de_invocacion.encontrar_main(dicc), 0,
-            arbol_de_invocacion.nombres_funciones(dicc), dicc)
+            generar_arbol(encontrar_main(dicc), 0, nombres_funciones(dicc), dicc)
 
         elif funcionalidad == "5":
-            #Quinto punto
+            # Quinto punto
             import Informacion_por_desarrollador
             informacion_deseada,lineas_totales_por_autor,total_linea = Informacion_por_desarrollador.capturo_comentarios()
             informacion,porcentaje = Informacion_por_desarrollador.capturo_datos(informacion_deseada,lineas_totales_por_autor,total_linea)
