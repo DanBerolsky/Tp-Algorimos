@@ -21,61 +21,41 @@ def quien_invoca_a_quien():
     #Recorre las filas del diccionario y me quedo con la clave (nombre_funcion) y el cuerpo de la funcion
     for fila in diccionario_csv.items():
         nombre_funcion.append(fila)
-        #Asigno el nombre de la funcion a la variable clave
         clave = fila[0]
-        #Busco el cuerpo de la funcion que seria todo lo posterior al 2do campo
         cuerpo = fila[1][2:]
-        
         #Por cada funcion en la lista de  todas las funciones itera
         for funcion in nombre_funcion:
-            
             #Cheque si en el cuerpo de la funcion existe el nombre de la funcion y lo anade a la lista
             funciones_en_cuerpo = [s for s in cuerpo if funcion in s]
-            
-            #Cuenta cuantas veces ocurre que una funcion este dentro de ota 
             contador = len(funciones_en_cuerpo)
             #Genera una lista con el nombre de la funcion invocada y cuantas veces fue invocada
             lista_de_invocacion = [funcion,contador]
             
-            #Si ocurre al menos 1 vez
             if contador > 0:
-                #Si la funcion que la invoco ya existe, agrego otra lista, en caso de que no exista, crea la clave con el nombre de la funcion invocadora
                 if clave in resultado:
                     resultado[clave].append(lista_de_invocacion)
-                #Si no existe la clave me creo un nuevo campo
                 else:    
                     resultado[clave] = [lista_de_invocacion]
-    #Devuelvo una lista de todas las funciones y el diccionario de quien invoca a quien       
     return nombre_funcion, resultado
 
 def armar_tabla():
     """[Autor: Alfonso]
     [Ayuda: Genera tres listas, una con el titulo, una lista de listas con cada linea y espacio, y los totales]
     """   
-    
-    #Obtengo los parametros de toda la lista de funciones y un diccionario de quien invoca a quien y cuantas veces
     lista_funciones , dicc_datos = quien_invoca_a_quien()
-    
-    #Enumero la lista de todas las funciones a partir del numero 1
     enum_datos = list(enumerate(lista_funciones,1))
-    
     #Obtengo una lista con  el numero de cada funcion
     posicion = primer_item_lista(enum_datos)
-    
     #Calculo la maxima cantidad de funciones y le doy formato al titulo de la tabla
     maximo,titulo = formato_titulo(posicion)
-    
-    #Declaro Variables
+
     lista_total = []   
     vacio = " "
     
     #Recorro la lista que genera el enumerate
     for numero,funcion in enum_datos:
         
-        #Creo una variable para llenar la tabla
         conteo = 1
-        
-        #Armo el primero campo con el numero de la funcion y su nombre
         primer_campo = str(numero) + " " + funcion 
         
         #Genero la lista que voy a imprimir con el primer campo justificandola a 32 espacios
@@ -83,14 +63,11 @@ def armar_tabla():
         
         #Lleno la tabla con vacios para formar una grilla validando contra el numero total de funciones
         while conteo <= maximo:
-            
-            #Genero la grilla con todos los campos por funciones
             lista_a_imprimir.append(vacio)
             conteo += 1
         
         for clave, valor in dicc_datos.items():
             
-            #Reviso la lista en el cuerpo
             for lista in valor:
                 
                 #Si el nombre de la funcion esta en la lista del cuerpo
@@ -102,21 +79,16 @@ def armar_tabla():
                     funcion_a_invocar = numero_invocada[0][0]
                     #Le agrego una X a la funcion que invocaron
                     lista_a_imprimir[funcion_a_invocar] = 'X'
-                    
         #Reemplazo los campos vacios por las veces que fue invocada
         if funcion  in dicc_datos:
-            
-            #Me quedo con los valores del diccionario
             dicc_informacion = dicc_datos[funcion]
             lista_modificar = []
             for i,j in dicc_informacion:
                 
                 #Calculo a cual funcion invoco basada en el numero
                 numero_invocada =   [l for l in enum_datos if i in l] 
-                
                 #Busca el nombre de la funcion invocada
                 funcion_a_invocar = numero_invocada[0][0]
-                
                 #Modifico la posicion en la lista con cuantas veces lo invoco
                 lista_a_imprimir[funcion_a_invocar] = j
                  
