@@ -41,7 +41,8 @@ def main():
         elif funcionalidad == "4":
             # Cuarto punto
             dicc = modulo_csv.leer_csv("fuente_unico.csv")
-            generar_arbol(encontrar_main(dicc), 0, nombres_funciones(dicc), dicc)
+            arbol_de_invocacion.generar_arbol(arbol_de_invocacion.encontrar_main(dicc), 0,
+            arbol_de_invocacion.nombres_funciones(dicc), dicc)
 
         elif funcionalidad == "5":
             # Quinto punto
