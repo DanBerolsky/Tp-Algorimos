@@ -2,7 +2,9 @@
 def capturo_comentarios():
     
     """ [Autor: Dan]
-        [Ayuda: hola mundo]
+        [Ayuda: [Ayuda: Captura la informacion necesaria contenida en el archivo
+        cometarios.csv, para el quinto punto(Nombre del autor de las funciones y
+        el nombre de las funciones que hizo cada autor).]
     """
     informacion_deseada = {}
 
@@ -26,18 +28,21 @@ def capturo_comentarios():
             autor = linea_a_lista_de_datos[1].lstrip("[").rstrip("]")
             
             # Esos dos datos los guardo en dicionario.
-            # Lineas por funcion todavia no lo se pero lo llena despues de este bucle...
+            # Lineas por funcion todavia no lo se pero lo llena despues ...
             informacion_deseada[nombre_funcion] = {"Autor":autor,"Lineas_por_funcion":None}
             
             linea_archivos_comentarios = archivo_comentarios.readline()
 
-    return capturo_fuente_unico(informacion_deseada)
+    return informacion_deseada
 
 
 def capturo_fuente_unico(informacion_deseada):
     
     """ [Autor: Dan]
-        [Ayuda: hola mundo]
+        [Ayuda: Captura la informacion necesaria contenida en el fuente_unico.csv,
+        recive la informacion que necesito del comentarios.csv, completando le diccionario
+        y facilitando los siguentes pasos para cumplir el objetivo final.
+        (Nombre del autor de las funciones y el nombre de las funciones que hizo cada autor).]
     """
    
     # Quiero esta informacion para sacar el porcentaje que realizo cada autor,
@@ -48,28 +53,18 @@ def capturo_fuente_unico(informacion_deseada):
     #  su vez debe ser mostrado este dato alfinal de la salida por pantalla acompañado de otros datos...
     total_linea = 0
     
-   
-    # Abro a fuente unico csv para sacar cuantas lineas tiene cada una de las funciones,
-    # cantidad total de lineas de codigo por autor y cantidad total de lineas en todos los .py...
-    # para eso tengo que saber de que funcion estoy contando la cantida de lineas y
-    # rellenar el valor en la clave corespondiente del dic informacion_deseada...
     with open ("fuente_unico.csv","rt") as archivo_fuente_unico:
         
-        # Lee la primera linea...
         linea_archivos_fuente_unico = archivo_fuente_unico.readline()
         
-        # Si llega al final de archivo corta el bucle.
         while linea_archivos_fuente_unico != "":
             
-            # de igual manera genera en otra variable una lista,
-            # la cual cada elemento es un campo del csv.
             linea_a_lista_de_datos = linea_archivos_fuente_unico.split(";")
             
             # Por cada funcion inicializo el contador de lineas por fucion en cero. 
             contador_lineas = 0
 
             # Se queda con el nombre de la funcion actual.
-            # Para lo que ya vimos...
             funcion_actual = linea_a_lista_de_datos[0]
             
             # Aca sumo todas lineas de codigo,
@@ -104,13 +99,13 @@ def capturo_fuente_unico(informacion_deseada):
                         #  y la cantidad total de lineas por autor por el momento.
                         lineas_totales_por_autor[informacion_deseada[clave]["Autor"]] = contador_lineas
             
-            # Vuelve a leer otra linea y continua hasta no tner mas funciones en el csv.            
+            # continua hasta no tner mas funciones en el csv.            
             linea_archivos_fuente_unico = archivo_fuente_unico.readline()
 
     return informacion_deseada, lineas_totales_por_autor, total_linea
 
 
-def capturo_datos(informacion_deseada,lineas_totales_por_autor,total_linea):
+def recopilar_datos(informacion_deseada,lineas_totales_por_autor,total_linea):
     
     """ [Autor: Dan]
         [Ayuda: recopila los parametros para el Quinta punto
@@ -201,11 +196,11 @@ def participacion_info(lista_tuplas_funciones_autor_lineas_por_autor, diccionari
             s1 = "\t"+str(contador_funciones) + " Funciones - Lineas\t " + str(contador_lineas) + "  " + str(porcentaje_anterior)+"%\n"
             escribir_imprimir(s1, "participacion.txt", "a", "\n" + s1)
             
-            #Muestro por pantalla... y   #Agrego linea a participacion.txt
+            
             s2 = autor +"\n\n\tFuncion"+16*" "+"Lineas\n\t" + 33*"-"
             escribir_imprimir(s2, "participacion.txt", "a", "\n" + s2)
             
-            #Muestro por pantalla... y  Agrego linea a participacion.txt
+            
             espacios = cantidad_de_espacios(nombre_funcion)
             s3 = "\t" + nombre_funcion + (" " * espacios) + str(lineas_funcion)
             escribir_imprimir(s3, "participacion.txt", "a", "\n" + s3)
@@ -218,7 +213,7 @@ def participacion_info(lista_tuplas_funciones_autor_lineas_por_autor, diccionari
 
         else:
             
-            #Muestro por pantalla... y   #Agrego linea a participacion.txt
+            
             espacios = cantidad_de_espacios(nombre_funcion)
             s1 = "\t" + nombre_funcion + " "*espacios + str(lineas_funcion)
             escribir_imprimir(s1, "participacion.txt", "a", "\n" + s1)
@@ -235,11 +230,11 @@ def participacion_info(lista_tuplas_funciones_autor_lineas_por_autor, diccionari
 
     if indice == len(lista_tuplas_funciones_autor_lineas_por_autor)-1 :
             
-        #Muestro por pantalla... y Agrego linea a participacion.txt
+        
         s1 = "\t"+str(contador_funciones) + " Funciones - Lineas\t " + str(contador_lineas) + "  " + str(porcentaje)+"%\n\n"
         escribir_imprimir(s1, "participacion.txt", "a", "\n" + s1)
         
-        #Muestro por pantalla... y Agrego linea a participacion.txt
+       
         s2 = "Total: "+ str(contador_funciones_totales) + " Funciones - lineas\t " + str(contador_lineas_totales)+"\n"
         escribir_imprimir(s2, "participacion.txt", "a", "\n" + s2)
                        
