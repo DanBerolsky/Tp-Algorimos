@@ -1,4 +1,17 @@
-def generar_arbol(funcion, indice, lista_de_nombres, dicc_funcion_y_cuerpo):
+from modulo_csv import leer_csv
+
+
+def generar_arbol():
+    """ [Autor: Alejo Mariño]
+        [Ayuda: Wrapper para la funcion generar_arbol_]
+    """
+
+    dicc_funcion_y_cuerpo = leer_csv("fuente_unico.csv")
+
+    return generar_arbol_(encontrar_main_(dicc_funcion_y_cuerpo), 0, nombres_funciones(dicc_funcion_y_cuerpo), dicc_funcion_y_cuerpo)
+
+
+def generar_arbol_(funcion, indice, lista_de_nombres, dicc_funcion_y_cuerpo):
     """ [Autor: Alejo Mariño]
         [Ayuda: Recibe una funcion (string); un indice (int); un determinado diccionario de la forma: clave = nombre de
         funcion, valor = lista con los parametros de la funcion en el indice 0, el modulo en el indice 1 y cada linea
@@ -25,13 +38,13 @@ def generar_arbol(funcion, indice, lista_de_nombres, dicc_funcion_y_cuerpo):
                 if cant_llamados == 1:
                     print(" " * (len(a) + indice), end="")
                     print(" --> ", end="")
-                    generar_arbol(nombre, indice + len(a) + 5, lista_de_nombres, dicc_funcion_y_cuerpo)
+                    generar_arbol_(nombre, indice + len(a) + 5, lista_de_nombres, dicc_funcion_y_cuerpo)
 
                 elif cant_llamados > 1:
                     for f in range(cant_llamados):
                         print(" " * (len(a) + indice), end="")
                         print(" --> ", end="")
-                        generar_arbol(nombre, indice + len(a) + 5, lista_de_nombres, dicc_funcion_y_cuerpo)
+                        generar_arbol_(nombre, indice + len(a) + 5, lista_de_nombres, dicc_funcion_y_cuerpo)
 
                 else:
                     contador += 1
@@ -40,16 +53,16 @@ def generar_arbol(funcion, indice, lista_de_nombres, dicc_funcion_y_cuerpo):
 
                 if cant_llamados == 1:
                     print(" --> ", end="")
-                    generar_arbol(nombre, indice + len(a) + 5, lista_de_nombres, dicc_funcion_y_cuerpo)
+                    generar_arbol_(nombre, indice + len(a) + 5, lista_de_nombres, dicc_funcion_y_cuerpo)
                     primer_rama = False
 
                 elif cant_llamados > 1:
                     print(" --> ", end="")
-                    generar_arbol(nombre, indice + len(a) + 5, lista_de_nombres, dicc_funcion_y_cuerpo)
+                    generar_arbol_(nombre, indice + len(a) + 5, lista_de_nombres, dicc_funcion_y_cuerpo)
                     for f in range(cant_llamados - 1):
                         print(" " * (len(a) + indice), end="")
                         print(" --> ", end="")
-                        generar_arbol(nombre, indice + len(a) + 5, lista_de_nombres, dicc_funcion_y_cuerpo)
+                        generar_arbol_(nombre, indice + len(a) + 5, lista_de_nombres, dicc_funcion_y_cuerpo)
                     primer_rama = False
 
                 else:
@@ -64,7 +77,8 @@ def busco_algo_en_codigo_de(funcion1, funcion2, dicc_funcion_y_cuerpo):
     """ [Autor: Alejo Mariño]
         [Ayuda: Recibe dos funciones (strings) y un diccionario en donde se encuentren ambas funciones como claves y su
         valor, el cuerpo de la funcion en una lista, devuelve el numero de veces que la funcion 1 se encuentra en el
-        codigo de la funcion 2]
+        codigo de la funcion 2. Esta funcion no acepta casos de funciones con nombres de la siguiente forma:
+        cualquier cosa = ..., ...main(), main puede ser reemplazado por cualquier nombre de otra funcion en el archivo]
     """
 
     cuerpo = depurar_lineas(funcion2, dicc_funcion_y_cuerpo)
@@ -108,7 +122,7 @@ def nombres_funciones(dicc_funcion_y_cuerpo):
     return lista_de_nombres_de_otras_funciones
 
 
-def encontrar_main(dicc_funcion_y_cuerpo):
+def encontrar_main_(dicc_funcion_y_cuerpo):
 
     """ [Autor: Alejo Mariño]
         [Ayuda: Recibe un diccionario de la forma previamente usada, en el que compara cada modulo hasta encontrar aquel
