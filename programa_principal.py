@@ -3,7 +3,7 @@ import arbol_de_invocacion, quien_invoca, consulta_de_funciones, Informacion_por
 
 #Programa principal
 def main():
-    
+
     """[Autor: Equipo Azul]
     [Ayuda: Es la funcion principal]
     """

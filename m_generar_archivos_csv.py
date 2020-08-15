@@ -10,7 +10,7 @@ def leer(archivo):
     
     return lineas
 
-def abro_ar(archivo):
+def abro_archivo(archivo):
     
     """[Autor: Alfonso]
     [Ayuda: abre un archivo]
@@ -34,11 +34,21 @@ def ordenar_alfabeticamente(diccionario):
     return sorted(diccionario.items(), key = lambda clave: clave[0])
 
 def obtener_datos_(linea, cuerpo_modulo, modulo, diccionario_funciones, diccionario_comentarios, nombre_funcion, parametros):
-    index_final = cuerpo_modulo.index(linea)
-    cuerpo = cuerpo_modulo[:index_final + 1] 
+    
+    """[Autor: Valentin]
+        [Ayuda: Escribe en los diccionarios el cuerpo de la funcion]
+    """
+    
+    if linea.strip().startswith("return"):
+        index_final = cuerpo_modulo.index(linea)
+        cuerpo = cuerpo_modulo[:index_final + 1] 
+    else:
+        index_final = cuerpo_modulo.index(linea)
+        cuerpo = cuerpo_modulo[:index_final] 
     cuerpo_sin_comment,nombre_autor,nombre_ayuda,resto = armar_csv_comentarios(cuerpo,nombre_funcion, modulo)
     diccionario_comentarios[nombre_funcion] = {"Nombre del autor":nombre_autor,"informacion de ayuda":nombre_ayuda,"Resto de lineas comentadas":resto}
     diccionario_funciones[nombre_funcion] = {"Parametros de la funcion":parametros,"Nombre del modulo":modulo,"Cuerpo de la funcion":cuerpo_sin_comment}
+
 
     return diccionario_funciones, diccionario_comentarios
     
@@ -56,12 +66,12 @@ def armar_csv_funciones(archivo):
     
     
     #Abro los modulos
-    modulos = abro_ar(archivo)
+    modulos = abro_archivo(archivo)
     ultima_linea_indentada = None
     lista_modulos_comentarios = [[]]
     #Itero a traves de los modulos del txt
     for modulo in modulos:
-        lineas = abro_ar(modulo)
+        lineas = abro_archivo(modulo)
         contador_def = 0
         datos_comentarios = {}
         cuento_linea = 0
