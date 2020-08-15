@@ -4,29 +4,29 @@ archivo_analizador.quien_invoca.py,1,3,3,0,0,0,0,0,0,SI,1, Alfonso
 armar_csv_comentarios.m_generar_archivos_csv.py,1,21,3,1,0,1,1,0,0,SI,5, Alfonso
 armar_csv_funciones.m_generar_archivos_csv.py,1,63,1,6,0,2,1,0,0,SI,5, Dan
 armar_diccionarios.consulta_de_funciones.py,1,18,0,0,2,1,1,0,0,SI,3, Valentin
-armar_tabla.quien_invoca.py,1,52,0,2,1,6,1,0,0,SI,22, Alfonso
+armar_tabla.quien_invoca.py,1,42,0,2,1,6,1,0,0,SI,14, Alfonso
 armo_csv.modulo_csv.py,1,63,2,4,1,2,1,0,0,SI,13, Dan
 autor_ayuda.m_generar_archivos_csv.py,1,7,1,1,0,1,1,0,0,SI,1, Alfonso
 borrar_primer_indice.quien_invoca.py,1,4,1,0,0,1,1,0,0,SI,1, Alfonso
 borrar_un_valor_lista.quien_invoca.py,1,2,2,0,0,0,1,0,0,SI,1, Alfonso
 busco_algo_en_codigo_de.arbol_de_invocacion.py,1,10,1,1,0,1,1,0,0,SI,1, Alejo Mariño
 cantidad_de_espacios.Informacion_por_desarrollador.py,1,11,3,1,0,0,1,0,0,SI,1, Dan
-capturo_datos.Informacion_por_desarrollador.py,1,48,1,1,2,2,1,0,0,SI,46, Dan
+capturo_comentarios.Informacion_por_desarrollador.py,1,17,1,0,1,0,1,0,0,SI,9, Dan
+capturo_fuente_unico.Informacion_por_desarrollador.py,1,25,1,1,1,1,1,0,0,SI,22, Dan
 ciclar_modulos.merge.py,1,59,2,3,6,2,0,0,0,NO,1, Valentin
 consultar_funciones.consulta_de_funciones.py,1,24,1,3,1,1,0,0,0,SI,6, Valentin
 contar_elementos_varios.Panel_General.py,1,29,1,9,1,0,1,0,0,SI,2, Luis Andrade
 contar_invocaciones.Panel_General.py,1,10,1,1,2,0,1,0,0,SI,1, Luis Andrade
 correcto_espaciado.quien_invoca.py,1,10,2,4,0,0,1,0,0,SI,1, Alfonso
 depurar_lineas.arbol_de_invocacion.py,1,11,2,2,0,2,1,0,0,SI,1, Alejo Mariño
-encontrar_main.arbol_de_invocacion.py,1,13,1,1,1,1,1,0,0,SI,1, Alejo Mariño
-es_primo.lib_matematica.py,1,13,1,2,1,0,1,0,0,SI,1, Juan Perez
+encontrar_main_.arbol_de_invocacion.py,1,13,1,1,1,1,1,0,0,SI,1, Alejo Mariño
 escribir.merge.py,1,2,36,0,0,0,0,0,0,NO,1, Valentin
 escribir_imprimir.Informacion_por_desarrollador.py,1,13,9,3,0,0,0,0,0,SI,1, Dan
-factorial.lib_matematica.py,1,6,2,0,0,1,1,0,0,SI,1, Juan Perez
 formato_cuerpo.quien_invoca.py,1,6,1,0,0,0,1,0,0,SI,1, Alfonso
 formato_tabla.quien_invoca.py,1,2,3,0,0,0,1,0,0,SI,1, Alfonso
 formato_titulo.quien_invoca.py,1,5,1,0,0,0,1,0,0,SI,3, Alfonso
-generar_arbol.arbol_de_invocacion.py,1,54,6,7,0,3,0,0,0,SI,4, Alejo Mariño
+generar_arbol.arbol_de_invocacion.py,1,4,7,0,0,0,1,0,0,SI,1, Alejo Mariño
+generar_arbol_.arbol_de_invocacion.py,1,54,6,7,0,3,0,0,0,SI,4, Alejo Mariño
 generar_lista_total.consulta_de_funciones.py,1,14,1,2,0,2,1,0,0,SI,2, Valentin
 generar_totales.quien_invoca.py,1,8,1,0,0,0,1,0,0,SI,1, Alfonso
 generar_txt.consulta_de_funciones.py,1,20,1,1,0,4,0,0,0,SI,1, Valentin
@@ -35,25 +35,15 @@ la_tabla.quien_invoca.py,1,15,1,0,0,1,0,0,0,SI,3, Alfonso
 leer.m_generar_archivos_csv.py,1,5,3,0,0,1,1,0,0,SI,1, Alfonso
 leer_csv.modulo_csv.py,1,8,2,0,0,1,1,0,0,SI,1, Alejo Mariño
 lista_comentarios.m_generar_archivos_csv.py,1,13,6,2,0,1,1,0,0,SI,1, Alfonso
-main.programa_principal.py,1,43,9,5,1,0,0,0,0,SI,5, Equipo Azul
+main.programa_principal.py,1,36,9,5,1,0,0,0,0,SI,5, Equipo Azul
 main_consulta_funciones.consulta_de_funciones.py,1,4,1,0,0,0,0,0,0,SI,1, Valentin
-mcd.lib_matematica.py,1,23,1,2,1,0,1,0,0,SI,2, Ana Garcia
-mcm.lib_matematica.py,1,2,1,0,0,0,0,0,0,SI,1, Ana Garcia
-menu_MCD.app_matematica.py,1,5,1,0,0,0,0,0,0,SI,1, Juan Perez
-menu_MCM.app_matematica.py,1,5,1,0,0,0,0,0,0,SI,1, Juan Perez
-menu_elegir.app_matematica.py,1,20,1,4,1,0,0,0,0,NO,1,No tiene autor
-menu_factorial.app_matematica.py,1,4,1,0,0,0,0,0,0,SI,1, Alan Gonzalez
-menu_opciones.app_matematica.py,1,11,2,0,0,0,0,0,0,SI,1, Alan Gonzalez
-menu_potencia.app_matematica.py,1,5,1,0,0,0,0,0,0,SI,1, Juan Perez
-menu_primo.app_matematica.py,1,4,1,0,0,0,0,0,0,SI,1, Alan Gonzalez
 merge_2.merge.py,1,47,6,9,6,0,0,0,0,NO,1, Valentin
 nombres_funciones.arbol_de_invocacion.py,1,5,1,0,0,1,1,0,0,SI,1, Alejo Mariño
 ordenar_alfabeticamente.m_generar_archivos_csv.py,1,3,2,0,0,0,1,0,0,SI,1, Alfonso
-organizar_datos.Panel_General.py,1,4,1,0,0,0,1,0,0,SI,1, Luis Andrade
-panel_principal.Panel_General.py,1,80,1,3,0,3,0,0,0,SI,9, Luis Andrade
-potencia.lib_matematica.py,1,11,2,2,0,1,1,0,0,SI,9, Dan
-primer_item_lista.quien_invoca.py,1,1,1,0,0,0,0,0,0,NO,1, Ana Garcia
-quien_invoca_a_quien.quien_invoca.py,1,27,1,2,0,4,1,0,0,SI,1, Alfonso
-sacar_corchetes.consulta_de_funciones.py,1,7,4,1,0,0,1,0,0,SI,14, Alfonso
-solicitar_valor.app_matematica.py,1,6,10,0,1,0,1,0,0,SI,1, Valentin
-sumar_totales.quien_invoca.py,1,6,1,0,0,2,1,0,0,SI,1, Juan Perez
+organizar_datos.Panel_General.py,1,5,1,0,0,0,1,0,0,SI,1, Luis Andrade
+panel_principal.Panel_General.py,1,97,1,3,0,3,0,0,0,SI,9, Luis Andrade
+primer_item_lista.quien_invoca.py,1,1,1,0,0,0,0,0,0,NO,4, Dan
+quien_invoca_a_quien.quien_invoca.py,1,20,0,2,0,3,1,0,0,SI,1, Alfonso
+recopilar_datos.Informacion_por_desarrollador.py,1,11,1,0,0,1,1,0,0,SI,6, Alfonso
+sacar_corchetes.consulta_de_funciones.py,1,7,4,1,0,0,1,0,0,SI,6, Dan
+sumar_totales.quien_invoca.py,1,6,1,0,0,2,1,0,0,SI,1, Valentin
