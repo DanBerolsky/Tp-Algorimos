@@ -33,6 +33,17 @@ def ordenar_alfabeticamente(diccionario):
     
     return sorted(diccionario.items(), key = lambda clave: clave[0])
 
+def obtener_datos_(linea, cuerpo_modulo, modulo, diccionario_funciones, diccionario_comentarios, nombre_funcion, parametros):
+    index_final = cuerpo_modulo.index(linea)
+    cuerpo = cuerpo_modulo[:index_final + 1] 
+    cuerpo_sin_comment,nombre_autor,nombre_ayuda,resto = armar_csv_comentarios(cuerpo,nombre_funcion, modulo)
+    diccionario_comentarios[nombre_funcion] = {"Nombre del autor":nombre_autor,"informacion de ayuda":nombre_ayuda,"Resto de lineas comentadas":resto}
+    diccionario_funciones[nombre_funcion] = {"Parametros de la funcion":parametros,"Nombre del modulo":modulo,"Cuerpo de la funcion":cuerpo_sin_comment}
+
+    return diccionario_funciones, diccionario_comentarios
+    
+
+
 def armar_csv_funciones(archivo):
     
     """[Autor: Dan]
@@ -66,32 +77,18 @@ def armar_csv_funciones(archivo):
                 contador_def += 1
                 
                 if contador_def >1:
-                    linea_return = linea
-                    index_final = lineas.index(linea_return)
-                    cuerpo = lineas[index_inicial_anterior:index_final]
-                    cuerpo_sin_comment,nombre_autor,nombre_ayuda,resto = armar_csv_comentarios(cuerpo,nombre_funcion, modulo)
-                    datos_comentarios[nombre_funcion_anterior] = {"Nombre del autor":nombre_autor,"informacion de ayuda":nombre_ayuda,"Resto de lineas comentadas":resto}
-                    datos[nombre_funcion_anterior] = {"Parametros de la funcion":parametros_anterior,"Nombre del modulo":modulo,"Cuerpo de la funcion":cuerpo_sin_comment}
+                    obtener_datos_(linea, lineas[index_inicial_anterior:], modulo, datos, datos_comentarios, nombre_funcion_anterior, parametros)
                     contador_def = 1
                 
             if linea.strip().startswith("return "):
-                linea_return = linea
-                index_final = lineas.index(linea_return, index_inicial_anterior) + 1
-                cuerpo = lineas[index_inicial:index_final]
-                cuerpo_sin_comment,nombre_autor,nombre_ayuda,resto = armar_csv_comentarios(cuerpo,nombre_funcion, modulo)
-                datos_comentarios[nombre_funcion] = {"Nombre del autor":nombre_autor,"informacion de ayuda":nombre_ayuda,"Resto de lineas comentadas":resto}
-                datos[nombre_funcion] = {"Parametros de la funcion":parametros,"Nombre del modulo":modulo,"Cuerpo de la funcion":cuerpo_sin_comment}
+                obtener_datos_(linea, lineas[index_inicial:], modulo, datos, datos_comentarios, nombre_funcion, parametros)
                 contador_def = 0
 
             if linea.startswith("    "):
                 ultima_linea_indentada = linea
             cuento_linea += 1
             if cuento_linea == len(lineas):
-                index_final = len(lineas)
-                cuerpo = lineas[index_inicial:index_final]
-                cuerpo_sin_comment,nombre_autor,nombre_ayuda,resto = armar_csv_comentarios(cuerpo,nombre_funcion, modulo)
-                datos_comentarios[nombre_funcion] = {"Nombre del autor":nombre_autor,"informacion de ayuda":nombre_ayuda,"Resto de lineas comentadas":resto}
-                datos[nombre_funcion] = {"Parametros de la funcion":parametros,"Nombre del modulo":modulo,"Cuerpo de la funcion":cuerpo_sin_comment}
+                obtener_datos_(linea, lineas[index_inicial:], modulo, datos, datos_comentarios, nombre_funcion, parametros)
                 
             if linea.startswith('def '):
                 funcion = linea
