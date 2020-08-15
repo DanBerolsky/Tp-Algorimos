@@ -18,9 +18,10 @@ def quien_invoca_a_quien():
     #Declaro variables
     nombre_funcion = []
     resultado = {}
+    for fila in diccionario_csv:
+        nombre_funcion.append(fila)
     #Recorre las filas del diccionario y me quedo con la clave (nombre_funcion) y el cuerpo de la funcion
     for fila in diccionario_csv.items():
-        nombre_funcion.append(fila)
         clave = fila[0]
         cuerpo = fila[1][2:]
         #Por cada funcion en la lista de  todas las funciones itera
