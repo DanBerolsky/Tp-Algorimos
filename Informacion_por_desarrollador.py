@@ -16,9 +16,7 @@ def capturo_comentarios():
 
         while linea_archivos_comentarios != "":
             
-            # Convierte en otra variable, la linea que es un string que separa
-            #  los campos con "," en una lista para poder acceder a la 
-            #   informacion facilmente...
+
             linea_a_lista_de_datos = linea_archivos_comentarios.split(";")
             
             # Primer campo tenemos el nombre de la funcion.
@@ -27,7 +25,6 @@ def capturo_comentarios():
             # Segundo campo esta el autor de la funcion.
             autor = linea_a_lista_de_datos[1].lstrip("[").rstrip("]")
             
-            # Esos dos datos los guardo en dicionario.
             # Lineas por funcion todavia no lo se pero lo llena despues ...
             informacion_deseada[nombre_funcion] = {"Autor":autor,"Lineas_por_funcion":None}
             
@@ -45,12 +42,10 @@ def capturo_fuente_unico(informacion_deseada):
         (Nombre del autor de las funciones y el nombre de las funciones que hizo cada autor).]
     """
    
-    # Quiero esta informacion para sacar el porcentaje que realizo cada autor,
-    #  q debe se mostrado al lado del total de lineas por autor por pantalla posteriormente.
+    # Informacion para sacar el porcentaje que realizo cada autor,
     lineas_totales_por_autor = {}
     
-    # De igual forma este dato lo nesesito para sacar el porsentaje que realizo cada autor q
-    #  su vez debe ser mostrado este dato alfinal de la salida por pantalla acompañado de otros datos...
+    # esta variable es nesesaria para sacar el porcentaje.   
     total_linea = 0
     
     with open ("fuente_unico.csv","rt") as archivo_fuente_unico:
@@ -67,39 +62,26 @@ def capturo_fuente_unico(informacion_deseada):
             # Se queda con el nombre de la funcion actual.
             funcion_actual = linea_a_lista_de_datos[0]
             
-            # Aca sumo todas lineas de codigo,
-            # que contienen todas las funciones.
-            # Porque es nesesario el dato para la ultima linea de la salida...
             total_linea += len(linea_a_lista_de_datos[3:])
-            
-            # Bueno ahora si tengo el dato de lineas por funcion
-            # ahora solo falta rellenar la informacion en el diccionario
-            # en donde corresponde como se vera en las siguientes lineas.
+        
             contador_lineas = len(linea_a_lista_de_datos[3:])
             
-            # Recorro las claves del dic
             for clave in informacion_deseada:
                 
                 # Si funcion actual es igual a clave..
                 if clave == funcion_actual:
                     
-                    # Ingreso al dic en la clave y en la clave "Lineas_por_funcion"
-                    #  y rellena la informacion ahora si..
                     informacion_deseada[clave]["Lineas_por_funcion"] = contador_lineas
                     
                     # Si el autor es una clave en lineas_totales_por_autor.
                     if informacion_deseada[clave]["Autor"] in lineas_totales_por_autor:
                         
-                        # Le suma las lineas que conto en la funcion actual.
                         lineas_totales_por_autor[informacion_deseada[clave]["Autor"]] += contador_lineas                    
                     
                     # De no estar el autor en las claves del dic lineas_totales_por_autor.
                     else:
-                        # Crea la clave que va ser el nombre del autor
-                        #  y la cantidad total de lineas por autor por el momento.
                         lineas_totales_por_autor[informacion_deseada[clave]["Autor"]] = contador_lineas
-            
-            # continua hasta no tner mas funciones en el csv.            
+                        
             linea_archivos_fuente_unico = archivo_fuente_unico.readline()
 
     return informacion_deseada, lineas_totales_por_autor, total_linea
@@ -114,17 +96,14 @@ def recopilar_datos(informacion_deseada,lineas_totales_por_autor,total_linea):
     """
 
     # aca saco los porcentajes de realizacion por autor
-    #  y los guardo como el autor como clave del dic
     porcentajes = {}
     
-    # Recorro las claves de lineas_totales_por_autor que son los autores...
     for clave in lineas_totales_por_autor:
         
         # Aca es donde gurada el porcentaje por autor ...
         porcentajes[clave] = int((lineas_totales_por_autor[clave]/total_linea)*100)
 
     # Ordeno por autores por que es la mejor manera asi no tenego que anidar bucles
-    # posteriormete para hacer la salida por pantalla y la escritura del txt...
     datos_finales = sorted(informacion_deseada.items(), key = lambda autor: autor[1]["Autor"])
     
     return datos_finales,porcentajes
@@ -134,38 +113,26 @@ def participacion_info(lista_tuplas_funciones_autor_lineas_por_autor, diccionari
     
     """ [Autor: Dan]
         [Ayuda: brindar datos sobre la participación de cada uno de los 
-        integrantes en el desarrollo de la aplicación.
-        Ademas de mostrar la informacion por pantalla,
-        genera la misma salida al archivo “participacion.txt” ]
+        integrantes en el desarrollo de la aplicación.]
     """
 
     autor_anterior = None
     
-    #Muestro por pantalla... y Agrego linea a participacion.txt
-    titulo = "\n\tInforme de Desarrollo Por Autor\n"
-    escribir_imprimir(titulo, "participacion.txt", "a", titulo)
-    
     if autor_anterior == None:
             
         autor_anterior = lista_tuplas_funciones_autor_lineas_por_autor[0][1]["Autor"]
-
+        
         nombre_funcion = lista_tuplas_funciones_autor_lineas_por_autor[0][0]
         
         autor = lista_tuplas_funciones_autor_lineas_por_autor[0][1]["Autor"]
-
+        
         lineas_funcion = lista_tuplas_funciones_autor_lineas_por_autor[0][1]["Lineas_por_funcion"]
-
+        
         porcentaje = diccionario_de_porcentajes_por_autores[autor]
         
-
-        # Muestro por pantalla... y Agrego linea a participacion.txt
-        s1 = autor + "\n\n\tFuncion" + 16*" " + "Lineas"+"\n\t" + 33 * "-"
-        escribir_imprimir(s1, "participacion.txt", "a", "\n" + s1)
+        cadenas_salida = {"autor":autor, "nombre_funcion":nombre_funcion, "lineas_funcion":lineas_funcion}
         
-        # Muestro por pantalla... y Agrego linea a participacion.txt
-        espacios = cantidad_de_espacios(nombre_funcion)
-        s2 = "\t" + nombre_funcion + (" " * espacios) + str(lineas_funcion)
-        escribir_imprimir(s2, "participacion.txt", "a","\n" + s2 )
+        estructura_salida(0,cadenas_salida)
         
         contador_lineas_totales = 0
         
@@ -184,26 +151,17 @@ def participacion_info(lista_tuplas_funciones_autor_lineas_por_autor, diccionari
         nombre_funcion = lista_tuplas_funciones_autor_lineas_por_autor[indice][0]
         
         autor = lista_tuplas_funciones_autor_lineas_por_autor[indice][1]["Autor"]
-
+        
         lineas_funcion = lista_tuplas_funciones_autor_lineas_por_autor[indice][1]["Lineas_por_funcion"]
-
+        
         porcentaje = diccionario_de_porcentajes_por_autores[autor]
         
         
         if autor_anterior != autor:
             
-            #Muestro por pantalla... y Agrego linea a participacion.txt
-            s1 = "\t"+str(contador_funciones) + " Funciones - Lineas\t " + str(contador_lineas) + "  " + str(porcentaje_anterior)+"%\n"
-            escribir_imprimir(s1, "participacion.txt", "a", "\n" + s1)
+            cadenas_salida = {"autor":autor, "nombre_funcion":nombre_funcion, "lineas_funcion" : lineas_funcion, "contador_funciones":contador_funciones, "contador_lineas":contador_lineas, "porcentaje_anterior":porcentaje_anterior}
             
-            
-            s2 = autor +"\n\n\tFuncion"+16*" "+"Lineas\n\t" + 33*"-"
-            escribir_imprimir(s2, "participacion.txt", "a", "\n" + s2)
-            
-            
-            espacios = cantidad_de_espacios(nombre_funcion)
-            s3 = "\t" + nombre_funcion + (" " * espacios) + str(lineas_funcion)
-            escribir_imprimir(s3, "participacion.txt", "a", "\n" + s3)
+            estructura_salida(1,cadenas_salida)
            
             contador_funciones = 0
 
@@ -213,10 +171,9 @@ def participacion_info(lista_tuplas_funciones_autor_lineas_por_autor, diccionari
 
         else:
             
-            
-            espacios = cantidad_de_espacios(nombre_funcion)
-            s1 = "\t" + nombre_funcion + " "*espacios + str(lineas_funcion)
-            escribir_imprimir(s1, "participacion.txt", "a", "\n" + s1)
+            cadenas_salida = {"nombre_funcion":nombre_funcion, "lineas_funcion":lineas_funcion}
+
+            estructura_salida(2,cadenas_salida)
 
         contador_lineas_totales += int(lineas_funcion)
 
@@ -229,15 +186,55 @@ def participacion_info(lista_tuplas_funciones_autor_lineas_por_autor, diccionari
         autor_anterior = autor
 
     if indice == len(lista_tuplas_funciones_autor_lineas_por_autor)-1 :
+        
+        cadenas_salida = {"contador_funciones":contador_funciones, "contador_lineas":contador_lineas, "porcentaje":porcentaje, "contador_funciones_totales":contador_funciones_totales, "contador_lineas_totales":contador_lineas_totales}
+        estructura_salida(3, cadenas_salida)
+
+
+def estructura_salida(situacion, cadenas):
+    
+    """[Autor: Dan]
+    [Ayuda: Recibe y da forma a la salida del modulo.]
+        
+    """
+
+    if situacion == 0:
+        
+        titulo = "\n\tInforme de Desarrollo Por Autor\n"
+        escribir_imprimir(titulo)
+
+        s1 = cadenas["autor"] + "\n\n\tFuncion" + 16*" " + "Lineas"+"\n\t" + 33 * "-"
+        escribir_imprimir(s1)
+
+        espacios = cantidad_de_espacios(cadenas["nombre_funcion"])
+        s2 = "\t" + cadenas["nombre_funcion"] + (" " * espacios) + str(cadenas["lineas_funcion"])
+        escribir_imprimir(s2)
+
+    elif situacion == 1:
+        
+        s1 = "\t"+str(cadenas["contador_funciones"]) + " Funciones - Lineas\t " + str(cadenas["contador_lineas"]) + "  " + str(cadenas["porcentaje_anterior"])+"%\n"
+        escribir_imprimir(s1)
+    
+        s2 = cadenas["autor"] +"\n\n\tFuncion"+16*" "+"Lineas\n\t" + 33*"-"
+        escribir_imprimir(s2)
             
+        espacios = cantidad_de_espacios(cadenas["nombre_funcion"])
+        s3 = "\t" + cadenas["nombre_funcion"] + (" " * espacios) + str(cadenas["lineas_funcion"])
+        escribir_imprimir(s3)
+    
+    elif situacion == 2:
+        espacios = cantidad_de_espacios(cadenas["nombre_funcion"])
+        s1 = "\t" + cadenas["nombre_funcion"] + " "*espacios + str(cadenas["lineas_funcion"])
+        escribir_imprimir(s1)
+
+    elif situacion == 3:
         
-        s1 = "\t"+str(contador_funciones) + " Funciones - Lineas\t " + str(contador_lineas) + "  " + str(porcentaje)+"%\n\n"
-        escribir_imprimir(s1, "participacion.txt", "a", "\n" + s1)
+        s1 = "\t"+str(cadenas["contador_funciones"]) + " Funciones - Lineas\t " + str(cadenas["contador_lineas"]) + "  " + str(cadenas["porcentaje"])+"%\n\n"
+        escribir_imprimir(s1)
         
-       
-        s2 = "Total: "+ str(contador_funciones_totales) + " Funciones - lineas\t " + str(contador_lineas_totales)+"\n"
-        escribir_imprimir(s2, "participacion.txt", "a", "\n" + s2)
-                       
+        s2 = "Total: "+ str(cadenas["contador_funciones_totales"]) + " Funciones - lineas\t " + str(cadenas["contador_lineas_totales"])+"\n"
+        escribir_imprimir(s2)
+
 
 def cantidad_de_espacios(nombre_funcion):    
     
@@ -245,14 +242,17 @@ def cantidad_de_espacios(nombre_funcion):
         [Ayuda: Aquí se multiplica un espacio por un numero x
         El 4 es cantidad de caracateres que tiene una tabulacion,
         len(nom_fun) es la cantida de caracteres que tiene el nom_fun.
-        Despues quiero que partir del carater 32 obtener la cant.lineas.
+        Despues quiero que partir del carater 30 obtener la cant.lineas.
         Esta cuanta me asegura que el valor lineas_f este uno debajo del otro,
         multiplicando un str espacio la cantidad de veces nesesaria para cada caso. ]
     """
-  
-    if 4 + len(nombre_funcion)<29:
+    tabulacion = 4
+
+    cantidad_caracteres_max = 29
+
+    if tabulacion + len(nombre_funcion) < cantidad_caracteres_max:
         
-        espacios = -1 * (4 + len(nombre_funcion) - 29)
+        espacios = -1 * (tabulacion + len(nombre_funcion) - cantidad_caracteres_max)
     
     else:
         
@@ -260,25 +260,16 @@ def cantidad_de_espacios(nombre_funcion):
 
     return espacios  
 
-def escribir_imprimir(contenido_a_mostrar,archivo_a_abrir,modalidad_de_apertura,escritura):
+def escribir_imprimir(contenido_a_mostrar_escribir):
     
     """ [Autor: Dan]
-        [Ayuda: esta fucion puede recibir en el primer parametro un dato a imprimir,
-        en el segundo parametro puede recibir el nombre de un archivo para que sea abierto,
-        en el tercer parametro de que forma o modo quiere que el archivo sea abierto y 
-        el ultiumo parametro debe ser la linea que quiere ser escrita dentro del archivo.
-        Si no se quiere utilizar, ya sea la impresion o la apertura de un archivo debe
-        recibir el valor de None.]
+        [Ayuda: esta fucion puede recibir en el primer parametro un dato a imprimir y
+        el ultimo parametro debe ser la linea que quiere ser escrita dentro del archivo.]
     """
-    modalidades = ["a","w","r+"]
 
-    if contenido_a_mostrar != None :
-        print(contenido_a_mostrar)
-
-    if archivo_a_abrir != None and modalidad_de_apertura in modalidades :
+    
+    print(contenido_a_mostrar_escribir)
         
-        with open (archivo_a_abrir,modalidad_de_apertura) as archivo:
-
-            if escritura != None and modalidad_de_apertura in modalidades:
-                archivo.write(escritura)
-            
+    with open ("participacion.txt", "a") as archivo:
+        archivo.write("\n" + contenido_a_mostrar_escribir)
+           
